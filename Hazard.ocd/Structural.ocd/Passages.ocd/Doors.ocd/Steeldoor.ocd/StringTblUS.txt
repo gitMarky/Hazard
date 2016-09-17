@@ -1,0 +1,3 @@
+Name=Steeldoor
+Description=A steeldoor. Opens and closes. It is fire-resistant, but futile against energy and projectile attacks.
+

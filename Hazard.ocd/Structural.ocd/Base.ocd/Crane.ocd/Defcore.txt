@@ -1,0 +1,9 @@
+[DefCore]
+id=CRN1
+Version=7,0
+Category=C4D_Structure
+Width=14
+Height=16
+Offset=-7,-8
+Value=10
+Mass=20

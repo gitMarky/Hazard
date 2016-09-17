@@ -1,0 +1,3 @@
+Name=Stuhl
+Description=Ein Stuhl! :D
+

@@ -1,0 +1,3 @@
+Name=Bürotisch
+Description=Produziert Arbeit.
+

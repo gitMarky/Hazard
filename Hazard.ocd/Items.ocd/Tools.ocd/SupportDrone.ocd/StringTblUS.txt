@@ -1,0 +1,8 @@
+Name=Support Drone
+Description=The support drone supports the clonk in battles if it is armed with a weapon.
+
+ArmWith=Arm with %s
+JustOneDrone=Can not use more than one drone at the same time
+Damaged=This drone is damaged
+ArmedWith=Drone armed with %s.
+NoWeap=No weapon to arm.

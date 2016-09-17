@@ -1,0 +1,3 @@
+Name=Laboratory Door
+Description=Door for a laboratory.
+

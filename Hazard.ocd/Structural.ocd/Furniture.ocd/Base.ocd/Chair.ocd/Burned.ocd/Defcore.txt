@@ -1,0 +1,16 @@
+[DefCore]
+id=CHAB
+Version=7,0
+Category=C4D_Vehicle
+Width=10
+Height=15
+Offset=-5,-7
+Value=1
+Mass=10
+Picture=0,0,10,15
+Vertices=2
+VertexX=-5,5
+VertexY=7,7
+VertexFriction=100,100
+Rotate=1
+Float=1

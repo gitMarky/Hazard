@@ -1,77 +1,142 @@
-/*-- Neonlicht --*/
 
-local on;
+local on; // Ob das Licht gezündet wurde
+local color; // Die Farbwerte.
 
-local color;
-
-protected func Initialize() 
+func Initialize()
 {
-  //Kein Besitzer
-  SetOwner(-1);
-  
-  color = new color {
-      H = Random(256),
-      S = 255,
-      L = 128
-  }
-  
-  SetColor(HSL(color. H, color.S / 2, color.L - 50));
+	SetOwner(NO_OWNER);
+
+	color = {
+		H = Random(256),
+		S = 255,
+		L = 128,
+	};
+	
+	// have it be a little darker while it is switched off
+	SetColor(HSL(color.H, color.S / 2, color.L - 50));
 }
 
-public func Activate(object pByObj)
+func ControlUse(object user, int x, int y)
 {
-    if(on) return;
-    else on = true;
-  
-    //Effect
-    CreateEffect(IntNeonGlow, 100, 5);
-    
-    if(Contained()) Exit(Contained()->GetDir()*12 - 6, 0, 0, Contained()->GetDir()*6 - 3, -3, Contained()->GetDir()*60 - 30);
-    
-    return true;
+	return Activate(user, x, y);
 }
 
-public func RejectEntrance()
+
+func Activate(object user, int x, int y)
 {
-	// Nicht mehr sammelbar wenn an
-	return on;
+	if (on) return false;
+	on = true;
+	this.Collectible = false;
+	
+	CreateEffect(IntNeonGlow, 100, 5);
+	
+	if (!Place(user, x, y))
+	{
+		user->ControlThrow(this, x, y);
+	}
+	return true;
 }
 
-public func IsEquipment() { return true; }
+func Place(object user, int x, int y)
+{
+	var angle = Angle(0, 0, x, y);
+	var pos = GetWall(angle);
+	if(pos)
+	{
+		Exit(pos[0], pos[1], Angle(pos[0],pos[1]));
+		SetPosition(user->GetX()+pos[0], user->GetY()+pos[1]);
+		return true;
+	}
+	return false;
+}
 
 
-// Properties
+// returns true if there is a wall in direction in which "clonk" looks
+// and puts the offset to the wall into "xo, yo" - looking from the clonk
+func GetWall(int angle)
+{
+	var dist = 12;
+	for (var dist = 12; dist < 18; dist++)
+	{
+		var x = +Sin(angle, dist);
+		var y = -Cos(angle, dist);
+		if (GBackSolid(x, y))
+			return [Sin(angle, dist-5), -Cos(angle, dist-5)];
+	}
+	return false;
+}
 
-local Collectible = 1;
-local Name = "$Name$";
 
-// Effects
-
-local IntNeonGlow = new Effect {
-    Start = func(int temp) {
+local IntNeonGlow = new Effect
+{
+    Start = func(int temp)
+    {
         if(temp) return;
         
         this.Target->SetColor(HSL(this.Target.color.H, this.Target.color.S, this.Target.color.L));
         this.Target->SetLightRange(400);
         this.Target->SetLightColor(HSLa(this.Target.color.H, this.Target.color.S, this.Target.color.L, 30));
-        
-        this.Target->CastParticles("StarSpark", 5, 5, 10, 40, 40, 90, GetColor(), GetColor());
-        this.Target->CastParticles("Smoke", 5, 5, 10, 40, 40, 90, GetColor(), GetColor());
+  
+  		NeonSparks();
+  		NeonSmoke();
     },
     
-    Timer = func(int time) {
-        this.Target->CreateParticle("StarSpark", RandomX(-3, 3), RandomX(-3, 3), RandomX(-5, 5), RandomX(-4, -9), RandomX(40, 90), GetColor());
-        if(!Random(3)) this.Target->CreateParticle("Smoke", RandomX(-3, 3), RandomX(-5, 5), RandomX(-4, -9), RandomX(140, 190), GetColor());
+    Timer = func(int time)
+    {
+        NeonSparks(); //this.Target->CreateParticle("StarSpark", RandomX(-3, 3), RandomX(-3, 3), RandomX(-5, 5), RandomX(-4, -9), RandomX(40, 90), GetColor());
+        if (!Random(3)) NeonSmoke(); //this.Target->CreateParticle("Smoke", RandomX(-3, 3), RandomX(-5, 5), RandomX(-4, -9), RandomX(140, 190), GetColor());
         
-        if(time >= 4000) return -1;
+		this.Target->SetLightRange(Max(400 - time / 10, 0));
+
+        if (time >= 4000) return FX_Execute_Kill;
     },
     
-    Stop = func(bool temp) {
+    Stop = func(bool temp)
+    {
         if(temp) return;
-        
-        this.Target->SetLightColor();
+
         this.Target->SetLightRange();
         this.Target->SetColor(HSL(this.Target.color.H, this.Target.color.S / 3, 30));
-        //FadeOut();
+    },
+    
+    NeonSparks = func ()
+    {
+  		var radius = PV_Random(-3, 3);
+  
+        this.Target->CreateParticle("StarSpark", radius, radius, PV_Random(-5, 5), PV_Random(-4, -9), PV_Random(20, 40),
+        {
+        	Prototype = Particles_Glimmer(),
+        	R = GetRGBaValue(this.Target->GetColor(), RGBA_RED),
+        	G = GetRGBaValue(this.Target->GetColor(), RGBA_GREEN),
+        	B = GetRGBaValue(this.Target->GetColor(), RGBA_BLUE),
+        	Size = PV_Random(2, 6),
+        }, 5);
+    },
+    
+    NeonSmoke = func ()
+    {
+  		var radius = PV_Random(-3, 3);
+
+        this.Target->CreateParticle("Smoke", radius, radius, PV_Random(-5, -5), PV_Random(-4, -9), PV_Random(140, 190), 
+        {
+        	Prototype = Particles_Smoke(),
+        	R = GetRGBaValue(this.Target->GetColor(), RGBA_RED),
+        	G = GetRGBaValue(this.Target->GetColor(), RGBA_GREEN),
+        	B = GetRGBaValue(this.Target->GetColor(), RGBA_BLUE),
+        	Size = PV_Random(2, 6),
+        }, 5);
     },
 };
+
+
+func RejectEntrance(){	return on;} // do not collect when on
+func IsEquipment(){	return 1;}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// properties
+
+local Name = "$Name$";
+local Description = "$Description$";
+local Collectible = true;

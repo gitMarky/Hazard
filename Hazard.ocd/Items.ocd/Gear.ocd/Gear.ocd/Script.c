@@ -20,6 +20,12 @@ func IsHazardGear()
 
 protected func ControlUse(object user, int x, int y)
 {
+	return ActivateGear(user);
+}
+
+
+func ActivateGear(object user)
+{
 	// Can the clonk use this?
 	if (!(user->~CanUse(GetID()))) return false;
 
@@ -32,6 +38,7 @@ protected func ControlUse(object user, int x, int y)
 
 	// Buckle
 	if (user->~EquipGear(this)) GearBuckle(user);
+	return true;
 }
 
 

@@ -1,0 +1,14 @@
+[DefCore]
+id=BED2
+Version=7,0
+Category=C4D_Vehicle
+Width=45
+Height=37
+Offset=-23,-17
+Value=45
+Mass=200
+Picture=0,37,64,64
+Vertices=2
+VertexX=23,-23
+VertexY=17,17
+VertexFriction=50,50

@@ -1,0 +1,3 @@
+Name=Monitor
+Description=Zeigt allerhand wichtiges Zeug.
+

@@ -1,0 +1,14 @@
+[DefCore]
+id=FRAM
+Version=7,0
+Category=C4D_StaticBack
+Width=23
+Height=15
+Offset=-11,-7
+Value=5
+Mass=20
+Picture=0,0,23,15
+Vertices=4
+VertexX=11,11,-11,-11
+VertexY=-7,7,-7,7
+VertexFriction=100,100,100,100

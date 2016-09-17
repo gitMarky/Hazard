@@ -1,0 +1,4 @@
+Name=Airstrike
+Description=Drops a hail of deadly bombs on your enemy.
+
+RecievingBlocked=Obstacle inhibiting|Reception!

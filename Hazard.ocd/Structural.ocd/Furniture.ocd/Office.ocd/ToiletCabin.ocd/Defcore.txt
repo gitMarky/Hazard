@@ -1,0 +1,13 @@
+[DefCore]
+id=TOIC
+Version=7,0
+Category=C4D_Structure
+Width=20
+Height=30
+Offset=-10,-15
+Value=15
+Mass=50
+Picture=21,0,64,64
+Vertices=2
+VertexY=14,-14
+VertexFriction=100,100

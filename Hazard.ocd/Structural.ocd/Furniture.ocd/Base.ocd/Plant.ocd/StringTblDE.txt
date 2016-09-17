@@ -1,0 +1,3 @@
+Name=Pflanze
+Description=Wächst und gedeiht, wenn richtig gepflegt.
+

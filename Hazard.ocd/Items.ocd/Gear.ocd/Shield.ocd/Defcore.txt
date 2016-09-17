@@ -1,0 +1,14 @@
+[DefCore]
+id=HSHD
+Version=7,0
+Category=C4D_Object
+Width=7
+Height=10
+Offset=-3,-5
+Value=38
+Mass=6
+Picture=0,10,64,64
+Vertices=3
+VertexX=-2,2
+VertexY=4,4,-4
+VertexFriction=80,80,80

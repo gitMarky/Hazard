@@ -1,0 +1,3 @@
+Name=Glastisch
+Description=Ein Glastisch. Zerbricht gerne.
+

@@ -1,0 +1,9 @@
+
+public func CanBeRecycled() { return 2;} // TODO: what is this good for? Why not laser-recycled?
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// properties
+
+local Name = "$Name$";
+local Description = "$Description$";

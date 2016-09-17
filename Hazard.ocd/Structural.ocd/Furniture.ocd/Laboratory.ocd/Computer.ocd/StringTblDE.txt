@@ -1,0 +1,3 @@
+Name=Laborcomputer
+Description=Für forschungstechnische Zwecke genutzt. 
+

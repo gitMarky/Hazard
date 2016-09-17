@@ -1,2 +1,3 @@
 Name=Leuchtstab
-Description=Bringt tempor√§r Licht ins Dunkel.
+Description=Bringt tempor‰r Licht ins Dunkel.
+

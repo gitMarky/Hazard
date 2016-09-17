@@ -1,0 +1,3 @@
+Name=Frame
+Description=For a clean and classified laboratory.
+

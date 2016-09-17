@@ -1,6 +1,12 @@
 
 func ControlUse(object user, int x, int y)
 {
+	CreateUpgradeMenu(user);
+	return true;
+}
+
+func CreateUpgradeMenu(object user)
+{
 	// create menu
 	user->CreateMenu(GetID(), this, 4, "$NothingUpgradeable$");
 	
@@ -11,7 +17,6 @@ func ControlUse(object user, int x, int y)
 		var description = upgradeable->~GetUpgradeDescription(GetID()) ?? Format("$UpgradeDefault$", this->GetName());
 		user->AddMenuItem(name, "UpgradeObject", upgradeable->GetID(), nil, upgradeable, description);
 	}
-	return true;
 }
 
 

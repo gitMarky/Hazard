@@ -73,38 +73,36 @@ func OnHit(int iDmg, int iType, object pFrom)
 /* Kontext menü */
 
 // Ausrüstung benutzen
-func ContextUseEquipment(object pCaller)
+func ContextUseEquipment(object caller)
 {
 // TODO	[$CtxUseEquipmentDesc$|Image=HARM|Condition=HasUsableGear]
-	if (!HasUsableGear())
-		return;
-	CreateMenu(HARM, 0, 0, 0, 0, 0, 1);
+	if (!HasUsableGear()) return;
+	CreateMenu(HARM, this, nil, nil, nil, C4MN_Style_Context);
 	// nutzbare Ausrüstung anzeigen
 	for (var i = 0; i < GetLength(lib_gear); ++i)
 	{
 		var gear = lib_gear[i];
 		if (gear)
 			if (gear->~ConUseable())
-				AddMenuItem(gear->ConDesc(), "UseEquipment", GetID(gear), 0, 0, i);
+				AddMenuItem(gear->ConDesc(), "UseEquipment", gear->GetID(), nil, i);
 	}
-	return 1;
+	return true;
 }
 
 // Ausrüstung ablegen
-func ContextUnbuckle(object pCaller)
+func ContextUnbuckle(object caller)
 {
 // TODO	[$CtxUnbuckleDesc$|Image=HARM|Condition=FunnyBug]
-	if (!HasGear())
-		return;
-	CreateMenu(HARM, 0, 0, 0, 0, 0, 1);
+	if (!HasGear()) return;
+	CreateMenu(HARM, this, nil, nil, nil, C4MN_Style_Context);
 	// alle Ausrüstung anzeigen
 	for (var i; i < GetLength(lib_gear); ++i)
 	{
 		var gear = lib_gear[i];
 		if (gear)
-			AddMenuItem("$CtxUnbuckleItem$", Format("TakeOffGear(0,%d)", i), GetID(gear));
+			AddMenuItem("$CtxUnbuckleItem$", Format("TakeOffGear(0,%d)", i), gear->GetID());
 	}
-	return 1;
+	return true;
 }
 
 
@@ -193,7 +191,7 @@ func TakeOffGear(object pGear, int iGearType)
 			var i;
 			for (var i = 0; i < GetLength(lib_gear); ++i)
 				if (lib_gear[i])
-					TakeOffGear(0, i);
+					TakeOffGear(nil, i);
 			return 1;
 		}
 		

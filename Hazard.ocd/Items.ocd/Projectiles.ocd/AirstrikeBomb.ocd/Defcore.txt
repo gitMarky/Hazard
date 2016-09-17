@@ -1,0 +1,14 @@
+[DefCore]
+id=Projectile_AirstrikeBomb
+Version=7,0
+Category=C4D_Object
+Width=13
+Height=20
+Offset=-7,-10
+Value=15
+Mass=100
+Picture=0,0,13,21
+Vertices=2
+VertexY=10,-10
+VertexFriction=20,20
+Rotate=1

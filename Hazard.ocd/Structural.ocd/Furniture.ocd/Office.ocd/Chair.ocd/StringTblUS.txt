@@ -1,0 +1,3 @@
+Name=Office chair
+Description=Comfortable seating.
+

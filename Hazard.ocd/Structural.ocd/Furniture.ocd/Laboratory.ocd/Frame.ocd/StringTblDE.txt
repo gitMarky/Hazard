@@ -1,0 +1,3 @@
+Name=Regal
+Description=Für ein geordnetes Labor.
+

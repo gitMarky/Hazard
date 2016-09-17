@@ -1,0 +1,13 @@
+[DefCore]
+id=GADG
+Version=7,0
+Category=C4D_Vehicle
+Width=8
+Height=14
+Offset=-4,-7
+Value=20
+Mass=10
+Picture=0,15,10,17
+Vertices=2
+VertexY=5,-5
+VertexFriction=100,100

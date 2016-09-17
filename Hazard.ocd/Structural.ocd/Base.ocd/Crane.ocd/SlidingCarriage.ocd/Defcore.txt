@@ -1,0 +1,14 @@
+[DefCore]
+id=SLDE
+Version=7,0
+Category=C4D_Vehicle
+Width=37
+Height=16
+Offset=-18,-8
+Value=50
+Mass=75
+Picture=0,0,37,16
+Vertices=3
+VertexX=0,-18,18
+VertexFriction=10,100,100
+Float=100

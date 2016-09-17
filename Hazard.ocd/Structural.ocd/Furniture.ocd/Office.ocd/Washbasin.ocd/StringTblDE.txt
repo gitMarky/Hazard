@@ -1,0 +1,3 @@
+Name=Waschbecken
+Description=Nicht vergessen, Hände waschen.
+

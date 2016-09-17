@@ -1,0 +1,13 @@
+[DefCore]
+id=CCP1
+Version=7,0
+Category=C4D_Structure
+Width=38
+Height=24
+Offset=-19,-12
+Value=750
+Mass=800
+Picture=0,24,64,64
+Vertices=2
+VertexY=11,-11
+VertexFriction=100,100

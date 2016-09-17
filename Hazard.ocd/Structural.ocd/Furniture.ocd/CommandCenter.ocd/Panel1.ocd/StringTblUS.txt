@@ -1,0 +1,3 @@
+Name=Panel
+Description=Used to manage all jobs in the command center.
+

@@ -32,7 +32,7 @@ local MedipackHeal = new Effect
 	{
 		if (change >= 0) return change;
 
-		RemoveEffect(0, Target, this.healing_effect);
+		RemoveEffect(nil, Target, this.healing_effect);
 		RemoveEffect("MedipackHeal", Target);
 		return change;
 	},

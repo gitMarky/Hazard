@@ -1,0 +1,3 @@
+Name=Chair
+Description=A chair! :D
+

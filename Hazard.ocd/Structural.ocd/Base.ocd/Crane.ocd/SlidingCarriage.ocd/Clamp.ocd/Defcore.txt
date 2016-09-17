@@ -1,0 +1,14 @@
+[DefCore]
+id=CLMP
+Version=7,0
+Category=C4D_Vehicle
+Width=44
+Height=16
+Offset=-21,-8
+Value=5
+Mass=15
+SolidMask=2,5,40,4,0,0
+Picture=0,0,44,16
+Vertices=1
+VertexY=-1
+VertexFriction=100

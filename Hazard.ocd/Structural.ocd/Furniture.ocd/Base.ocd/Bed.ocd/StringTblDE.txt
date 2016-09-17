@@ -1,0 +1,3 @@
+Name=Bett
+Description=Auch Stationspersonal muss mal ein Nickerchen machen.
+

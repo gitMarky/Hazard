@@ -1,0 +1,3 @@
+Name=Glasstable
+Description=A glass table. Likes to be broken.
+

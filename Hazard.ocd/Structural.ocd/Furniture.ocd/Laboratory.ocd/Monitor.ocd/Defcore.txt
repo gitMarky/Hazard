@@ -1,0 +1,15 @@
+[DefCore]
+id=MONI
+Version=7,0
+Category=C4D_Vehicle
+Width=10
+Height=10
+Offset=-5,-5
+Value=50
+Mass=10
+Picture=0,0,10,10
+Vertices=5
+VertexX=0,-4,4,-4,4
+VertexY=0,4,4,-4,-4
+VertexFriction=0,50,50,50,50
+Rotate=1

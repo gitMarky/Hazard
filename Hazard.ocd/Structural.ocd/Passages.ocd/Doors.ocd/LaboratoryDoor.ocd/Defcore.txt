@@ -1,0 +1,15 @@
+[DefCore]
+id=LBDR
+Version=7,0
+Category=C4D_Structure
+Width=15
+Height=30
+Offset=-7,-15
+Value=50
+Mass=120
+SolidMask=14,0,1,30,14,0
+TopFace=0,0,15,30,0,0
+Picture=0,30,64,64
+Vertices=2
+VertexY=15,-15
+VertexFriction=100,100

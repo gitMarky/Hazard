@@ -1,0 +1,3 @@
+Name=Spind
+Description=Enthält Sachen, kippt physikalisch korrekt um und ist toll.
+

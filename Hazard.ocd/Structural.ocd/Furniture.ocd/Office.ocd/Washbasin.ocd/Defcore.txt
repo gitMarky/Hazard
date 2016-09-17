@@ -1,0 +1,10 @@
+[DefCore]
+id=WSHB
+Version=7,0
+Category=C4D_StaticBack
+Width=20
+Height=28
+Offset=-10,-14
+Value=5
+Mass=30
+Picture=20,0,64,64

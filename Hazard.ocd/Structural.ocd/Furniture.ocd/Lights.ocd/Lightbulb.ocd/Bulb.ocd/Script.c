@@ -36,6 +36,7 @@ func SetCableLength(int length)
 	if (length <= 0) FatalError(Format("Length must be a positiv value. You passed %d", length));
 	lightbulb.length = length;
 	UpdatePos();
+	return this;
 }
 
 func UpdatePos()
