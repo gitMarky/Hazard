@@ -69,8 +69,8 @@ global func CreateLEDEffect(int color, int x, int y, int size, int lifetime)
 	AssertObjectContext("CreateLEDEffect()");
 
 	var r = GetRGBaValue(color, RGBA_RED);
-	var g = GetRGBaValue(color, RGBA_BLUE);
-	var b = GetRGBaValue(color, RGBA_GREEN);
+	var g = GetRGBaValue(color, RGBA_GREEN);
+	var b = GetRGBaValue(color, RGBA_BLUE);
 	var a = GetRGBaValue(color, RGBA_ALPHA) / 2; // because the default value for magic particles is 128
 
 	CreateParticle("Magic", x, y, 0, 0, lifetime ?? 20,
