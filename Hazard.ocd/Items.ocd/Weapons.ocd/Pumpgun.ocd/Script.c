@@ -8,12 +8,12 @@ local Name = "$Name$";
 local Description = "$Description$";
 
 
-public func GetCarryMode(object user) {    if (is_selected) return CARRY_Hand; }
+public func GetCarryMode(object user) {    return CARRY_Musket; }
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
+public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
-	return Trans_Rotate(90, 1, 0, 0);
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-3000, 1500, 0));
 }
 
 
@@ -47,6 +47,8 @@ func FiremodeStandard()
 		projectile_speed = 	[250, 350],
 		projectile_range = [80, 230],
 		projectile_spread = Projectile_Deviation(7, 1),
+		projectile_offset_y = -5,
+		projectile_distance = 12,
 
 		damage = 		32,
 	};
@@ -72,6 +74,8 @@ func FiremodeCluster()
 		projectile_speed = 	[250, 350],
 		projectile_range = [80, 230],
 		projectile_spread = Projectile_Deviation(7, 1),
+		projectile_offset_y = -5,
+		projectile_distance = 12,
 
 		damage = 		16,
 	};
