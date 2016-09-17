@@ -1,0 +1,2 @@
+Name=Jerrycan
+Description=Filled with 100 units of gasoline.

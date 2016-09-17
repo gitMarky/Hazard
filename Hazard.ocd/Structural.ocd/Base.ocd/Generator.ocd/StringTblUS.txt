@@ -1,0 +1,4 @@
+Name=Generator
+Description=Supplies a station with power.
+TurnOff=Turn On
+TurnOn=Turn Off

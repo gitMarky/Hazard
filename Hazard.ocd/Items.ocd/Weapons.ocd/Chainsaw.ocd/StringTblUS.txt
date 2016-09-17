@@ -1,0 +1,4 @@
+Name=Chainsaw
+Description=Handy tool for sawing and chopping down trees of all kind.
+
+Saw=Slaughter

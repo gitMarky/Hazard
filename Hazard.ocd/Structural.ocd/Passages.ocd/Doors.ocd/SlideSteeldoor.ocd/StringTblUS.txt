@@ -1,0 +1,3 @@
+Name=Hydraulic Slide Door
+Description=A hydraulic door. Hard to destroy.
+

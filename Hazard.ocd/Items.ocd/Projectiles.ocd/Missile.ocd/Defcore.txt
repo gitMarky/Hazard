@@ -1,0 +1,15 @@
+[DefCore]
+id=Projectile_Missile
+Version=7,0
+Category=C4D_Vehicle
+Width=6
+Height=11
+Offset=-3,-5
+Mass=10
+Picture=6,0,64,64
+Vertices=1
+VertexY=1
+VertexFriction=20
+Rotate=1
+Float=100000
+NoStabilize=1

@@ -1,0 +1,14 @@
+[DefCore]
+id=GSTA
+Version=7,0
+Category=C4D_Structure
+Width=62
+Height=39
+Offset=-31,-19
+Value=100
+Mass=200
+Picture=0,39,64,64
+Vertices=6
+VertexX=-18,18,31,-31,19,21
+VertexY=19,19,0,0,-19,-19
+VertexFriction=100,100,100,100,100,100

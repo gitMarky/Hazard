@@ -1,0 +1,3 @@
+Name=Glühbirne
+Description=Eine Glühbirne.
+

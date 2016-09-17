@@ -1,0 +1,6 @@
+NoWeapons=Es wurden keine Waffen gefunden.
+End=Ende
+TimeTillRespawn=Noch %d Sekunden bis zum Respawn
+
+Name=Waffenwahl
+Description=Diese Regel erlaubt es, beim Start oder Relaunch Waffen zu kaufen.

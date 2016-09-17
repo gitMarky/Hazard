@@ -1,0 +1,14 @@
+[DefCore]
+id=DEB1
+Version=7,0
+Category=C4D_Structure
+Width=50
+Height=30
+Offset=-25,-15
+Mass=100
+SolidMask=0,0,50,30,0,0
+Picture=0,0,50,30
+Vertices=2
+VertexX=-24,24
+VertexY=13,13
+VertexFriction=100,100

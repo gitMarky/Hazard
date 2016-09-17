@@ -1,0 +1,8 @@
+Name=Pumpgun
+Description=The pumpgun shoots many shots at once. Because of that the pumpgun is the ultimate weapon in close-combat.
+
+Standard=Spread shots
+Cluster= Cluster shot
+
+UpgradeToWeaponPart=Allows you to shoot grenade fragments
+UpgradedToWeaponPart=grenade fragment attachment mounted!

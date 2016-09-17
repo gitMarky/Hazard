@@ -1,0 +1,2 @@
+Name=Klassenwahl
+Description=Stellt verschiedene Klassen für jeden Spieler zur Verfügung.

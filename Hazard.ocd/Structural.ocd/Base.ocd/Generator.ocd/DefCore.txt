@@ -1,0 +1,14 @@
+[DefCore]
+id=Generator
+Version=7,0
+Category=C4D_Structure
+Width=320
+Height=150
+Offset=-160,-75
+Vertices=2
+VertexX=-150,150
+VertexY=74,74
+VertexFriction=500,500
+Value=750
+Mass=750
+Picture=320,0,320,150

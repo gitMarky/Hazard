@@ -1,0 +1,7 @@
+Name=Mine
+Activate=Mine aktivieren
+UpgradeToLaser=Zur Lasermine aufrüsten.
+UpgradeToWeaponPart=Zur Schwarmmine aufrüsten.
+
+UpgradedToLaser=Zur Lasermine aufgerüstet.
+UpgradedToWeaponPart=Zur Schwarmmine aufgerüstet.

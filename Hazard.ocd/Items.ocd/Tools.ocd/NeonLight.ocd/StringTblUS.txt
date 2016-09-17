@@ -1,0 +1,2 @@
+Name=Neonlight
+Description=Temporarily radiates a bright light.

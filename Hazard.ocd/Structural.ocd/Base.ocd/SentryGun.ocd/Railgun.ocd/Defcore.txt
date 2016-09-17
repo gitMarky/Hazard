@@ -1,0 +1,14 @@
+[DefCore]
+id=RGSA
+Version=7,0
+Category=C4D_Vehicle
+Width=33
+Height=10
+Offset=-16,-5
+Value=60
+Mass=55
+Picture=0,0,33,10
+Vertices=1
+VertexFriction=20
+Rotate=1
+NoStabilize=1

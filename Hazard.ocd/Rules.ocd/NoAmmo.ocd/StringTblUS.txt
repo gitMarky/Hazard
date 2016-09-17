@@ -1,0 +1,2 @@
+Name=No ammo
+Description=With this rule weapons do not need ammo.

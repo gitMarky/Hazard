@@ -1,0 +1,13 @@
+[DefCore]
+id=BULB
+Version=7,0
+Category=C4D_StaticBack
+Width=6
+Height=10
+Offset=-3,-5
+Value=2
+Mass=5
+Picture=0,0,6,12
+Vertices=1
+VertexY=-4
+Rotate=1

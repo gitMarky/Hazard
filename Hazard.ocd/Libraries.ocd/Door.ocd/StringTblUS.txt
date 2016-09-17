@@ -1,0 +1,6 @@
+Name=Doorcontrol
+Description=Provides basic control for doors.
+
+OpenDoor=Open door.
+CloseDoor=Close door.
+NoCard=No fitting card available.

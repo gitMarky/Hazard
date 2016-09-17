@@ -1,0 +1,3 @@
+Name=Gastank
+Description=Gefüllt mit explosivem Gas.
+

@@ -1,0 +1,12 @@
+Name=Bazooka
+Description=Für die Bazooka existieren keine Hindernisse. Selbst bewegte Ziele stellen dank wärmesuchender Lenkraketen kein Problem dar.
+
+Missile=Raketen
+HMissile=Lenkraketen
+RCMissile=Ferngesteuerte Raketen
+
+UpgradeToLaser=Rüstet die Raketen mit einem automatischen Zielverfolgungssystem aus.
+UpgradedToLaser=Raketenwerfer mit automatischen|Zielverfolgungssystem ausgerüstet.
+
+UpgradeToWeaponPart=Ermöglicht optional ferngesteuerte Raketen zu verschießen.
+UpgradedToWeaponPart=Raketenwerfer kann nun|ferngesteuerte Raketen verschießen

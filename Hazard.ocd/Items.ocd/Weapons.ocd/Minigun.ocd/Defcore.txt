@@ -1,0 +1,13 @@
+[DefCore]
+id=Weapon_Minigun
+Version=7,0
+Category=C4D_Object
+Width=22
+Height=7
+Offset=-11,-4
+Value=38
+Mass=20
+Vertices=2
+VertexX=-10,10
+VertexY=3,3
+VertexFriction=100,100

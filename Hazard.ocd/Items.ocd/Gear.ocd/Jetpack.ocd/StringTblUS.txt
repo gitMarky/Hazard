@@ -1,0 +1,5 @@
+Name=Jetpack
+Description=Allows the clonk to fly over short distances.
+
+NotEnoughAmmo=Not enough {{%i}}!
+Reloaded=Refilled %dx {{%i}}.

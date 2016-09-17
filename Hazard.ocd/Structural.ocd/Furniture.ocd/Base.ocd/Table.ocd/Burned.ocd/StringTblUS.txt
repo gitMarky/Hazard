@@ -1,0 +1,3 @@
+Name=Burned table
+Description=This battle got out of hand.
+

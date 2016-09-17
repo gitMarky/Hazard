@@ -1,0 +1,10 @@
+[DefCore]
+id=BLGH
+Version=7,0
+Category=C4D_StaticBack
+Width=20
+Height=15
+Offset=-10,-7
+Value=5
+Mass=2
+Picture=20,0,64,64

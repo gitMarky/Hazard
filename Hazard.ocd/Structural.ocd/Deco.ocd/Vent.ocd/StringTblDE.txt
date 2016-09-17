@@ -1,0 +1,3 @@
+Name=Ventilator
+Description=Belüftet muffige Stationskomplexe.
+

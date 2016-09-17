@@ -1,0 +1,2 @@
+Name=Grenade pack
+Description=Contains 12 grenades.

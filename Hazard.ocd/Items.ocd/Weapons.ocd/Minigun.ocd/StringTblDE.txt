@@ -1,0 +1,7 @@
+Name=Minigun
+Description=Hart an der Grenze zu einer Maschinenkanone, stellt die Minigun das non plus ultra der Maschinengewehre dar.
+
+Bouncing=Abprallend
+
+UpgradeToSlime=Ersetzt den Schussmechanismus durch abprallende Schüsse.
+UpgradedToSlime=Schussmodus durch|abprallende Schüsse ersetzt.

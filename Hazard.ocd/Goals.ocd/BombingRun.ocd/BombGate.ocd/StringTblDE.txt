@@ -1,0 +1,4 @@
+TeamScored=%s punktet für Team %s!
+TeamMultiScore=%s erzielt %d Punkte für Team %s!
+Name=Bombentor
+Description=Modernste Technik erlaubt es den Hazardclonks präzise festzustellen, wann eine Bombe ein festlegbares Areal passiert. Klar, dass diese Technologie gleich für halsbrecherische Spiele missbraucht wird.

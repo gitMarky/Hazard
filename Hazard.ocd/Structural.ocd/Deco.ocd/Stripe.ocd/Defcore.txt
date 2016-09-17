@@ -1,0 +1,9 @@
+[DefCore]
+id=STRP
+Version=7,0
+Category=C4D_StaticBack
+Width=8
+Height=8
+Offset=-4,-4
+Picture=0,0,8,8
+ColorByOwner=1

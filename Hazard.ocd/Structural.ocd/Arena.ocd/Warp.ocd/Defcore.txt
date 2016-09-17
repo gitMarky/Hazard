@@ -1,0 +1,11 @@
+[DefCore]
+id=AWRP
+Version=7,0
+Category=C4D_StaticBack
+Width=36
+Height=36
+Offset=-18,-18
+Picture=0,0,36,36
+Vertices=1
+VertexY=18
+BlitMode=1

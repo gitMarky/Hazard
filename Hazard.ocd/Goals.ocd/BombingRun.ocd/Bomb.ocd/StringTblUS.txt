@@ -1,0 +1,4 @@
+Returned=The bomb returned!
+Bomb=Bomb
+Name=Bomb
+Description=The bomb. Throw it through the enemies' goal!

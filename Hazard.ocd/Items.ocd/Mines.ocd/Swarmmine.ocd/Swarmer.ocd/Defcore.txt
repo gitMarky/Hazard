@@ -1,0 +1,10 @@
+[DefCore]
+id=SWRM
+Version=7,0
+Category=C4D_Object
+Width=5
+Height=5
+Offset=-3,-3
+Picture=0,0,64,64
+Vertices=1
+VertexFriction=20

@@ -1,0 +1,8 @@
+Name=Energiegewehr
+Description=Dieses vollautomatische Gewehr ist neben der Sturmpistole eine weitere beliebte Sturmwaffe. Sie wird hauptsächlich dafür benutzt, feindliche Vehikel außer Gefecht zu setzen.
+
+Standard=Dauerfeuer
+Laser=Laser
+
+UpgradeToLaser=Ersetzt den Schussmechanismus durch einen Hochleistungslaser.
+UpgradedToLaser=Schussmechanismus durch einen|Hochleistungslaser ersetzt.

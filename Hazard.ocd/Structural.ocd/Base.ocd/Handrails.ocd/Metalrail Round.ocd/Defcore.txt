@@ -1,0 +1,10 @@
+[DefCore]
+id=RAI3
+Version=7,0
+Category=C4D_StaticBack
+Width=2
+Height=14
+Offset=-1,-7
+Value=5
+Mass=5
+Picture=0,14,64,64

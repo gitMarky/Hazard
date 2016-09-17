@@ -1,0 +1,15 @@
+[DefCore]
+id=MINE
+Version=7,0
+Category=C4D_Object
+Width=10
+Height=6
+Offset=-5,-5
+Value=20
+Mass=5
+Picture=0,6,64,64
+Vertices=3
+VertexX=0,-4,4
+VertexY=-2
+VertexFriction=200,200,200
+Rotate=1

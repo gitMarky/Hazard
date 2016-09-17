@@ -1,0 +1,3 @@
+Name=Sandbags
+Description=Simple sandbags. Protects from projectiles but is weak to explosions.
+

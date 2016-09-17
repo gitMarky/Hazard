@@ -1,0 +1,4 @@
+Name=Selbstschussanlage
+TurnOff=Ausschalten
+TurnOn=Anschalten
+Repair=Reparieren

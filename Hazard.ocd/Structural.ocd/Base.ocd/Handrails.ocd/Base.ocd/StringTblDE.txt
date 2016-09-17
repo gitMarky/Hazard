@@ -1,0 +1,3 @@
+Name=Metallgeländer
+Description=Um nicht von Plattformen herunterzufallen.
+

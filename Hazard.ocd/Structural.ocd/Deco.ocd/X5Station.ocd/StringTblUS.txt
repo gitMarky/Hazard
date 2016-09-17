@@ -1,0 +1,2 @@
+Name=Rocket silo
+Description=In case of explosion stand next to it please .

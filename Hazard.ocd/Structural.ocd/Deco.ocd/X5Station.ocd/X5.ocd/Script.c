@@ -1,0 +1,30 @@
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// properties
+
+local Name = "$Name$";
+local Description = "$Description$";
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// actions
+
+local ActMap = {
+Clamped = {
+	Prototype = Action,
+	Name = "Clamped",
+	Procedure = DFA_NONE,
+	Directions = 2,
+	FlipDir = 1,
+	X = 0,
+	Y = 395,
+	Wdt = 112,
+	Hgt = 22,
+	OffX = 23,
+	OffY = 115,
+	FacetBase = 1,
+	NextAction = "Hold",
+},
+
+};

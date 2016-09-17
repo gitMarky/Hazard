@@ -1,0 +1,14 @@
+[DefCore]
+id=Console
+Version=7,0
+Category=C4D_Structure
+Width=22
+Height=10
+Offset=-11,-5
+Vertices=3
+VertexX=-10,10
+VertexY=12,12,-4
+VertexFriction=100,100,100
+Value=150
+Mass=50
+Picture=0,10,64,64

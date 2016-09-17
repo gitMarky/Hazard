@@ -1,0 +1,3 @@
+Name=Crate
+Description=A Crate. It's special ability is standing around.
+

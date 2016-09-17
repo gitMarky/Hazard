@@ -1,0 +1,4 @@
+Control=Bedienen
+Name=Konsole
+Description=Steuert etwas.
+ChooseTarget=Ziel auswählen:

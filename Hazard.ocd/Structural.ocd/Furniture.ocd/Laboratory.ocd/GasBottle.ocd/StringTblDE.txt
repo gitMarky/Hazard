@@ -1,0 +1,3 @@
+Name=Gasflasche
+Description=Gas zum Mitnehmen.
+

@@ -1,0 +1,13 @@
+[DefCore]
+id=Weapon_Motegun
+Version=7,0
+Category=C4D_Object
+Width=18
+Height=8
+Offset=-9,-4
+Value=42
+Mass=15
+Vertices=2
+VertexX=-8,8
+VertexY=0,4
+VertexFriction=20,20

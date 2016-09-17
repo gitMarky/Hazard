@@ -1,0 +1,2 @@
+Name=Laser
+Description=Ermöglicht genauere Zieltechniken und verbesserte Waffentechnologie.

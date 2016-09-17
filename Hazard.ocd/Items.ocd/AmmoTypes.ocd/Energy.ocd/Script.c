@@ -1,0 +1,10 @@
+
+public func IsAmmo()  { return true; }
+public func MaxAmmo() { return 500; }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// properties
+
+local Name = "$Name$";
+local Description = "$Description$";

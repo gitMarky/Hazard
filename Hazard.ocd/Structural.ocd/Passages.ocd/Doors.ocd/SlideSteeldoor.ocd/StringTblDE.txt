@@ -1,0 +1,3 @@
+Name=Hydraulische Schiebetür
+Description=Eine hydraulische Tür aus purem Stahl. Kaum zu zerbrechen.
+

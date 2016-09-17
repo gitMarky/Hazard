@@ -1,0 +1,3 @@
+Name=Container
+Description=Wird benutzt um Waren zu lagern, oder einfach um auf ihm rumzulaufen.
+

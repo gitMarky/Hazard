@@ -1,0 +1,16 @@
+[DefCore]
+id=TELE
+Version=7,0
+Category=C4D_Structure
+Width=50
+Height=52
+Offset=-25,-26
+Value=200
+Mass=700
+Picture=500,0,64,64
+Vertices=5
+VertexX=0,26,-26,-25,25
+VertexY=0,24,24,-24,-24
+VertexCNAT=64
+VertexFriction=0,100,100,100,100
+NoStabilize=1

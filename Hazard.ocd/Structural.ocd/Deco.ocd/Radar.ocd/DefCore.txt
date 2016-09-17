@@ -1,0 +1,8 @@
+[DefCore]
+id=RADR
+Version=7,0
+Category=C4D_StaticBack
+Width=46
+Height=50
+Offset=-23,-25
+Picture=0,50,64,64

@@ -1,0 +1,18 @@
+Name=Granatenwerfer
+Description=Der Granatenwerfer besitzt nicht nur eine groﬂe Durchschlagskraft, sondern kann mit etwas ‹bung selbst auf groﬂer Entfernung genau treffen.
+
+Grenade=Granate
+FragGrenade=Splittergranate
+Napalm=Napalmgranate
+EMP=EMP Granate
+Napalm=Napalmgranate
+Slime=Bioschleimgranate
+Laser=Lasergranate
+
+UpgradeToSlime=Erweitert den Granatwerfer um Bioschleimgranaten
+UpgradeToLaser=Erweitert den Granatwerfer um EMP- und Lasergranaten
+UpgradeToWeaponPart=Erweitert den Granatwerfer um Splitter- und Napalmgranaten
+
+UpgradedToSlime=Granatwerfer kann jetzt|Bioschleimgranaten verschieﬂen.
+UpgradedToLaser=Granatwerfer kann jetzt|EMP- und Lasergranaten verschieﬂen.
+UpgradedToWeaponPart=Granatwerfer verschieﬂt nun|Splitter- und Napalmgranaten.

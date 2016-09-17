@@ -1,0 +1,14 @@
+[DefCore]
+id=Grenade_Napalm
+Version=7,0
+Category=C4D_Vehicle
+Width=5
+Height=5
+Offset=-2,-2
+Mass=3
+Vertices=5
+VertexX=0,-1,-1,1,1
+VertexY=0,-1,1,-1,1
+VertexCNAT=0,5,9,6,10
+VertexFriction=0,20,20,20,20
+Rotate=1

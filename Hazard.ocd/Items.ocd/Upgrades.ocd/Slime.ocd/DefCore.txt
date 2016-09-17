@@ -1,0 +1,13 @@
+[DefCore]
+id=Upgrade_Slime
+Version=7,0
+Category=C4D_Object
+Width=6
+Height=6
+Offset=-3,-3
+Vertices=2
+VertexX=-2,2
+VertexFriction=20,20
+Value=8
+Mass=5
+Rotate=1

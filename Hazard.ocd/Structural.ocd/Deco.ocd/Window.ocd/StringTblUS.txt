@@ -1,0 +1,2 @@
+Name=Window
+Description=Bright spots in musty station complexes.

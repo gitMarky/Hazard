@@ -1,0 +1,16 @@
+[DefCore]
+id=SEDR
+Version=7,0
+Category=C4D_Structure
+Width=20
+Height=30
+Offset=-10,-15
+Value=200
+Mass=2000
+SolidMask=5,0,8,30,5,0
+TopFace=12,0,8,30,12,0
+Picture=0,30,64,64
+Vertices=4
+VertexX=-6,-6,6,6
+VertexY=-14,14,-14,14
+VertexFriction=100,100,100,100

@@ -1,0 +1,13 @@
+[DefCore]
+id=Grenade_Napalm_Fragment
+Version=7,0
+Category=C4D_Object
+Width=3
+Height=3
+Offset=-1,-1
+Mass=2
+Picture=0,0,3,3
+Vertices=1
+VertexY=1
+VertexFriction=20
+Rotate=1

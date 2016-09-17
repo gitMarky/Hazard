@@ -1,0 +1,4 @@
+Returned=Die Bombe ist zurück!
+Bomb=Bombe
+Name=Bombe
+Description=Die Bombe. Sie sollte durch das gegnerische Tor.

@@ -1,0 +1,8 @@
+[DefCore]
+id=Hazard_HUD
+Version=7,0
+Category=C4D_StaticBack|C4D_Parallax|C4D_Foreground|C4D_MouseIgnore|C4D_IgnoreFoW
+Width=110
+Height=30
+Offset=-55,-15
+Picture=0,0,110,30

@@ -1,0 +1,16 @@
+[DefCore]
+id=CON1
+Version=7,0
+Category=C4D_Structure
+Width=64
+Height=30
+Offset=-32,-15
+Value=70
+Mass=2000
+SolidMask=0,0,64,29,0,0
+Picture=0,30,64,64
+Vertices=2
+VertexX=33,-33
+VertexY=13,13
+VertexFriction=100,100
+ColorByOwner=1

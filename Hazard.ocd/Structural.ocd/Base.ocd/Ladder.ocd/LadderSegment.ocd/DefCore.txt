@@ -1,0 +1,7 @@
+[DefCore]
+id=LadderSegment
+Version=7,0
+Category=C4D_StaticBack
+Width=10
+Height=6
+Offset=-5,-3

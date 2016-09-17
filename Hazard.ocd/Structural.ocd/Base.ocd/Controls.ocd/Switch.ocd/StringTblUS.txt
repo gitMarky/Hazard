@@ -1,0 +1,3 @@
+Name=Switch
+Description=Press to switch.
+OperateSwitch=Operate switch.

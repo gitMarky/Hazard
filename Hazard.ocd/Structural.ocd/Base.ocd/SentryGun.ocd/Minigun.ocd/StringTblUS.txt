@@ -1,0 +1,3 @@
+Name=MG-Attachment
+Description=A MG-Attachment for the stationary gun.
+

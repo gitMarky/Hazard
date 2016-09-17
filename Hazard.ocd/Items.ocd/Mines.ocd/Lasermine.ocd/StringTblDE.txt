@@ -1,0 +1,3 @@
+Name=Lasermine
+Description=Stellt eine beinahe unsichtbare Barrieren auf, an der alle größeren Objekte durch eine Explosion zurückgeschleudert werden.
+

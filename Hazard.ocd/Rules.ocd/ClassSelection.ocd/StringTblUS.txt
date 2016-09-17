@@ -1,0 +1,2 @@
+Name=Class selection
+Description=Provides several classes for players.

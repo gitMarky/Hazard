@@ -1,0 +1,12 @@
+Name=Bazooka
+Description=For the bazooka, there does not exist such a thing as a barrier. Even moving targets are no problem due to heat seeking missiles.
+
+Missile=Missiles
+HMissile=Homing Missiles
+RCMissile=R/C Missiles
+
+UpgradeToLaser=Equips the rockets with an automatic target-searching-system.
+UpgradedToLaser=Rocket launcher is now equipped with an automatic target-searching-system.
+
+UpgradeToWeaponPart=Enabled to optionally shoot R/C missiles.
+UpgradedToWeaponPart=Rocket launcher can now shoot|R/C missilies.

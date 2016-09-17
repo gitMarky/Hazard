@@ -1,0 +1,12 @@
+Name=Flame Thrower
+Description=Feared in close combat, the flame thrower toasts any enemy who fails to get out of its range.
+
+FlameThrower=Flamethrower
+FlameBall=Flameball
+SlimeThrower=Chemical mace
+
+UpgradeToSlime=Add a chemical mace
+UpgradeToWeaponPart=Increases the range
+
+UpgradedToSlime=Chemical mace attached.
+UpgradedToWeaponPart=Range increased.

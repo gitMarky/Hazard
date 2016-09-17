@@ -1,0 +1,2 @@
+Name=Granatenpack
+Description=Beinhaltet 12 Granaten.

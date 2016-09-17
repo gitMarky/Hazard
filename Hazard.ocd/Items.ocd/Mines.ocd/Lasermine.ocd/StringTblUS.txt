@@ -1,0 +1,3 @@
+Name=Laser mine
+Description=Installs an almost invisible barrier on which every larger object is hurled away by an explosion.
+

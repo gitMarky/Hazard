@@ -1,0 +1,5 @@
+[DefCore]
+id=Ammo_Missile
+Version=7,0
+Category=C4D_StaticBack
+Picture=0,0,60,60

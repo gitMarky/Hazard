@@ -1,0 +1,7 @@
+Name=Gear
+Description=This object provides basic control for gear.
+
+CtrlActivateDesc=Buckle
+AlreadyWears=%s already wears|that kind of gear!
+Buckled=%s buckled
+Unbuckled=%s unbuckled

@@ -1,0 +1,3 @@
+Name=Super-Automat
+Description=Super - Clonks härteste Konkurrenz in der Limonadenindustrie. Selbstverständlich auch eisgekühlt!
+

@@ -1,0 +1,10 @@
+[DefCore]
+id=ALGH
+Version=7,0
+Category=C4D_StaticBack
+Width=10
+Height=9
+Offset=-5,-4
+Value=5
+Mass=2
+Rotate=1

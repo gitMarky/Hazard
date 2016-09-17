@@ -1,0 +1,2 @@
+Name=Napalmgranate
+Description=Bei Aufprall verursacht diese Granate ein wahres Inferno.

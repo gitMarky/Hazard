@@ -1,0 +1,10 @@
+[DefCore]
+id=FENC
+Version=7,0
+Category=C4D_StaticBack
+Width=64
+Height=48
+Offset=-32,-24
+Value=10
+Mass=65
+Picture=0,48,64,64

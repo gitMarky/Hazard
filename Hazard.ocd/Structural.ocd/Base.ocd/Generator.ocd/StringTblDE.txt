@@ -1,0 +1,4 @@
+Name=Generator
+Description=Effiziente Gerätschaft, wenn es um billigen Strom geht.
+TurnOff=Ausschalten
+TurnOn=Anschalten

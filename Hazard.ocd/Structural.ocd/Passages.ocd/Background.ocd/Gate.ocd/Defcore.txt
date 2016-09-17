@@ -1,0 +1,9 @@
+[DefCore]
+id=GAT1
+Version=7,0
+Category=C4D_StaticBack
+Width=20
+Height=23
+Offset=-10,-11
+Picture=0,23,64,64
+Entrance=-10,-12,20,23

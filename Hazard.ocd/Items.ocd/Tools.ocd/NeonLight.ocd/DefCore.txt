@@ -1,0 +1,11 @@
+[DefCore]
+id=Neonlight
+Version=7,0
+Category=C4D_Object|C4D_SelectMaterial|C4D_SelectKnowledge|C4D_SelectHomebase
+Width=4
+Height=13
+Offset=-2,-6
+Vertices=2
+VertexY=6,-6
+VertexFriction=20,20
+Picture=4,0,64,64

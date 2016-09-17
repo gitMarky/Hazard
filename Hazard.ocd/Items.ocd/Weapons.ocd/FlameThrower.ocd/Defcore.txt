@@ -1,0 +1,13 @@
+[DefCore]
+id=Weapon_FlameThrower
+Version=7,0
+Category=C4D_Object
+Width=16
+Height=9
+Offset=-8,-4
+Value=23
+Mass=12
+Vertices=2
+VertexX=-7,7
+VertexY=0,3
+VertexFriction=100,100

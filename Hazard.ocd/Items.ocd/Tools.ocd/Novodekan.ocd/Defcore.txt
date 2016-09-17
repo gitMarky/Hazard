@@ -1,0 +1,13 @@
+[DefCore]
+id=NVDN
+Version=7,0
+Category=C4D_Object
+Width=8
+Height=8
+Offset=-4,-4
+Value=22
+Mass=2
+Picture=0,0,64,64
+Vertices=1
+VertexY=1
+VertexFriction=20

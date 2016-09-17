@@ -1,0 +1,3 @@
+Name=Novodekan
+Description=One dose will cause slight temporarily paralysis but heal even strong injuries.
+

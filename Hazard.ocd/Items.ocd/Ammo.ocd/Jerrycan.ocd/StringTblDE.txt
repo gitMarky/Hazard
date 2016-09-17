@@ -1,0 +1,2 @@
+Name=Benzinkanister
+Description=Gefüllt 100 Einheiten Benzin.

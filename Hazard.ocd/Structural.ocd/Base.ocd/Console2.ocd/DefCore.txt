@@ -1,0 +1,15 @@
+[DefCore]
+id=Console2
+Version=7,0
+Category=C4D_Structure
+Width=25
+Height=30
+Offset=-12,-15
+Vertices=3
+VertexX=-10,10,0
+VertexY=14,14,-15
+VertexFriction=100,100,100
+Value=150
+Mass=75
+Picture=25,0,64,64
+ 

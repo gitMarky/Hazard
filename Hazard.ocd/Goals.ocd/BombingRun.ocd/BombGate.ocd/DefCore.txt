@@ -1,0 +1,10 @@
+[DefCore]
+id=BombingRun_BombGate
+Version=7,0
+Category=C4D_StaticBack
+Width=90
+Height=80
+Offset=-45,-40
+SolidMask=90,0,90,80,0,0
+TopFace=45,0,45,80,45,0
+Picture=198,0,64,64

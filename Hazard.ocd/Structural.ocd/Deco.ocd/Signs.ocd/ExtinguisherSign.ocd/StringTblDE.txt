@@ -1,0 +1,2 @@
+Name=Feuerlöscherschild
+Description=Zeigt den Standort eines Feuerlöschers an.

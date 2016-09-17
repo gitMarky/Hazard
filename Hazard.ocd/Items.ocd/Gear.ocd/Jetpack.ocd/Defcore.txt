@@ -1,0 +1,13 @@
+[DefCore]
+id=Gear_Jetpack
+Version=7,0
+Category=C4D_Object
+Width=4
+Height=14
+Offset=-2,-7
+Value=33
+Mass=10
+Vertices=2
+VertexY=6,-6
+VertexFriction=30,30
+Rotate=1

@@ -1,0 +1,5 @@
+Name=Armor
+Description=Strong protection, especially in armed melee and against projectiles. Vulnerable against energy weapons.
+
+CtxNightVisionOn=Turn nightvision on
+CtxNightVisionOff=Turn nightvision off

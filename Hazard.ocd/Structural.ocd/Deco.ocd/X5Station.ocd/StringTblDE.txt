@@ -1,0 +1,2 @@
+Name=Raketenabschussbasis
+Description=Bei Explosion bitte genau danebenstellen!

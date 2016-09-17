@@ -1,0 +1,3 @@
+Name=Verbrannter Clonk-Automat
+Description=Selbst die härtesten Clonks brauchten mal eine eisgekühlte Erfrischung! 
+

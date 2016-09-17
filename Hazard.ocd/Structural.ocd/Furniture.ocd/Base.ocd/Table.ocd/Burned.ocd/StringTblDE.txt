@@ -1,0 +1,3 @@
+Name=Verbrannter Tisch
+Description=Zu wild gefeuert.
+

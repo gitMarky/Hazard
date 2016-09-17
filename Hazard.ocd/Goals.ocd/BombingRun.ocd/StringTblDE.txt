@@ -1,0 +1,3 @@
+WinString=Das Punktelimit ist %d.
+Name=Bombing Run
+Description=Es gilt die Bombe durch das gegnerische Tor zu befördern. Wenn man durch das Portal läuft gibt es zwei Punkte. Wenn man die Bombe schießt, nur einen.

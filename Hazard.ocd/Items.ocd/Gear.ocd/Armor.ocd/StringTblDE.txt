@@ -1,0 +1,5 @@
+Name=Rüstung
+Description=Starker Schutz, vor allem im bewaffneten Zweikampf und gegen Projektile. AnfÃ¤llig gegen Energiewaffen.
+
+CtxNightVisionOn=Nachtsichtgerät einschalten
+CtxNightVisionOff=Nachtsichtgerät ausschalten

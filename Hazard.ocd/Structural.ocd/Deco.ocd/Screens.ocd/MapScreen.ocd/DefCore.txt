@@ -1,0 +1,7 @@
+[DefCore]
+id=MAPS
+Version=7,0
+Category=C4D_StaticBack
+Width=2
+Height=2
+Offset=-1,-1

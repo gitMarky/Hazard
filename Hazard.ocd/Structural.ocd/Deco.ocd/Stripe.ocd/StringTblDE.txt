@@ -1,0 +1,2 @@
+Name=Streifen
+Description=Dekorative Streifen für Wände.

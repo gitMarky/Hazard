@@ -1,0 +1,4 @@
+[DefCore]
+id=Upgrade_Basic
+Version=7,0
+Category=C4D_StaticBack

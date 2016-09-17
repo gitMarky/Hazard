@@ -1,0 +1,5 @@
+Name=Jetpack
+Description=Ermöglicht das Fliegen über kurze Strecken.
+
+NotEnoughAmmo=Nicht genug {{%i}}!
+Reloaded=%dx {{%i}} nachgef�llt.

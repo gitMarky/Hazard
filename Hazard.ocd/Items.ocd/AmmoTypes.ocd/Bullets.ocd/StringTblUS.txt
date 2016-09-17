@@ -1,0 +1,2 @@
+Name=Bullets
+Description=*bang* *bang*

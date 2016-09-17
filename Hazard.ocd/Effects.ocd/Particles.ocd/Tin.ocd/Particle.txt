@@ -1,0 +1,3 @@
+[Particle]
+Name=Tin
+Face=0,0,6,6,-3,-3

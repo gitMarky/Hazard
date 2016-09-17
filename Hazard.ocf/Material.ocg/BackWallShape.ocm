@@ -1,0 +1,5 @@
+[Material]
+Name=BackWallShape
+Shape=Rough
+OverlayType=2
+Placement=1

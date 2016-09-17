@@ -1,0 +1,15 @@
+[DefCore]
+id=SEGU
+Version=7,0
+Category=C4D_Object
+Width=36
+Height=36
+Offset=-18,-18
+Value=90
+Mass=170
+TopFace=0,0,36,36,0,0
+Picture=0,36,64,60
+Vertices=3
+VertexX=0,-17,17
+VertexY=4,-19,-19
+VertexFriction=20,100,100

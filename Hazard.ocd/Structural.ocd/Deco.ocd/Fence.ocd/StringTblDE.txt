@@ -1,0 +1,3 @@
+Name=Zaun
+Description=Alles Sperrgebiet.
+

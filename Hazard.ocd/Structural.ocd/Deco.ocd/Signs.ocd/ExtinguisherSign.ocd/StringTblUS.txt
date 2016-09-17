@@ -1,0 +1,3 @@
+Name=Fire Extinguisher-Sign
+Description=Shows the location of a fire extinguisher.
+

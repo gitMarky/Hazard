@@ -1,0 +1,3 @@
+Name=Werbeschirm
+Description=Aktuelle Produktanpreisungen.
+

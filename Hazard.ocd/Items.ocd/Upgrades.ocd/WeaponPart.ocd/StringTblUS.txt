@@ -1,0 +1,2 @@
+Name=Weaponpart
+Description=Part of something that once was a weapon. Combineable with other weapons.

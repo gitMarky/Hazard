@@ -1,0 +1,3 @@
+Name=Laser grenade
+Description=Fires lasers in all directions.
+

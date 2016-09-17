@@ -1,0 +1,7 @@
+Name=Minigun
+Description=The minigun is the ne plus ultra of the machine gun caliber.
+
+Bouncing=Bouncing shots
+
+UpgradeToSlime=Replaces the fire mechanism with bouncing shots.
+UpgradedToSlime=Replaced the fire mechanism with bouncing shots.

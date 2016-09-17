@@ -1,0 +1,2 @@
+Name=Map screen
+Description=Scans the landscape.

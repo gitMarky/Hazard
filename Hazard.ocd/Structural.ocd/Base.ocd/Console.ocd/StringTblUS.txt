@@ -1,0 +1,4 @@
+Control=Control
+Name=Console
+Description=Controls something.
+ChooseTarget=Choose the target:

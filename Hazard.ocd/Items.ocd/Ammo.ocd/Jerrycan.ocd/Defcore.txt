@@ -1,0 +1,13 @@
+[DefCore]
+id=GSAP
+Version=7,0
+Category=C4D_Object
+Width=10
+Height=10
+Offset=-5,-5
+Value=10
+Mass=5
+Picture=0,0,60,60
+Vertices=1
+VertexY=4
+VertexFriction=20

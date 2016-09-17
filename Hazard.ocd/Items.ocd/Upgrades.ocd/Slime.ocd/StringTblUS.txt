@@ -1,0 +1,2 @@
+Name=Bio upgrade
+Description=This attachment enables some weapons to fire alien bio slime.

@@ -1,0 +1,3 @@
+Name=Spiraltor
+Description=Ein Tor in fremde Welten.
+

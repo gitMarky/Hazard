@@ -1,0 +1,3 @@
+Name=EMP grenade
+Description=This grenade triggers an electromagnetic pulse which causes the blackout of all electric constructions in that area.
+

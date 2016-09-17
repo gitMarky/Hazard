@@ -1,0 +1,18 @@
+Name=Grenadelauncher
+Description=The grenade launcher does not only feature great firepower but also high accuracy even at long distances.
+
+Grenade=Grenade
+FragGrenade=Frag grenade
+Napalm=Napalm grenade
+EMP=EMP grenade
+Napalm=Napalm grenade
+Slime=Bioslime grenade
+Laser=Laser grenade
+
+UpgradeToSlime=Add bioslime grenades
+UpgradeToLaser=Add EMP and laser grenades
+UpgradeToWeaponPart=Add fragment and napalm grenades
+
+UpgradedToSlime=Grenade launcher can now shoot bioslime grenades.
+UpgradedToLaser=Grenade launcher can now shoot EMP an laser grenades.
+UpgradedToWeaponPart=Grenade launcher can now shoot fragment and napalm grenades.

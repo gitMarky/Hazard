@@ -1,0 +1,3 @@
+Name=Gitter
+Description=Lüftungsgitter.
+

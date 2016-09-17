@@ -1,0 +1,2 @@
+Name=Radar
+Description=Spürt den Feind auf.

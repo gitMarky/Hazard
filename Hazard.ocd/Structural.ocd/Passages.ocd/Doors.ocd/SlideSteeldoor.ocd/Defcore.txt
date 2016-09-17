@@ -1,0 +1,15 @@
+[DefCore]
+id=SLDR
+Version=7,0
+Category=C4D_Structure
+Width=12
+Height=30
+Offset=-6,-15
+Value=60
+Mass=1000
+SolidMask=140,0,4,30,7,0
+TopFace=1,0,7,30,1,0
+Picture=0,30,64,64
+Vertices=2
+VertexY=-15,14
+VertexFriction=100,100

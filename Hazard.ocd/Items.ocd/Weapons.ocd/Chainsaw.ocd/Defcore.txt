@@ -1,0 +1,13 @@
+[DefCore]
+id=Weapon_Chainsaw
+Version=7,0
+Category=C4D_Object
+Width=20
+Height=9
+Offset=-10,-4
+Value=12
+Mass=15
+Vertices=2
+VertexX=-8,8
+VertexY=3
+VertexFriction=70,70

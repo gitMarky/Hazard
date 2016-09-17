@@ -1,0 +1,6 @@
+Name=Türsteuerung
+Description=Stellt die Grundfunktionalität für Türen bereit.
+
+OpenDoor=Tür öffnen.
+CloseDoor=Tür schließen.
+NoCard=Keine passende Karte vorhanden.

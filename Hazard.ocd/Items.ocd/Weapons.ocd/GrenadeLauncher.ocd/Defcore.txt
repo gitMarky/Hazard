@@ -1,0 +1,13 @@
+[DefCore]
+id=Weapon_GrenadeLauncher
+Version=7,0
+Category=C4D_Object
+Width=15
+Height=7
+Offset=-7,-4
+Value=34
+Mass=15
+Vertices=2
+VertexX=-6,6
+VertexY=2,2
+VertexFriction=100,100

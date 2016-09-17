@@ -1,0 +1,3 @@
+Name=Railgun-Aufsatz
+Description=Ein effektiver Railgun-Aufsatz für das stationäre Deckengeschütz.
+

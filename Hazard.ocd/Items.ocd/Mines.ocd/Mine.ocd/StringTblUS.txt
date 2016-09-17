@@ -1,0 +1,7 @@
+Name=Mine
+Activate=Activate mine
+UpgradeToLaser=Upgrade to laser mine.
+UpgradeToWeaponPart=Upgrade to swarm mine.
+
+UpgradedToLaser=Upgraded to laser mine.
+UpgradedToWeaponPart=Upgraded to swarm mine.

@@ -1,0 +1,8 @@
+Name=Energy rifle
+Description=Amongst the assault pistol, this fully-automatic rifle is another popular assault weapon. It's primarily used to destroy enemy vehicles.
+
+Standard=Continuous fire
+Laser=Laser
+
+UpgradeToLaser=Replaces the fire mechanism with a high-performance laser.
+UpgradedToLaser=Fire mechanism replaced with a high-performance laser.

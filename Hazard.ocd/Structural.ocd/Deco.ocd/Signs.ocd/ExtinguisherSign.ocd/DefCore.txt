@@ -1,0 +1,13 @@
+[DefCore]
+id=ESGN
+Version=7,0
+Category=C4D_StaticBack
+Width=19
+Height=19
+Offset=-8,-8
+Value=10
+Mass=3
+Picture=0,0,19,19
+StretchGrowth=1
+IncompleteActivity=1
+Oversize=1

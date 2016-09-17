@@ -1,0 +1,15 @@
+[DefCore]
+id=CRAT
+Version=7,0
+Category=C4D_Vehicle
+Width=35
+Height=30
+Offset=-17,-15
+Value=10
+Mass=50
+SolidMask=1,0,33,30,0,1
+Picture=0,30,64,64
+Vertices=4
+VertexX=-16,-16,16,16
+VertexY=-14,14,-14,14
+VertexFriction=80,80,80,80

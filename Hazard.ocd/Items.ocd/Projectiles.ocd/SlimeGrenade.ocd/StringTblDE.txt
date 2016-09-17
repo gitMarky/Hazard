@@ -1,0 +1,3 @@
+Name=Schleimgranate
+Description=Entfesselt beim Aufprall ein schleimiges Vergnügen.
+

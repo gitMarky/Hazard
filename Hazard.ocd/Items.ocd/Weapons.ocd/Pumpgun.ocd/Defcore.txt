@@ -1,0 +1,12 @@
+[DefCore]
+id=Weapon_Pumpgun
+Version=7,0
+Category=C4D_Object
+Width=17
+Height=6
+Offset=-8,-3
+Value=20
+Mass=12
+Vertices=1
+VertexY=2
+VertexFriction=100

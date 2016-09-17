@@ -1,0 +1,3 @@
+Name=Burned clonk automat
+Description=Even the toughest clonks needed an iced refreshment from time to time!
+

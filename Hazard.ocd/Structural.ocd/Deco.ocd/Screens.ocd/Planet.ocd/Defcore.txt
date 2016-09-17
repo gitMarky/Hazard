@@ -1,0 +1,11 @@
+[DefCore]
+id=SCR2
+Version=7,0
+Category=C4D_StaticBack
+Width=60
+Height=40
+Offset=-30,-20
+Picture=480,0,60,40
+StretchGrowth=1
+IncompleteActivity=1
+Oversize=1

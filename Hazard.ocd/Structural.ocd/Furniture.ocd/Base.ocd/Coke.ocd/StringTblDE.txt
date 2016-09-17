@@ -1,0 +1,3 @@
+Name=Clonk-Automat
+Description=Selbst die härtesten Clonks brauchen mal eine eisgekühlte Erfrischung! 
+

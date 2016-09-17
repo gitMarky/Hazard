@@ -1,0 +1,2 @@
+Name=Leuchtstab
+Description=Bringt temporär Licht ins Dunkel.

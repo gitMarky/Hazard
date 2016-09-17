@@ -1,0 +1,3 @@
+Name=Railgun-Attachment
+Description=An effective Railgun-Attachment for the sentry Gun.
+

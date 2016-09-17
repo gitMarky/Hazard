@@ -1,0 +1,6 @@
+NoWeapons=No Weapons found.
+End=Finish
+TimeTillRespawn=%d seconds until respawn
+
+Name=WeaponChoice
+Description=With this rule, you can buy weapons at the start/after a relaunch.
