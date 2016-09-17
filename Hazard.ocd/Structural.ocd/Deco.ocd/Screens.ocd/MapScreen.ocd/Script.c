@@ -34,13 +34,6 @@ func InitScreen()
 {
 	// Adjusting size.
 	SetShape(-MAP_SCREEN_ScreenWidth / 2, -MAP_SCREEN_ScreenHeight / 2, MAP_SCREEN_ScreenWidth, MAP_SCREEN_ScreenHeight);
-	// Draw black screen.
-	for (var x = 0; x < MAP_SCREEN_ScreenWidth; ++x)
-	for (var y = 0; y < MAP_SCREEN_ScreenHeight; ++y)
-	{
-		InitPixel(x, y);
-		DrawPixel(x, y, RGB(0, 0, 0));
-	}
 	// Adding frame.
 	var frame = AddFrame();
 	frame->PanelColor(RGBa(1, 1, 1, 200));
@@ -48,18 +41,33 @@ func InitScreen()
 	// Showing the position of the clonks.
 	ScheduleCall(this, this.ShowCrew, 1);
 	ShowLandscape();
-	ScreenLandscape();
+	// not necessary imho: ScreenLandscape();
 }
 
 func ShowLandscape()
 {
-	// Only the master screen does this
-	if (MAP_SCREEN_MasterScreen != this) return;
-	// Draw the whole landscape
-	for (var x = 0; x < LandscapeWidth(); x += MAP_SCREEN_ZoomFactor)
-	for (var y = 0; y < LandscapeHeight(); y += MAP_SCREEN_ZoomFactor)
+	if (GetLandscapeID())
 	{
-		DrawLandscape(x, y);
+		SetGraphics(nil, GetLandscapeID(), 1, GFXOV_MODE_Base);
+		SetObjDrawTransform(1000, 0, - MAP_SCREEN_ScreenWidth * 500, 0, 1000, - MAP_SCREEN_ScreenHeight * 500, 1);
+	}
+	else
+	{
+		// Draw black screen.
+		for (var x = 0; x <= MAP_SCREEN_ScreenWidth; ++x)
+		for (var y = 0; y <= MAP_SCREEN_ScreenHeight; ++y)
+		{
+			InitPixel(x, y);
+			DrawPixel(x, y, RGB(0, 0, 0));
+		}
+		// Only the master screen does this
+		if (MAP_SCREEN_MasterScreen != this) return;
+		// Draw the whole landscape
+		for (var x = 0; x < LandscapeWidth(); x += MAP_SCREEN_ZoomFactor)
+		for (var y = 0; y < LandscapeHeight(); y += MAP_SCREEN_ZoomFactor)
+		{
+			DrawLandscape(x, y);
+		}
 	}
 }
 
@@ -116,7 +124,7 @@ func DrawPixel(int x, int y, int color)
 
 func ShowCrew()
 {
-	var lifetime = 10;
+	var lifetime = 1;
 	for (map_dot in FindObjects(Find_OCF(OCF_CrewMember))) 
 	{
 		if (map_dot)
@@ -124,15 +132,39 @@ func ShowCrew()
 			// Showing crew member position.
 			var x = map_dot->GetX() / MAP_SCREEN_ZoomFactor;
 			var y = map_dot->GetY() / MAP_SCREEN_ZoomFactor;
-			CreateLEDEffect(map_dot->GetColor(), x - MAP_SCREEN_ScreenWidth / 2, y - MAP_SCREEN_ScreenHeight / 2, 2, lifetime * 2);
+			CreateCrewDot(map_dot->GetColor(), x - MAP_SCREEN_ScreenWidth / 2, y - MAP_SCREEN_ScreenHeight / 2, 2, lifetime * 2);
 		}
 	}
 	ScheduleCall(this, this.ShowCrew, lifetime);
 }
 
+func CreateCrewDot(int color, int x, int y, int size, int lifetime)
+{
+
+	var r = GetRGBaValue(color, RGBA_RED);
+	var g = GetRGBaValue(color, RGBA_GREEN);
+	var b = GetRGBaValue(color, RGBA_BLUE);
+
+	CreateParticle("Magic", x, y, 0, 0, lifetime ?? 20,
+	{
+		Prototype = Particles_Magic(),
+		BlitMode = GFX_BLIT_Additive,
+		Attach = ATTACH_Front,
+		R = r, G = g, B = b,
+		Alpha = PV_KeyFrames(0, 0, 255, 500, 255, 1000, 0),
+		Size = size ?? 8,
+	}, 5);
+}
+
+
 func GetPixelOverlay(int x, int y)
 {
 	return 1 + x + y * MAP_SCREEN_ScreenWidth;
+}
+
+func GetLandscapeID()
+{
+	return nil;
 }
 
 /* Master-functions */
