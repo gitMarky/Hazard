@@ -1,0 +1,3 @@
+Name=Operating table
+Description=For very special research.
+
