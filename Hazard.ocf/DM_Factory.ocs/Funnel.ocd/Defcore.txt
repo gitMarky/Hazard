@@ -1,9 +1,0 @@
-[DefCore]
-id=Deco_Funnel
-Version=7,0
-Category=C4D_StaticBack
-Width=10
-Height=10
-Offset=-5,-5
-Rotate=1
-NoStabilize=1

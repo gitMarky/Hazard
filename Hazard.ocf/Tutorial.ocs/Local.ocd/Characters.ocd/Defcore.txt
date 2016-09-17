@@ -1,5 +1,0 @@
-[DefCore]
-id=Local_Characters
-Version=7,0
-Category=C4D_StaticBack
-Picture=0, 0, 150, 150

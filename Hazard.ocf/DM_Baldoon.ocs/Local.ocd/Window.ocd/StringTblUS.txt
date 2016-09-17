@@ -1,3 +1,0 @@
-Name=Window
-Description=To look through.
-
