@@ -1,0 +1,7 @@
+[DefCore]
+id=_DCK
+Version=7,0
+Category=C4D_StaticBack|C4D_Parallax|C4D_Background
+Width=612
+Height=314
+Offset=-300,-150
