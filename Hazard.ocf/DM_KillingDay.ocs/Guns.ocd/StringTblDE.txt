@@ -1,0 +1,3 @@
+Name=Geschützsteuerung
+TurnOn=Geschütze einschalten
+TurnOff=Geschütze ausschalten
