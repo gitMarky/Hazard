@@ -26,7 +26,6 @@ func Walking()
 
 func IsProjectileTarget(){	return true;}
 func IsMachine(){	return true;}
-func CanBeLaserRecycled(){	return 2;}
 
 func EMPShock()
 {

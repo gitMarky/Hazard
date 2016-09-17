@@ -1,6 +1,5 @@
 public func IsProjectileTarget() { return !Random(5); }
 public func IsCraneGrabable() { return true; }
-public func CanBeLaserRecycled() { return 2; } // TODO: no idea what this is good for
 
 local damaged;
 
