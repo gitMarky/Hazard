@@ -1,0 +1,14 @@
+[DefCore]
+id=CGLO
+Version=7,0
+Category=C4D_Structure
+Width=50
+Height=40
+Offset=-25,-20
+Value=1000
+Mass=1200
+Picture=500,0,64,64
+Vertices=2
+VertexX=-25,25
+VertexY=20,20
+VertexFriction=100,100
