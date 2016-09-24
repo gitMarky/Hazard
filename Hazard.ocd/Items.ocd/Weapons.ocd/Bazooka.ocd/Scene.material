@@ -1,6 +1,4 @@
-// grenade_launcher genrated by blender2ogre 0.6.0
-
-material grenade_launcher
+material weapon_bazooka
 {
     receive_shadows on 
 
