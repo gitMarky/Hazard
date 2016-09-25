@@ -6,9 +6,9 @@ material weapon_pistol
     {
         pass
         {
-            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
-            diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0
-            specular 0.02459016442298889 0.02459016442298889 0.02459016442298889 1.0 2.5
+            ambient  0.800 0.800 0.800 1.0
+            diffuse  0.640 0.640 0.640 1.0
+            specular 0.025 0.025 0.025 1.0 2.5
             emissive 0.0 0.0 0.0 1.0
 
             alpha_to_coverage off
@@ -19,7 +19,7 @@ material weapon_pistol
 
             texture_unit 
             {
-                texture musket.png
+                texture pistol.jpg
                 tex_address_mode wrap
                 scale 1.0 1.0
                 colour_op modulate
