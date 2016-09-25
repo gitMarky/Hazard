@@ -10,16 +10,17 @@ local Description = "$Description$";
 
 public func GetCarryMode(object user) {    if (is_selected) return CARRY_Hand; }
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
+public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
-	return Trans_Rotate(90, 1, 0, 0);
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-2000, 500), Trans_Scale(1000, 1200, 1200));
 }
 
 
 public func Initialize()
 {
 	_inherited(...);
+	this.MeshTransformation = Trans_Scale(1000, 1200, 1200);
 	firemode_standard =  FiremodeStandard();
 	firemode_laser =     FiremodeLaser();
 	ChangeFiremode(firemode_standard);
@@ -50,6 +51,7 @@ func FiremodeStandard()
 		projectile_speed = 	180,
 		projectile_range = 	400,
 		projectile_spread = Projectile_Deviation(2, 1),
+		projectile_distance = 12,
 
 		condition = 		this.HasNoLaserUpgrade,
 
@@ -76,6 +78,7 @@ func FiremodeLaser()
 		projectile_id = 	Projectile_LaserBeam,
 		projectile_speed = 	250,
 		projectile_range =  250,
+		projectile_distance = 12,
 
 		condition = 		this.HasLaserUpgrade,
 
