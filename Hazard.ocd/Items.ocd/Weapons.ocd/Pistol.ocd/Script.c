@@ -57,7 +57,7 @@ func FiremodePrimaryStandard()
 		projectile_range =  450,
 		projectile_spread = Projectile_Deviation(1, 1),
 
-		projectile_distance = 10,
+		projectile_distance = 8,
 		projectile_offset_y = -6,
 	};
 }
@@ -85,7 +85,7 @@ func FiremodePrimaryLaser()
 		projectile_speed = 	500,
 		projectile_range = 300,
 
-		projectile_distance = 10,
+		projectile_distance = 8,
 		projectile_offset_y = -6,
 	};
 }
@@ -189,7 +189,7 @@ public func FireEffect(object user, int angle, proplist firemode)
 		var x = +Sin(angle, firemode.projectile_distance);
 		var y = -Cos(angle, firemode.projectile_distance) + firemode.projectile_offset_y;
 
-		EffectMuzzleFlash(user, x, y, angle, 10, false, true);
+		EffectMuzzleFlash(user, x, y, angle, 20, false, true);
 		
 		// casing
 		x = +Sin(angle, firemode.projectile_distance / 2);
