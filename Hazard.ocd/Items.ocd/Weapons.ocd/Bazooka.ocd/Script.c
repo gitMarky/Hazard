@@ -48,6 +48,7 @@ func FiremodeStandard()
 		projectile_id = Projectile_Missile,
 		projectile_range = PROJECTILE_Range_Infinite,
 		projectile_speed = 200,
+		projectile_offset_y = -7,
 
 		damage = 		40,
 	};
@@ -72,6 +73,7 @@ func FiremodeHoming()
 		projectile_id = Projectile_MissileHoming,
 		projectile_range = PROJECTILE_Range_Infinite,
 		projectile_speed = 200,
+		projectile_offset_y = -7,
 
 		damage = 		37,
 	};
@@ -96,6 +98,7 @@ func FiremodeRemote()
 		projectile_id = Projectile_MissileRemote,
 		projectile_range = PROJECTILE_Range_Infinite,
 		projectile_speed = 200,
+		projectile_offset_y = -7,
 
 		damage = 		37,
 	};
