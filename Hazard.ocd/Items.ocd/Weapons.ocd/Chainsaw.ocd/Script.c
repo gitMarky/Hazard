@@ -12,10 +12,10 @@ local is_running;
 
 public func GetCarryMode(object user) {    return CARRY_Musket; }
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
+public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
-	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(-10, 0, 0, 1));
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-3000, 1000, 500));
 }
 
 public func Initialize()
