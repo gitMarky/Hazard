@@ -10,10 +10,10 @@ local Description = "$Description$";
 
 public func GetCarryMode(object user) {    return CARRY_Musket; }
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
+public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
-	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(-10, 0, 0, 1));
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-2200, 600));
 }
 
 public func Initialize()
@@ -27,6 +27,12 @@ public func Initialize()
 	firemode_laser = FiremodeLaser();
 	ChangeFiremode(firemode_standard);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(230, 0, 1, 0), Trans_Rotate(-15, 0, 0, 1), Trans_Rotate(10, 1, 0, 0), Trans_Translate(0, 0, -2000));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

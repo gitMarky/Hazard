@@ -10,10 +10,10 @@ local Description = "$Description$";
 
 public func GetCarryMode(object user) {    if (is_selected) return CARRY_Hand; }
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
+public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
-	return Trans_Rotate(90, 1, 0, 0);
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-2500, 600, 0), Trans_Rotate(10, 0, 0, 1));
 }
 
 
@@ -24,6 +24,12 @@ public func Initialize()
 	firemode_emp =     FiremodeEmp();
 	ChangeFiremode(firemode_railgun);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(240, 0, 1, 0), Trans_Rotate(-20, 0, 0, 1), Trans_Rotate(5, 1, 0, 0), Trans_Translate(0, 1000, -2000));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -50,6 +56,8 @@ func FiremodeRailgun()
 		projectile_id = Projectile_RailgunBeam,
 		projectile_range = 700,
 		projectile_speed = 8,
+		projectile_offset_y = -5,
+		projectile_distance = 13,
 	};
 }
 
@@ -72,6 +80,8 @@ func FiremodeEmp()
 		projectile_id = Projectile_EmpBall,
 		projectile_range = 450,
 		projectile_speed = 50,
+		projectile_offset_y = -5,
+		projectile_distance = 13,
 	};
 }
 
