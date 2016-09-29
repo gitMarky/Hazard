@@ -25,6 +25,12 @@ public func Initialize()
 	ChangeFiremode(firemode_railgun);
 }
 
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(240, 0, 1, 0), Trans_Rotate(-20, 0, 0, 1), Trans_Rotate(5, 1, 0, 0), Trans_Translate(0, 1000, -2000));
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Fire modes

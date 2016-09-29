@@ -26,6 +26,12 @@ public func Initialize()
 	ChangeFiremode(firemode_standard);
 }
 
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(230, 0, 1, 0), Trans_Rotate(20, 0, 0, 1), Trans_Rotate(-10, 1, 0, 0), Trans_Translate(0, -1500, -2000));
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Fire modes
