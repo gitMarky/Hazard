@@ -13,7 +13,7 @@ public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; 
 public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
-	return Trans_Rotate(90, 1, 0, 0);
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(5, 0, 0, 1), Trans_Translate(-7000, 1000));
 }
 
 
@@ -55,6 +55,8 @@ func FiremodeStandard()
 		projectile_speed = 300,
 		projectile_range = 600,
 		projectile_spread = Projectile_Deviation(4, 1),
+		projectile_distance = 16,
+		projectile_offset_y = 2,
 	};
 }
 
