@@ -170,7 +170,7 @@ public func OnDowngrade(id upgrade)
 }
 
 
-public func OnReload() // TODO: this callback does not exist yet
+public func OnReload()
 {
 	Sound("Weapon::Pumpgun::PumpgunLoad");
 }

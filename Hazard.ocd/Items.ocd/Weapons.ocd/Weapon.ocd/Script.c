@@ -115,25 +115,21 @@ func NeedsReload(object user, proplist firemode)
 
 public func OnFinishReload(object user, int x, int y, proplist firemode)
 {
-	Log("Reloading finished");
 	_inherited(user, x, y, firemode, ...);
 }
 
 public func OnStartReload(object user, int x, int y, proplist firemode)
 {
-	user->~StartLoad(this);
-	Log("Reloading started");
+	this->~OnReload();
 	_inherited(user, x, y, firemode, ...);
 }
 
 public func OnCancelReload(object user, int x, int y, proplist firemode, bool requested_by_user)
 {
-	Log("Reloading cancelled");
 	_inherited(user, x, y, firemode, requested_by_user, ...);
 }
 
 public func OnProgressReload(object user, int x, int y, proplist firemode, int current_percent, int change_percent)
 {
-	Log("* %d percent", current_percent);
 	_inherited(user, x, y, firemode, current_percent, change_percent, ...);
 }

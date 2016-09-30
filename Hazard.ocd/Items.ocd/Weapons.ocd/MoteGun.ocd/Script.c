@@ -91,10 +91,16 @@ func FiremodeEmp()
 //
 // Effects
 
-public func OnReload() // TODO: Callback does not exist yet
+public func OnReload()
 {
-    Sound("Weapon::Motegun::MoteGunLoad");
-    Sound("Weapon::Motegun::EMPLoad");
+	if (GetFiremode() == firemode_emp)
+	{
+		Sound("Weapon::Motegun::EMPLoad");
+	}
+	else
+	{
+		Sound("Weapon::Motegun::MoteGunLoad");
+	}
 }
 
 public func FireSound(object user, proplist firemode)

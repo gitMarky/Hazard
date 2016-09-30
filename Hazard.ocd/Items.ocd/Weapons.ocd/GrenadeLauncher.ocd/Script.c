@@ -1,4 +1,4 @@
-#include Weapon_Base
+  #include Weapon_Base
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -293,10 +293,7 @@ public func OnDowngrade(id upgrade)
 	}
 }
 
-
-// Soundeffekte
-
-public func OnReload() // TODO
+public func OnReload()
 {
-  Sound("GrenadeLoad");
+	Sound("Weapon::Grenade::GrenadeLoad");
 }

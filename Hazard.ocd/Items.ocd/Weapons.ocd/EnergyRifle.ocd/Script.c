@@ -178,8 +178,7 @@ public func OnDowngrade(id upgrade)
 	}
 }
 
-
 public func OnReload()
 {
-	Sound("Weapon::Energy::EnergyRifleLoad"); // TODO:
+	Sound("Weapon::Energy::EnergyRifleLoad");
 }

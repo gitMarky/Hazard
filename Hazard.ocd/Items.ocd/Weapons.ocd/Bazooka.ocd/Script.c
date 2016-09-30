@@ -212,9 +212,7 @@ public func OnDowngrade(id upgrade)
 	}
 }
 
-
-public func OnReload() // TODO: no callback yet
+public func OnReload()
 {
 	Sound("Weapon::Bazooka::RocketLoad");
 }
-

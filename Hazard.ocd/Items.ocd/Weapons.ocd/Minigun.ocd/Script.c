@@ -134,7 +134,7 @@ public func FireEffect(object user, int angle, proplist firemode)
 }
 
 
-public func OnReload() // TODO: callback does not exist yet
+public func OnReload()
 {
 	Sound("Weapon::Minigun::MiniLoad");
 }
