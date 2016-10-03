@@ -21,9 +21,7 @@ func Initialize()
 	CreateOutdoorArea();
 	CreateTeleporters();
 	CreateCaveStuff();
-	
-	// ceiling lights
-	CreateObjectAbove(CLGH, 790, 745, NO_OWNER)->TurnOn();
+	CreateStoreRoom();
 }
 
 func CreateMainHall()
@@ -74,12 +72,7 @@ func CreateMainHall()
 //	CreateObjectAbove(SEDR, 640, 690, NO_OWNER)->Lock();
 //	CreateObjectAbove(SEDR, 710, 690, NO_OWNER)->Lock();
 //	CreateObjectAbove(SEDR, 710, 800, NO_OWNER)->Lock();
-//	CreateObjectAbove(SEDR, 709, 910, NO_OWNER)->Lock();
 //
-//	CreateObjectAbove(PSTR, 811, 702, NO_OWNER)->Set(2,3);
-//	CreateObjectAbove(BED2, 836, 709, NO_OWNER);
-//	CreateObjectAbove(BED2, 879, 709, NO_OWNER);
-//	CreateObjectAbove(BED2, 921, 709, NO_OWNER);
 //	
 //	// ceiling lights
 //	CreateObjectAbove(CLGH, 790, 745, NO_OWNER);
@@ -98,35 +91,13 @@ func CreateMainHall()
 //	CreateObjectAbove(LLGH, 539, 774, NO_OWNER);
 //	CreateObjectAbove(MONI, 587, 778, NO_OWNER);
 //	CreateObjectAbove(LTBL, 593, 789, NO_OWNER);
-//	CreateObjectAbove(CHAR, 796, 799, NO_OWNER);
-//	CreateObjectAbove(CLVM, 753, 800, NO_OWNER);
-//	CreateObjectAbove(CHAR, 844, 799, NO_OWNER)->SetDir(1);
-//	CreateObjectAbove(TABL, 820, 799, NO_OWNER);
-//	CreateObjectAbove(PSTR, 802, 785, NO_OWNER)->Set(0,2);
-//	CreateObjectAbove(STDR, 875, 801, NO_OWNER);
 	CreateObjectAbove(LFTP, 905, 785, NO_OWNER);
-//	CreateObjectAbove(GSBO,1017, 770, NO_OWNER);
-//	CreateObjectAbove(GSBO,1026, 770, NO_OWNER);
-//	CreateObjectAbove(GAT2, 166, 812, NO_OWNER);
 //	CreateObjectAbove(BLGH, 210, 839, NO_OWNER);
 //	CreateObjectAbove(BLGH, 352, 840, NO_OWNER);
 //	CreateObjectAbove(GAT2, 736, 842, NO_OWNER);
 //	CreateObjectAbove(GAT2, 832, 844, NO_OWNER);
-//	CreateObjectAbove(STDR, 935, 861, NO_OWNER);
-//	CreateObjectAbove(FIEX, 993, 853, NO_OWNER);
-//	CreateObjectAbove(LCKR,1039, 860, NO_OWNER);
-//	CreateObjectAbove(LCKR,1024, 860, NO_OWNER);
-//	CreateObjectAbove(LCKR,1009, 860, NO_OWNER);
-//
-//	CreateObjectAbove(LCKR,1054, 860, NO_OWNER);
-//
+
 	CreateObjectAbove(LFTP, 675, 920, NO_OWNER);
-//	CreateObjectAbove(STDR, 937, 920, NO_OWNER);
-//	CreateObjectAbove(WSHB, 959, 920, NO_OWNER);
-//	CreateObjectAbove(WSHB, 979, 920, NO_OWNER);
-//	CreateObjectAbove(TOIC,1009, 920, NO_OWNER);
-//	CreateObjectAbove(TOIC,1049, 920, NO_OWNER);
-//	CreateObjectAbove(TOIC,1029, 920, NO_OWNER)->SetDir(1);
 
 }
 
@@ -142,28 +113,74 @@ func CreateHallwayToLift()
 
 func CreateConsoleRoom()
 {
-//	CreateObjectAbove(CCP2, 734, 910, NO_OWNER);
-//	CreateObjectAbove(CCP1, 779, 910, NO_OWNER);
-//	CreateObjectAbove(PLT2, 848, 911, NO_OWNER);
-//	CreateObjectAbove(CCP1, 814, 910, NO_OWNER);
-//	CreateObjectAbove(STDR, 876, 911, NO_OWNER);
-//	CreateObjectAbove(TABL, 968, 859, NO_OWNER);
+	// main console room
+	CreateObject(GAT2, 732, 834, NO_OWNER);
+	CreateObject(GAT2, 832, 834, NO_OWNER);
+	CreateObject(CCP2, 734, 894, NO_OWNER);
+	CreateObject(CCP1, 779, 898, NO_OWNER);
+	CreateObject(CCP1, 814, 898, NO_OWNER);
+	CreateObject(PLT2, 848, 886, NO_OWNER);
+	CreateObject(SEDR, 710, 895, NO_OWNER)->Lock();
+	CreateObject(STDR, 876, 896, NO_OWNER);
+	
+	// small console room
+	CreateObject(SEDR, 640, 675, NO_OWNER)->Lock();
+	CreateObject(CCP1, 570, 678, NO_OWNER);
 }
 
 func CreateBathRoom()
 {
-	CreateObjectAbove(CLGH, 1005, 875, NO_OWNER)->TurnOn();
+	CreateObject(CLGH,1005, 871, NO_OWNER)->TurnOn();
+	CreateObject(STDR, 937, 905, NO_OWNER);
+	CreateObject(WSHB, 959, 906, NO_OWNER);
+	CreateObject(WSHB, 979, 906, NO_OWNER);
+	CreateObject(TOIC,1009, 905, NO_OWNER);
+	CreateObject(TOIC,1049, 905, NO_OWNER);
+	CreateObject(TOIC,1029, 905, NO_OWNER)->SetDir(1);
 }
 
 func CreateLockerRoom()
 {
-	CreateObjectAbove(CLGH, 1005, 815, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1005, 811, NO_OWNER)->TurnOn();
+
+	CreateObject(STDR, 935, 846, NO_OWNER);
+	CreateObject(TABL, 968, 853, NO_OWNER);
+	CreateObject(FIEX, 993, 847, NO_OWNER);
+	CreateObject(LCKR,1039, 845, NO_OWNER);
+	CreateObject(LCKR,1024, 845, NO_OWNER);
+	CreateObject(LCKR,1009, 845, NO_OWNER);
+	CreateObject(LCKR,1054, 845, NO_OWNER);
 }
 
 func CreateStaffRoom()
 {
-	CreateObjectAbove(CLGH, 783, 645, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 904, 645, NO_OWNER)->TurnOn();
+	// first room with table
+	CreateObject(SEDR, 710, 785, NO_OWNER)->Lock();
+	CreateObject(CLGH, 790, 741, NO_OWNER)->TurnOn();
+	CreateObject(CLVM, 753, 780, NO_OWNER);
+	CreateObject(CHAR, 796, 791, NO_OWNER);
+	CreateObject(CHAR, 844, 791, NO_OWNER)->SetDir(1);
+	CreateObject(TABL, 820, 793, NO_OWNER);
+	CreateObject(PSTR, 802, 766, NO_OWNER)->Set(0, 2);
+	CreateObjectAbove(STDR, 875, 786, NO_OWNER);
+
+
+	// beds
+	CreateObject(SEDR, 710, 675, NO_OWNER)->Lock();
+	CreateObject(CLGH, 783, 641, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 904, 641, NO_OWNER)->TurnOn();
+	CreateObject(PSTR, 811, 683, NO_OWNER)->Set(2, 3);
+	CreateObject(BED2, 836, 689, NO_OWNER);
+	CreateObject(BED2, 879, 689, NO_OWNER);
+	CreateObject(BED2, 921, 689, NO_OWNER);
+	
+}
+
+func CreateStoreRoom()
+{
+	CreateObject(GSBO,1017, 759, NO_OWNER);
+	CreateObject(GSBO,1026, 759, NO_OWNER);
+	CreateObject(GAT2, 166, 746, NO_OWNER);
 }
 
 func CreateInaccessibleBase()
@@ -171,9 +188,6 @@ func CreateInaccessibleBase()
 	CreateObjectAbove(WNDW,1608, 231, NO_OWNER);
 
 //	CreateObjectAbove(HNG2, 705, 910, NO_OWNER);
-//	CreateObjectAbove(SEDR, 710, 800, NO_OWNER)->Lock();
-//	CreateObjectAbove(SEDR, 710, 690, NO_OWNER)->Lock();
-//	CreateObjectAbove(SEDR, 640, 690, NO_OWNER)->Lock();
 //	CreateObjectAbove(LFTP, 895, 920, NO_OWNER);
 //	CreateObjectAbove(PMP2, 820, 920, NO_OWNER);
 //	CreateObjectAbove(TABL, 980, 770, NO_OWNER);
@@ -184,7 +198,6 @@ func CreateInaccessibleBase()
 	CreateObjectAbove(LADR, 1888, 220, NO_OWNER)->LadderHeight(141, 221);
 //	CreateObjectAbove(LLGH, 920, 710, NO_OWNER);
 //	CreateObjectAbove(LFTP, 685, 550, NO_OWNER);
-//	CreateObjectAbove(CCP1, 570, 690, NO_OWNER);
 //	CreateObjectAbove(PSTR, 810, 690, NO_OWNER);
 //	CreateObjectAbove(CONS, 500, 320, NO_OWNER);
 //	CreateObjectAbove(RAI1, 490, 240, NO_OWNER)->SetRailLength(5);
@@ -281,14 +294,15 @@ func CreateDoc()
 
 
 	CreateObjectAbove(LADR, 400, 910, NO_OWNER)->LadderHeight(790, 910);
-	//CreateObjectAbove(STDR, 455, 790, NO_OWNER);
-	//CreateObjectAbove(STDR, 575, 790, NO_OWNER);
-	//CreateObjectAbove(LTBL, 519, 789, NO_OWNER);  
-	//CreateObjectAbove(MONI, 511, 778, NO_OWNER);
-	//CreateObjectAbove(PLNT, 477, 789, NO_OWNER);
-	//CreateObjectAbove(GSBO, 544, 790, NO_OWNER);
-	//CreateObjectAbove(GSBO, 552, 790, NO_OWNER);
-	//CreateObjectAbove(FRAM, 524, 760, NO_OWNER);
+	CreateObject(STDR, 455, 775, NO_OWNER);
+	CreateObject(LTBL, 519, 779, NO_OWNER);  
+	CreateObject(MONI, 511, 773, NO_OWNER);
+	CreateObject(PLNT, 477, 787, NO_OWNER);
+	CreateObject(GSBO, 544, 779, NO_OWNER);
+	CreateObject(GSBO, 552, 779, NO_OWNER);
+	CreateObject(FRAM, 524, 752, NO_OWNER);
+	// TODO
+	//CreateObject(STDR, 575, 775, NO_OWNER);
 	//CreateObjectAbove(TOIC, 620, 790, NO_OWNER);
 	//CreateObjectAbove(WSHB, 590, 790, NO_OWNER);
 }
