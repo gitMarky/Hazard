@@ -1,8 +1,5 @@
 #include Library_HazardDoor
 
-public func CanBeLaserRecycled() { return 2; }
-
-
 public func Initialize()
 {
 	SetAction("Close");

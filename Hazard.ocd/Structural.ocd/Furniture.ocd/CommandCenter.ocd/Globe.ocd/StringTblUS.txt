@@ -1,0 +1,5 @@
+Name=Projector
+Description=Used for tactical planning for important missions.
+
+TurnOn=Turn on the projector.
+TurnOff=Turn off the projektor.

@@ -10,10 +10,10 @@ local Description = "$Description$";
 
 public func GetCarryMode(object user) {    if (is_selected) return CARRY_Hand; }
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
+public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
-	return Trans_Rotate(90, 1, 0, 0);
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-2500, 1000, 0));
 }
 
 
@@ -26,6 +26,12 @@ public func Initialize()
 	firemode_slime2 =  FiremodeSlime2();
 	ChangeFiremode(firemode_standard);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(240, 0, 1, 0), Trans_Rotate(-15, 0, 0, 1), Trans_Rotate(15, 1, 0, 0), Trans_Translate(500, 1000, -2500));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

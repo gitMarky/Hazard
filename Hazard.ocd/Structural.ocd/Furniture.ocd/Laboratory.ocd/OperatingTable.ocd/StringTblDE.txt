@@ -1,0 +1,3 @@
+Name=Operationstisch
+Description=Für ganz besondere Forschungszwecke.
+

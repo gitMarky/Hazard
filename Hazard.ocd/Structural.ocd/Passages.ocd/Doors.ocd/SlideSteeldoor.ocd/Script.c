@@ -2,10 +2,6 @@
 
 local pathfree;
 
-func CanBeLaserRecycled()
-{
-	return 2;
-}
 
 func Initialize()
 {

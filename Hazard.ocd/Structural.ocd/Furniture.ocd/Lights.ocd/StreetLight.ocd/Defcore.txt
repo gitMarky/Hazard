@@ -1,0 +1,10 @@
+[DefCore]
+id=STLH
+Version=7,0
+Category=C4D_StaticBack
+Width=5
+Height=7
+Offset=-2,-3
+Value=5
+Mass=2
+Picture=0,0,5,7

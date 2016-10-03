@@ -1,0 +1,14 @@
+[DefCore]
+id=MPPJ
+Version=7,0
+Category=C4D_Structure
+Width=100
+Height=55
+Offset=-50,-27
+Value=100
+Mass=100
+Picture=100,0,100,55
+Vertices=4
+VertexX=-50,50,-50,50
+VertexY=-27,-27,27,27
+VertexFriction=100,100,100,100
