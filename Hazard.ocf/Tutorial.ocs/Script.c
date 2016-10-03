@@ -83,7 +83,6 @@ func CreateMainHall()
 //	CreateObjectAbove(CLGH, 602, 854, NO_OWNER);
 //	CreateObjectAbove(CLGH,1005, 870, NO_OWNER);
 //	
-//	CreateObjectAbove(ENGT,1057, 766, NO_OWNER);
 //	CreateObjectAbove(LADR, 398, 910, NO_OWNER)->Set(15);
 //	CreateObjectAbove(LBDR, 452, 791, NO_OWNER);
 //	CreateObjectAbove(GLST, 499, 790, NO_OWNER);
@@ -178,9 +177,9 @@ func CreateStaffRoom()
 
 func CreateStoreRoom()
 {
-	CreateObject(GSBO,1017, 759, NO_OWNER);
-	CreateObject(GSBO,1026, 759, NO_OWNER);
-	CreateObject(GAT2, 166, 746, NO_OWNER);
+	CreateObject(GSBO, 1017, 759, NO_OWNER);
+	CreateObject(GSBO, 1026, 759, NO_OWNER);
+	CreateObject(ENGT, 1057, 746, NO_OWNER);
 }
 
 func CreateInaccessibleBase()
@@ -213,13 +212,13 @@ func CreateInaccessibleBase()
 
 func CreateSteelDoors()
 {
-//	var door = CreateObjectAbove(SLDR, 587, 600, NO_OWNER);
-//	door->LocalN("lock")=true;
-//	CreateObjectAbove(PKEY, 609, 593, NO_OWNER)->Set(door,1337);
-//	door->SetMaxDamage(-1);
-//	door1 = CreateObjectAbove(SLDR, 735, 600, NO_OWNER);
-//	door1->LocalN("lock")=true;
-	var wl = CreateObjectAbove(ALGH, 710, 580, NO_OWNER);
+	var door = CreateObject(SLDR, 597, 585, NO_OWNER);
+	door->Lock();
+	door->SetMaxDamage(-1);
+	//CreateObject(PKEY, 620, 589, NO_OWNER)->Set(door, 1337);
+	door1 = CreateObject(SLDR, 726, 585, NO_OWNER);
+	door1->Lock();
+	var wl = CreateObject(ALGH, 710, 575, NO_OWNER);
 	wl->SetR(180);
 	wl->TurnOn();
 }
@@ -272,9 +271,9 @@ func CreateCaveStuff()
 	CreateObject(JMPD, 1511, 925, NO_OWNER)->Set(50, 250, 180);
 	CreateObject(JMPD, 1510, 967, NO_OWNER)->Set(50, -70, 0);
 	CreateObject(JMPD, 1490, 967, NO_OWNER)->Set(30, -45, 0);
-//	
-//	CreateObjectAbove(FLGH, 1470, 960, NO_OWNER)->SetRotation(-45);
-//	CreateObjectAbove(FLGH, 1550, 960, NO_OWNER)->SetRotation(35);
+
+	CreateObject(FLGH, 1470, 962, NO_OWNER)->SetRotation(-45)->GetLight()->TurnOn();
+	CreateObject(FLGH, 1550, 962, NO_OWNER)->SetRotation(35)->GetLight()->TurnOn();
 }
 
 
@@ -294,17 +293,18 @@ func CreateDoc()
 
 
 	CreateObjectAbove(LADR, 400, 910, NO_OWNER)->LadderHeight(790, 910);
-	CreateObject(STDR, 455, 775, NO_OWNER);
+	CreateObject(STDR, 454, 775, NO_OWNER);
 	CreateObject(LTBL, 519, 779, NO_OWNER);  
 	CreateObject(MONI, 511, 773, NO_OWNER);
 	CreateObject(PLNT, 477, 787, NO_OWNER);
 	CreateObject(GSBO, 544, 779, NO_OWNER);
 	CreateObject(GSBO, 552, 779, NO_OWNER);
 	CreateObject(FRAM, 524, 752, NO_OWNER);
-	// TODO
-	//CreateObject(STDR, 575, 775, NO_OWNER);
-	//CreateObjectAbove(TOIC, 620, 790, NO_OWNER);
-	//CreateObjectAbove(WSHB, 590, 790, NO_OWNER);
+	
+	CreateObject(LLGH, 490, 768, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 578, 768, NO_OWNER)->TurnOn();
+	CreateObject(GLST, 601, 768, NO_OWNER);
+	CreateObject(GLST, 627, 768, NO_OWNER);
 }
 
 
