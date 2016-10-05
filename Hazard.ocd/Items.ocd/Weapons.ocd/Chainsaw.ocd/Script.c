@@ -10,7 +10,7 @@ local Description = "$Description$";
 local is_running;
 
 
-public func GetCarryMode(object user) {    return CARRY_Musket; }
+public func GetCarryMode(object user) {    return CARRY_Blunderbuss; }
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
 public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
