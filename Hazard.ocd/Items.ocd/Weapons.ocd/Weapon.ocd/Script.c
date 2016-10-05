@@ -35,6 +35,19 @@ public func IsHazardWeapon()
     return true;
 }
 
+local carry_mode = CARRY_Hand;
+
+public func GetCarryMode(object clonk, bool idle, bool nohand)
+{
+	if (idle || nohand || !is_selected)
+	{
+		return CARRY_None;
+	}
+	return carry_mode;
+}
+public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
+public func GetCarryBone() { return "Grip"; }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
