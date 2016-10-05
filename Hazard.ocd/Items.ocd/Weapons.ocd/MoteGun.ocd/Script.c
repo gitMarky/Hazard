@@ -6,11 +6,8 @@
 
 local Name = "$Name$";
 local Description = "$Description$";
+local carry_mode =  CARRY_Blunderbuss;
 
-
-public func GetCarryMode(object user) {    if (is_selected) return CARRY_Hand; }
-public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "Grip"; }
 public func GetCarryTransform()
 {
 	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-2500, 600, 0), Trans_Rotate(10, 0, 0, 1));

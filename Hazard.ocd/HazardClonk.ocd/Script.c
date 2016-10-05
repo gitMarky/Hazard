@@ -5,7 +5,7 @@
 
 public func GetAmmoSource(id ammo)
 {
-	return AMMO_Source_Infinite; //Local;
+	return AMMO_Source_Local;
 }
 
 func Initialize()

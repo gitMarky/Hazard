@@ -19,6 +19,14 @@ public func InitialStackCount() { return AmmoCount(); }
 //
 // add ammo
 
+func Entrance(object clonk)
+{
+	var self = this;
+	_inherited(...);
+	
+	if (self) TransferAmmoTo(clonk);
+}
+
 protected func ControlUse(object clonk, int x, int y)
 {
 	TransferAmmoTo(clonk);
@@ -59,7 +67,7 @@ public func TransferAmmoTo(object clonk)
 
 local Name = "$Name$";
 local Description = "$Description$";
-local Collectible = 1;
+local Collectible = true;
 
 protected func Hit()
 {
