@@ -9,9 +9,10 @@ func Init2(int dir)
 	SetDir(dir);
 	
 	var r = -2 * (dir == 1) + 1;
-	var light;
-	var x = -286 + dir * 572, y = -187;
-	var c = RGBa(255, 255, 255, 50);
+//	var light;
+	var x = -286 + dir * 572;
+//	var y = -187;
+//	var c = RGBa(255, 255, 255, 50);
 	
 	var rocket = CreateObject(X5RK, x + r * 272, 171, GetOwner());
 	rocket->SetAction("Clamped");
