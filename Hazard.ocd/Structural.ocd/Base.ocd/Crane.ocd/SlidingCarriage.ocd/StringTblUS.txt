@@ -1,0 +1,2 @@
+Name=Sliding carriage
+ControlCrane=Control crane

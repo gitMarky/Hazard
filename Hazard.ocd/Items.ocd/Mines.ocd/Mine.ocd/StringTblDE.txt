@@ -1,4 +1,6 @@
 Name=Mine
+Description=Einmal aktiviert, bleibt die Mine beinahe unsichtbar solange liegen, bis sie entweder zerstört oder ausgelöst wird.
+
 Activate=Mine aktivieren
 UpgradeToLaser=Zur Lasermine aufrüsten.
 UpgradeToWeaponPart=Zur Schwarmmine aufrüsten.

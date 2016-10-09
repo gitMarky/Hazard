@@ -207,11 +207,10 @@ func Reconfigure(int dx, int dy, object load)
 
 func ElevatorSound(play)
 {
-	// TODO
 	if (play)
-		Sound("Elevator", false, 50, nil, 1);
+		Sound("Structures::Elevator::Moving", false, 50, nil, 1);
 	else
-		Sound("Elevator", false, 50, nil, -1);
+		Sound("Structures::Elevator::Moving", false, 50, nil, -1);
 	
 }
 
