@@ -14,7 +14,7 @@ func Tutorial_Start()
 func Tutorial_1()
 {
 	var view_range = Abs(screen->GetY() - GetCrew()->GetY()) + 250;
-	SetPlayerZoomByViewRange(0, view_range, view_range, PLRZOOM_Set);
+	ZoomToRange(view_range);
 	
 	SetHostility(0, 1, true, true);
 	screen->SetAction("Noise");
@@ -97,14 +97,15 @@ func Tutorial_7()
 
 func Tutorial_8()
 {
-	var collected_ammo = !FindObject(Find_ID(STAP));
-	
+	var collected_ammo = GetCrew()->GetAmmo(Ammo_Standard) > 100;
+
 	if (collected_ammo)
 	{
 		StartDialogue("CommanderDrone1");
 		
 		drone = CreateDrone(950, 545);
 		drone->StartMoving(0, -30, 0, 20, 0, 0, 100);
+		ZoomToObject(GetCrew(), drone);
 		return ScheduleNext(10);
 	}
 	else
@@ -124,6 +125,7 @@ func Tutorial_10()
 	StartDialogue("CommanderDrone2");
 	drone = CreateDrone(990, 472);
 	drone->StartMoving(-15, 0, 55, 0);
+	ZoomToObject(GetCrew(), drone);
 	return ScheduleNext(10);
 }
 
@@ -163,18 +165,20 @@ func Tutorial_13()
 
 func Tutorial_14()
 {
-	var grenade_ammo = FindObject(Find_ID(GRAP));
-	var has_launcher = GetCrew()->FindContents(Weapon_GrenadeLauncher);
-	if (grenade_ammo || !has_launcher)
-	{
-		return ScheduleSame(10);
-	}
-	else
+	var launcher = GetCrew()->FindContents(Weapon_GrenadeLauncher);
+	var grenade_loaded = launcher->GetAmmo(Ammo_Grenade) > 0;
+
+	if (launcher && grenade_loaded)
 	{
 		StartDialogue("CommanderDrone3");
 		
 		drone = CreateDrone(1750, 950)->StartMoving(0, 1, 0, 3);
+		ZoomToObject(GetCrew(), drone);
 		return ScheduleNext(10);
+	}
+	else
+	{
+		return ScheduleSame(10);
 	}
 }
 
@@ -194,6 +198,7 @@ func Tutorial_16()
 	drone->StartMoving(0, 1, 0, 3);
 	drone->SetDir(DIR_Right);
 	drone.drop = Upgrade_Laser;
+	ZoomToObject(GetCrew(), drone);
 	return ScheduleNext(10);
 }
 
@@ -272,10 +277,9 @@ func Tutorial_22()
 	{
 		StartDialogue("CommanderDrone5");
 
-		//TODO: Muni wegnehmen *hidez*
-		//DoAmmo(STAM, -GetAmmo(STAM, GetCrew()), GetCrew());
-		//DoAmmo(GRAM, -GetAmmo(GRAM, GetCrew()), GetCrew());
-		//DoAmmo(GRAM, -GetAmmo(GRAM, FindObject(GLWP)), FindObject(GLWP));
+		RemoveAmmo(Ammo_Standard);
+		RemoveAmmo(Ammo_Grenade);
+		RemoveAmmo(Ammo_Grenade, FindObject(Find_ID(Weapon_GrenadeLauncher)));
 
 		CreateDrone(1180, 450)->StartMoving(0, 1, 0, 25);
 		CreateDrone(1250, 450)->StartMoving(0, -1, 0, 25);
@@ -284,6 +288,7 @@ func Tutorial_22()
 		drone = CreateDrone(1390, 450);
 		drone->StartMoving(0, -1, 0, 25);
 		drone.drop = Upgrade_Laser;
+		ZoomToObject(GetCrew(), drone);
 		
 		return ScheduleNext(10);
 	}
@@ -301,6 +306,7 @@ func Tutorial_24()
 	drone = CreateDrone(1250, 350);
 	drone->StartMoving(1, 1, 50, 20, 25, 0);
 	drone.drop = Weapon_Bazooka;
+	ZoomToObject(GetCrew(), drone);
 	FindObject(Find_ID(Target))->SetGraphics(nil, Weapon_Bazooka);
 
 	// TODO: remove old weapons
@@ -309,7 +315,6 @@ func Tutorial_24()
 	// TODO -> Remove this again / replace with just the upgrade
 	var launcher = FindObject(Find_ID(Weapon_GrenadeLauncher));
 	launcher->ChangeFiremode(launcher.firemode_emp);
-	//launcher->Upgrade(Upgrade_Laser);
 
 	CreateSpawnPoint(1065, 450)->SpawnItem(ENAP)->StartSpawning();
 
@@ -332,10 +337,7 @@ func Tutorial_25()
 		CreateSpawnPoint(1375, 590)->SpawnItem(MIAP)->StartSpawning();
 
 		drone = CreateDrone(1645, 675);
-		// TODO: hack for homing missile *cough*
-		// not necessary I'd say, the missile attacks projectile targets after all
-		// drone->SetCategory(C4D_Living);
-		// drone->SetAlive(true);
+		ZoomToObject(GetCrew(), drone);
 		return ScheduleNext(10);
 	}
 }
@@ -349,11 +351,12 @@ func Tutorial_27()
 {
 	StartDialogue("CommanderWarehouse");
 	
-	// TODO FindObject(Find_ID(MIAP))->Contained()->RemoveObject();
 	RemoveAllSpawnpoints();
 	FindObject(Find_ID(Weapon_Bazooka))->RemoveObject();
 
-	CreateSpawnPoint(1085, 450)->SpawnItem(Weapon_Motegun)->StartSpawning();
+	var spawn = CreateSpawnPoint(1085, 450);
+	spawn->SpawnItem(Weapon_Motegun)->StartSpawning();
+	ZoomToObject(GetCrew(), spawn);
 
 	return ScheduleNext(10);
 }
@@ -381,6 +384,11 @@ func Tutorial_28()
 			}
 		}
 		
+		var range = Max(Distance(GetCrew()->GetX(), GetCrew()->GetY(), 1500, 450),
+		                Distance(GetCrew()->GetX(), GetCrew()->GetY(), 650, 450));
+		                
+		ZoomToRange(range);
+		
 		return ScheduleNext(10);
 	}
 }
@@ -397,10 +405,8 @@ func Tutorial_30()
 	RemoveAllSpawnpoints();
 	FindObject(Find_ID(Weapon_Motegun))->RemoveObject();
 
-	//CreateSpawnPoint(1085, 450)->SpawnItem(Weapon_Minigun)->StartSpawning();
-
 	var mg = GetCrew()->CreateContents(Weapon_Minigun);
-	// CreateObjectAbove(Weapon_Minigun, GetCrew()->GetX(), GetCrew()->GetDefBottom());
+	mg.GetAmmoSource = this.GetInfiniteAmmoSource;
 
 	//TODO: this makes the minigun load 500 bullets, instead of the usual amount
 	// we do not need such an effect, it is sufficient to set the ammo to unlimited :p
@@ -432,30 +438,16 @@ func Tutorial_31()
 
 func Tutorial_32()
 {
-	var x, y;
-
-	return ScheduleNext(10);
-}
-
-func Tutorial_33()
-{
-	var x, y;
-
-	return ScheduleNext(10);
-}
-
-func Tutorial_34()
-{
 	return WaitUntilDroneDown();
 }
 
-func Tutorial_35()
+func Tutorial_33()
 {	
 	StartDialogue("CommanderEnd");
 	return ScheduleNext(10);
 }
 
-func Tutorial_36()
+func Tutorial_34()
 {
 	if (IsValueInArray(scenario_progress, TUTORIAL_FINISHED))
 	{
@@ -512,4 +504,26 @@ func CreateDrone(int x, int y)
 	var drone = CreateObject(Target_Drone, x, y, NO_OWNER);
 	drone->FadeIn();
 	return drone;
+}
+
+func GetInfiniteAmmoSource(id type)
+{
+	return AMMO_Source_Infinite;
+}
+
+func ZoomToObject(object user, object target, int range)
+{
+	ZoomToRange(ObjectDistance(user, target) + range ?? 250);
+}
+
+func ZoomToRange(int view_range)
+{
+	SetPlayerZoomByViewRange(0, view_range, view_range, PLRZOOM_Set);
+}
+
+func RemoveAmmo(id type, object target)
+{
+	target = target ?? GetCrew();
+	var amount = target->GetAmmo(type);
+	target->DoAmmo(type, -amount);
 }
