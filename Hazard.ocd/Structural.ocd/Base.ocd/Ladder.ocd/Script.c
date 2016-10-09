@@ -90,7 +90,7 @@ public func OnLadderReleased(object clonk, object segment, int segment_index)
 // Callback by the ladder segment when a clonk tries to grab it.
 public func CanNotBeClimbed(bool is_climbing, object clonk)
 {
-	if (clonk)
+	if (clonk && dir)
 	{
 		return clonk->GetDir() != dir;
 	}
