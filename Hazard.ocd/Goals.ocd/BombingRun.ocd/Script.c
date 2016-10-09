@@ -101,3 +101,70 @@ local ActMap =
 
 local Name = "$Name$";
 local Description = "$Description$";
+local bomb_status = "";
+
+/* Callbacks from the bomb or gates */
+
+/**
+ The bomb was destroyed and respawns at its original position.
+ */
+public func OnBombReturned()
+{
+	UpdateBombStatus();
+}
+
+/**
+ The bomb exits the holder. This may be an intentional pass to another player.
+ */
+public func OnBombLost()
+{
+	UpdateBombStatus("BombGone");
+}
+
+/**
+ The bomb scored at a goal.
+ */
+public func OnBombScored()
+{
+	UpdateBombStatus();
+}
+
+/**
+ Someone collected the bomb.
+ */
+public func OnBombTaken(object new_carrier)
+{
+	var status;
+	if (new_carrier)
+	{
+		status = [];
+	
+		var carrier_team = GetPlayerTeam(new_carrier->GetOwner());
+		
+		for (var i = 0; i < GetPlayerCount(); ++i)
+		{
+			var team = GetPlayerTeam(GetPlayerByIndex(i));
+			
+			if (team == carrier_team)
+				status[i] = "BombFriendly";
+			else
+				status[i] = "BombEnemy";
+		}
+	}
+	UpdateBombStatus(status);
+}
+
+private func UpdateBombStatus(status)
+{
+	bomb_status = status ?? "";
+	NotifyHUD();
+}
+
+public func GetPictureName(int player)
+{
+	if (GetType(bomb_status) == C4V_Array)
+		return bomb_status[player];
+	else
+		return bomb_status ?? "";
+}
+
