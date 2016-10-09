@@ -508,7 +508,7 @@ public func Dlg_CommanderEnd_Init(object clonk)
 
 public func Dlg_CommanderEnd_1(object clonk)
 {
-	MessageBox("$TutorEND$", clonk, dlg_target);
+	MessageBox(Format("$TutorEND$", clonk->GetName()), clonk, dlg_target);
 	StopDialogue();
 	return true;
 }
