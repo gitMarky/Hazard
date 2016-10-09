@@ -46,42 +46,16 @@ func CreateMainHall()
 //	CreateObjectAbove(RAI1, 490, 240, NO_OWNER)->SetRail([0, 1, 1, 1, 1, 1, 4],1);
 //	CreateObjectAbove(CONS, 500, 322, NO_OWNER);
 
-//	CreateObjectAbove(TRE4,1775, 465, NO_OWNER);
-//	CreateObjectAbove(TRE4,1821, 456, NO_OWNER);
-//	CreateObjectAbove(TRB3,1846, 456, NO_OWNER);
-//	CreateObjectAbove(TRE4,1874, 460, NO_OWNER);
-//	CreateObjectAbove(TRE4,1521, 527, NO_OWNER);
-//	CreateObjectAbove(TRE4,1526, 525, NO_OWNER);
-//	CreateObjectAbove(TRB3,1680, 496, NO_OWNER);
-//	CreateObjectAbove(TRB2,1823, 483, NO_OWNER);
-//	CreateObjectAbove(TRE4,1920, 478, NO_OWNER);
 //	CreateObjectAbove(LADR, 560, 570, NO_OWNER)->Set(4);
 	CreateObjectAbove(LFTP, 675, 550, NO_OWNER);
-//	CreateObjectAbove(TRE4,1463, 534, NO_OWNER);
-//	CreateObjectAbove(TRE4,1517, 530, NO_OWNER);
-//	CreateObjectAbove(TRE4,1562, 536, NO_OWNER);
 //	CreateObjectAbove(SLDR, 587, 600, NO_OWNER)->Lock();
 //	CreateObjectAbove(PKEY, 609, 594, NO_OWNER);
 //	
-//	CreateObjectAbove(SBBA,1395, 599, NO_OWNER)->SetDir(0);
 //	CreateObjectAbove(VENT,  25, 669, NO_OWNER)->SetCon(35);
 //	CreateObjectAbove(VENT, 505, 669, NO_OWNER)->SetCon(35);
 //	CreateObjectAbove(LADR, 315, 710, NO_OWNER)->Set(4);
 //	CreateObjectAbove(CCP1, 570, 690, NO_OWNER);
 //	
-//	CreateObjectAbove(SEDR, 640, 690, NO_OWNER)->Lock();
-//	CreateObjectAbove(SEDR, 710, 690, NO_OWNER)->Lock();
-//	CreateObjectAbove(SEDR, 710, 800, NO_OWNER)->Lock();
-//
-//	
-//	// ceiling lights
-//	CreateObjectAbove(CLGH, 790, 745, NO_OWNER);
-//	CreateObjectAbove(CLGH, 783, 644, NO_OWNER);
-//	CreateObjectAbove(CLGH, 904, 645, NO_OWNER);
-//	CreateObjectAbove(CLGH,1004, 815, NO_OWNER);
-//	CreateObjectAbove(CLGH, 506, 854, NO_OWNER);
-//	CreateObjectAbove(CLGH, 602, 854, NO_OWNER);
-//	CreateObjectAbove(CLGH,1005, 870, NO_OWNER);
 //	
 //	CreateObjectAbove(LADR, 398, 910, NO_OWNER)->Set(15);
 //	CreateObjectAbove(LBDR, 452, 791, NO_OWNER);
@@ -237,31 +211,33 @@ func CreateOutdoorArea()
 	CreateObjectAbove(FENC, 843, 600, NO_OWNER);
 	CreateObjectAbove(FENC, 782, 600, NO_OWNER);
 	CreateObjectAbove(FENC, 1120, 600, NO_OWNER);
-	
-//	CreateObjectAbove(STAP, 850, 600, NO_OWNER);
-	
+		
 	CreateObject(JMPD, 1107, 586, NO_OWNER)->Set(70, -5);
-//	CreateObject(SBBA, 1395, 600, NO_OWNER);
-//	
-//	CreateObject(STLH, 1350, 550, NO_OWNER);
+	CreateObject(SBBA, 1407, 592, NO_OWNER);
+	
+	CreateObject(Tree_Coniferous2, 1775, 420, NO_OWNER)->SetR(3);
+	CreateObject(Tree_Coniferous, 1821, 406, NO_OWNER);
+	CreateObject(Tree_Coniferous_Burned, 1846, 406, NO_OWNER)->SetR(2);
+	CreateObject(Tree_Coniferous, 1874, 460, NO_OWNER)->SetR(7);
+	CreateObject(Tree_Coniferous, 1521, 477, NO_OWNER);
+	CreateObject(Tree_Coniferous2, 1650, 452, NO_OWNER)->SetR(-5);
+	CreateObject(Tree_Coniferous4_Burned, 1680, 456, NO_OWNER);
+	CreateObject(Tree_Deciduous_Burned, 1762, 433, NO_OWNER)->SetR(-8);
+	CreateObject(Tree_Coniferous4, 1920, 438, NO_OWNER);
+	CreateObject(Tree_Coniferous2, 1417, 496, NO_OWNER);
+	CreateObject(Tree_Coniferous4, 1508, 493, NO_OWNER)->SetR(-10);
+	CreateObject(Tree_Coniferous, 1703, 433, NO_OWNER)->SetR(5);
 }
 
 
 func CreateTeleporters()
 {
-//	tele = CreateObjectAbove(TELE, 1054, 604, NO_OWNER);
-//	tele2 = CreateObjectAbove(TELE, 1359, 974, NO_OWNER);
-//	tele->SetTarget(tele2);
-//	tele2->SetTarget(tele);
-//	tele->Deactivate();
-
 	tele = CreateObject(TELE, 1045, 574, NO_OWNER);	
 	tele2 = CreateObject(TELE, 1367, 945, NO_OWNER);
 	tele->Deactivate();
 	tele->SetTarget(tele2);
 	tele2->Activate();
 	tele2->SetTarget(tele);
-
 }
 
 func CreateCaveStuff()
