@@ -307,7 +307,7 @@ func UpdateRecoveryProgress()
 {
 	if (progress_recovery)
 	{
-		SetGraphics("Red", GetID(), GFXOV_MODE_Action, HUD_Layer_Recharge, "Red");
+		SetGraphics("Red", GetID(), HUD_Layer_Recharge, GFXOV_MODE_Action, "Red");
 		SetObjDrawTransform(1000, 0, HUD_Bar_OffsetX + 50000 - GetBarXOffset(progress_recovery) * 2, 0, 1000, 0, HUD_Layer_Recharge);
 	}
 	else
@@ -373,7 +373,7 @@ func UpdateAmmoDisplay(object ammobag, object weapon)
 		else
 		{
 			icon->CustomMessage(Format("@<c %s>%d</c>", color, amount), icon, GetOwner(), 25, 31);
-			icon->SetGraphics(nil, icon->GetID(), overlay_infinity);
+			icon->SetGraphics(nil, icon->GetID(), overlay_infinity, GFXOV_MODE_Base);
 		}
 	}
 	
