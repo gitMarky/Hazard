@@ -1,4 +1,3 @@
 Name=Sequium door
-Description=This door is amplified with sequium the newest discovery and hardest known material.
-No weapon known could destroy this door.
+Description=This door is amplified with sequium the newest discovery and hardest known material.|No weapon known could destroy this door.
 

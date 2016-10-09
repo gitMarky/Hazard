@@ -1,0 +1,2 @@
+Name=Schlitten
+ControlCrane=Kran steuern

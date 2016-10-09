@@ -1,4 +1,3 @@
 Name=Sequiumtür
-Description=Diese Tür ist mit Sequium verstärkt, die neuste Entdeckung und das härteste bekannte Material.
-Bisher gibt es keine Waffe, die diese Tür vernichten könnte.
+Description=Diese Tür ist mit Sequium verstärkt, die neuste Entdeckung und das härteste bekannte Material.|Bisher gibt es keine Waffe, die diese Tür vernichten könnte.
 
