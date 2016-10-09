@@ -29,14 +29,14 @@ func GetBombCarrier(object bomb)
 
 func GetOwnGoal(int owner)
 {
-	for (var goal in FindObjects(Find_ID(BombingRun_Bomb))) 
+	for (var goal in FindObjects(Find_ID(BombingRun_BombGate))) 
 		if (goal->GetGoalTeam() == GetPlayerTeam(owner))
 			return goal;
 }
 
 func GetEnemyGoal(int owner)
 {
-	for (var goal in FindObjects(Find_ID(BombingRun_Bomb))) 
+	for (var goal in FindObjects(Find_ID(BombingRun_BombGate))) 
 		if (goal->GetGoalTeam() != GetPlayerTeam(owner))
 			return goal;
 }
