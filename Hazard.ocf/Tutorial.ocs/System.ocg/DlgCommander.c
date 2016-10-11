@@ -75,13 +75,19 @@ public func Dlg_CommanderDrone1_1(object clonk)
 
 public func Dlg_CommanderDrone1_2(object clonk)
 {
-	MessageBox("$Tutor3$", clonk, dlg_target);
+	MessageBox("$Tutor2b$", clonk, dlg_target);
 	return true;
 }
 
 public func Dlg_CommanderDrone1_3(object clonk)
 {
-	MessageBox("$Tutor4$", clonk, dlg_target);
+	MessageBox(Format("$Tutor3$", GetButtonText(CON_Use)), clonk, dlg_target);
+	return true;
+}
+
+public func Dlg_CommanderDrone1_4(object clonk)
+{
+	MessageBox(Format("$Tutor4$", GetButtonText(CON_Use), GetButtonText(CON_UseAlt)), clonk, dlg_target); // TODO: insert button for actual reloading as second placeholder
 	StopDialogue();
 	return true;
 }
@@ -517,4 +523,9 @@ public func Dlg_CommanderEnd_Closed(object clonk)
 {
 	clonk->Sound(SOUND_ACK);
 	return true;
+}
+
+private func GetButtonText(int button)
+{
+	return Format("<c %s>[%s]</c>", GUI_COLOR_TEXT, GetPlayerControlAssignment(0, button, true));
 }
