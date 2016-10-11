@@ -2,7 +2,6 @@
 #include Library_UpgradeableObject
 #include Plugin_Weapon_FiremodeByInteraction
 #include Plugin_Weapon_ReloadFromAmmoSource
-#include Plugin_Weapon_ReloadProgressBar
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -48,6 +47,12 @@ public func GetCarryMode(object clonk, bool idle, bool nohand)
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
 public func GetCarryBone() { return "Grip"; }
 
+public func RejectUse(object clonk)
+{
+	return !clonk->HasHandAction(false, // needs only one hand 
+								 false, // ???
+								 true); // let go of the landscape if you do use
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

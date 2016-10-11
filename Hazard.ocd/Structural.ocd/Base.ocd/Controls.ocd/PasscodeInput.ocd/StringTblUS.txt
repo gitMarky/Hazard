@@ -1,0 +1,6 @@
+Name=PIN input
+Description=Not the right thing for forgetful clonks.
+
+Input=Input
+InputCode=Input code
+Cancel=Cancel

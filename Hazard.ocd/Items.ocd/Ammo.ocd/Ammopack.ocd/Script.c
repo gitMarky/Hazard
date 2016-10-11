@@ -39,6 +39,8 @@ public func TransferAmmoTo(object clonk)
 	{
 		FatalError("This function expects an object that is not nil!");
 	}
+
+	if (!(clonk->~IsAmmoManager())) return;
 	
 	var available_ammo = GetStackCount();
 	var remaining_ammo = AmmoID()->MaxAmmo() - clonk->~GetAmmo(AmmoID());

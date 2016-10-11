@@ -1,0 +1,11 @@
+[DefCore]
+id=PKEY
+Version=7,0
+Category=C4D_Structure
+Width=20
+Height=11
+Offset=-6,-6
+Picture=0,11,64,64
+Vertices=2
+VertexX=-6,6
+VertexY=12,12
