@@ -20,6 +20,7 @@ private func OnLaunch()
 	speed = 0;
 	SetAction("Travel");
 	AddEffect("Grenade", this, 1, 1, this);
+	AddLightAmbience(50);
 }
 
 protected func ControlSpeed()
