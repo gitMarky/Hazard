@@ -175,7 +175,7 @@ func Tutorial_13()
 func Tutorial_14()
 {
 	var launcher = GetCrew()->FindContents(Weapon_GrenadeLauncher);
-	var grenade_loaded = launcher->GetAmmo(Ammo_Grenade) > 0;
+	var grenade_loaded = launcher && launcher->GetAmmo(Ammo_Grenade) > 0;
 
 	if (launcher && grenade_loaded)
 	{
