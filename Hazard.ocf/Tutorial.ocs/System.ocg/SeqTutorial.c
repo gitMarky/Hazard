@@ -7,6 +7,14 @@ func Tutorial_Start()
 	GetCrew()->SetCommand("MoveTo", nil, screen->GetX() - 5, GetCrew()->GetY());
 	SetMaxPlayer(2);
 	CreateScriptPlayer("$Drones$", RGB(1, 1, 1), 2, 15);
+	// rain effects with lots of clouds
+	//Sound("RainLoop", true, nil, nil, 1);
+	Cloud->Place(10);
+	Cloud->SetPrecipitation("Water", 1000);
+	for (var cloud in FindObjects(Find_ID(Cloud)))
+	{
+		cloud->SetCloudAlpha(10);
+	}
 	return ScheduleNext(130);
 }
 
