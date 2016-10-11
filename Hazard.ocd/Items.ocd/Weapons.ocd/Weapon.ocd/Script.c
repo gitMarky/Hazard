@@ -2,7 +2,6 @@
 #include Library_UpgradeableObject
 #include Plugin_Weapon_FiremodeByInteraction
 #include Plugin_Weapon_ReloadFromAmmoSource
-#include Plugin_Weapon_ReloadProgressBar
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
