@@ -11,9 +11,10 @@ func Tutorial_Start()
 	//Sound("RainLoop", true, nil, nil, 1);
 	Cloud->Place(10);
 	Cloud->SetPrecipitation("Water", 1000);
+	Cloud->SetInsertMaterial(false);
 	for (var cloud in FindObjects(Find_ID(Cloud)))
 	{
-		cloud->SetCloudAlpha(10);
+		cloud.Visibility = VIS_None;
 	}
 	return ScheduleNext(130);
 }
