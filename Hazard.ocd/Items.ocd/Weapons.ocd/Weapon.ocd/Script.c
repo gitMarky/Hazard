@@ -9,6 +9,8 @@
 
 local Collectible = true;
 
+public func HasInteractionMenu() { return Contained() != nil; }
+
 func Hit()
 {
 	Sound("Hits::GeneralHit?");
