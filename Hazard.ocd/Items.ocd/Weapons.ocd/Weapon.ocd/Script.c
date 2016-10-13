@@ -9,7 +9,7 @@
 
 local Collectible = true;
 
-public func HasInteractionMenu() { return Contained() != nil; }
+public func HasInteractionMenu() { return Contained() != nil && GetLength(GetFiremodes()) > 1; }
 
 func Hit()
 {
