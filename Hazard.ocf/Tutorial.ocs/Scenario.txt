@@ -16,3 +16,8 @@ Crew=HazardClonk=1
 [Landscape]
 Sky=Pyroclastic1
 MapZoom=10
+
+[Weather]
+Climate=0,0,0,0
+StartSeason=0,0,0,0
+YearSpeed=0,0,0,0
