@@ -510,8 +510,8 @@ func RemoveAllSpawnpoints()
 
 func CreateDrone(int x, int y)
 {
-	var drone = CreateObject(Target_Drone, x, y, NO_OWNER);
-	drone->FadeIn();
+	var new_drone = CreateObject(Target_Drone, x, y, NO_OWNER);
+	new_drone->FadeIn();
 	return drone;
 }
 
