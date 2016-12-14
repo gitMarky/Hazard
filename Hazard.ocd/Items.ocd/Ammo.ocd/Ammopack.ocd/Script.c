@@ -22,7 +22,7 @@ public func InitialStackCount() { return AmmoCount(); }
 func Entrance(object clonk)
 {
 	var self = this;
-	_inherited(...);
+	_inherited(clonk, ...);
 	
 	if (self) TransferAmmoTo(clonk);
 }

@@ -5,18 +5,18 @@
    Objekte die die volle Funktionalität benutzen wollen müssen folgende Dinge
    sicherstellen... Bis auf das erste sind alle optional. Falls definiert:
    
-   * In "Construction" _inherited() aufrufen 
+   * In "Construction" _inherited(...) aufrufen 
    
-   * In "OnDmg" _inherited() aufrufen und den Rückgabewert zum eigenen
+   * In "OnDmg" _inherited(...) aufrufen und den Rückgabewert zum eigenen
      Rückgabewert hinzuaddieren
      [falls die Ausrüstung genommenen Schaden modifizieren können soll
       z.B. die Rüstung]
      
-   * In "OnHit" _inherited() aufrufen
+   * In "OnHit" _inherited(...) aufrufen
      [falls Ausrüstung Effekte nach Schaden machen können soll
       (z.B. Aufblinken des Schildgenerators)]
 
-   * In "Death" _inherited() aufrufen
+   * In "Death" _inherited(...) aufrufen
      [falls der Clonk bei Tod die Ausrüstung fallen lassen soll]
 
 */
@@ -32,6 +32,22 @@ func Initialize()
 	lib_gear = [];
 	_inherited(...);
 }
+
+public func HasInteractionMenu()
+{
+	var has_interaction;
+	if (this.HasInteractionMenu == nil)
+	{
+		has_interaction = true;
+	}
+	else
+	{
+		has_interaction = _inherited(...);
+	}
+	
+	return has_interaction;
+}
+
 
 // Ausrüstung fallenlassen
 func Death()
@@ -234,5 +250,81 @@ func EquipGear(object pGear)
 	lib_gear[geartype] = pGear;
 	// Auslösen
 	return true;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// GUI
+
+static const GUI_PRIORITY_EQUIPMENT = 20;
+
+public func GetInteractionMenus(object crew)
+{
+	var menus = _inherited(crew) ?? [];		
+
+	var equipment_menu =
+	{
+		title = "$GUI_Manage_Equipment$",
+		entries_callback = this.GetGUIEquipmentMenuEntries,
+		callback = "OnGUIClickEquipment",
+		callback_hover = "OnGUIHoverEquipment",
+		callback_target = this,
+		BackgroundColor = GetGUIEquipmentMenuColor(),
+		Priority = GUI_PRIORITY_EQUIPMENT,
+	};
+
+	PushBack(menus, equipment_menu);
+	return menus;
+}
+
+
+public func GetGUIEquipmentMenuColor(){ return RGB(100, 100, 100);}
+
+public func GetGUIEquipmentMenuEntries(object crew)
+{
+	var menu_entries = [];
+
+	// default design of a control menu item
+	var custom_entry = 
+	{
+		Right = "100%", Bottom = "2em",
+		BackgroundColor = {Std = 0, OnHover = 0x50ff0000},
+		image = {Right = "2em"},
+		text = {Left = "2em"}
+	};
+	
+		
+	// Add info message for every defender
+	for (var equipped_gear in lib_gear)
+	{
+		if (!equipped_gear) continue;
+	
+		var gear_symbol = equipped_gear;
+
+		PushBack(menu_entries,
+		{
+		    symbol = gear_symbol,
+		    extra_data = equipped_gear->GetName(),
+			custom = 
+			{
+				Prototype = custom_entry,
+				Priority = GUI_PRIORITY_EQUIPMENT,
+				text = {Prototype = custom_entry.text, Text = equipped_gear->GetName()},
+				image = {Prototype = custom_entry.image, Symbol = gear_symbol},
+			}
+		});
+	}
+
+	return menu_entries;
+}
+
+public func OnGUIHoverEquipment(id symbol, string action, desc_menu_target, menu_id)
+{
+	// do nothing at the moment
+}
+
+public func OnGUIClickEquipment(id symbol, string action, bool alt)
+{
+	// do nothing on click
 }
 

@@ -15,9 +15,17 @@ public func GetCarryTransform()
 public func Initialize()
 {
 	_inherited(...);
+
+	// firemode definitions
 	firemode_standard = FiremodeStandard();
 	firemode_homing =  FiremodeHoming();
 	firemode_remote = FiremodeRemote();
+
+	// firemode list
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
+	AddFiremode(firemode_homing);
+	AddFiremode(firemode_remote);
 	ChangeFiremode(firemode_standard);
 }
 

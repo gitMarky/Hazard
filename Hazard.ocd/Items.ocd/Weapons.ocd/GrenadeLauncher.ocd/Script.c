@@ -16,12 +16,23 @@ public func GetCarryTransform()
 public func Initialize()
 {
 	_inherited(...);
+	
+	// firemode definitions
 	firemode_standard = FiremodeStandard();
 	firemode_fragmentation =  FiremodeFragmentation();
 	firemode_napalm = FiremodeNapalm();
 	firemode_slime = FiremodeSlime();
 	firemode_emp = FiremodeEMP();
 	firemode_laser = FiremodeLaser();
+
+	// firemode list
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
+	AddFiremode(firemode_fragmentation);
+	AddFiremode(firemode_napalm);
+	AddFiremode(firemode_slime);
+	AddFiremode(firemode_emp);
+	AddFiremode(firemode_laser);
 	ChangeFiremode(firemode_standard);
 }
 

@@ -18,8 +18,15 @@ public func Initialize()
 {
 	_inherited(...);
 	this.MeshTransformation = Trans_Scale(1000, 1200, 1200);
+	
+	// firemode definitions
 	firemode_standard =  FiremodeStandard();
 	firemode_laser =     FiremodeLaser();
+
+	// firemode list
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
+	AddFiremode(firemode_laser);
 	ChangeFiremode(firemode_standard);
 }
 

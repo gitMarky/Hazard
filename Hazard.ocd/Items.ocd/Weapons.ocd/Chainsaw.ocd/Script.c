@@ -20,6 +20,8 @@ public func Initialize()
 	_inherited(...);
 	is_running = false;
 	firemode_standard = FiremodeStandard();
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
 	ChangeFiremode(firemode_standard);
 }
 

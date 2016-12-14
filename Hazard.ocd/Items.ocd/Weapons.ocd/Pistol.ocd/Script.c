@@ -17,10 +17,19 @@ public func Initialize()
 {
 	_inherited(...);
 	this.MeshTransformation = Trans_Scale(800, 800, 800);
+	
+	// definitions
 	firemode_primary_standard =  FiremodePrimaryStandard();
 	firemode_primary_laser =     FiremodePrimaryLaser();
 	firemode_secondary_grenade = FiremodeSecondaryGrenade();
 	firemode_secondary_slime =   FiremodeSecondarySlime();
+
+	// fire mode list
+	ClearFiremodes();
+	AddFiremode(firemode_primary_standard);
+	AddFiremode(firemode_primary_laser);
+	AddFiremode(firemode_secondary_grenade);
+	AddFiremode(firemode_secondary_slime);
 	ChangeFiremode(firemode_primary_standard);
 }
 
@@ -38,7 +47,7 @@ func Definition(id def)
 local firemode_primary_standard;
 func FiremodePrimaryStandard()
 {
-	return 
+	return
 	{
 		Prototype = firemode_default, 
 		name = 				"$Standard$",
@@ -58,7 +67,7 @@ func FiremodePrimaryStandard()
 		projectile_speed = 	250,
 		projectile_range =  450,
 		projectile_spread = Projectile_Deviation(1, 1),
-
+	
 		projectile_distance = 8,
 		projectile_offset_y = -6,
 	};

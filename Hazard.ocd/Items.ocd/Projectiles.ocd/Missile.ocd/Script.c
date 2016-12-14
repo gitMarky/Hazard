@@ -11,7 +11,7 @@ public func MaxSpeed() { return 180; }
 public func Launch(int angle, proplist deviation)
 {
 	SetR(angle);
-	_inherited(...);
+	_inherited(angle, deviation, ...);
 }
 
 private func OnLaunch()
