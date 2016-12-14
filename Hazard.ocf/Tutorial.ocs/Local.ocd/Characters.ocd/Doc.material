@@ -1,4 +1,4 @@
-material Clonk_Doctor
+material Clonk_HazardDoctor
 {
 	receive_shadows on
 	technique

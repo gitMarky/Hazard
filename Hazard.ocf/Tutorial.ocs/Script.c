@@ -260,8 +260,8 @@ func CreateDoc()
 	doc->SetName("Doc");
 	doc->RemoveBackpack();
 	doc->SetGraphics(nil, Local_Characters);
-	doc->SetMeshMaterial("Clonk_Doctor");
-	doc->SetMeshMaterial("Clonk_Doctor", 1);
+	doc->SetMeshMaterial("Clonk_HazardDoctor");
+	doc->SetMeshMaterial("Clonk_HazardDoctor", 1);
 	doc->SetDir(DIR_Left);
 	doc->SetColor(RGB(230, 230, 230));
 	doc->SetLightRange(80, 80);
