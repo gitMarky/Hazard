@@ -16,6 +16,7 @@ local 	ammo_types,			// all definitions that are ammo
 static const HUD_Layer_AmmoBase = 1;
 static const HUD_Layer_Recharge = 2;
 static const HUD_Layer_AmmoHighlight = 3;
+static const HUD_Layer_AmmoAmount = 4;
 static const HUD_Bar_OffsetX = 10000;
 
 global func GetHazardHUD(id theID)
@@ -194,6 +195,8 @@ func UpdateWeapon(object weapon)
 		var modusname = weapon->GetFiremode().name;
 		var ammocount = weapon->GetAmmo(ammoid);
 		
+		var infinite = (weapon->GetAmmoSource(ammoid) == AMMO_Source_Infinite);
+		
 		var ammodiff = 0;
 		if (current_weapon == weapon && current_ammo_id == ammoid)
 		{
@@ -216,34 +219,54 @@ func UpdateWeapon(object weapon)
 		}
 		else
 		{
-			progress_reload = BoundBy(ammocount * 100 / ammoload, 0, 100);
+			if (infinite)
+			{
+				progress_reload = 100;
+			}
+			else
+			{
+				progress_reload = BoundBy(ammocount * 100 / ammoload, 0, 100);
+			}
 		}
 		
 		
 		// draw the stuff
-		
+
 		SetCurrentWeapon(weapon);
-		
+
 		current_ammo_count = ammocount;
 		if (ammodiff) AddEffect("AmmoUpdateNotification", icon_status, 300, 1, this, nil, ammodiff, 750);
 		
-		var color = "ffff00";
-		if (!ammocount) color = "ff0000";
+		// message for firemode
 		CustomMessage(Format("@%s", modusname), this, GetOwner(), 5, 7);
-		CustomMessage
-		(
-			Format("@<c %s>%d/%d</c>", color, ammocount, ammoload),
-			icon_status,
-			GetOwner(),
-			130 + GetNumberCount(ammoload) * 6,
-			31
-		);
+
+		// message for displayed ammo amount
+		var color = "ffff00";
+		if (!ammocount && !infinite) color = "ff0000";
+
+
 		
+		if (infinite)
+		{
+			icon_status->Message("");
+			icon_status->SetGraphics("Inf", Icon_Number, HUD_Layer_AmmoAmount, GFXOV_MODE_Base);
+			icon_status->SetObjDrawTransform(400, 0, 132 * 1000, 0, 400, -1000, HUD_Layer_AmmoAmount);
+		}
+		else
+		{
+			CustomMessage(Format("@<c %s>%d/%d</c>", color, ammocount, ammoload),
+				icon_status, GetOwner(),
+				130 + GetNumberCount(ammoload) * 6, 31
+			);
+			icon_status->SetGraphics(nil, icon_status->GetID(), HUD_Layer_AmmoAmount, GFXOV_MODE_Base);
+		}
+		
+		// ammo bar
 		if (!SetGraphics(Format("Row%i", ammoid), GetID(), HUD_Layer_AmmoBase, GFXOV_MODE_Base))
 		{
 			SetGraphics("Row", GetID(), HUD_Layer_AmmoBase, GFXOV_MODE_Base);
 		}
-		icon_status->SetGraphics(nil, ammoid, 1, GFXOV_MODE_IngamePicture);
+		icon_status->SetGraphics(nil, ammoid, HUD_Layer_AmmoBase, GFXOV_MODE_IngamePicture);
 	}
 	
 	UpdateReloadProgress();
@@ -486,4 +509,3 @@ local ActMap =
 		Hgt = 10
 	}
 };
-
