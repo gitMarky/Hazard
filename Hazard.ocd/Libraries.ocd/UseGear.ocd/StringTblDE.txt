@@ -1,3 +1,5 @@
 CtxUnbuckleDesc=Ausrüstung ablegen
 CtxUnbuckleItem=%s ablegen
 CtxUseEquipmentDesc=Ausrüstung benutzen
+
+GUI_Manage_Equipment=Ausrüstung verwalten

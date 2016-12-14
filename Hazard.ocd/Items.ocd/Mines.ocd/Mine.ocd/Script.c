@@ -157,7 +157,7 @@ local IntMinePreview = new Effect
 	},
 };
 
-func ActivateMine(object user) //, int x, int y)
+func ActivateMine(object user)
 {	
 	SetOwner(user->GetOwner());
 

@@ -4,10 +4,10 @@ local shooter;
 local last_explosion;
 local laser;
 
-func ActivateMine(object user, int x, int y)
+func ActivateMine(object user)
 {
 	shooter = user;
-	_inherited(user, x, y);
+	_inherited(user);
 }
 
 func OnActive()

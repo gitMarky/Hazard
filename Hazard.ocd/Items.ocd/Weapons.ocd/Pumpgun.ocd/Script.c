@@ -178,11 +178,3 @@ public func OnReload()
 {
 	Sound("Weapon::Pumpgun::PumpgunLoad");
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// properties
-
-local Name = "$Name$";
-local Description = "$Description$";
-local Collectible = 1;

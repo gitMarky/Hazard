@@ -3,7 +3,7 @@ static const MAP_SCREEN_ZoomFactor = 10;
 static MAP_SCREEN_ScreenWidth, MAP_SCREEN_ScreenHeight;
 static MAP_SCREEN_MasterScreen;
 
-local map_x, map_y, map_dot;
+local map_x, map_y;
 
 func Initialize()
 {
@@ -125,7 +125,7 @@ func DrawPixel(int x, int y, int color)
 func ShowCrew()
 {
 	var lifetime = 1;
-	for (map_dot in FindObjects(Find_OCF(OCF_CrewMember))) 
+	for (var map_dot in FindObjects(Find_OCF(OCF_CrewMember))) 
 	{
 		if (map_dot)
 		{

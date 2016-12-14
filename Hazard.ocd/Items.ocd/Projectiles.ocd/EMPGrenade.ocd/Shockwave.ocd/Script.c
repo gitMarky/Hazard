@@ -68,8 +68,6 @@ func EmpScan()
 		if (ObjectDistance(machine) < emp_range) // does this make sense? we are searchgin in emp_range / 2 only, so the distance should be correct anyway...
 			machine->~EMPShock();
 	}
-
-	RemoveObject();
 }
 
 local ActMap = {
