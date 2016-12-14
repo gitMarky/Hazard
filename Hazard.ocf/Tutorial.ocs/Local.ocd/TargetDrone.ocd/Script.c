@@ -53,8 +53,8 @@ func JobDone()
 	if (drop)
 	{
 		CreateObject(drop);
-		Detonate();
 		drop = nil;
+		Detonate();
 	}
 	else
 	{
