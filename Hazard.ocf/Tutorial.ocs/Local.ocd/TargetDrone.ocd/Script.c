@@ -9,8 +9,11 @@ func Hit()
 
 func Detonate()
 {
-	if (exploded || GetEffect("*FadeOut*", this)) return;
+	if (GetEffect("*FadeOut*", this)) exploded = true;
+	if (exploded) return;
 	exploded = true;
+
+	Sound("Fire::Blast3");
 
 	var target;
 	if (target = FindObject(Find_ID(Target), Find_ActionTarget(this)))
@@ -50,8 +53,8 @@ func JobDone()
 	if (drop)
 	{
 		CreateObject(drop);
-		Explode(20);
-		Sound("Blast3");
+		Detonate();
+		drop = nil;
 	}
 	else
 	{

@@ -512,10 +512,10 @@ func CreateDrone(int x, int y)
 {
 	var new_drone = CreateObject(Target_Drone, x, y, NO_OWNER);
 	new_drone->FadeIn();
-	return drone;
+	return new_drone;
 }
 
-func GetInfiniteAmmoSource(id type)
+func GetInfiniteAmmoSource(type)
 {
 	return AMMO_Source_Infinite;
 }
