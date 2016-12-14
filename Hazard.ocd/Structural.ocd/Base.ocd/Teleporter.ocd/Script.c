@@ -210,7 +210,7 @@ func SearchTargets(object clonk)
 	if (!clonk) return;
 	// TODO: Replace this with GUI menu
 	// create the menu
-	CreateMenu(HSGN, clonk, this);
+	CreateMenu(HSGN, clonk);
 	
 	var teleporters = FindObjects
 	(

@@ -13,8 +13,6 @@ func GetTarget(){	return lib_turret.target;}
 func GetWeaponX(){ return GetX();}
 func GetWeaponY(){ return GetY();}
 
-// stuff
-local lib_turret;
 
 func Initialize()
 {
