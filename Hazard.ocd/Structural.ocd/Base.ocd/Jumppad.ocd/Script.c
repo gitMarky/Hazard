@@ -17,7 +17,7 @@ func Set(int strength, int angle_top, int angle_base)
 
 func SaveScenarioObject(proplist props)
 {
-	if (!_inherited(...))
+	if (!_inherited(props, ...))
 		return false;
 	
 	if (GetR())

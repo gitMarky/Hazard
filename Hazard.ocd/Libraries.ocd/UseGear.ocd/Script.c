@@ -5,18 +5,18 @@
    Objekte die die volle Funktionalität benutzen wollen müssen folgende Dinge
    sicherstellen... Bis auf das erste sind alle optional. Falls definiert:
    
-   * In "Construction" _inherited() aufrufen 
+   * In "Construction" _inherited(...) aufrufen 
    
-   * In "OnDmg" _inherited() aufrufen und den Rückgabewert zum eigenen
+   * In "OnDmg" _inherited(...) aufrufen und den Rückgabewert zum eigenen
      Rückgabewert hinzuaddieren
      [falls die Ausrüstung genommenen Schaden modifizieren können soll
       z.B. die Rüstung]
      
-   * In "OnHit" _inherited() aufrufen
+   * In "OnHit" _inherited(...) aufrufen
      [falls Ausrüstung Effekte nach Schaden machen können soll
       (z.B. Aufblinken des Schildgenerators)]
 
-   * In "Death" _inherited() aufrufen
+   * In "Death" _inherited(...) aufrufen
      [falls der Clonk bei Tod die Ausrüstung fallen lassen soll]
 
 */

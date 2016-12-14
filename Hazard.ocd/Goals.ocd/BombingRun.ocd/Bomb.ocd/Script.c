@@ -163,7 +163,7 @@ func Hit(int xdir, ydir)
 		SetYDir(-(ydir / 20));
 	DoThrustEffect();
 	DoHitEffect();
-	return _inherited(...);
+	return _inherited(xdir, ydir, ...);
 }
 
 

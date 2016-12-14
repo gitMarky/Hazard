@@ -26,7 +26,7 @@ func Initialize()
 
 func InitializePlayer(int iPlayer)
 {
-	_inherited(...);
+	_inherited(iPlayer, ...);
 }
 
 /**
