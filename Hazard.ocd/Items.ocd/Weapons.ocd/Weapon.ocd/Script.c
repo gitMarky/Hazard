@@ -16,7 +16,7 @@ func Hit()
 	Sound("Hits::GeneralHit?");
 }
 
-public func GetAmmoSource(id ammo) // takes ammo from whom?
+public func GetAmmoSource(ammo) // takes ammo from whom?
 {
 	return AMMO_Source_Local;
 }
