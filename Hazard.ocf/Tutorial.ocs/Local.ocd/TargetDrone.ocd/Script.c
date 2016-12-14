@@ -1,9 +1,16 @@
 local drop, move, move_precision;
 local xpos, ypos, x, y, xdir, ydir, xrange, yrange;
+local exploded;
 
 func Hit()
 {
-	if (GetEffect("*FadeOut*", this)) return;
+	Detonate();
+}
+
+func Detonate()
+{
+	if (exploded || GetEffect("*FadeOut*", this)) return;
+	exploded = true;
 
 	var target;
 	if (target = FindObject(Find_ID(Target), Find_ActionTarget(this)))
@@ -14,7 +21,7 @@ func Hit()
 
 func Damage()
 {
-	Hit();
+	Detonate();
 }
 
 func IsMachine()
