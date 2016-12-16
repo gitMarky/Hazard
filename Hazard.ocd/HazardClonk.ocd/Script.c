@@ -3,10 +3,23 @@
 #include Library_Agility
 #include Library_UseGear
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Properties
+
+local MaxWeaponsCount = 3; // this many weapons can be collected
+local MaxEquipmentCount = 2; // this many equipment items can be collected
+
 public func GetAmmoSource(id ammo)
 {
 	return AMMO_Source_Local;
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Callbacks
+
 
 func Initialize()
 {
@@ -14,6 +27,60 @@ func Initialize()
     var hud = this->GetHazardHUD();
     if (hud) ScheduleCall(this, this.UpdateHazardHUD, 1);
 }
+
+
+func RejectCollect(id type, object item)
+{
+	var rejected = _inherited(type, item, ...);
+	if (rejected) return rejected;
+	
+	if (item)
+	{
+		// always allow at least 1 ammo packet
+		if (item->~IsAmmoPacket() && CustomContentsCount("IsAmmoPacket") == 0)
+		{
+			return false;
+		}
+		
+		// certain items can be collected only once per type
+		if (ContentsCount(type) > 0
+		&& (item->~IsHazardWeapon()
+		 || item->~IsHazardEquipment()))
+		{
+			return true; // do not collect
+		}
+
+		// allow not more than 3 weapons in total
+		if (item->~IsHazardWeapon()
+		&& (CustomContentsCount("IsHazardWeapon") >= this.MaxWeaponsCount))
+		{
+			return true; // do not collect
+		}
+	
+		// allow 2 equipment items
+		if (item->~IsHazardEquipment()
+		&& (CustomContentsCount("IsHazardEquipment") >= this.MaxEquipmentCount))
+		{
+			return true; // do not collect
+		}
+	}
+	
+	// allow collection
+	return false;
+}
+
+
+func CustomContentsCount(string qualifier)
+{
+	var contents = FindObjects(Find_Container(this), Find_Func(qualifier, this));
+	return GetLength(contents);
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Appearance
+
 
 func SetSkin(int new_skin)
 {
@@ -51,6 +118,12 @@ func SetHazardArmorSkin()
 	SetMeshMaterial("HazardClonkArmorTunic", 1);
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// HUD
+
+
 public func UpdateHazardHUD()
 {
     var weapon = this->GetHandItem(0);
@@ -62,6 +135,11 @@ public func UpdateHazardHUD()
     	ScheduleCall(this, this.UpdateHazardHUD, 1);
     }
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Actions
 
 local ActMap = {
 

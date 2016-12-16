@@ -1,3 +1,5 @@
+#include Library_HazardEquipment
+
 local launched;
 local last_user;
 

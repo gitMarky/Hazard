@@ -1,4 +1,5 @@
 #include Library_HealingItem
+#include Library_HazardEquipment
 
 func HealRate(){	return 3;}
 func HealAmount(){	return 100;}

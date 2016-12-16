@@ -27,6 +27,25 @@ func Initialize()
 	_inherited(...);
 }
 
+
+func RejectCollect(id type, object item)
+{
+	var rejected = _inherited(type, item, ...);
+	if (rejected) return rejected;
+	
+	// prevent collection of equipped gear
+	for (var gear in lib_gear)
+	{
+		if (gear && gear->GetID() == type)
+		{
+			return true;
+		}
+	}
+	
+	// allow collection
+	return false;
+}
+
 public func HasInteractionMenu()
 {
 	var has_interaction;
