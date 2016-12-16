@@ -1,2 +1,2 @@
-Name=Clustergranate
-Description=Die Clustergranate richtet einen beachtlichen Fl�chenschaden an.
+﻿Name=Clustergranate
+Description=Die Clustergranate richtet einen beachtlichen Flächenschaden an.

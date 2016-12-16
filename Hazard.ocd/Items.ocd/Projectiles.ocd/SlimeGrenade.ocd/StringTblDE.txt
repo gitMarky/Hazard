@@ -1,3 +1,3 @@
-Name=Schleimgranate
-Description=Entfesselt beim Aufprall ein schleimiges Vergn�gen.
+﻿Name=Schleimgranate
+Description=Entfesselt beim Aufprall ein schleimiges Vergnügen.
 

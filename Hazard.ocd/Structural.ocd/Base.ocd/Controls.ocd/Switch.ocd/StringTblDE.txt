@@ -1,4 +1,4 @@
-Name=Schalter
-Description=Dr�cken zum Schalten.
+﻿Name=Schalter
+Description=Drücken zum Schalten.
 OperateSwitch=Schalter bedienen.
 

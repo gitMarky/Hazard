@@ -1,7 +1,7 @@
-Name=Ausrüstung
-Description=Dieses Objekt stellt die Grundfunktionalität für Ausrüstung zur Verfügung.
+ï»¿Name=AusrÃ¼stung
+Description=Dieses Objekt stellt die GrundfunktionalitÃ¤t fÃ¼r AusrÃ¼stung zur VerfÃ¼gung.
 
 CtrlActivateDesc=Anlegen
-AlreadyWears=%s trägt schon|so eine Ausrüstung!
+AlreadyWears=%s trÃ¤gt schon|so eine AusrÃ¼stung!
 Buckled=%s angelegt
 Unbuckled=%s abgelegt

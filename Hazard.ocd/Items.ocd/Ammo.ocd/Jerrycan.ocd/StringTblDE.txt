@@ -1,2 +1,2 @@
-Name=Benzinkanister
-Description=Gef�llt 100 Einheiten Benzin.
+﻿Name=Benzinkanister
+Description=Gefüllt mit 100 Einheiten Benzin.

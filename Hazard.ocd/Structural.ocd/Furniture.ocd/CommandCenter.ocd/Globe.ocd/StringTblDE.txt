@@ -1,5 +1,5 @@
-Name=Projektor
-Description=Für taktische Planungen für bevorstehende Einsätze.
+ï»¿Name=Projektor
+Description=FÃ¼r taktische Planungen fÃ¼r bevorstehende EinsÃ¤tze.
 
 TurnOn=Projektor einschalten.
 TurnOff=Projektor ausschalten.

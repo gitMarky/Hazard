@@ -1,5 +1,5 @@
-Name=PIN Eingabe
-Description=Nichts f�r vergessliche Clonks.
+﻿Name=PIN Eingabe
+Description=Nichts für vergessliche Clonks.
 
 Input=Eingegeben
 InputCode=Code eingeben

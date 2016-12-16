@@ -1,6 +1,6 @@
-#include Gear_Basic
+﻿#include Gear_Basic
 
-//wieviel Zeit bis zum n�chsten Boost
+//wieviel Zeit bis zum nächsten Boost
 local timeleft;
 local jetpack_user;
 local jetpack_graphics;

@@ -1,5 +1,5 @@
-Name=Teleporter
-Description=Der Teleporter. Gut um sich einen langen Fuﬂweg zu ersparen.
+ÔªøName=Teleporter
+Description=Der Teleporter. Gut um sich einen langen Fu√üweg zu ersparen.
 
 NoTarget=Kein Zielteleporter angegeben
 TargetInactive=Zielteleporter nicht aktiv
@@ -8,4 +8,4 @@ BeamMeUp=Beamen
 TurnOn=Teleporter aktivieren
 TurnOff=Teleporter deaktivieren
 SearchTarget=Ziel eingeben
-ChooseTarget=%s als Ziel w‰hlen
+ChooseTarget=%s als Ziel w√§hlen

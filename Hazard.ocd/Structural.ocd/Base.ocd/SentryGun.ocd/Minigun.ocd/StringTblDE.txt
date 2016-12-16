@@ -1,3 +1,3 @@
-Name=MG-Aufsatz
-Description=Ein MG-Aufsatz für das stationäre Geschütz.
+ï»¿Name=MG-Aufsatz
+Description=Ein MG-Aufsatz fÃ¼r das stationÃ¤re GeschÃ¼tz.
 

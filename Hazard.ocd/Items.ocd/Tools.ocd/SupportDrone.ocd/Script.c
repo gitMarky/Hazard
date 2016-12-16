@@ -1,4 +1,4 @@
-/* ----------------------------- Support Drone ----------------------------- */
+ï»¿/* ----------------------------- Support Drone ----------------------------- */
 // Newton: scripted for CR Hazard 2.1
 
 #include Library_Turret
@@ -463,14 +463,14 @@ func GetFlightHeight()
 //	// Nicht, wenn kaputt
 //	if (EMPShocked())
 //		return false;
-//	// Drohne ist zulässig. Nur einsetzen, wenn der Clonk mehr als 1 Waffe hat
+//	// Drohne ist zulÃ¤ssig. Nur einsetzen, wenn der Clonk mehr als 1 Waffe hat
 //	if (clonk->CustomContentsCount("IsWeapon") < 2)
 //		return true;
-//	// Waffen für Drohne ok? (FM_Aim und so)
+//	// Waffen fÃ¼r Drohne ok? (FM_Aim und so)
 //	var wpn = clonk->GetRandomDroneWeapon();
 //	if (!wpn)
 //		return true;
-//	// Waffe nehmen (verzögert)
+//	// Waffe nehmen (verzÃ¶gert)
 //	ScheduleCall(this, "ArmToClonk", 1, 0, clonk, wpn);
 //	return true;
 //}
