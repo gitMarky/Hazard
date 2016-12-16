@@ -1,7 +1,7 @@
 ﻿Drones=Drohnen
 
 Intro1=Stillgestanden Soldat! Willkommen im Ausbildungscenter.
-Intro2=Mein name ist Grodon Freimann, ich bin der leitende Offizier hier, und dein Ausbilder heute. Jetzt darfst du auch mal mit dem Spielzeug der großen Jungs spielen.
+Intro2=Mein Name ist Grodon Freimann, ich bin der leitende Offizier hier, und dein Ausbilder heute. Jetzt darfst du auch mal mit dem Spielzeug der großen Jungs spielen.
 Intro3=Als erstes brauchst du eine Waffe. Geh zum Doc, er wird dir eine geben. Spring einfach auf die Leiter und kletter hinauf. Danach fährst du mit dem Lift nach oben, und nimmst den rechten Ausgang.
 
 Doc1=Tag, ich bin der Doc.
