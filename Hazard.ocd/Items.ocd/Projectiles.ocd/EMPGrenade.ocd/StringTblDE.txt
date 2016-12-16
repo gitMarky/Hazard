@@ -1,3 +1,3 @@
-Name=EMP Granate
-Description=Beim Aufprall wird ein elektromagnetischer Puls erzeugt, der sämtliche elektrischen Anlagen im Umkreis stört und ausfallen lässt.
+ï»¿Name=EMP Granate
+Description=Beim Aufprall wird ein elektromagnetischer Puls erzeugt, der sÃ¤mtliche elektrischen Anlagen im Umkreis stÃ¶rt und ausfallen lÃ¤sst.
 

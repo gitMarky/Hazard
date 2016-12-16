@@ -1,5 +1,5 @@
-CtxUnbuckleDesc=Ausrüstung ablegen
+ï»¿CtxUnbuckleDesc=AusrÃ¼stung ablegen
 CtxUnbuckleItem=%s ablegen
-CtxUseEquipmentDesc=Ausrüstung benutzen
+CtxUseEquipmentDesc=AusrÃ¼stung benutzen
 
-GUI_Manage_Equipment=Ausrüstung verwalten
+GUI_Manage_Equipment=AusrÃ¼stung verwalten

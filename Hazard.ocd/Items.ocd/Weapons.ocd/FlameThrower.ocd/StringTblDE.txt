@@ -1,11 +1,11 @@
-Name=Flammenwerfer
-Description=Gefürchtet im Nahkampf, röstet der Flammenwerfer jeden Feind der ihm zu nahe kommt gut durch.
+ï»¿Name=Flammenwerfer
+Description=GefÃ¼rchtet im Nahkampf, rÃ¼stet der Flammenwerfer jeden Feind der ihm zu nahe kommt gut durch.
 
 FlameThrower=Flammenwerfer
 SlimeThrower=Chemische Keule
 
 UpgradeToSlime=Bringt eine Chemische Keule an
-UpgradeToWeaponPart=Erhöht die Reichweite
+UpgradeToWeaponPart=ErhÃ¶ht die Reichweite
 
 UpgradedToSlime=Chemische Keule angebracht!
-UpgradedToWeaponPart=Reichweite erhöht!
+UpgradedToWeaponPart=Reichweite erhÃ¶ht!

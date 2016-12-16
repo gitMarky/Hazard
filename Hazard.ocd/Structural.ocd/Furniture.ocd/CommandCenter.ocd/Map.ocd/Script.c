@@ -1,5 +1,5 @@
-
-local next_phase; // Nächste Phase
+ï»¿
+local next_phase;
 
 func Initialize()
 {

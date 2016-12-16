@@ -1,4 +1,4 @@
-Name=Luftschlag
-Description=Lässt einen Hagel tödlicher Bomben auf den Gegner fallen.
+ï»¿Name=Luftschlag
+Description=LÃ¤sst einen Hagel tÃ¶dlicher Bomben auf den Gegner fallen.
 
 RecievingBlocked=Hindernis blockiert|Empfang!

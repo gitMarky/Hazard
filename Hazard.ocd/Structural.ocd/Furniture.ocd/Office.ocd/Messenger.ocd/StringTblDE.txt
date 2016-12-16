@@ -1,3 +1,3 @@
-Name=Nachrichtenroboter
-Description=Kleiner Nachrichten�bermittler.
+﻿Name=Nachrichtenroboter
+Description=Kleiner Nachrichtenübermittler.
 

@@ -1,9 +1,9 @@
-
+﻿
 static const NEON_LIGHT_Range = 150;
 static const NEON_LIGHT_BeginFade = 3000;
 static const NEON_LIGHT_Lifetime = 4000;
 
-local on; // Ob das Licht gez�ndet wurde
+local on; // Ob das Licht gezündet wurde
 local color; // Die Farbwerte.
 
 func Initialize()

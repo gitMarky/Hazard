@@ -1,32 +1,26 @@
-/* Context Use equipment functionality */
-/* Ausrüstungssteuerung */
+ï»¿/* Context Use equipment functionality */
 
 /*
-   Objekte die die volle Funktionalität benutzen wollen müssen folgende Dinge
-   sicherstellen... Bis auf das erste sind alle optional. Falls definiert:
+   Objects that want to access the full functionality have to ensure the following
+   conditions... the first condition is required, the others are optional:
    
-   * In "Construction" _inherited(...) aufrufen 
+   * Call "_inherited(...)" in "Construction" if the function is overloaded
    
-   * In "OnDmg" _inherited(...) aufrufen und den Rückgabewert zum eigenen
-     Rückgabewert hinzuaddieren
-     [falls die Ausrüstung genommenen Schaden modifizieren können soll
-      z.B. die Rüstung]
-     
-   * In "OnHit" _inherited(...) aufrufen
-     [falls Ausrüstung Effekte nach Schaden machen können soll
-      (z.B. Aufblinken des Schildgenerators)]
+   * Call "_inherited(...)" in "OnDmg" as to handle the damage correctly
 
-   * In "Death" _inherited(...) aufrufen
-     [falls der Clonk bei Tod die Ausrüstung fallen lassen soll]
+   * Call "_inherited(...)" in "OnHit" for additional effects
+     (for example the shield generator flashes here)
+     
+   * Call "_inherited(...)" in "Death"
+     (for example if the Clonk should drop equipment on death)
 
 */
 
 
 local lib_gear;
 
-/* An Objekt ranhängen... */
 
-// Array erstellen
+// Create array
 func Initialize()
 {
 	lib_gear = [];
@@ -49,7 +43,7 @@ public func HasInteractionMenu()
 }
 
 
-// Ausrüstung fallenlassen
+// Drop the equipment
 func Death()
 {
 	if (HasGear())
@@ -57,7 +51,8 @@ func Death()
 	_inherited(...);
 }
 
-// Ermöglicht die Modifikation des Schadens für das Objekt durch die Ausrüstung
+// Allows modification of the damage
+// TODO: This has to be synchronized with the system in Shooter Library
 func OnDmg(int iDamage, int iType)
 {
 	var before = _inherited(iDamage, iType);
@@ -75,26 +70,26 @@ func OnDmg(int iDamage, int iType)
 	return add;
 }
 
-// Effekte o.Ä. anzeigen
+// Show effects on hit?
 func OnHit(int iDmg, int iType, object pFrom)
 {
 	_inherited(iDmg, iType, pFrom);
 	
-	// Ausrüstung will vielleicht mitreden...
+	// forward the call...
 	for (var gear in lib_gear) 
 		if (gear)
 			gear->~OnClonkHit(iDmg, iType, this);
 }
 
-/* Kontext menü */
+/* Context menu */
 
-// Ausrüstung benutzen
+// Using the equipment
 func ContextUseEquipment(object caller)
 {
 // TODO	[$CtxUseEquipmentDesc$|Image=HARM|Condition=HasUsableGear]
 	if (!HasUsableGear()) return;
 	CreateMenu(HARM, this, nil, nil, nil, C4MN_Style_Context);
-	// nutzbare Ausrüstung anzeigen
+	// display all usable items
 	for (var i = 0; i < GetLength(lib_gear); ++i)
 	{
 		var gear = lib_gear[i];
@@ -105,13 +100,13 @@ func ContextUseEquipment(object caller)
 	return true;
 }
 
-// Ausrüstung ablegen
+// Drop equipment
 func ContextUnbuckle(object caller)
 {
 // TODO	[$CtxUnbuckleDesc$|Image=HARM|Condition=FunnyBug]
 	if (!HasGear()) return;
 	CreateMenu(HARM, this, nil, nil, nil, C4MN_Style_Context);
-	// alle Ausrüstung anzeigen
+	// display all droppable items
 	for (var i; i < GetLength(lib_gear); ++i)
 	{
 		var gear = lib_gear[i];
@@ -122,13 +117,12 @@ func ContextUnbuckle(object caller)
 }
 
 
-/* Statusfunktionen */
+/* Status functions */
 
-// Objekt hat eine Ausrüstung angelegt die man benutzen kann
+// Object has gear that can be used
 func HasUsableGear()
 {
-	// gibt true zurück wenn mindestens eine Ausrüstung
-	// vorhanden ist, die per Kontextmenü nutzbar ist
+	// returns true if there is at least one usable piece of equipment
 	var gear;
 	for (gear in lib_gear) 
 	{
@@ -138,12 +132,12 @@ func HasUsableGear()
 	}
 }
 
-// Objekt hat eine Ausrüstung des Typs iGearType angelegt
-//   alternativ kann man per idGear auch nach einer bestimmten
-//   Ausrüstung suchen. Ohne Parameter = irgendeine ausrüstung angelegt
+// Does the object wear a certain piece of equipment?
+// Alternatively you can search for certain equipment by passing gear_type.
+// Passing nil searches for any gear
 func HasGear(gear_type)
 {
-	// nach bestimmter ID suchen
+	// look for a certain ID
 	var gear;
 	if (GetType(gear_type) == C4V_Def)
 	{
@@ -155,7 +149,7 @@ func HasGear(gear_type)
 		return false;
 	}
 	
-	// nach bestimmtem Typ suchen
+	// look for a certain type
 	if (GetType(gear_type) == C4V_Int)
 	{
 		if (lib_gear[gear_type])
@@ -163,7 +157,7 @@ func HasGear(gear_type)
 		return false;
 	}
 
-	// keine Parameter: allgemein ob Ausrüstung da ist
+	// no parameter: is anything equipped?
 	if (gear_type == nil)
 	{
 		for (gear in lib_gear) 
@@ -182,9 +176,8 @@ func CanUse(id def)
 
 
 
-/* Benutzen */
+/* Use */
 
-// Ausrüstung benutzen
 func UseEquipment(id bla, int i)
 {
 	if (lib_gear[i])
@@ -192,63 +185,59 @@ func UseEquipment(id bla, int i)
 }
 
 
-// Ausrüstung ablegen
 func TakeOffGear(object pGear, int iGearType)
 {
 	var geartype = iGearType;
 	
-	// man kann auch statt iGearType das konkrete Objekt angeben
+	// since you can pass a certain object
 	if (!geartype)
 	{
-		
-		// ohne Parameter = alles runter
+		// no paramter => take off everything
 		if (!pGear)
 		{
 			var i;
 			for (var i = 0; i < GetLength(lib_gear); ++i)
 				if (lib_gear[i])
 					TakeOffGear(nil, i);
-			return 1;
+			return true;
 		}
 		
 		geartype = pGear->GetGearType();
-		// das Objekt ist nicht angelegt
+		// object is not equipped?
 		if (lib_gear[geartype] != pGear)
-			return 0;
+			return false;
 	}
 	else
 	{
-		// angegebener geartype garnicht angelegt 
+		// object is not equipped?
 		if (!HasGear(geartype))
-			return 0;
+			return false;
 	}
-	
-	// er ist angelegt: ok, ablegen
+
+	// take off the gear
 	lib_gear[geartype]->GearUnbuckle(this);
 	
-	// aufsammeln wenn möglich
+	// collect it, if possible
 	if (lib_gear[geartype])
 		Collect(lib_gear[geartype]);
 	
-	// und löschen
+	// delete from the array
 	lib_gear[geartype] = 0;
+	return true;
 }
 
 
-// Ausrüstung anlegen
 func EquipGear(object pGear)
 {
-	// überhaupt benutzbar
+	// Is it even usable?
 	if (!pGear) return false;
 	if (!CanUse(pGear)) return false;
-	// schon eine Ausrüstung dieses Typs am Clonk
+	// Already wearing such a thing?
 	var geartype = pGear->GetGearType();
 	if (HasGear(geartype)) return false;
 
-	// ok:
-	// speichern
+	// save it
 	lib_gear[geartype] = pGear;
-	// Auslösen
 	return true;
 }
 
@@ -292,7 +281,7 @@ public func GetGUIEquipmentMenuEntries(object crew)
 		image = {Right = "2em"},
 		text = {Left = "2em"}
 	};
-	
+
 		
 	// Add info message for every defender
 	for (var equipped_gear in lib_gear)
