@@ -522,6 +522,7 @@ public func Dlg_CommanderEnd_1(object clonk)
 public func Dlg_CommanderEnd_Closed(object clonk)
 {
 	clonk->Sound(SOUND_ACK);
+	PushBack(scenario_progress, TUTORIAL_FINISHED);
 	return true;
 }
 

@@ -466,11 +466,11 @@ func Tutorial_34()
 	}
 	else
 	{
-		return ScheduleNext(10);
+		return ScheduleSame(20);
 	}
 }
 
-func Tutorial_37()
+func Tutorial_35()
 {
 	return Stop();
 }
