@@ -157,6 +157,24 @@ Backflip = {
 
 };
 
+func HasActionProcedure(bool force_landscape_letgo)
+{
+	var has_action_procedure = _inherited(force_landscape_letgo, ...);
+	
+	if (has_action_procedure)
+	{
+		return true;
+	}
+	else
+	{
+		// Check if the clonk is currently in an action where he could use his hands
+		// if force_landscape_letgo is true, also allow during scale/hangle assuming the clonk will let go
+		var action = GetAction();
+		return (action == "JetpackFlight");
+	}
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // GUI
