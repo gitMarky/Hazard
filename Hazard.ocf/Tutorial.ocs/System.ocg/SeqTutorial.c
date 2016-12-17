@@ -365,6 +365,9 @@ func Tutorial_27()
 
 	var spawn = CreateSpawnPoint(1085, 450);
 	spawn->SpawnItem(Weapon_Motegun)->StartSpawning();
+
+	CreateSpawnPoint(1065, 450)->SpawnItem(ENAP)->StartSpawning();
+
 	ZoomToObject(GetCrew(), spawn);
 
 	return ScheduleNext(10);
@@ -417,13 +420,6 @@ func Tutorial_30()
 	var mg = GetCrew()->CreateContents(Weapon_Minigun);
 	mg.GetAmmoSource = this.GetInfiniteAmmoSource;
 
-	//TODO: this makes the minigun load 500 bullets, instead of the usual amount
-	// we do not need such an effect, it is sufficient to set the ammo to unlimited :p
-	//AddEffect("MinigunMegarammoBonus", GetCursor(), 190, 0, GetCursor());
-	//TODO: AddSpawnEffect(mg);
-	//TODO: vieeeel ammo.
-	//DoAmmo(STAM, 500, mg);
-	//DoAmmo(STAM, 300, GetCrew());
 	return ScheduleNext(10);
 }
 
