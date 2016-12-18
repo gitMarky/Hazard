@@ -1,9 +1,27 @@
+static const EMP_SHOCK_FOREVER = -1;
 
+/**
+ Adds an EMP shock effect to the target.
+ 
+ @par time the time, in frames, until the effect should end.
+           You can pass -1, which means that the effect will last forever,
+           or until you call EMPShockEffect with the parameter "1" again.
+ */
 global func EMPShockEffect(int time)
 {
 	AssertObjectContext("EMPShockEffect()");
 
-	AddEffect("EMPDamaged", this, 190, 5, nil, nil, time);
+	var effect = EMPShocked();
+	
+	if (effect)
+	{
+		effect.Time = 0;    // reset the counter
+		effect.time = time; // reset the time
+	}
+	else
+	{
+		AddEffect("EMPDamaged", this, 190, 5, nil, nil, time);
+	}
 }
 
 global func EMPShocked()
@@ -29,7 +47,7 @@ global func FxEMPDamagedStart(object target, int fx, int temp, int time)
 
 global func FxEMPDamagedTimer(object target, int fx, int time)
 {
-	if (fx.time < time) return FX_Execute_Kill;
+	if (fx.time != EMP_SHOCK_FOREVER && fx.time < time) return FX_Execute_Kill;
 
 	// effects
 	if (!(target->~Contained()))
