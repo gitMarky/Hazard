@@ -51,9 +51,11 @@ public func GetCarryBone() { return "Grip"; }
 
 public func RejectUse(object clonk)
 {
-	return !clonk->HasHandAction(false, // needs only one hand 
-								 false, // ???
-								 true); // let go of the landscape if you do use
+	var result = _inherited(clonk, ...);
+
+	return result || !clonk->HasHandAction(false, // needs only one hand 
+								           false, // ???
+								           true); // let go of the landscape if you do use
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
