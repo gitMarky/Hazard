@@ -31,7 +31,7 @@ global func EMPShocked()
 	return GetEffect("EMPDamaged", this);
 }
 
-global func FxEMPDamagedStart(object target, int fx, int temp, int time)
+global func FxEMPDamagedStart(object target, proplist fx, int temp, int time)
 {
 	if (temp) return;
 
@@ -45,7 +45,7 @@ global func FxEMPDamagedStart(object target, int fx, int temp, int time)
 	target->SetClrModulation(RGBa(r, g, b, a));
 }
 
-global func FxEMPDamagedTimer(object target, int fx, int time)
+global func FxEMPDamagedTimer(object target, proplist fx, int time)
 {
 	if (fx.time != EMP_SHOCK_FOREVER && fx.time < time) return FX_Execute_Kill;
 
@@ -74,18 +74,18 @@ global func FxEMPDamagedTimer(object target, int fx, int time)
 	}
 }
 
-global func FxEMPDamagedAdd(object target, int fx, string new_effect_name, int new_effect_timer, time)
+global func FxEMPDamagedAdd(object target, proplist fx, string new_effect_name, int new_effect_timer, time)
 {
 	fx.time = Max(fx.time, time);
 }
 
-global func FxEMPDamagedEffect(string new_effect_name, object target, int fx, int new_effect_number)
+global func FxEMPDamagedEffect(string new_effect_name, object target, proplist fx, int new_effect_number)
 {
 	if (new_effect_name == "EMPDamaged")
 		return -2;
 }
 
-global func FxEMPDamagedStop(object target, int fx)
+global func FxEMPDamagedStop(object target, proplist fx)
 {
 	target->SetClrModulation(fx.color);
 	target->~EMPShockEnd();
