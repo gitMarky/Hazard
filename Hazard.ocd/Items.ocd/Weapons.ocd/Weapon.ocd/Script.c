@@ -49,14 +49,13 @@ public func GetCarryMode(object clonk, bool idle, bool nohand)
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
 public func GetCarryBone() { return "Grip"; }
 
-public func RejectUse(object clonk)
+func IsUserReadyToUse(object user)
 {
-	var result = _inherited(clonk, ...);
-
-	return result || !clonk->HasHandAction(false, // needs only one hand 
-								           false, // ???
-								           true); // let go of the landscape if you do use
+	return user->HasHandAction(false, // needs only one hand 
+					           false, // ???
+							   true); // do not let go of the landscape if you do use
 }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
