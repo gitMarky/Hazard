@@ -243,7 +243,7 @@ public func Dlg_CommanderUpgrade_1(object clonk)
 
 public func Dlg_CommanderUpgrade_2(object clonk)
 {
-	MessageBox("$Tutor13$", clonk, dlg_target);
+	MessageBox(Format("$Tutor13$", GetButtonText(CON_Use)), clonk, dlg_target);
 	StopDialogue();
 	return true;
 }
@@ -271,7 +271,7 @@ public func Dlg_CommanderFiremode_1(object clonk)
 
 public func Dlg_CommanderFiremode_2(object clonk)
 {
-	MessageBox("$Tutor15$", clonk, dlg_target);
+	MessageBox(Format("$Tutor15$", GetButtonText(CON_Contents)), clonk, dlg_target);
 	return true;
 }
 
@@ -299,7 +299,7 @@ public func Dlg_CommanderJetpack1_Init(object clonk)
 
 public func Dlg_CommanderJetpack1_1(object clonk)
 {
-	MessageBox("$Tutor17$", clonk, dlg_target);
+	MessageBox(Format("$Tutor17$", GetButtonText(CON_Use)), clonk, dlg_target);
 	StopDialogue();
 	return true;
 }
@@ -317,7 +317,7 @@ public func Dlg_CommanderJetpack2_Init(object clonk)
 
 public func Dlg_CommanderJetpack2_1(object clonk)
 {
-	MessageBox("$Tutor18$", clonk, dlg_target);
+	MessageBox(Format("$Tutor18$", GetButtonText(CON_Up), GetButtonText(CON_Left), GetButtonText(CON_Right)), clonk, dlg_target);
 	StopDialogue();
 	return true;
 }
