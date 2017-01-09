@@ -165,7 +165,7 @@ public func Dlg_CommanderGLauncher_1(object clonk)
 
 public func Dlg_CommanderGLauncher_2(object clonk)
 {
-	MessageBox("$Tutor9$", clonk, dlg_target);
+	MessageBox(Format("$Tutor9$", GetButtonText(CON_Left), GetButtonText(CON_Right)), clonk, dlg_target);
 	StopDialogue();
 	return true;
 }

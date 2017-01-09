@@ -23,7 +23,7 @@ Tutor6=Try hitting a moving target! Show us what you can do.
 Tutor7=Well done, well done. Now it's getting interesting, you get to try out the grenade launcher. Enter the teleporter to the right.
 
 Tutor8=It's lying back there. But to get it, you have to overcome this obstacle. You wont be able to simply jump over it.
-Tutor9=Do you remember your elite training? Right, it's time for the backflip! Go to the edge, walk left, and try to jump backwards (run shortly away from the edge and press backwards und jump).
+Tutor9=Do you remember your elite training? Right, it's time for the flip! Go to the edge, try to jump and double-press %s or %s.
 
 Tutor10=Okay, you got it! There's the drone, eliminate the target.
 

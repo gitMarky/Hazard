@@ -23,7 +23,7 @@ Tutor6=Versuche, die bewegte Drohne mit etwas Vorhalt zu treffen. Zeig uns was d
 Tutor7=Sehr gut. Jetzt wird's interessant. Du darfst nun den Granatenwerfer ausprobieren. Steig dazu in den Teleporter rechts und aktiviere ihn.
 
 Tutor8=Da hinten liegt er. Doch um ihn zu bekommen, musst du zuerst dieses Hindernis überwinden. Es wird dir nicht gelingen einfach rüberzuspringen.
-Tutor9=Erinnerst du dich an das, was du bei deiner Eliteausbildung gelernt hast? Richtig, der Backflip. Stell dich an die Kante, und probiere einen Rückwärtssprung (laufe dazu kurz von der Kante weg und drücke dann nach hinten und Springen).
+Tutor9=Erinnerst du dich an das, was du bei deiner Eliteausbildung gelernt hast? Richtig, du kannst im Sprung eine Vorwärts- oder Rückwärtsrolle ausführen, indem du zweimal schnell %s bzw. %s drückst.
 
 Tutor10=Okay, du hast ihn. Da drüben ist die Drohne, versuch sie zu treffen.
 
