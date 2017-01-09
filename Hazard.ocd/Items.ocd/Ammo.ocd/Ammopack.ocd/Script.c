@@ -19,6 +19,30 @@ public func InitialStackCount() { return AmmoCount(); }
 //
 // add ammo
 
+
+/*
+ Callback from the spawn point.
+ 
+ @par spawn_point This spawn point contains the object.
+ @par into This object tries to collect the object.
+
+ @return true if the object should not be collected.
+ */
+func RejectCollectionFromSpawnPoint(object spawn_point, object into)
+{
+	var transferrable = GetTransferrableAmmo(into);
+	
+	// Collect ammo only if something is transferrable
+	if (transferrable == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return _inherited(spawn_point, into, ...);
+	}
+}
+
 func Entrance(object clonk)
 {
 	var self = this;
@@ -42,10 +66,7 @@ public func TransferAmmoTo(object clonk)
 
 	if (!(clonk->~IsAmmoManager())) return;
 	
-	var available_ammo = GetStackCount();
-	var remaining_ammo = AmmoID()->MaxAmmo() - clonk->~GetAmmo(AmmoID());
-
-	var transferrable = Min(remaining_ammo, available_ammo);
+	var transferrable = GetTransferrableAmmo(clonk);
 
 	// not if he has too much already
 	if (transferrable == 0)
@@ -60,6 +81,18 @@ public func TransferAmmoTo(object clonk)
 		clonk->DoAmmo(AmmoID(), transferrable);
 		// update this object
 		DoStackCount(-transferrable);
+	}
+}
+
+
+func GetTransferrableAmmo(object clonk)
+{
+	if (clonk->~IsAmmoManager())
+	{
+		var available_ammo = GetStackCount();
+		var remaining_ammo = AmmoID()->MaxAmmo() - clonk->~GetAmmo(AmmoID());
+
+		return Min(remaining_ammo, available_ammo);
 	}
 }
 
