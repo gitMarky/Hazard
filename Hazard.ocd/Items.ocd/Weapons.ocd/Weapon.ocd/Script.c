@@ -154,3 +154,28 @@ public func OnProgressReload(object user, int x, int y, proplist firemode, int c
 {
 	_inherited(user, x, y, firemode, current_percent, change_percent, ...);
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Cooldown
+
+public func NeedsRecovery(object user, proplist firemode)
+{
+	return NeedsReload(user, firemode);
+}
+
+public func OnFinishCooldown(object user, proplist firemode)
+{
+	if (NeedsReload(user, firemode))
+	{
+		StartReload(user, nil, nil, true);
+	}
+}
+
+public func OnSkipCooldown(object user, proplist firemode)
+{
+	if (NeedsReload(user, firemode))
+	{
+		StartReload(user, nil, nil, true);
+	}
+}
