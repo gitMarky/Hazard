@@ -1,0 +1,22 @@
+[ControlDefs]
+
+	[ControlDef]
+	Identifier=WeaponFiremode
+	
+	[ControlDef]
+	Identifier=WeaponReload	
+
+[ControlSets]
+
+	[ControlSet]
+	Name=*
+		
+		[Assignment]
+		Key=C
+		Priority=999
+		Control=WeaponFiremode
+		
+		[Assignment]
+		Key=V
+		Priority=999
+		Control=WeaponReload
