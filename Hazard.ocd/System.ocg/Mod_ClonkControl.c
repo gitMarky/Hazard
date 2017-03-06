@@ -9,15 +9,45 @@ public func ObjectControl(int plr, int ctrl, int x, int y, int strength, bool re
 	{
 		return true;
 	}
-	
-	if (ctrl == CON_WeaponFiremode)
-	{
-		Log("Toggle firemode");
-	}
-	else if (ctrl == CON_WeaponReload)
-	{
-		Log("Reload");
+
+	var weapon = GetHandItem(0);
+	if (weapon)
+	{	
+		if (ctrl == CON_WeaponFiremode)
+		{
+			return ObjectControlToggleFiremode(weapon);
+		}
+		else if (ctrl == CON_WeaponReload)
+		{
+			return ObjectControlReloadWeapon(weapon);
+		}
 	}
 
 	return false;
+}
+
+
+private func ObjectControlToggleFiremode(object weapon)
+{
+	if (!weapon->~IsHazardWeapon())
+	{
+		return false;
+	}
+	
+	Log("Toggle mode");
+	
+	weapon->~ToggleFiremode();
+	return true;
+}
+
+private func ObjectControlReloadWeapon(object weapon)
+{
+	if (!weapon->~IsHazardWeapon())
+	{
+		return false;
+	}
+	
+	Log("Reload");
+	
+	return true;
 }

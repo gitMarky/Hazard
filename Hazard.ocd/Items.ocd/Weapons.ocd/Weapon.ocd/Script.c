@@ -1,6 +1,7 @@
 #include Library_Weapon
 #include Library_UpgradeableObject
 #include Plugin_Weapon_FiremodeByInteraction
+#include Plugin_Weapon_FiremodeByToggle
 #include Plugin_Weapon_ReloadFromAmmoSource
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
