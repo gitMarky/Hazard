@@ -107,6 +107,8 @@ public func OnSelectFiremode(proplist firemode)
 	}
 }
 
+public func GetGUIFiremodeActiveColor(){ return GUI_COLOR_TEXT;}
+public func GetGUIFiremodeInactiveColor(){ return "dddddd";}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
