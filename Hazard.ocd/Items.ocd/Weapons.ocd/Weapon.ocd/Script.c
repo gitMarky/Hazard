@@ -99,6 +99,22 @@ local firemode_default =
 };
 
 
+public func ChangeFiremode(firemode)
+{
+	if (GetFiremode())
+	{
+		RemoveAmmo();
+	}
+
+	_inherited(firemode);
+
+	if (Contained())
+	{
+		StartReload(Contained(), nil, nil, true);
+	}	
+}
+
+
 public func OnSelectFiremode(proplist firemode)
 {
 	if (Contained())
@@ -169,10 +185,13 @@ public func OnProgressReload(object user, int x, int y, proplist firemode, int c
 
 public func RemoveAmmo()
 {
-	var firemode = GetFiremode();
-	var ammo = GetAmmo(firemode);
-	DoAmmo(firemode.ammo_id, -ammo);
-	GetAmmoReloadContainer()->DoAmmo(firemode.ammo_id, ammo);
+	if (GetAmmoReloadContainer() && GetAmmoReloadContainer()->~IsAmmoManager())
+	{
+		var firemode = GetFiremode();
+		var ammo = GetAmmo(firemode);
+		DoAmmo(firemode.ammo_id, -ammo);
+		GetAmmoReloadContainer()->DoAmmo(firemode.ammo_id, ammo);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
