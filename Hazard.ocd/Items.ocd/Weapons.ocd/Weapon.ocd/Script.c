@@ -167,6 +167,14 @@ public func OnProgressReload(object user, int x, int y, proplist firemode, int c
 	_inherited(user, x, y, firemode, current_percent, change_percent, ...);
 }
 
+public func RemoveAmmo()
+{
+	var firemode = GetFiremode();
+	var ammo = GetAmmo(firemode);
+	DoAmmo(firemode.ammo_id, -ammo);
+	GetAmmoReloadContainer()->DoAmmo(firemode.ammo_id, ammo);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Cooldown

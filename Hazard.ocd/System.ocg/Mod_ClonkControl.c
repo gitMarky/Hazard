@@ -45,10 +45,6 @@ private func ObjectControlReloadWeapon(object weapon)
 		return false;
 	}
 	
-	var firemode = weapon->GetFiremode();
-	var ammo = weapon->GetAmmo(firemode);
-	weapon->DoAmmo(firemode.ammo_id, -ammo);
-	weapon->GetAmmoReloadContainer()->DoAmmo(firemode.ammo_id, ammo);
-	
+	weapon->~RemoveAmmo();
 	return weapon->~StartReload(this, nil, nil, true);
 }
