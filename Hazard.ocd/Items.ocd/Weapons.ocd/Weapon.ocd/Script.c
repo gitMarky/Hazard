@@ -99,6 +99,15 @@ local firemode_default =
 };
 
 
+public func OnSelectFiremode(proplist firemode)
+{
+	if (Contained())
+	{
+		InfoMessage(firemode.name, Contained());
+	}
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Upgrades
