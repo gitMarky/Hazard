@@ -34,8 +34,6 @@ private func ObjectControlToggleFiremode(object weapon)
 		return false;
 	}
 	
-	Log("Toggle mode");
-	
 	weapon->~ToggleFiremode();
 	return true;
 }
@@ -46,8 +44,6 @@ private func ObjectControlReloadWeapon(object weapon)
 	{
 		return false;
 	}
-	
-	Log("Reload");
 	
 	return true;
 }
