@@ -13,7 +13,7 @@ DocEasterEgg=Ich bin eine Leihgabe der RedWolf Design GmbH!
 Tutor1=Sehr schön. Aber dir fehlt noch Munition. Sammle das Munitionspaket dort vorne auf.
 
 Tutor2=Du kannst deinen Munitionsvorrat jederzeit auf dem HUD in der linken unteren Ecke einsehen.
-Tutor2b=Falls du mehr Munition hast, als in deinen Vorrat passt, verbleibt sie im Inventar. Du kannst die Munition auffüllen, indem du das Munitionaspaket benutzt.
+Tutor2b=Falls du mehr Munition hast, als in deinen Vorrat passt, verbleibt sie im Inventar. Du kannst die Munition auffüllen, indem du das Munitionspaket benutzt.
 Tutor3=Jetzt geht's erst richtig los. Lade deine Pistole per %s nach, und schießt die Zielscheibe, die diese aufopfernde Drohne netterweise hält, ab.
 Tutor4=Es wird automatisch nachgeladen, wenn du %s drückst und keine Munition mehr hast, aber du kannst jederzeit mit %s manuell nachladen.
 

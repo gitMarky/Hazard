@@ -87,7 +87,7 @@ public func Dlg_CommanderDrone1_3(object clonk)
 
 public func Dlg_CommanderDrone1_4(object clonk)
 {
-	MessageBox(Format("$Tutor4$", GetButtonText(CON_Use), GetButtonText(CON_UseAlt)), clonk, dlg_target); // TODO: insert button for actual reloading as second placeholder
+	MessageBox(Format("$Tutor4$", GetButtonText(CON_Use), GetButtonText(CON_WeaponReload)), clonk, dlg_target);
 	StopDialogue();
 	return true;
 }
