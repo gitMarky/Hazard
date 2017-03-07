@@ -34,8 +34,9 @@ Tutor12=Ui, das war zu viel für die arme Drohne. Aber sieh mal, was sie da fall
 Tutor13=Zum Glück verwenden wir überall Standardbauteile. Mit dem Laser kannst du deine Pistole aufrüsten. Dazu nimmst du ihn einfach, und aktivierst ihn mit %s.
 
 Tutor14=Nun ist deine Pistole in der Lage Laserschüsse abzugeben. Jedoch fehlt es dir an der nötigen Energie. Geh wieder zurück an die Oberfläche; wir haben dort neue Ausrüstung für dich hinterlegt.
-Tutor15=Wenn du nun die Schussmodusauswahl öffnest (mittels %s), siehst du, dass der normale Schuss verschwunden ist, und stattdessen ein  Laser-Schussmodus dort ist. Dieser ist jedoch ausgegraut, da du keine Munition dafür hast.
+Tutor15=Wenn du nun die Schussmodusauswahl öffnest (mittels %s), siehst du, dass der normale Schuss verschwunden ist, und stattdessen ein  Laser-Schussmodus dort ist.
 Tutor16=Außerdem wird dir auffallen, dass da noch ein 2. Schussmodus ist. Deine Pistole ist in der Lage Granaten zu verschießen. Frag mich nicht, wie sie das tut, unsere Wissenschaftler sind eben einfach gut.
+Tutor16b=Du kannst die Schussmodi auch mit %s durchwechseln. Der zuletzt angewählte Schussmodus wird dann nach kurzer Zeit aktiviert.
 
 Tutor17=Dies ist ein Jetpack. Es ermöglicht dir, dich mit einem kurzen Schub nach oben oder nach vorne/hinten zu bewegen. Um es zu verwenden legst du es per %s an.
 Tutor18=Danach drücke im Sprung Doppel-%s oder Doppel-%s/%s. Versuche nun den Vorsprung dort oben zu erreichen.

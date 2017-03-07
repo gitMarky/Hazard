@@ -278,6 +278,12 @@ public func Dlg_CommanderFiremode_2(object clonk)
 public func Dlg_CommanderFiremode_3(object clonk)
 {
 	MessageBox("$Tutor16$", clonk, dlg_target);
+	return true;
+}
+
+public func Dlg_CommanderFiremode_4(object clonk)
+{
+	MessageBox(Format("$Tutor16b$", GetButtonText(CON_WeaponFiremode)), clonk, dlg_target);
 	StopDialogue();
 	return true;
 }

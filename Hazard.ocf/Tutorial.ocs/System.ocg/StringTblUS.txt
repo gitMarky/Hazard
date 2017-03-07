@@ -34,8 +34,9 @@ Tutor12=Wham, poor drone. But look, it lost something. Looks like a laser.
 Tutor13=Luckily we use standard components everywhere. You can upgrade your pistol with the laser. To do so, choose the Laser and press %s.
 
 Tutor14=Now your pistol is shoots with a laser! But to do so, you need energy. Go back to the surface, new equipment awaits you.
-Tutor15=Open the firemode-menu via %s. You'll see, that the standard shot is gone and that there's an laser-firemode instead. But it's grayed out, because you don't have ammo for it.
+Tutor15=Open the firemode-menu via %s. You'll see, that the standard shot is gone and that there's an laser-firemode instead.
 Tutor16=If you haven't noticed yet: the pistol also has a second firemode. It's able to shoot grenades! Don't ask me how, our sciensist are just good.
+Tutor16b=You can also cycle through the firemodes with %s. The mode that you selected last will be activated after a moment.
 
 Tutor17=This is a jetpack. It allows you to move rapidly with short boosts. To use it, equip it by pressing %s.
 Tutor18=Then double-press %s or %s/%s while jumping. Try to reach that edge up there now.
