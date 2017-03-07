@@ -269,7 +269,7 @@ func CreateDoc()
 	doc->SetDir(DIR_Left);
 
 
-	CreateObjectAbove(LADR, 400, 910, NO_OWNER)->LadderHeight(790, 910);
+	CreateObjectAbove(LADR, 397, 910, NO_OWNER)->LadderHeight(790, 910);
 	CreateObject(STDR, 454, 775, NO_OWNER);
 	CreateObject(LTBL, 519, 779, NO_OWNER);  
 	CreateObject(MONI, 511, 773, NO_OWNER);
