@@ -391,6 +391,12 @@ public func Dlg_CommanderDrone6_4(object clonk)
 
 public func Dlg_CommanderDrone6_5(object clonk)
 {
+	MessageBox("$Tutor23b$", clonk, dlg_target);
+	return true;
+}
+
+public func Dlg_CommanderDrone6_6(object clonk)
+{
 	MessageBox("$Tutor24$", clonk, dlg_target);
 	StopDialogue();
 	return true;

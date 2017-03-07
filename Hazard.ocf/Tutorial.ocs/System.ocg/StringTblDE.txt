@@ -46,7 +46,8 @@ Tutor19=Okay, jetzt wird's Zeit, den Laser einzusetzen.
 Tutor20=Bumm, die Nächste. Wenn du so weitermachst, werden wir bald keine Drohnen mehr haben. 
 Tutor21=Schau mal, noch ein Laser. Aber du hast nichts zum Aufrüsten. Sieh mal was die Drohen dort oben in ihren Klauen hält: einen Raketenwerfer.
 Tutor22=Der Raketenwerfer lässt sich mit dem Laser aufrüsten. Er kann dann zielsuchende Raketen verschießen.
-Tutor23=Die Pistole brauchst du jetzt nicht mehr. Und Granaten sind auch alle weg. Aber du hast noch Energie. Der Granatenwerfer kann EMP-Granaten verschießen (wenn man das entsprechende Upgrade verwendet - wir waren so nett und haben das für dich übernommen) und damit kannst du die Drohne außer Kraft setzen, um an den Raketenwerfer zu kommen.
+Tutor23=Die Pistole brauchst du jetzt nicht mehr. Und Granaten sind auch alle weg. Aber du hast noch Energie. Der Granatenwerfer kann EMP-Granaten verschießen (wenn man das entsprechende Upgrade verwendet).
+Tutor23b=Damit kannst du die Drohne außer Kraft setzen, um an den Raketenwerfer zu kommen.
 Tutor24=Deine Aufgabe ist es jetzt, an den Raketenwerfer ranzukommen und ihn aufzurüsten.
 
 Tutor25=Sehr gut. Mit zielsuchenden Raketen kann man auch Ziele treffen, die weiter weg sind und zu denen der Weg nicht frei ist.

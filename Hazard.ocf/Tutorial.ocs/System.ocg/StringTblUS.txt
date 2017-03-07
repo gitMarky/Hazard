@@ -46,7 +46,8 @@ Tutor19=Okay, now it's time to use the laser.
 Tutor20=Boom, the next one down. If you continue like that, we'll run out of drones.
 Tutor21=Look, another laser. But you don't have a weapon to upgrade. But look what the drone up there is holding! A bazooka!
 Tutor22=The bazooka is upgradeable with a laser. It's able to shoot homing missiles then.
-Tutor23=You don't need the pistol anymore, also you're out of grenades. However, you still got some energy. The grenade launcher is able to shoot EMP-grenades (if you used an upgrade - we've already done that now). You can take out the drone with that, go on and try!
+Tutor23=You don't need the pistol anymore, also you're out of grenades. However, you still got some energy. The grenade launcher is able to shoot EMP-grenades (if you used an upgrade).
+Tutor23b=You can take out the drone with that, go on and try!
 Tutor24=Your goal is to get the bazooka and upgrade it.
 	
 Tutor25=Well done. With homing missiles you can hit targets, that not directly strikeable because the path is blocked.
