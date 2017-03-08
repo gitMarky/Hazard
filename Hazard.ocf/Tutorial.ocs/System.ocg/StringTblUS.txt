@@ -23,7 +23,7 @@ Tutor6=Try hitting a moving target! Show us what you can do.
 Tutor7=Well done, well done. Now it's getting interesting, you get to try out the grenade launcher. Enter the teleporter to the right.
 
 Tutor8=It's lying back there. But to get it, you have to overcome this obstacle. You wont be able to simply jump over it.
-Tutor9=Do you remember your elite training? Right, it's time for the backflip! Go to the edge, walk left, and try to jump backwards (run shortly away from the edge and press backwards und jump).
+Tutor9=Do you remember your elite training? Right, it's time for the flip! Go to the edge, try to jump and double-press %s or %s.
 
 Tutor10=Okay, you got it! There's the drone, eliminate the target.
 
@@ -31,21 +31,23 @@ Tutor11=Well, wasn't that fun? But plain grenades are boring, aren't they? The n
 Tutor11b=Load the cluster grenades and then fire at will!
 
 Tutor12=Wham, poor drone. But look, it lost something. Looks like a laser.
-Tutor13=Luckily we use standard components everywhere. You can upgrade your pistol with the laser. To do so, choose the Laser and press \"Double Dig\".
+Tutor13=Luckily we use standard components everywhere. You can upgrade your pistol with the laser. To do so, choose the Laser and press %s.
 
 Tutor14=Now your pistol is shoots with a laser! But to do so, you need energy. Go back to the surface, new equipment awaits you.
-Tutor15=Open the firemode-menu via \"Double Dig\". You'll see, that the standard shot is gone and that there's an laser-firemode instead. But it's grayed out, because you don't have ammo for it.
+Tutor15=Open the firemode-menu via %s. You'll see, that the standard shot is gone and that there's an laser-firemode instead.
 Tutor16=If you haven't noticed yet: the pistol also has a second firemode. It's able to shoot grenades! Don't ask me how, our sciensist are just good.
+Tutor16b=You can also cycle through the firemodes with %s. The mode that you selected last will be activated after a moment.
 
-Tutor17=This is a jetpack. It allows you to move rapidly with short boosts. To use it, equip it by pressing \"Double Dig\". Then press \"Double Jump\" or \"Double Left/Right\" while jumping.
-Tutor18=Everytime you activate the jetpack, you use up some gasoline. Try to reach that edge up there now.
+Tutor17=This is a jetpack. It allows you to move rapidly with short boosts. To use it, equip it by pressing %s.
+Tutor18=Then double-press %s or %s/%s while jumping. Try to reach that edge up there now.
 
 Tutor19=Okay, now it's time to use the laser.
 
 Tutor20=Boom, the next one down. If you continue like that, we'll run out of drones.
 Tutor21=Look, another laser. But you don't have a weapon to upgrade. But look what the drone up there is holding! A bazooka!
 Tutor22=The bazooka is upgradeable with a laser. It's able to shoot homing missiles then.
-Tutor23=You don't need the pistol anymore, also you're out of grenades. However, you still got some energy. The grenade launcher is able to shoot EMP-grenades (if you used an upgrade - we've already done that now). You can take out the drone with that, go on and try!
+Tutor23=You don't need the pistol anymore, also you're out of grenades. However, you still got some energy. The grenade launcher is able to shoot EMP-grenades (if you used an upgrade).
+Tutor23b=You can take out the drone with that, go on and try!
 Tutor24=Your goal is to get the bazooka and upgrade it.
 	
 Tutor25=Well done. With homing missiles you can hit targets, that not directly strikeable because the path is blocked.

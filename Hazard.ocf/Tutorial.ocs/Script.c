@@ -262,13 +262,14 @@ func CreateDoc()
 	doc->SetGraphics(nil, Local_Characters);
 	doc->SetMeshMaterial("Clonk_HazardDoctor");
 	doc->SetMeshMaterial("Clonk_HazardDoctor", 1);
-	doc->SetDir(DIR_Left);
 	doc->SetColor(RGB(230, 230, 230));
 	doc->SetLightRange(80, 80);
 	doc.portrait = {Source = Local_Characters, Name = Format("PortraitDoc")};
+	doc->SetAction("Jump");
+	doc->SetDir(DIR_Left);
 
 
-	CreateObjectAbove(LADR, 400, 910, NO_OWNER)->LadderHeight(790, 910);
+	CreateObjectAbove(LADR, 397, 910, NO_OWNER)->LadderHeight(790, 910);
 	CreateObject(STDR, 454, 775, NO_OWNER);
 	CreateObject(LTBL, 519, 779, NO_OWNER);  
 	CreateObject(MONI, 511, 773, NO_OWNER);

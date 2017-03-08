@@ -6,7 +6,7 @@ func Seed()
 	// do nothing
 }
 
-func DoSeed()
+func DoSeed(bool no_init)
 {
 	// do nothing
 }

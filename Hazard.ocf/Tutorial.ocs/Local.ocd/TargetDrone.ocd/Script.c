@@ -9,7 +9,7 @@ func Hit()
 
 func Detonate()
 {
-	if (GetEffect("*FadeOut*", this)) exploded = true;
+	if (GetEffect("ObjFade", this)) exploded = true;
 	if (exploded) return;
 	exploded = true;
 
@@ -34,8 +34,9 @@ func IsMachine()
 
 func EMPShock()
 {
-	SetAction("Falling");
 	move = 0;
+	SetAction("Falling");
+	EMPShockEffect(EMP_SHOCK_FOREVER);
 }
 
 func Initialize()

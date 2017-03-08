@@ -1,7 +1,7 @@
 ﻿Drones=Drohnen
 
 Intro1=Stillgestanden Soldat! Willkommen im Ausbildungscenter.
-Intro2=Mein name ist Grodon Freimann, ich bin der leitende Offizier hier, und dein Ausbilder heute. Jetzt darfst du auch mal mit dem Spielzeug der großen Jungs spielen.
+Intro2=Mein Name ist Grodon Freimann, ich bin der leitende Offizier hier, und dein Ausbilder heute. Jetzt darfst du auch mal mit dem Spielzeug der großen Jungs spielen.
 Intro3=Als erstes brauchst du eine Waffe. Geh zum Doc, er wird dir eine geben. Spring einfach auf die Leiter und kletter hinauf. Danach fährst du mit dem Lift nach oben, und nimmst den rechten Ausgang.
 
 Doc1=Tag, ich bin der Doc.
@@ -13,7 +13,7 @@ DocEasterEgg=Ich bin eine Leihgabe der RedWolf Design GmbH!
 Tutor1=Sehr schön. Aber dir fehlt noch Munition. Sammle das Munitionspaket dort vorne auf.
 
 Tutor2=Du kannst deinen Munitionsvorrat jederzeit auf dem HUD in der linken unteren Ecke einsehen.
-Tutor2b=Falls du mehr Munition hast, als in deinen Vorrat passt, verbleibt sie im Inventar. Du kannst die Munition auffüllen, indem du das Munitionaspaket benutzt.
+Tutor2b=Falls du mehr Munition hast, als in deinen Vorrat passt, verbleibt sie im Inventar. Du kannst die Munition auffüllen, indem du das Munitionspaket benutzt.
 Tutor3=Jetzt geht's erst richtig los. Lade deine Pistole per %s nach, und schießt die Zielscheibe, die diese aufopfernde Drohne netterweise hält, ab.
 Tutor4=Es wird automatisch nachgeladen, wenn du %s drückst und keine Munition mehr hast, aber du kannst jederzeit mit %s manuell nachladen.
 
@@ -23,7 +23,7 @@ Tutor6=Versuche, die bewegte Drohne mit etwas Vorhalt zu treffen. Zeig uns was d
 Tutor7=Sehr gut. Jetzt wird's interessant. Du darfst nun den Granatenwerfer ausprobieren. Steig dazu in den Teleporter rechts und aktiviere ihn.
 
 Tutor8=Da hinten liegt er. Doch um ihn zu bekommen, musst du zuerst dieses Hindernis überwinden. Es wird dir nicht gelingen einfach rüberzuspringen.
-Tutor9=Erinnerst du dich an das, was du bei deiner Eliteausbildung gelernt hast? Richtig, der Backflip. Stell dich an die Kante, und probiere einen Rückwärtssprung (laufe dazu kurz von der Kante weg und drücke dann nach hinten und Springen).
+Tutor9=Erinnerst du dich an das, was du bei deiner Eliteausbildung gelernt hast? Richtig, du kannst im Sprung eine Vorwärts- oder Rückwärtsrolle ausführen, indem du zweimal schnell %s bzw. %s drückst.
 
 Tutor10=Okay, du hast ihn. Da drüben ist die Drohne, versuch sie zu treffen.
 
@@ -31,21 +31,23 @@ Tutor11=Und weil's so schön war, gleich nochmal. Aber Granaten sind doch langwe
 Tutor11b=Lade das Magazin mit Splittergranaten und dann Feuer frei!
 
 Tutor12=Ui, das war zu viel für die arme Drohne. Aber sieh mal, was sie da fallen gelassen hat. Das sieht mir ganz nach einem Laser aus.
-Tutor13=Zum Glück verwenden wir überall Standardbauteile. Mit dem Laser kannst du deine Pistole aufrüsten. Dazu nimmst du ihn einfach, und aktivierst ihn auf \"Doppelgraben\".
+Tutor13=Zum Glück verwenden wir überall Standardbauteile. Mit dem Laser kannst du deine Pistole aufrüsten. Dazu nimmst du ihn einfach, und aktivierst ihn mit %s.
 
 Tutor14=Nun ist deine Pistole in der Lage Laserschüsse abzugeben. Jedoch fehlt es dir an der nötigen Energie. Geh wieder zurück an die Oberfläche; wir haben dort neue Ausrüstung für dich hinterlegt.
-Tutor15=Wenn du nun die Schussmodusauswahl öffnest (mittels \"Doppelgraben\"), siehst du, dass der normale Schuss verschwunden ist, und stattdessen ein  Laser-Schussmodus dort ist. Dieser ist jedoch ausgegraut, da du keine Munition dafür hast.
+Tutor15=Wenn du nun die Schussmodusauswahl öffnest (mittels %s), siehst du, dass der normale Schuss verschwunden ist, und stattdessen ein  Laser-Schussmodus dort ist.
 Tutor16=Außerdem wird dir auffallen, dass da noch ein 2. Schussmodus ist. Deine Pistole ist in der Lage Granaten zu verschießen. Frag mich nicht, wie sie das tut, unsere Wissenschaftler sind eben einfach gut.
+Tutor16b=Du kannst die Schussmodi auch mit %s durchwechseln. Der zuletzt angewählte Schussmodus wird dann nach kurzer Zeit aktiviert.
 
-Tutor17=Dies ist ein Jetpack. Es ermöglicht dir, dich mit einem kurzen Schub nach oben oder nach vorne/hinten zu bewegen. Um es zu verwenden legst du es per \"DoppelGraben\" an. Danach drücke im Sprung \"DoppelRauf\" oder \"DoppelLinks/Rechts\".
-Tutor18=Jedesmal, wenn du das Jetpack aktivierst, verbraucht es etwas von deinem Benzinvorrat. Versuche nun den Vorsprung dort oben zu erreichen.
+Tutor17=Dies ist ein Jetpack. Es ermöglicht dir, dich mit einem kurzen Schub nach oben oder nach vorne/hinten zu bewegen. Um es zu verwenden legst du es per %s an.
+Tutor18=Danach drücke im Sprung Doppel-%s oder Doppel-%s/%s. Versuche nun den Vorsprung dort oben zu erreichen.
 
 Tutor19=Okay, jetzt wird's Zeit, den Laser einzusetzen.
 
 Tutor20=Bumm, die Nächste. Wenn du so weitermachst, werden wir bald keine Drohnen mehr haben. 
 Tutor21=Schau mal, noch ein Laser. Aber du hast nichts zum Aufrüsten. Sieh mal was die Drohen dort oben in ihren Klauen hält: einen Raketenwerfer.
 Tutor22=Der Raketenwerfer lässt sich mit dem Laser aufrüsten. Er kann dann zielsuchende Raketen verschießen.
-Tutor23=Die Pistole brauchst du jetzt nicht mehr. Und Granaten sind auch alle weg. Aber du hast noch Energie. Der Granatenwerfer kann EMP-Granaten verschießen (wenn man das entsprechende Upgrade verwendet - wir waren so nett und haben das für dich übernommen) und damit kannst du die Drohne außer Kraft setzen, um an den Raketenwerfer zu kommen.
+Tutor23=Die Pistole brauchst du jetzt nicht mehr. Und Granaten sind auch alle weg. Aber du hast noch Energie. Der Granatenwerfer kann EMP-Granaten verschießen (wenn man das entsprechende Upgrade verwendet).
+Tutor23b=Damit kannst du die Drohne außer Kraft setzen, um an den Raketenwerfer zu kommen.
 Tutor24=Deine Aufgabe ist es jetzt, an den Raketenwerfer ranzukommen und ihn aufzurüsten.
 
 Tutor25=Sehr gut. Mit zielsuchenden Raketen kann man auch Ziele treffen, die weiter weg sind und zu denen der Weg nicht frei ist.
