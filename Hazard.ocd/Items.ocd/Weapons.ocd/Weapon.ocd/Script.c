@@ -1,6 +1,7 @@
 #include Library_Weapon
 #include Library_UpgradeableObject
 #include Plugin_Weapon_FiremodeByInteraction
+#include Plugin_Weapon_FiremodeByToggle
 #include Plugin_Weapon_ReloadFromAmmoSource
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,12 +50,13 @@ public func GetCarryMode(object clonk, bool idle, bool nohand)
 public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
 public func GetCarryBone() { return "Grip"; }
 
-public func RejectUse(object clonk)
+func IsUserReadyToUse(object user)
 {
-	return !clonk->HasHandAction(false, // needs only one hand 
-								 false, // ???
-								 true); // let go of the landscape if you do use
+	return user->HasHandAction(false, // needs only one hand
+					           false, // ???
+							   false); // must not grab landscape
 }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -96,6 +98,33 @@ local firemode_default =
 	anim_load_name = "MusketLoadArms",
 };
 
+
+public func ChangeFiremode(firemode)
+{
+	if (GetFiremode())
+	{
+		RemoveAmmo();
+	}
+
+	_inherited(firemode);
+
+	if (Contained())
+	{
+		StartReload(Contained(), nil, nil, true);
+	}	
+}
+
+
+public func OnSelectFiremode(proplist firemode)
+{
+	if (Contained())
+	{
+		InfoMessage(firemode.name, Contained());
+	}
+}
+
+public func GetGUIFiremodeActiveColor(){ return GUI_COLOR_TEXT;}
+public func GetGUIFiremodeInactiveColor(){ return "dddddd";}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -152,4 +181,40 @@ public func OnCancelReload(object user, int x, int y, proplist firemode, bool re
 public func OnProgressReload(object user, int x, int y, proplist firemode, int current_percent, int change_percent)
 {
 	_inherited(user, x, y, firemode, current_percent, change_percent, ...);
+}
+
+public func RemoveAmmo()
+{
+	if (GetAmmoReloadContainer() && GetAmmoReloadContainer()->~IsAmmoManager())
+	{
+		var firemode = GetFiremode();
+		var ammo = GetAmmo(firemode);
+		DoAmmo(firemode.ammo_id, -ammo);
+		GetAmmoReloadContainer()->DoAmmo(firemode.ammo_id, ammo);
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Cooldown
+
+public func NeedsRecovery(object user, proplist firemode)
+{
+	return NeedsReload(user, firemode);
+}
+
+public func OnFinishCooldown(object user, proplist firemode)
+{
+	if (NeedsReload(user, firemode))
+	{
+		StartReload(user, nil, nil, true);
+	}
+}
+
+public func OnSkipCooldown(object user, proplist firemode)
+{
+	if (NeedsReload(user, firemode))
+	{
+		StartReload(user, nil, nil, true);
+	}
 }

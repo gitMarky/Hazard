@@ -1,4 +1,5 @@
 #include Library_UpgradeableObject
+#include Library_HazardEquipment
 
 local triggered;
 

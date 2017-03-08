@@ -209,7 +209,7 @@ func AddFlipBoost(int dir, int strength, bool no_jump_calculation, int ydir)
 	if (GetMaterialVal("DigFree", "Material", GetMaterial(0,10)))
 	{
 		var clr = GetAverageTextureColor(GetTexture(0,10));
-		var dir = GetDir()*2-1;
+		var particle_dir = GetDir() * 2 - 1;
 		
 		var particles =
 		{
@@ -218,7 +218,7 @@ func AddFlipBoost(int dir, int strength, bool no_jump_calculation, int ydir)
 			G = (clr >> 8) & 0xff,
 			B = clr & 0xff,
 		};
-		CreateParticle("Dust", PV_Random(dir * -2, dir * -1), 8, PV_Random(dir * 2, dir * 1), PV_Random(-2, -5), PV_Random(36, 2 * 36), particles, 6);
+		CreateParticle("Dust", PV_Random(particle_dir * -2, particle_dir * -1), 8, PV_Random(particle_dir * 2, particle_dir * 1), PV_Random(-2, -5), PV_Random(36, 2 * 36), particles, 6);
 	}
 }
 

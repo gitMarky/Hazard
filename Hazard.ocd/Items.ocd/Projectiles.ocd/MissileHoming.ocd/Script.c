@@ -31,7 +31,11 @@ func DoHoming()
 		else
 		{
 			homing_target = FindTarget();
-			Sound("Weapon::BipBipBip");
+
+			if (homing_target)
+			{
+				Sound("Weapon::BipBipBip");
+			}
 		}
 	}
 }

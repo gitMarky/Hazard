@@ -3,10 +3,23 @@
 #include Library_Agility
 #include Library_UseGear
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Properties
+
+local MaxWeaponsCount = 3; // this many weapons can be collected
+local MaxEquipmentCount = 2; // this many equipment items can be collected
+
 public func GetAmmoSource(id ammo)
 {
 	return AMMO_Source_Local;
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Callbacks
+
 
 func Initialize()
 {
@@ -14,6 +27,60 @@ func Initialize()
     var hud = this->GetHazardHUD();
     if (hud) ScheduleCall(this, this.UpdateHazardHUD, 1);
 }
+
+
+func RejectCollect(id type, object item)
+{
+	var rejected = _inherited(type, item, ...);
+	if (rejected) return rejected;
+	
+	if (item)
+	{
+		// always allow at least 1 ammo packet
+		if (item->~IsAmmoPacket() && CustomContentsCount("IsAmmoPacket") == 0)
+		{
+			return false;
+		}
+		
+		// certain items can be collected only once per type
+		if (ContentsCount(type) > 0
+		&& (item->~IsHazardWeapon()
+		 || item->~IsHazardEquipment()))
+		{
+			return true; // do not collect
+		}
+
+		// allow not more than 3 weapons in total
+		if (item->~IsHazardWeapon()
+		&& (CustomContentsCount("IsHazardWeapon") >= this.MaxWeaponsCount))
+		{
+			return true; // do not collect
+		}
+	
+		// allow 2 equipment items
+		if (item->~IsHazardEquipment()
+		&& (CustomContentsCount("IsHazardEquipment") >= this.MaxEquipmentCount))
+		{
+			return true; // do not collect
+		}
+	}
+	
+	// allow collection
+	return false;
+}
+
+
+func CustomContentsCount(string qualifier)
+{
+	var contents = FindObjects(Find_Container(this), Find_Func(qualifier, this));
+	return GetLength(contents);
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Appearance
+
 
 func SetSkin(int new_skin)
 {
@@ -51,6 +118,12 @@ func SetHazardArmorSkin()
 	SetMeshMaterial("HazardClonkArmorTunic", 1);
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// HUD
+
+
 public func UpdateHazardHUD()
 {
     var weapon = this->GetHandItem(0);
@@ -62,6 +135,11 @@ public func UpdateHazardHUD()
     	ScheduleCall(this, this.UpdateHazardHUD, 1);
     }
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Actions
 
 local ActMap = {
 
@@ -78,6 +156,24 @@ Backflip = {
 }
 
 };
+
+func HasActionProcedure(bool force_landscape_letgo)
+{
+	var has_action_procedure = _inherited(force_landscape_letgo, ...);
+	
+	if (has_action_procedure)
+	{
+		return true;
+	}
+	else
+	{
+		// Check if the clonk is currently in an action where he could use his hands
+		// if force_landscape_letgo is true, also allow during scale/hangle assuming the clonk will let go
+		var action = GetAction();
+		return (action == "JetpackFlight");
+	}
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -112,58 +208,3 @@ public func GetInteractionMenus(object crew)
 
 	return menus;
 }
-
-
-public func GetGUIFiremodeMenuColor(){ return RGB(0, 50, 50);}
-
-
-public func GetGUIFiremodeMenuEntries(object crew)
-{
-	var menu_entries = [];
-
-	// default design of a control menu item
-	var custom_entry = 
-	{
-		Right = "100%", Bottom = "2em",
-		BackgroundColor = {Std = 0, OnHover = 0x50ff0000},
-		image = {Right = "2em"},
-		text = {Left = "2em"}
-	};
-	
-		
-	// Add info message for every defender
-	for (var firemode in this->~GetFiremodes())
-	{
-		var is_available = firemode.condition == nil || Call(firemode.condition);
-		
-		if (!is_available) continue;
-		
-		var firemode_symbol = firemode.icon ?? this;
-
-		PushBack(menu_entries,
-		{
-		    symbol = firemode_symbol,
-		    extra_data = firemode.name,
-			custom = 
-			{
-				Prototype = custom_entry,
-				Priority = GUI_PRIORITY_FIREMODE,
-				text = {Prototype = custom_entry.text, Text = firemode.name},
-				image = {Prototype = custom_entry.image, Symbol = firemode_symbol},
-			}
-		});
-	}
-
-	return menu_entries;
-}
-
-public func OnGUIHoverFiremode(id symbol, string action, desc_menu_target, menu_id)
-{
-	// do nothing at the moment
-}
-
-public func OnGUIChangeFiremode(id symbol, string action, bool alt)
-{
-	// do nothing on click, or maybe let the clonk play an idle animation :p
-}
-

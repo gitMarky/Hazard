@@ -69,7 +69,6 @@ Plant1 = {
 	OffY = -17,
 	FacetBase = 1,
 	NextAction = "Plant1",
-	EndCall = "FadeOut",
 },
 
 Plant2 = {

@@ -1,4 +1,5 @@
 ﻿#include Library_HealingItem
+#include Library_HazardEquipment
 
 func Decorate(object user, proplist healing_effect)
 {

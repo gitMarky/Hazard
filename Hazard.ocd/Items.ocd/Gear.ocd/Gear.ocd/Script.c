@@ -1,4 +1,4 @@
-
+#include Library_HazardEquipment
 
 // actually, only the first four are used...
 static const GEAR_Armor  = 1;

@@ -1,9 +1,27 @@
+static const EMP_SHOCK_FOREVER = -1;
 
+/**
+ Adds an EMP shock effect to the target.
+ 
+ @par time the time, in frames, until the effect should end.
+           You can pass -1, which means that the effect will last forever,
+           or until you call EMPShockEffect with the parameter "1" again.
+ */
 global func EMPShockEffect(int time)
 {
 	AssertObjectContext("EMPShockEffect()");
 
-	AddEffect("EMPDamaged", this, 190, 5, nil, nil, time);
+	var effect = EMPShocked();
+	
+	if (effect)
+	{
+		effect.Time = 0;    // reset the counter
+		effect.time = time; // reset the time
+	}
+	else
+	{
+		AddEffect("EMPDamaged", this, 190, 5, nil, nil, time);
+	}
 }
 
 global func EMPShocked()
@@ -13,7 +31,7 @@ global func EMPShocked()
 	return GetEffect("EMPDamaged", this);
 }
 
-global func FxEMPDamagedStart(object target, int fx, int temp, int time)
+global func FxEMPDamagedStart(object target, proplist fx, int temp, int time)
 {
 	if (temp) return;
 
@@ -27,9 +45,9 @@ global func FxEMPDamagedStart(object target, int fx, int temp, int time)
 	target->SetClrModulation(RGBa(r, g, b, a));
 }
 
-global func FxEMPDamagedTimer(object target, int fx, int time)
+global func FxEMPDamagedTimer(object target, proplist fx, int time)
 {
-	if (fx.time < time) return FX_Execute_Kill;
+	if (fx.time != EMP_SHOCK_FOREVER && fx.time < time) return FX_Execute_Kill;
 
 	// effects
 	if (!(target->~Contained()))
@@ -56,18 +74,18 @@ global func FxEMPDamagedTimer(object target, int fx, int time)
 	}
 }
 
-global func FxEMPDamagedAdd(object target, int fx, string new_effect_name, int new_effect_timer, time)
+global func FxEMPDamagedAdd(object target, proplist fx, string new_effect_name, int new_effect_timer, time)
 {
 	fx.time = Max(fx.time, time);
 }
 
-global func FxEMPDamagedEffect(string new_effect_name, object target, int fx, int new_effect_number)
+global func FxEMPDamagedEffect(string new_effect_name, object target, proplist fx, int new_effect_number)
 {
 	if (new_effect_name == "EMPDamaged")
 		return -2;
 }
 
-global func FxEMPDamagedStop(object target, int fx)
+global func FxEMPDamagedStop(object target, proplist fx)
 {
 	target->SetClrModulation(fx.color);
 	target->~EMPShockEnd();

@@ -18,8 +18,8 @@ public func Initialize()
 {
 	_inherited(...);
 	// firemode definitions
-	firemode_standard =  FiremodeStandard();
-	firemode_bouncing =     FiremodeBouncing();
+	firemode_standard = FiremodeStandard();
+	firemode_bouncing = FiremodeBouncing();
 
 	// firemode list
 	ClearFiremodes();

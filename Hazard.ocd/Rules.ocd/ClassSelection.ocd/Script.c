@@ -147,9 +147,9 @@ private func SelectClass(proplist data, int iPlr, int ID, int subwindowID, objec
     }
 }
 
-public func IsChooseable()
+public func GameConfigIsChoosable()
 {
-    return true;
+    return false;
 }
 
 

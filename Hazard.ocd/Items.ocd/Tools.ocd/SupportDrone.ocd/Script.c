@@ -2,6 +2,7 @@
 // Newton: scripted for CR Hazard 2.1
 
 #include Library_Turret
+#include Library_HazardEquipment
 
 local guarded_clonk;		// the clonk to follow. Can be null if the drone should be autonomous
 local target_x, target_y;	// target position where to go
