@@ -1,0 +1,3 @@
+Name=Street light
+Description=Floats in the air and lights the floor.
+

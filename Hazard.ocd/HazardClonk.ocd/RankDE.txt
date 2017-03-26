@@ -1,5 +1,5 @@
-Rookie
-Schütze
+ï»¿Rookie
+SchÃ¼tze
 Marine
 SFT
 Hazard
@@ -40,8 +40,8 @@ Void
 Schwarzes Loch
 Schlachtkreuzer
 Stern
-Zerstörer
-Sternenzerstörer
+ZerstÃ¶rer
+SternenzerstÃ¶rer
 Drazah
 Darth Vader
 Imperator

@@ -1,3 +1,3 @@
-Name=Stahltür
-Description=Eine Stahltür. Geht auf... und zu. Die Stahltür hält Feuer zuverlässig ab, ist aber anfällig für Energie und Projektile 
+ï»¿Name=StahltÃ¼r
+Description=Eine StahltÃ¼r. Geht auf... und zu. Die StahltÃ¼r hÃ¤lt Feuer zuverlÃ¤ssig ab, ist aber anfÃ¤llig fÃ¼r Energie und Projektile 
 

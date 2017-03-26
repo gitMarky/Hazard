@@ -7,25 +7,37 @@
 local Name = "$Name$";
 local Description = "$Description$";
 
-
-public func GetCarryMode(object user) {    if (is_selected) return CARRY_Hand; }
-public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
 public func GetCarryTransform()
 {
-	return Trans_Rotate(90, 1, 0, 0);
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-2500, 800, 0), Trans_Scale(800, 800, 800));
 }
 
 
 public func Initialize()
 {
 	_inherited(...);
+	this.MeshTransformation = Trans_Scale(800, 800, 800);
+	
+	// definitions
 	firemode_primary_standard =  FiremodePrimaryStandard();
 	firemode_primary_laser =     FiremodePrimaryLaser();
 	firemode_secondary_grenade = FiremodeSecondaryGrenade();
 	firemode_secondary_slime =   FiremodeSecondarySlime();
+
+	// fire mode list
+	ClearFiremodes();
+	AddFiremode(firemode_primary_standard);
+	AddFiremode(firemode_primary_laser);
+	AddFiremode(firemode_secondary_grenade);
+	AddFiremode(firemode_secondary_slime);
 	ChangeFiremode(firemode_primary_standard);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(-20, 0, 1, 0), Trans_Rotate(-20, 0, 0, 1), Trans_Rotate(5, 1, 0, 0), Trans_Translate(-1800, 0, -3000));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -35,7 +47,7 @@ public func Initialize()
 local firemode_primary_standard;
 func FiremodePrimaryStandard()
 {
-	return 
+	return
 	{
 		Prototype = firemode_default, 
 		name = 				"$Standard$",
@@ -55,8 +67,8 @@ func FiremodePrimaryStandard()
 		projectile_speed = 	250,
 		projectile_range =  450,
 		projectile_spread = Projectile_Deviation(1, 1),
-
-		projectile_distance = 10,
+	
+		projectile_distance = 8,
 		projectile_offset_y = -6,
 	};
 }
@@ -84,7 +96,7 @@ func FiremodePrimaryLaser()
 		projectile_speed = 	500,
 		projectile_range = 300,
 
-		projectile_distance = 10,
+		projectile_distance = 8,
 		projectile_offset_y = -6,
 	};
 }
@@ -188,7 +200,7 @@ public func FireEffect(object user, int angle, proplist firemode)
 		var x = +Sin(angle, firemode.projectile_distance);
 		var y = -Cos(angle, firemode.projectile_distance) + firemode.projectile_offset_y;
 
-		EffectMuzzleFlash(user, x, y, angle, 10, false, true);
+		EffectMuzzleFlash(user, x, y, angle, 20, false, true);
 		
 		// casing
 		x = +Sin(angle, firemode.projectile_distance / 2);

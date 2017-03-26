@@ -1,0 +1,3 @@
+Name=Map Projector
+Description=A map of the planet.
+

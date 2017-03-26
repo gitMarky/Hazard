@@ -1,5 +1,5 @@
-Name=Energiegewehr
-Description=Dieses vollautomatische Gewehr ist neben der Sturmpistole eine weitere beliebte Sturmwaffe. Sie wird hauptsächlich dafür benutzt, feindliche Vehikel außer Gefecht zu setzen.
+ï»¿Name=Energiegewehr
+Description=Dieses vollautomatische Gewehr ist neben der Sturmpistole eine weitere beliebte Sturmwaffe. Sie wird hauptsÃ¤chlich dafÃ¼r benutzt, feindliche Vehikel auÃŸer Gefecht zu setzen.
 
 Standard=Dauerfeuer
 Laser=Laser

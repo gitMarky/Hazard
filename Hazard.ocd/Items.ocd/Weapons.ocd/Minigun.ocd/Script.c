@@ -6,24 +6,33 @@
 
 local Name = "$Name$";
 local Description = "$Description$";
+local carry_mode =  CARRY_Blunderbuss;
 
-
-public func GetCarryMode(object user) {    if (is_selected) return CARRY_Hand; }
-public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
 public func GetCarryTransform()
 {
-	return Trans_Rotate(90, 1, 0, 0);
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(5, 0, 0, 1), Trans_Translate(-7000, 1000));
 }
 
 
 public func Initialize()
 {
 	_inherited(...);
-	firemode_standard =  FiremodeStandard();
-	firemode_bouncing =     FiremodeBouncing();
+	// firemode definitions
+	firemode_standard = FiremodeStandard();
+	firemode_bouncing = FiremodeBouncing();
+
+	// firemode list
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
+	AddFiremode(firemode_bouncing);
 	ChangeFiremode(firemode_standard);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(245, 0, 1, 0), Trans_Rotate(15, 0, 0, 1), Trans_Rotate(15, 1, 0, 0), Trans_Translate(0, -2000, -4000));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -55,6 +64,8 @@ func FiremodeStandard()
 		projectile_speed = 300,
 		projectile_range = 600,
 		projectile_spread = Projectile_Deviation(4, 1),
+		projectile_distance = 16,
+		projectile_offset_y = 2,
 	};
 }
 
@@ -126,7 +137,7 @@ public func FireEffect(object user, int angle, proplist firemode)
 }
 
 
-public func OnReload() // TODO: callback does not exist yet
+public func OnReload()
 {
 	Sound("Weapon::Minigun::MiniLoad");
 }

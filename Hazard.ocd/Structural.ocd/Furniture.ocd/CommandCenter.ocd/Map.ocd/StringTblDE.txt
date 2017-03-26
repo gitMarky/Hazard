@@ -1,0 +1,3 @@
+﻿Name=Kartenprojektor
+Description=Eine Übersichtskarte des Planeten.
+

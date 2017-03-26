@@ -1,0 +1,3 @@
+Name=Message robot
+Description=Little messenger.
+

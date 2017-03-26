@@ -19,6 +19,38 @@ public func InitialStackCount() { return AmmoCount(); }
 //
 // add ammo
 
+
+/*
+ Callback from the spawn point.
+ 
+ @par spawn_point This spawn point contains the object.
+ @par into This object tries to collect the object.
+
+ @return true if the object should not be collected.
+ */
+func RejectCollectionFromSpawnPoint(object spawn_point, object into)
+{
+	var transferrable = GetTransferrableAmmo(into);
+	
+	// Collect ammo only if something is transferrable
+	if (transferrable == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return _inherited(spawn_point, into, ...);
+	}
+}
+
+func Entrance(object clonk)
+{
+	var self = this;
+	_inherited(clonk, ...);
+	
+	if (self) TransferAmmoTo(clonk);
+}
+
 protected func ControlUse(object clonk, int x, int y)
 {
 	TransferAmmoTo(clonk);
@@ -31,11 +63,10 @@ public func TransferAmmoTo(object clonk)
 	{
 		FatalError("This function expects an object that is not nil!");
 	}
-	
-	var available_ammo = GetStackCount();
-	var remaining_ammo = AmmoID()->MaxAmmo() - clonk->~GetAmmo(AmmoID());
 
-	var transferrable = Min(remaining_ammo, available_ammo);
+	if (!(clonk->~IsAmmoManager())) return;
+	
+	var transferrable = GetTransferrableAmmo(clonk);
 
 	// not if he has too much already
 	if (transferrable == 0)
@@ -53,13 +84,25 @@ public func TransferAmmoTo(object clonk)
 	}
 }
 
+
+func GetTransferrableAmmo(object clonk)
+{
+	if (clonk->~IsAmmoManager())
+	{
+		var available_ammo = GetStackCount();
+		var remaining_ammo = AmmoID()->MaxAmmo() - clonk->~GetAmmo(AmmoID());
+
+		return Min(remaining_ammo, available_ammo);
+	}
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // properties
 
 local Name = "$Name$";
 local Description = "$Description$";
-local Collectible = 1;
+local Collectible = true;
 
 protected func Hit()
 {

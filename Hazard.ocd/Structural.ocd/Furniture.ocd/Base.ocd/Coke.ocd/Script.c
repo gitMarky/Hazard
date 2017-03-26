@@ -56,4 +56,3 @@ local BurnTo = CLVB;
 public func IsMachine() { return true; }
 public func TinColor() { return RGB(255, 25, 25); }
 public func IsCraneGrabable() { return true; }
-public func CanBeRecycled() { return 2; } // TODO: find out what this is good for

@@ -1,4 +1,6 @@
 Name=Mine
+Description=Once activated, the mine will remain almost invisible till it is destroyed or triggered.
+
 Activate=Activate mine
 UpgradeToLaser=Upgrade to laser mine.
 UpgradeToWeaponPart=Upgrade to swarm mine.

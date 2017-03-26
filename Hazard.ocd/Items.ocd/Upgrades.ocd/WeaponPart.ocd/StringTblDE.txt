@@ -1,2 +1,2 @@
-Name=Waffenteil
-Description=Teil einer ehemaligen Waffe. L�sst sich an andere Waffen anbringen.
+﻿Name=Waffenteil
+Description=Teil einer ehemaligen Waffe. Lässt sich an andere Waffen anbringen.

@@ -1,8 +1,8 @@
 #include Library_Weapon
 #include Library_UpgradeableObject
 #include Plugin_Weapon_FiremodeByInteraction
+#include Plugin_Weapon_FiremodeByToggle
 #include Plugin_Weapon_ReloadFromAmmoSource
-#include Plugin_Weapon_ReloadProgressBar
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -10,12 +10,14 @@
 
 local Collectible = true;
 
+public func HasInteractionMenu() { return Contained() != nil && GetLength(GetFiremodes()) > 1; }
+
 func Hit()
 {
 	Sound("Hits::GeneralHit?");
 }
 
-public func GetAmmoSource(id ammo) // takes ammo from whom?
+public func GetAmmoSource(ammo) // takes ammo from whom?
 {
 	return AMMO_Source_Local;
 }
@@ -33,6 +35,26 @@ public func GetAmmoReloadContainer() // reload from this container
 public func IsHazardWeapon()
 {
     return true;
+}
+
+local carry_mode = CARRY_Hand;
+
+public func GetCarryMode(object clonk, bool idle, bool nohand)
+{
+	if (idle || nohand || !is_selected)
+	{
+		return CARRY_None;
+	}
+	return carry_mode;
+}
+public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
+public func GetCarryBone() { return "Grip"; }
+
+func IsUserReadyToUse(object user)
+{
+	return user->HasHandAction(false, // needs only one hand
+					           false, // ???
+							   false); // must not grab landscape
 }
 
 
@@ -77,6 +99,33 @@ local firemode_default =
 };
 
 
+public func ChangeFiremode(firemode)
+{
+	if (GetFiremode())
+	{
+		RemoveAmmo();
+	}
+
+	_inherited(firemode);
+
+	if (Contained())
+	{
+		StartReload(Contained(), nil, nil, true);
+	}	
+}
+
+
+public func OnSelectFiremode(proplist firemode)
+{
+	if (Contained())
+	{
+		InfoMessage(firemode.name, Contained());
+	}
+}
+
+public func GetGUIFiremodeActiveColor(){ return GUI_COLOR_TEXT;}
+public func GetGUIFiremodeInactiveColor(){ return "dddddd";}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Upgrades
@@ -115,25 +164,57 @@ func NeedsReload(object user, proplist firemode)
 
 public func OnFinishReload(object user, int x, int y, proplist firemode)
 {
-	Log("Reloading finished");
 	_inherited(user, x, y, firemode, ...);
 }
 
 public func OnStartReload(object user, int x, int y, proplist firemode)
 {
-	user->~StartLoad(this);
-	Log("Reloading started");
+	this->~OnReload();
 	_inherited(user, x, y, firemode, ...);
 }
 
 public func OnCancelReload(object user, int x, int y, proplist firemode, bool requested_by_user)
 {
-	Log("Reloading cancelled");
 	_inherited(user, x, y, firemode, requested_by_user, ...);
 }
 
 public func OnProgressReload(object user, int x, int y, proplist firemode, int current_percent, int change_percent)
 {
-	Log("* %d percent", current_percent);
 	_inherited(user, x, y, firemode, current_percent, change_percent, ...);
+}
+
+public func RemoveAmmo()
+{
+	if (GetAmmoReloadContainer() && GetAmmoReloadContainer()->~IsAmmoManager())
+	{
+		var firemode = GetFiremode();
+		var ammo = GetAmmo(firemode);
+		DoAmmo(firemode.ammo_id, -ammo);
+		GetAmmoReloadContainer()->DoAmmo(firemode.ammo_id, ammo);
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Cooldown
+
+public func NeedsRecovery(object user, proplist firemode)
+{
+	return NeedsReload(user, firemode);
+}
+
+public func OnFinishCooldown(object user, proplist firemode)
+{
+	if (NeedsReload(user, firemode))
+	{
+		StartReload(user, nil, nil, true);
+	}
+}
+
+public func OnSkipCooldown(object user, proplist firemode)
+{
+	if (NeedsReload(user, firemode))
+	{
+		StartReload(user, nil, nil, true);
+	}
 }

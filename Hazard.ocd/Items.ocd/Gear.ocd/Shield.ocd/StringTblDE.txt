@@ -1,9 +1,9 @@
-Name=Schildgenerator
-Description=Schützt ausschließlich aber effektiv gegen Energiewaffen.
+ï»¿Name=Schildgenerator
+Description=SchÃ¼tzt ausschlieÃŸlich aber effektiv gegen Energiewaffen.
 
 CtrlActivateDesc=Anlegen
-NothingUpgradeable=Nichts aufrüstbares verfügbar.
-Upgrade=%s aufrüsten
-AlreadyWears=%s trägt schon|so eine Ausrüstung!
+NothingUpgradeable=Nichts aufrÃ¼stbares verfÃ¼gbar.
+Upgrade=%s aufrÃ¼sten
+AlreadyWears=%s trÃ¤gt schon|so eine AusrÃ¼stung!
 Buckled=%s angelegt
 Unbuckled=%s abgelegt

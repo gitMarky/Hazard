@@ -1,11 +1,11 @@
-
+ï»¿
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // internal properties
 
-local closed;       // offen?
-local lock;         // Tür ist verschließbar (geht nicht automatisch auf)
-local destroyed;    // zerstört
+local closed;       // is it closed?
+local lock;         // door can be locked (does not open automatically)
+local destroyed;    // door is destroyed
 local maxdmg;
 
 static const DOOR_LOCK_Locked = 0;

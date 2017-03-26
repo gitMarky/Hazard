@@ -68,8 +68,6 @@ func IsProjectileTarget()
 	return _inherited(...);
 }
 
-func CanBeLaserRecycled(){ return 2;}
-
 /* Serialisierung
 
 func Serialize(array extra)

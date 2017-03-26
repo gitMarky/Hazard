@@ -1,5 +1,10 @@
+﻿#include Library_HazardEquipment
 
-local on; // Ob das Licht gez�ndet wurde
+static const NEON_LIGHT_Range = 150;
+static const NEON_LIGHT_BeginFade = 3000;
+static const NEON_LIGHT_Lifetime = 4000;
+
+local on; // Ob das Licht gezündet wurde
 local color; // Die Farbwerte.
 
 func Initialize()
@@ -74,7 +79,7 @@ local IntNeonGlow = new Effect
         if(temp) return;
         
         this.Target->SetColor(HSL(this.Target.color.H, this.Target.color.S, this.Target.color.L));
-        this.Target->SetLightRange(400);
+        this.Target->SetLightRange(NEON_LIGHT_Range);
         this.Target->SetLightColor(HSLa(this.Target.color.H, this.Target.color.S, this.Target.color.L, 30));
   
   		NeonSparks();
@@ -86,9 +91,10 @@ local IntNeonGlow = new Effect
         NeonSparks(); //this.Target->CreateParticle("StarSpark", RandomX(-3, 3), RandomX(-3, 3), RandomX(-5, 5), RandomX(-4, -9), RandomX(40, 90), GetColor());
         if (!Random(3)) NeonSmoke(); //this.Target->CreateParticle("Smoke", RandomX(-3, 3), RandomX(-5, 5), RandomX(-4, -9), RandomX(140, 190), GetColor());
         
-		this.Target->SetLightRange(Max(400 - time / 10, 0));
+        var light_reduction = NEON_LIGHT_Range * Max(0, time - NEON_LIGHT_BeginFade) / (NEON_LIGHT_Lifetime - NEON_LIGHT_BeginFade);
+		this.Target->SetLightRange(Max(NEON_LIGHT_Range - light_reduction, 0));
 
-        if (time >= 4000) return FX_Execute_Kill;
+        if (time >= NEON_LIGHT_Lifetime) return FX_Execute_Kill;
     },
     
     Stop = func(bool temp)
@@ -130,7 +136,7 @@ local IntNeonGlow = new Effect
 
 
 func RejectEntrance(){	return on;} // do not collect when on
-func IsEquipment(){	return 1;}
+func IsEquipment(){	return true;}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

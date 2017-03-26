@@ -1,11 +1,7 @@
-#include Library_HazardDoor
+ï»¿#include Library_HazardDoor
 
 local pathfree;
 
-func CanBeLaserRecycled()
-{
-	return 2;
-}
 
 func Initialize()
 {
@@ -19,7 +15,7 @@ func Initialize()
 /*
 func OnDmg(int iDmg, int iType)
 {
-	// diese Tür ist besonders dick
+	// this door is not especially strong
 	if (iType == DMG_Projectile)
 		return 60;
 	if (iType == DMG_Melee)

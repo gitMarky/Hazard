@@ -6,9 +6,9 @@ global func NoAmmo()
 }
 
 // Can be chosen by the chooser
-public func IsChooseable()
+public func GameConfigIsChoosable()
 {
-    return true;
+    return false;
 }
 
 public func GameConfigConflictingRules()

@@ -11,7 +11,7 @@ public func MaxSpeed() { return 180; }
 public func Launch(int angle, proplist deviation)
 {
 	SetR(angle);
-	_inherited(...);
+	_inherited(angle, deviation, ...);
 }
 
 private func OnLaunch()
@@ -20,6 +20,7 @@ private func OnLaunch()
 	speed = 0;
 	SetAction("Travel");
 	AddEffect("Grenade", this, 1, 1, this);
+	AddLightAmbience(50);
 }
 
 protected func ControlSpeed()

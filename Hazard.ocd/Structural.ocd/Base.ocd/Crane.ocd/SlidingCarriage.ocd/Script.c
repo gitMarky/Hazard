@@ -1,4 +1,4 @@
-local crane, clamp, xdir;
+ï»¿local crane, clamp, xdir;
 
 func Initialize()
 {
@@ -31,7 +31,7 @@ func Back2Crane()
 	return BoundBy(GetX(), crane->~LeftX() + 10, crane->~RightX() - 10);
 }
 
-/* Konsolensteuerung */
+/* Console control */
 
 func ConsoleControl(int i)
 {
@@ -42,13 +42,13 @@ func ConsoleControlled(int i, int user_number)
 {
 	var user = Object(user_number);
 	if (!user) return;
-	// Wird bereits kontrolliert?
+	// Is being controlled already?
 	if (GetEffect("Controller", this))
 	{
 		user->Sound("UI::Error", nil, nil, user->GetOwner() + 1);
 		return ;
 	}
-	// Steuerung übernehmen
+	// Take control
 	AddEffect("Controller", this, 99, 2, this, nil, user->GetOwner(), user);
 	SetCursor(user->GetOwner(), this, true);
 }
@@ -180,7 +180,7 @@ func Stop()
 	clamp.ydir = 0;
 }
 
-// Maus macht mich zZ kaputt
+// The mouse control kills me!
 func ControlCommand()
 {
 	return true;
@@ -207,11 +207,10 @@ func Reconfigure(int dx, int dy, object load)
 
 func ElevatorSound(play)
 {
-	// TODO
 	if (play)
-		Sound("Elevator", false, 50, nil, 1);
+		Sound("Structures::Elevator::Moving", false, 50, nil, 1);
 	else
-		Sound("Elevator", false, 50, nil, -1);
+		Sound("Structures::Elevator::Moving", false, 50, nil, -1);
 	
 }
 

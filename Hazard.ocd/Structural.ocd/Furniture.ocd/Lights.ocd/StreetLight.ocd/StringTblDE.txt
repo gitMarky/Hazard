@@ -1,0 +1,3 @@
+﻿Name=Straßenlicht
+Description=Schwebt in der Luft und beleuchtet den Boden.
+

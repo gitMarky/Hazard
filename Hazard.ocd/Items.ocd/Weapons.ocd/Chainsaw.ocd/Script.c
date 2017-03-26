@@ -6,16 +6,13 @@
 
 local Name = "$Name$";
 local Description = "$Description$";
+local carry_mode =  CARRY_Blunderbuss;
 
 local is_running;
 
-
-public func GetCarryMode(object user) {    return CARRY_Musket; }
-public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
 public func GetCarryTransform()
 {
-	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(-10, 0, 0, 1));
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-3000, 1000, 500));
 }
 
 public func Initialize()
@@ -23,8 +20,16 @@ public func Initialize()
 	_inherited(...);
 	is_running = false;
 	firemode_standard = FiremodeStandard();
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
 	ChangeFiremode(firemode_standard);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(230, 0, 1, 0), Trans_Rotate(20, 0, 0, 1), Trans_Rotate(-10, 1, 0, 0), Trans_Translate(0, -1500, -2000));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

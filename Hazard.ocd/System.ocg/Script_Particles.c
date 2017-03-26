@@ -69,9 +69,8 @@ global func CreateLEDEffect(int color, int x, int y, int size, int lifetime)
 	AssertObjectContext("CreateLEDEffect()");
 
 	var r = GetRGBaValue(color, RGBA_RED);
-	var g = GetRGBaValue(color, RGBA_BLUE);
-	var b = GetRGBaValue(color, RGBA_GREEN);
-	var a = GetRGBaValue(color, RGBA_ALPHA) / 2; // because the default value for magic particles is 128
+	var g = GetRGBaValue(color, RGBA_GREEN);
+	var b = GetRGBaValue(color, RGBA_BLUE);
 
 	CreateParticle("Magic", x, y, 0, 0, lifetime ?? 20,
 	{
@@ -80,37 +79,4 @@ global func CreateLEDEffect(int color, int x, int y, int size, int lifetime)
 		R = r, G = g, B = b,
 		Size = size ?? 8,
 	});
-}
-
-
-global func CastParticles(string name, int amount, int level, int x, int y, int a0, int a1, int b0, int b1, object obj)
-{
-    if(!obj) if(!(obj = this)) return;
-    
-    var a, b;
-    if(Random(2))
-    {
-        a = a1;
-        b = b1;
-    }
-    else
-    {
-        a = a0;
-        b = b0;
-    }
-    
-    var particles = {
-        R = SplitRGBaValue(b)[0],
-        G = SplitRGBaValue(b)[1],
-        B = SplitRGBaValue(b)[2],
-        A = SplitRGBaValue(b)[3],
-        size = a * 5,
-    };
-    
-    for(var i = 0; i < amount; i++)
-    {
-        obj->CreateParticle(name, x, y, RandomX(-level, level), RandomX(-level, level),10, particles, 1);
-    }
-    
-    return true;
 }

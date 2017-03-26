@@ -133,5 +133,5 @@ private func Finish(id dummy, object pClonk)
     return true;
 }
 
-public func IsChooseable() { return true; }
+public func GameConfigIsChoosable() { return false; }
 local Name = "$Name$";

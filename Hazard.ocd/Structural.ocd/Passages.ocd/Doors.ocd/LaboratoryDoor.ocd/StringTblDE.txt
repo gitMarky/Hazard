@@ -1,3 +1,3 @@
-Name=Labortür
-Description=Tür für einen Laborkomplex.
+ï»¿Name=LabortÃ¼r
+Description=TÃ¼r fÃ¼r einen Laborkomplex.
 

@@ -1,0 +1,6 @@
+﻿Name=PIN Eingabe
+Description=Nichts für vergessliche Clonks.
+
+Input=Eingegeben
+InputCode=Code eingeben
+Cancel=Abbrechen

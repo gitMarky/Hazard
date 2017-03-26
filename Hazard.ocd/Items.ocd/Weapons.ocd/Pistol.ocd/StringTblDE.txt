@@ -1,5 +1,5 @@
-Name=Sturmpistole
-Description=Die Sturmpistole gehört zur Standardausrüstung eines Hazardclonks. Für die nötige Durchschlagskraft sorgt der eingebaute kleine Granatenwerfer.
+ï»¿Name=Sturmpistole
+Description=Die Sturmpistole gehÃ¶rt zur StandardausrÃ¼stung eines Hazardclonks. FÃ¼r die nÃ¶tige Durchschlagskraft sorgt der eingebaute kleine Granatenwerfer.
 
 Standard=Einzelschuss
 GrenadeLauncher=Granatenwerfer

@@ -5,7 +5,7 @@
  @version 1.0
  */
 
-local smashed, target, grabbed, obj;
+local smashed, console_target, grabbed;
 
 func Construction()
 {
@@ -45,50 +45,46 @@ func Damage()
 
 /* Control */
 
-func ControlUp(pClonk)
+func ControlUp(object user)
 {
-	return SetTarget(pClonk);
+	return SetTarget(user);
 }
 
-func Grabbed(object pClonk, bool grab)
+func Grabbed(object user, bool grab)
 {
 	if (!grab)
-		return pClonk->CloseMenu();
+		return user->CloseMenu();
 	if (smashed || GetEffect("EMPShock", this))
 	{
 		Sound("Electric");
-		pClonk->DoDamage(Random(5));
+		user->DoDamage(Random(5));
 		return;
 	}
 	
-	if (!target)
-		return SetTarget(pClonk);
+	if (!console_target)
+		return SetTarget(user);
 	
-	pClonk->CreateMenu(target->GetID(), this, 0, Format("$Control$: %s", target->GetName()), 0, 1);
+	user->CreateMenu(console_target->GetID(), this, 0, Format("$Control$: %s", console_target->GetName()), 0, 1);
 	
 	var desc, condition;
-	for (var i = 0; i < GetLength(target.console.options); i++)
+	for (var i = 0; i < GetLength(console_target.console.options); i++)
 	{
-	    desc = target.console.options[i].name;
-	    condition = target.console.options[i].condition;
+	    desc = console_target.console.options[i].name;
+	    condition = console_target.console.options[i].condition;
 	    if(!condition) continue;
-		pClonk->AddMenuItem
-		(
-			desc,
-			"ExecuteFunc",
-			GetID(),
-			0,
-			i,
-			"$Control$"
-		);
+		user->AddMenuItem(desc, "ExecuteFunc", GetID(),	0, i, "$Control$");
 	}
 	return true;
 }
+
+
 protected func ExecuteFunc(dummy, int i)
 {
-    target->Call(target.console.options[i].command);
+    console_target->Call(console_target.console.options[i].command);
     return true;
 }
+
+
 //EMP-Angriff
 func EMPShock()
 {
@@ -100,39 +96,41 @@ func EMPShock()
 	AddEffect("EMPShock", this, 180, 650, this, GetID());
 }
 
+
 // IsConsole()
 func IsConsole()
 {
 	return true;
 }
+
+
 func IsMachine()
 {
 	return true;
 }
 
-func Set(pTarget)
+func Set(object target)
 {
-	target = pTarget;
-	return target;
+	console_target = target;
+	return console_target;
 }
 
-func SetTarget(object pClonk)
+func SetTarget(object user)
 {
-	pClonk->CreateMenu(GetID(), this, 0, "$ChooseTarget$", 0, 0);
-	for (obj in FindObjects(Find_Func("IsConsoleTarget"), Find_Distance(1000))) 
+	user->CreateMenu(GetID(), this, 0, "$ChooseTarget$", 0, 0);
+	for (var obj in FindObjects(Find_Func("IsConsoleTarget"), Find_Distance(1000))) 
 	{
-		pClonk->AddMenuItem(obj->GetName(),"Control", obj->GetID(), 0, obj);
+		user->AddMenuItem(obj->GetName(),"Control", obj->GetID(), 0, obj);
 	}
 	return true;
 }
 
-public func Control(dummy, object pObj)
+public func Control(dummy, object target)
 {
-	Set(pObj);
+	Set(target);
 	return true;
 }
 
 local Touchable = 2;
 local Name = "$Name$";
 local Description = "$Description$";
-

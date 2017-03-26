@@ -1,8 +1,8 @@
-Name=Unterstützungsdrone
-Description=Die Drone unterstützt, nachdem sie von diesem mit einer Waffe ausgerüstet worden ist, den Clonk im Kampf.
+ï»¿Name=UnterstÃ¼tzungsdrone
+Description=Die Drone unterstÃ¼tzt, nachdem sie von diesem mit einer Waffe ausgerÃ¼stet worden ist, den Clonk im Kampf.
 
 ArmWith=Mit %s bewaffnen.
 JustOneDrone=Nicht mehr als eine Drone gleichzeitig aktivierbar
-Damaged=Die Drone ist beschädigt
+Damaged=Die Drone ist beschÃ¤digt
 ArmedWith=Drone bewaffnet mit %s.
-NoWeap=Keine Waffe zum Ausrüsten.
+NoWeap=Keine Waffe zum AusrÃ¼sten.

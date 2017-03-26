@@ -210,7 +210,7 @@ func SearchTargets(object clonk)
 	if (!clonk) return;
 	// TODO: Replace this with GUI menu
 	// create the menu
-	CreateMenu(HSGN, clonk, this);
+	CreateMenu(HSGN, clonk);
 	
 	var teleporters = FindObjects
 	(
@@ -321,7 +321,7 @@ func SetPrivateTeleporter(bool private)
 
 func SaveScenarioObject(proplist props)
 {
-	if (!_inherited(...)) return false;
+	if (!_inherited(props, ...)) return false;
 
 	if (current_target) props->AddCall("SetTarget", this, "SetTarget", current_target);
 	if (IsActivated()) props->AddCall("Activate", this, "Activate");

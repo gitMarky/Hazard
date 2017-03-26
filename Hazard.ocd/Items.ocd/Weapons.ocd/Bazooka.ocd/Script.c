@@ -7,23 +7,33 @@
 local Name = "$Name$";
 local Description = "$Description$";
 
-
-public func GetCarryMode(object user) {    return CARRY_Musket; }
-public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
 public func GetCarryTransform()
 {
-	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(-10, 0, 0, 1));
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(5, 0, 0, 1), Trans_Translate(-2500, 500, 0));
 }
 
 public func Initialize()
 {
 	_inherited(...);
+
+	// firemode definitions
 	firemode_standard = FiremodeStandard();
 	firemode_homing =  FiremodeHoming();
 	firemode_remote = FiremodeRemote();
+
+	// firemode list
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
+	AddFiremode(firemode_homing);
+	AddFiremode(firemode_remote);
 	ChangeFiremode(firemode_standard);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(235, 0, 1, 0), Trans_Rotate(30, 0, 0, 1), Trans_Translate(-2000, 0, -1000));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -48,6 +58,7 @@ func FiremodeStandard()
 		projectile_id = Projectile_Missile,
 		projectile_range = PROJECTILE_Range_Infinite,
 		projectile_speed = 200,
+		projectile_offset_y = -7,
 
 		damage = 		40,
 	};
@@ -72,6 +83,7 @@ func FiremodeHoming()
 		projectile_id = Projectile_MissileHoming,
 		projectile_range = PROJECTILE_Range_Infinite,
 		projectile_speed = 200,
+		projectile_offset_y = -7,
 
 		damage = 		37,
 	};
@@ -96,6 +108,7 @@ func FiremodeRemote()
 		projectile_id = Projectile_MissileRemote,
 		projectile_range = PROJECTILE_Range_Infinite,
 		projectile_speed = 200,
+		projectile_offset_y = -7,
 
 		damage = 		37,
 	};
@@ -203,9 +216,7 @@ public func OnDowngrade(id upgrade)
 	}
 }
 
-
-public func OnReload() // TODO: no callback yet
+public func OnReload()
 {
 	Sound("Weapon::Bazooka::RocketLoad");
 }
-

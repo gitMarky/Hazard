@@ -1,4 +1,4 @@
-#include Projectile_Bullet
+﻿#include Projectile_Bullet
 
 func UpdateLight()
 {
@@ -61,7 +61,7 @@ func HandleEmpSize()
 //  var angle = Angle(GetX(),GetY(),GetX(pObject),GetY(pObject));
 //  var dist = Distance(GetX(),GetY(),GetX(pObject),GetY(pObject));
 //
-//  //Objekte schocken (Objekt auf schockbarkeit pr�fen)
+//  //Objekte schocken (Objekt auf schockbarkeit prüfen)
 //  if(pObject->~IsMachine())
 //   if(pObject->~EMPShock())
 //    {

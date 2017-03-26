@@ -150,7 +150,7 @@ func Entrance(object into)
 		if (into == holder) desired_timer = timer;
 
 		CreateEffect(BombTimer, 1, 1, into, desired_timer);
-		GameCallEx("OnBombTaken");
+		GameCallEx("OnBombTaken", into);
 	}
 }
 
@@ -163,7 +163,7 @@ func Hit(int xdir, ydir)
 		SetYDir(-(ydir / 20));
 	DoThrustEffect();
 	DoHitEffect();
-	return _inherited(...);
+	return _inherited(xdir, ydir, ...);
 }
 
 

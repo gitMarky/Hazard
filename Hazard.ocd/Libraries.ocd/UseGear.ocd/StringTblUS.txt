@@ -1,0 +1,5 @@
+CtxUnbuckleDesc=Unbuckle equipment
+CtxUnbuckleItem=Unbuckle %s
+CtxUseEquipmentDesc=Use equipment
+
+GUI_Manage_Equipment=Manage equipment

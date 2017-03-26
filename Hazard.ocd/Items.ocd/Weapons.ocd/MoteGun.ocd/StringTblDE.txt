@@ -1,5 +1,5 @@
-Name=Partikelkanone
-Description=Die Partikelkanone feuert kleinste Partikel mit ann�hernd Lichtgeschwindigkeit ab. Alternativ kann sie auch eine Ladungskugel abfeuern, die nahe gelegene elektrische Objekte lahmlegt.
+﻿Name=Partikelkanone
+Description=Die Partikelkanone feuert kleinste Partikel mit annähernd Lichtgeschwindigkeit ab. Alternativ kann sie auch eine Ladungskugel abfeuern, die nahe gelegene elektrische Objekte lahmlegt.
 
 Railgun=Strahl
 Shockwave=Schockwelle

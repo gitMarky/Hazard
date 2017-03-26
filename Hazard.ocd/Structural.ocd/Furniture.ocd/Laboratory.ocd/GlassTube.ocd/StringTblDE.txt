@@ -1,0 +1,3 @@
+﻿Name=Glasröhre
+Description=Dient der Konservierung.
+

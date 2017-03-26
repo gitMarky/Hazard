@@ -1,4 +1,5 @@
-#include Library_HealingItem
+﻿#include Library_HealingItem
+#include Library_HazardEquipment
 
 func Decorate(object user, proplist healing_effect)
 {
@@ -18,7 +19,7 @@ local NovodekanHeal = new Effect
 		
 		this.healing_effect = healing_effect;
 		
-		// L�hmung
+		// Lähmung
 //		this.phys_walk = GetPhysical("Walk", 1, 0, GetID(pTarget)) * 3 / 10;
 //		this.phys_jump = GetPhysical("Jump", 1, 0, GetID(pTarget)) * 3 / 10;
 //		this.phys_scale = GetPhysical("Scale", 1, 0, GetID(pTarget)) * 3 / 10;

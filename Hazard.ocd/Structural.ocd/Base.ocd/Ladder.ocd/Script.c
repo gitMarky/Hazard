@@ -75,7 +75,7 @@ public func OnLadderGrab(object clonk, object segment, int segment_index)
 }
 
 
-// Callback by the ladder climb library when the lader is climbed.
+// Callback by the ladder climb library when the ladder is climbed.
 public func OnLadderClimb(object clonk, object segment, int segment_index)
 {
 }
@@ -84,13 +84,19 @@ public func OnLadderClimb(object clonk, object segment, int segment_index)
 // Callback by the ladder climb library when the ladder is released.
 public func OnLadderReleased(object clonk, object segment, int segment_index)
 {
+	// jump off at the top
+	if (segment && !segment->~GetNextLadder() && clonk->GetYDir() < 0) // the clonk has a negative y-dir anyway at the top, this comes from the library
+	{
+		clonk->ControlJumpExecute(Clonk.JumpSpeed / 2);
+		clonk->SetXDir((-1 + 2 * clonk->GetDir()) * 10); // jump to the side way faster		
+	}
 }
 
 
 // Callback by the ladder segment when a clonk tries to grab it.
 public func CanNotBeClimbed(bool is_climbing, object clonk)
 {
-	if (clonk)
+	if (clonk && dir)
 	{
 		return clonk->GetDir() != dir;
 	}

@@ -1,4 +1,4 @@
-#include Weapon_Base
+  #include Weapon_Base
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -6,27 +6,41 @@
 
 local Name = "$Name$";
 local Description = "$Description$";
+local carry_mode =  CARRY_Blunderbuss;
 
-
-public func GetCarryMode(object user) {    return CARRY_Musket; }
-public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
-public func GetCarryBone() { return "main"; }
 public func GetCarryTransform()
 {
-	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Rotate(-10, 0, 0, 1));
+	return Trans_Mul(Trans_Rotate(90, 1, 0, 0), Trans_Translate(-2200, 600));
 }
 
 public func Initialize()
 {
 	_inherited(...);
+	
+	// firemode definitions
 	firemode_standard = FiremodeStandard();
 	firemode_fragmentation =  FiremodeFragmentation();
 	firemode_napalm = FiremodeNapalm();
 	firemode_slime = FiremodeSlime();
 	firemode_emp = FiremodeEMP();
 	firemode_laser = FiremodeLaser();
+
+	// firemode list
+	ClearFiremodes();
+	AddFiremode(firemode_standard);
+	AddFiremode(firemode_fragmentation);
+	AddFiremode(firemode_napalm);
+	AddFiremode(firemode_slime);
+	AddFiremode(firemode_emp);
+	AddFiremode(firemode_laser);
 	ChangeFiremode(firemode_standard);
 }
+
+func Definition(id def)
+{
+	def.PictureTransformation = Trans_Mul(Trans_Rotate(230, 0, 1, 0), Trans_Rotate(-15, 0, 0, 1), Trans_Rotate(10, 1, 0, 0), Trans_Translate(0, 0, -2000));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -287,10 +301,7 @@ public func OnDowngrade(id upgrade)
 	}
 }
 
-
-// Soundeffekte
-
-public func OnReload() // TODO
+public func OnReload()
 {
-  Sound("GrenadeLoad");
+	Sound("Weapon::Grenade::GrenadeLoad");
 }

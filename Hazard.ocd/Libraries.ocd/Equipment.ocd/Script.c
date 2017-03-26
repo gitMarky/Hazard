@@ -1,0 +1,2 @@
+
+func IsHazardEquipment(){ return true;}

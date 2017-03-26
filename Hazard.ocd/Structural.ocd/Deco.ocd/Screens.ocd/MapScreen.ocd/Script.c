@@ -1,107 +1,181 @@
-/*-- Map shower --*/
-static const MAP_ZoomFactor = 10;
-static MAP_ScreenWidth, MAP_ScreenHeight;
-static MAP_MasterScreen;
+static const MAP_SCREEN_ZoomFactor = 10;
 
-local MapX, MapY, lClonk;
+static MAP_SCREEN_ScreenWidth, MAP_SCREEN_ScreenHeight;
+static MAP_SCREEN_MasterScreen;
 
-protected func Initialize()
+local map_x, map_y;
+
+func Initialize()
 {
-  // Waiting
-  ScheduleCall(this, "Initialized", 1);
+	ScheduleCall(this, this.Initialized, 1);
 }
 
-protected func Initialized()
+func Initialized()
 {
-  // No masterscreen?
-  if(!MAP_MasterScreen)
-    {
-    // this is the masterscreen.
-    MAP_MasterScreen = this;
-    // Getting the landscape width and height.
-    LandscapeWH();
-    }
-  // Masterscreen is occupied, initializing this screen.
-  InitScreen();
-  // Only needs the masterscreen
-  MapX = MAP_ZoomFactor / 2;
-  MapY = MAP_ZoomFactor / 2;
+	// No masterscreen?
+	if (!MAP_SCREEN_MasterScreen)
+	{
+		// this is the masterscreen.
+		MAP_SCREEN_MasterScreen = this;
+		// Getting the landscape width and height.
+		GetLandscapeDimensions();
+	}
+	// Masterscreen is occupied, initializing this screen.
+	InitScreen();
+	// Only needed by the masterscreen
+	map_x = MAP_SCREEN_ZoomFactor / 2;
+	map_y = MAP_SCREEN_ZoomFactor / 2;
 }
 
 /* Slave-functiones */
 
 
-private func InitScreen()
+func InitScreen()
 {
-  // Adjusting size.
-  SetShape(-MAP_ScreenWidth/2, -MAP_ScreenHeight/2, MAP_ScreenWidth, MAP_ScreenHeight);
-  // Adding frame.
-  var pFrame = AddFrame();
-  pFrame->PanelColor(RGBa(1,1,1,200));
-  pFrame->FrameColor(RGBa(255,255,255));
-  // Showing the position of the clonks.
-  ScheduleCall(this, "ShowClonks", 1);
+	// Adjusting size.
+	SetShape(-MAP_SCREEN_ScreenWidth / 2, -MAP_SCREEN_ScreenHeight / 2, MAP_SCREEN_ScreenWidth, MAP_SCREEN_ScreenHeight);
+	// Adding frame.
+	var frame = AddFrame();
+	frame->PanelColor(RGBa(1, 1, 1, 200));
+	frame->FrameColor(RGBa(255, 255, 255));
+	// Showing the position of the clonks.
+	ScheduleCall(this, this.ShowCrew, 1);
+	ShowLandscape();
+	// not necessary imho: ScreenLandscape();
 }
 
-private func ScreenLandscape()
+func ShowLandscape()
 {
-  // No masterscreen?
-  if(!MAP_MasterScreen)
-    MAP_MasterScreen = this;
-  // Am I masterscreen?
-  if(MAP_MasterScreen != this)
-    return;
-  // Saving all existing screens.
-  var screens = CreateArray();
-  screens = FindObjects(Find_ID(GetID()));
-  // Scanning three pixels of the landscape.
-  for(var j=0,mat,matC ; j<3 ; j++)
-    {
-    mat = GetMaterial(AbsX(MapX), AbsY(MapY));
-    matC = RGB(255, 0, 0); //TODO RGB(GetMaterialColor(mat, 1, 0), GetMaterialColor(mat, 1, 1), GetMaterialColor(mat, 1, 2));
-    
-    for(var i=0 ; i < GetLength(screens) ; i++)
-      screens[i]->DrawPixel((MapX-MAP_ZoomFactor/2) / MAP_ZoomFactor, (MapY-MAP_ZoomFactor/2) / MAP_ZoomFactor, matC);
-    // Increasing MapX and MapY.
-    MapX += MAP_ZoomFactor;
-    if((MapX-MAP_ZoomFactor/2) / MAP_ZoomFactor > MAP_ScreenWidth)
-      {
-      MapX = MAP_ZoomFactor / 2;
-      MapY += MAP_ZoomFactor;
-      if((MapY-MAP_ZoomFactor/2) / MAP_ZoomFactor > MAP_ScreenHeight)
-        MapY = MAP_ZoomFactor / 2;
-      }
-    }
+	if (GetLandscapeID())
+	{
+		SetGraphics(nil, GetLandscapeID(), 1, GFXOV_MODE_Base);
+		SetObjDrawTransform(1000, 0, - MAP_SCREEN_ScreenWidth * 500, 0, 1000, - MAP_SCREEN_ScreenHeight * 500, 1);
+	}
+	else
+	{
+		// Draw black screen.
+		for (var x = 0; x <= MAP_SCREEN_ScreenWidth; ++x)
+		for (var y = 0; y <= MAP_SCREEN_ScreenHeight; ++y)
+		{
+			InitPixel(x, y);
+			DrawPixel(x, y, RGB(0, 0, 0));
+		}
+		// Only the master screen does this
+		if (MAP_SCREEN_MasterScreen != this) return;
+		// Draw the whole landscape
+		for (var x = 0; x < LandscapeWidth(); x += MAP_SCREEN_ZoomFactor)
+		for (var y = 0; y < LandscapeHeight(); y += MAP_SCREEN_ZoomFactor)
+		{
+			DrawLandscape(x, y);
+		}
+	}
 }
 
-public func DrawPixel(int iX, int iY, int Color)
+func ScreenLandscape()
 {
-  // Drawing.
-  // TODO SetLandscapePixel(-MAP_ScreenWidth/2 + iX, -MAP_ScreenHeight/2 + iY, Color);
+	// Am I masterscreen?
+	if (MAP_SCREEN_MasterScreen != this) return;
+	// Scanning three pixels of the landscape.
+	for (var j = 0; j < 3; j++)
+	{
+		DrawLandscape(map_x, map_y);
+		// Determine next pixel
+		map_x += MAP_SCREEN_ZoomFactor;
+		if (map_x > LandscapeWidth())
+		{
+			map_x = 0;
+			map_y += MAP_SCREEN_ZoomFactor;
+			if (map_y > LandscapeHeight())
+			{
+				map_y = 0;
+			}
+		}
+	}
+	ScheduleCall(this, this.ScreenLandscape, 1, 1);
 }
 
-protected func ShowClonks()
+func DrawLandscape(int global_x, int global_y)
 {
-    for(lClonk in FindObjects(Find_OCF(OCF_CrewMember)))
-    {
-        if(lClonk)
-        {
-            // Showing clonk position.
-            var iX = lClonk->GetX() / MAP_ZoomFactor;
-            var iY = lClonk->GetY() / MAP_ZoomFactor;
-            CreateParticle("MapDot", -MAP_ScreenWidth/2 + iX, -MAP_ScreenHeight/2 + iY, 0, 0, 10, );// TODO GetColor(lClonk));
-        }
-    }
+	var texture = GetTexture(global_x - GetX(), global_y - GetY());
+	var color = GetAverageTextureColor(texture);
+	UpdatePixel(global_x / MAP_SCREEN_ZoomFactor, global_y / MAP_SCREEN_ZoomFactor, color);
+}
+
+func InitPixel(int x, int y)
+{
+	var overlay = GetPixelOverlay(x, y);
+	SetGraphics("Pixel", GetID(), overlay, GFXOV_MODE_Base);
+	SetObjDrawTransform(1000, 0, (x - MAP_SCREEN_ScreenWidth / 2) * 1000, 0, 1000, (y - MAP_SCREEN_ScreenHeight / 2) * 1000, overlay);
+}
+
+func UpdatePixel(int x, int y, int color)
+{
+	var screens = FindObjects(Find_ID(GetID()));
+	for (var screen in screens)
+	{
+		screen->DrawPixel(x, y, color);
+	}
+}
+
+func DrawPixel(int x, int y, int color)
+{
+	SetClrModulation(color, GetPixelOverlay(x, y));
+}
+
+func ShowCrew()
+{
+	var lifetime = 1;
+	for (var map_dot in FindObjects(Find_OCF(OCF_CrewMember))) 
+	{
+		if (map_dot)
+		{
+			// Showing crew member position.
+			var x = map_dot->GetX() / MAP_SCREEN_ZoomFactor;
+			var y = map_dot->GetY() / MAP_SCREEN_ZoomFactor;
+			CreateCrewDot(map_dot->GetColor(), x - MAP_SCREEN_ScreenWidth / 2, y - MAP_SCREEN_ScreenHeight / 2, 2, lifetime * 2);
+		}
+	}
+	ScheduleCall(this, this.ShowCrew, lifetime);
+}
+
+func CreateCrewDot(int color, int x, int y, int size, int lifetime)
+{
+
+	var r = GetRGBaValue(color, RGBA_RED);
+	var g = GetRGBaValue(color, RGBA_GREEN);
+	var b = GetRGBaValue(color, RGBA_BLUE);
+
+	CreateParticle("Magic", x, y, 0, 0, lifetime ?? 20,
+	{
+		Prototype = Particles_Magic(),
+		BlitMode = GFX_BLIT_Additive,
+		Attach = ATTACH_Front,
+		R = r, G = g, B = b,
+		Alpha = PV_KeyFrames(0, 0, 255, 500, 255, 1000, 0),
+		Size = size ?? 8,
+	}, 5);
+}
+
+
+func GetPixelOverlay(int x, int y)
+{
+	return 1 + x + y * MAP_SCREEN_ScreenWidth;
+}
+
+func GetLandscapeID()
+{
+	return nil;
 }
 
 /* Master-functions */
 
 // Only for the masterscreen
 
-private func LandscapeWH()
+func GetLandscapeDimensions()
 {
-  MAP_ScreenWidth = LandscapeWidth() / MAP_ZoomFactor;
-  MAP_ScreenHeight = LandscapeHeight() / MAP_ZoomFactor;
+	MAP_SCREEN_ScreenWidth = LandscapeWidth() / MAP_SCREEN_ZoomFactor;
+	MAP_SCREEN_ScreenHeight = LandscapeHeight() / MAP_SCREEN_ZoomFactor;
 }
+
 local Name = "$Name$";
 local Description = "$Description$";

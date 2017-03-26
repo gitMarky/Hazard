@@ -1,7 +1,4 @@
-#include Library_HazardDoor
-
-public func CanBeLaserRecycled() { return 2; }
-
+ï»¿#include Library_HazardDoor
 
 public func Initialize()
 {
@@ -14,7 +11,7 @@ public func Initialize()
 /*
 public func OnDmg(int iDmg, int iType) {
 
-	// diese Tür ist nicht besonders dick
+	// this door is not especially strong
 	if(iType == DMG_Projectile)	return(50);
 	if(iType == DMG_Melee)	return(20);
 	if(iType == DMG_Energy)	return(40);
@@ -47,6 +44,8 @@ public func OnDestroyed(int damage_type)
 }
 
 /* Serialisierung
+
+TODO
 
 public func Serialize(array& extra)
 {
