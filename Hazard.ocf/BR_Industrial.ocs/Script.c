@@ -261,6 +261,7 @@ func CreateWaypoints()
 //	}
 }
 
+
 func RelaunchLocations()
 {
 	return [{x = 65, y = 320, team = 1},
