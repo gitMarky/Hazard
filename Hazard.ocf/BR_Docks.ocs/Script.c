@@ -394,7 +394,6 @@ func CreateWaypoints()
 //	wp53->AddPath(wp41, Path_MoveTo, 1);
 }
 
-
 func RelaunchLocations()
 {
 	return [{x = 110, y = 100, team = 1},
