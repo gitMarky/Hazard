@@ -54,7 +54,7 @@ material HazardClonkHead
 			specular 0.000000 0.000000 0.000000 1.000000 3.000000
 			emissive 0.000000 0.000000 0.000000 1.000000
 
-			texture_unit Overlay
+			texture_unit Skin
 			{
 				texture HazardClonkHead.png
 				tex_address_mode wrap
