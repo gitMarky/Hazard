@@ -88,7 +88,7 @@ func SetSkin(int new_skin)
 	skin = new_skin;
 	
 	//Steampunk
-	SetGraphics(skin_name = "Alchemist", Clonk);
+	//SetGraphics(skin_name = "Alchemist", Clonk);
 	gender = 0;
 	
 	SetHazardSkin();
@@ -108,14 +108,14 @@ func SetSkin(int new_skin)
 
 func SetHazardSkin()
 {
-	SetMeshMaterial("HazardClonk");
-	SetMeshMaterial("HazardClonkTunic", 1);
+	//SetMeshMaterial("HazardClonk");
+	//SetMeshMaterial("HazardClonkTunic", 1);
 }
 
 func SetHazardArmorSkin()
 {
-	SetMeshMaterial("HazardClonkArmor");
-	SetMeshMaterial("HazardClonkArmorTunic", 1);
+	//SetMeshMaterial("HazardClonkArmor");
+	//SetMeshMaterial("HazardClonkArmorTunic", 1);
 }
 
 
