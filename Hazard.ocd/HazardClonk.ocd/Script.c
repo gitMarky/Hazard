@@ -87,14 +87,15 @@ func SetSkin(int new_skin)
 	// Remember skin
 	skin = new_skin;
 	
-	//Steampunk
-	SetGraphics(skin_name = "Alchemist", Clonk);
 	gender = 0;
 	
 	SetHazardSkin();
 
 	RemoveBackpack(); // remove the backpack
+}
 
+func SetSkinUpdateModel()
+{
 	//refreshes animation (whatever that means?)
 	// Go back to original action afterwards and hope
 	// that noone calls SetSkin during more complex activities
@@ -108,14 +109,14 @@ func SetSkin(int new_skin)
 
 func SetHazardSkin()
 {
-	SetMeshMaterial("HazardClonk");
-	SetMeshMaterial("HazardClonkTunic", 1);
+	SetGraphics(nil);
+	SetSkinUpdateModel();
 }
 
 func SetHazardArmorSkin()
 {
-	SetMeshMaterial("HazardClonkArmor");
-	SetMeshMaterial("HazardClonkArmorTunic", 1);
+	SetGraphics("Armor");
+	SetSkinUpdateModel();
 }
 
 
