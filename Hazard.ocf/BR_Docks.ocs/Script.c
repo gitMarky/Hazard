@@ -4,6 +4,8 @@ static switchright, switchleft;
 
 func Initialize()
 {
+	SetGoal(SCENPAR_HAZARD_GOAL);
+
 	_inherited(...);
 
 	CreateBackground();
@@ -393,6 +395,7 @@ func CreateWaypoints()
 //	wp53->AddPath(wp29, Path_Jump, -1);
 //	wp53->AddPath(wp41, Path_MoveTo, 1);
 }
+
 
 func RelaunchLocations()
 {
