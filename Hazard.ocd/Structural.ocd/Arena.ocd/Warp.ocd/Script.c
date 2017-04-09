@@ -36,7 +36,7 @@ func Warp(object target)
 	target->SetPosition(destination_x, destination_y);
 	target->SetXDir(xv);
 	target->SetYDir(yv);
-	target->~AddSpawnEffect(0, RGBa(0, 200, 255)); // TODO
+	target->~AddSpawnEffect(RGBa(0, 200, 255, 255));
 }
 
 

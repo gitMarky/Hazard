@@ -54,7 +54,7 @@ global func CreateSparksEffect(int amount, int rgb, int x, int y)
 	{
 		var angle = Random(360);
 		var speed = RandomX(0, level);
-		CreateParticle("ElectroSpark", PV_Random(x - 2, x + 2),PV_Random(y - 2, y + 2),
+		CreateParticle("ElectroSpark", PV_Random(x - 2, x + 2), PV_Random(y - 2, y + 2),
 		                               Sin(angle, speed), Cos(angle, speed), 20,
 		{
 			Prototype = prototype,
@@ -79,4 +79,63 @@ global func CreateLEDEffect(int color, int x, int y, int size, int lifetime)
 		R = r, G = g, B = b,
 		Size = size ?? 8,
 	});
+}
+
+/* Spawn-Effekt */
+
+static const FxSpawnEffect = new Effect
+{
+	Start = func(int temp, int rgba)
+	{
+		this.r = GetRGBaValue(rgba, RGBA_RED);
+		this.g = GetRGBaValue(rgba, RGBA_GREEN);
+		this.b = GetRGBaValue(rgba, RGBA_BLUE);
+		this.a = GetRGBaValue(rgba, RGBA_ALPHA);
+
+		this.angle = 360;
+	},
+
+    Timer = func()
+    {
+		if (this.angle <= 0)
+		{		
+			this.Target->CreateParticle("Magic", 0, 0, PV_Random(-25, 25), PV_Random(-25, 25), 20,
+			{
+				Prototype = Particles_Magic(),
+				BlitMode = GFX_BLIT_Additive,
+				R = this.r, G = this.g, B = this.b, Alpha = PV_Linear(this.a, 0),
+				Size = PV_Random(1, 5),
+				Attach = ATTACH_Front | ATTACH_MoveRelative,
+			}, 20);
+			
+			return FX_Execute_Kill;
+		}
+
+		for (var i = 0; i < 5; i++)
+		{
+			var angle = this.angle - 90 * i;
+			var radius = this.angle / 10;
+			var x = Cos(angle, radius);
+			var y = Sin(angle, radius);
+
+			this.Target->CreateParticle("Magic", x, y, 0, 0, 20,
+			{
+				Prototype = Particles_Magic(),
+				BlitMode = GFX_BLIT_Additive,
+				R = this.r, G = this.g, B = this.b, Alpha = PV_Linear(this.a, 0),
+				Size = BoundBy((360 - this.angle) / 50, 1, 5),
+				Attach = ATTACH_Front | ATTACH_MoveRelative,
+			});
+		}
+
+		this.angle -= 10;
+    },
+};
+
+
+global func AddSpawnEffect(int rgba)
+{
+	AssertObjectContext("AddSpawnEffect()");
+
+    CreateEffect(FxSpawnEffect, 5, 1, rgba);
 }
