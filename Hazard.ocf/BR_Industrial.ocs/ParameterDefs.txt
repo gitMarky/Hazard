@@ -1,0 +1,12 @@
+[ParameterDef]
+Name=$ScenParGoalName$
+Description=$ScenParGoalDesc$
+ID=HAZARD_GOAL
+Default=1
+
+	[Options]
+		
+		[Option]
+		Name=$ScenParGoalNameBombingRun$
+		Description=$ScenParGoalDescBombingRun$
+		Value=1

@@ -2,6 +2,8 @@
 
 func Initialize()
 {
+	SetGoal(SCENPAR_HAZARD_GOAL);
+
     _inherited(...);
     
 	SetSkyParallax(0, 12, 12, 0, 0, 0, 0);
