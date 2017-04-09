@@ -1,0 +1,10 @@
+#Copied from default script
+
+ScenParGoalName=Spielziel
+ScenParGoalDesc=Wählt das Spielziel für diese Runde aus.
+
+ScenParGoalNameRandom=Zufall
+ScenParGoalDescRandom=Aus den zur Auswahl stehenden Spielzielen wird für diese Runde zufällig eines bestimmt.
+
+ScenParGoalNameBombingRun=Bombing Run
+ScenParGoalDescBombingRun=Es gilt die Bombe durch das gegnerische Tor zu befördern. Wenn man durch das Portal läuft gibt es zwei Punkte. Wenn man die Bombe schießt, nur einen.
