@@ -1,6 +1,6 @@
 [DefCore]
 id=BombingRun_BombGate
-Version=7,0
+Version=8,0
 Category=C4D_StaticBack
 Width=90
 Height=80

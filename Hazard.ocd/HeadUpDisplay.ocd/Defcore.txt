@@ -1,6 +1,6 @@
 [DefCore]
 id=Hazard_HUD
-Version=7,0
+Version=8,0
 Category=C4D_StaticBack|C4D_Parallax|C4D_Foreground|C4D_MouseIgnore|C4D_IgnoreFoW
 Width=110
 Height=30

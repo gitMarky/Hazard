@@ -1,6 +1,6 @@
 [DefCore]
 id=Projectile_AirstrikeBomb
-Version=7,0
+Version=8,0
 Category=C4D_Object
 Width=13
 Height=20

@@ -1,6 +1,6 @@
 [DefCore]
 id=WNDW
-Version=7,0
+Version=8,0
 Category=8388609
 Width=70
 Height=91

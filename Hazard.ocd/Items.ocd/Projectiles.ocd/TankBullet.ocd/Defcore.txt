@@ -1,6 +1,6 @@
 [DefCore]
 id=Projectile_TankBullet
-Version=7,0
+Version=8,0
 Category=C4D_Vehicle
 Width=6
 Height=11

@@ -1,6 +1,6 @@
 [DefCore]
 id=BombingRun_Bomb
-Version=7,0
+Version=8,0
 Category=C4D_Vehicle
 Width=10
 Height=11

@@ -1,6 +1,6 @@
 [DefCore]
 id=CON1
-Version=7,0
+Version=8,0
 Category=C4D_Structure
 Width=64
 Height=30

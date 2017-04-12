@@ -1,6 +1,6 @@
 [DefCore]
 id=Rail_Basic
-Version=7,0
+Version=8,0
 Category=C4D_StaticBack|C4D_Foreground
 Width=2
 Height=12

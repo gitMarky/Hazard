@@ -1,6 +1,6 @@
 [DefCore]
 id=GUI_Hazard_CrewBar
-Version=7,0
+Version=8,0
 Category=C4D_StaticBack
 Width=100
 Height=100
