@@ -1,0 +1,7 @@
+Name=Waffenautomat
+Description=Ein Automat, an dem man Waffen kaufen kann.
+
+Weapons=Waffen
+Ammo=Munition
+Equipment=Ausrüstung
+End=Bestätigen
