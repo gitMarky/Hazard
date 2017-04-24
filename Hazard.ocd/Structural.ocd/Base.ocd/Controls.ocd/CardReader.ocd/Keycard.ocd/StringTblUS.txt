@@ -1,0 +1,3 @@
+Name=Key card
+Description=Used to open locked doors. One card can always just open one door.
+

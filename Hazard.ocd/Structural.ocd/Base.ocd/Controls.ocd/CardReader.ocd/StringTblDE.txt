@@ -1,0 +1,4 @@
+Name=Kartenleser
+Description=Die richtige Karte am richtigen Fleck kann so einiges bewegen.
+Keycard=Hier passt eine Schlüsselkarte rein.
+Control=Bedienen

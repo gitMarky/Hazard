@@ -1,0 +1,4 @@
+Name=Card reader
+Description=The right card in the right spot can make the difference.
+Keycard=This slot is for key cards.
+Control=Control

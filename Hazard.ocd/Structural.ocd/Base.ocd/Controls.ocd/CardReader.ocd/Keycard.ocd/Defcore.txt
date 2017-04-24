@@ -1,0 +1,14 @@
+[DefCore]
+id=KCRD
+Version=9,0
+Category=C4D_Object
+Width=8
+Height=5
+Offset=-4,-3
+Value=10
+Mass=10
+Picture=8,0,64,64
+Vertices=2
+VertexX=-4,4
+VertexFriction=60,60
+Rotate=1
