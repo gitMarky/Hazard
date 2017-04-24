@@ -4,7 +4,7 @@ func CorrectCodeEffect()
 {
 	CreateLEDEffect(RGB(0, 255, 0), 5, 1, nil, 50);
 }
-  
+
 func WrongCodeEffect()
 {
 	CreateLEDEffect(RGB(255, 0, 0), 5, 1, nil, 50);

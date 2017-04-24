@@ -32,10 +32,14 @@ func FxLightsTimer(object pTarget, proplist pEffect)
 // Damage
 func Damage()
 {
-	if (smashed)
-		return;
+	if (smashed) return;
+
 	if (GetDamage() >= 40)
 	{
+    	// CastObjects(SPRK, 4, 50);
+    	// Sparks(15, RGB(210, 210, 0));
+    	// CreateSmokeTrail(RandomX(15,20), Random(360), 0,0, this());
+    	// CreateSmokeTrail(RandomX(15,20), Random(360), 0,0, this());
 		Sound("Blast1");
 		Sound("CrystalHit*");
 		SetGraphics("Broken");
@@ -53,7 +57,10 @@ func ControlUp(object user)
 func Grabbed(object user, bool grab)
 {
 	if (!grab)
+	{
 		return user->CloseMenu();
+	}
+
 	if (smashed || GetEffect("EMPShock", this))
 	{
 		Sound("Electric");
@@ -134,3 +141,5 @@ public func Control(dummy, object target)
 local Touchable = 2;
 local Name = "$Name$";
 local Description = "$Description$";
+
+// TODO: Needs saving mechanism
