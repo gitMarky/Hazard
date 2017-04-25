@@ -4,7 +4,7 @@
 local pipe_left, pipe_right, pipe_up, pipe_down; // connected objects
 local valve; // valve
 local drains, drain_index;
-local noliquid, power; // is in liquid?, amount of liquid output
+local has_liquid, power; // is in liquid?, amount of liquid output
 local checked; // cache for UpdatePipesystem
 
 static const PIPE_Left = 1;
@@ -18,13 +18,11 @@ func Initialize()
 	DrawAsBackground();
 	drains = [];
 	
-	if (!GBackLiquid())
-	{
-		noliquid = true;
-	}
+	has_liquid = GBackLiquid();
 	
 	// default output
 	power = 1;
+	ScheduleCall(this, this.LiquidCheck, 4);
 }
 
 // Allow connections between valid pipelines (callbacks) only
@@ -213,9 +211,11 @@ func ChangePower(int power)
 
 func LiquidCheck()
 {
+	ScheduleCall(this, this.LiquidCheck, 4);
+
 	if (!GBackLiquid())
 	{
-		noliquid = true;
+		has_liquid = false;
 		return;
 	}
 
@@ -264,12 +264,9 @@ func CastLiquid(int iMat, int iStr)
 
 func NewLiquidCheck()
 {
-	if (!noliquid)
-		return;
-	
-	if (GBackLiquid())
+	if (!has_liquid && GBackLiquid())
 	{
-		noliquid = false;
+		has_liquid = true;
 		UpdateEfflux();
 	}
 }
