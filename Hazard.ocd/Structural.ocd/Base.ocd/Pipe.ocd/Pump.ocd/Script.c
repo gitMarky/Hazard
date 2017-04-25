@@ -2,9 +2,10 @@
 
 #include PIPL
 
-local connects, eff, con;
+local connections;
+local drain, source;
 local sources, source_index;
-local running;
+local is_running;
 
 func Initialize()
 {
@@ -17,54 +18,54 @@ func Initialize()
 
 /* Important for pumps:
 
-   first connection -> source
-   second connection -> drain
+   first connect_toion -> source
+   second connect_toion -> drain
 */
 
-func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Left(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	if (connects < 2)
+	if (connections < 2)
 	{
-		return _inherited(iRepeat, solid, valve, pipeId, iPower, connect);
+		return _inherited(repeat, solid, valve, pipe_id, power, connect_to);
 	}
 }
 
-func Right(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Right(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	if (connects < 2)
+	if (connections < 2)
 	{
-		return _inherited(iRepeat, solid, valve, pipeId, iPower, connect);
+		return _inherited(repeat, solid, valve, pipe_id, power, connect_to);
 	}
 }
 
-func Up(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Up(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	if (connects < 2)
+	if (connections < 2)
 	{
-		return _inherited(iRepeat, solid, valve, pipeId, iPower, connect);
+		return _inherited(repeat, solid, valve, pipe_id, power, connect_to);
 	}
 }
 
-func Down(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Down(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	if (connects < 2)
+	if (connections < 2)
 	{
-		return _inherited(iRepeat, solid, valve, pipeId, iPower, connect);
+		return _inherited(repeat, solid, valve, pipe_id, power, connect_to);
 	}
 }
 
-func ConnectTo(object connect, int dir)
+func ConnectTo(object connect_to, int dir)
 {
-	if (!connects)
+	if (!connections)
 	{
-		con = connect;
+		source = connect_to;
 	}
-	if (connects == 1)
+	if (connections == 1)
 	{
-		eff = connect;
+		drain = connect_to;
 	}
-	connects++;
-	return _inherited(connect, dir);
+	connections++;
+	return _inherited(connect_to, dir);
 }
 
 /* Public interface */
@@ -73,12 +74,12 @@ func UpdateEfflux()
 {
 	drains = [];
 	
-	if (eff)
+	if (drain)
 	{
-		if (eff == pipe_left)  eff->UpdateSystem(this, PIPE_Right, 2);
-		if (eff == pipe_right) eff->UpdateSystem(this, PIPE_Left, 2);
-		if (eff == pipe_down)  eff->UpdateSystem(this, PIPE_Up, 2);
-		if (eff == pipe_up)    eff->UpdateSystem(this, PIPE_Down, 2);
+		if (drain == pipe_left)  drain->UpdateSystem(this, PIPE_Right, 2);
+		if (drain == pipe_right) drain->UpdateSystem(this, PIPE_Left, 2);
+		if (drain == pipe_down)  drain->UpdateSystem(this, PIPE_Up, 2);
+		if (drain == pipe_up)    drain->UpdateSystem(this, PIPE_Down, 2);
 	}
 	
 	UpdateConflux();
@@ -88,12 +89,12 @@ func UpdateConflux()
 {
 	sources = CreateArray();
 
-	if (con)
+	if (source)
 	{
-		if (con == pipe_left)  con->UpdateSystem(this, PIPE_Right, 1);
-		if (con == pipe_right) con->UpdateSystem(this, PIPE_Left, 1);
-		if (con == pipe_down)  con->UpdateSystem(this, PIPE_Up, 1);
-		if (con == pipe_up)    con->UpdateSystem(this, PIPE_Down, 1);
+		if (source == pipe_left)  source->UpdateSystem(this, PIPE_Right, 1);
+		if (source == pipe_right) source->UpdateSystem(this, PIPE_Left, 1);
+		if (source == pipe_down)  source->UpdateSystem(this, PIPE_Up, 1);
+		if (source == pipe_up)    source->UpdateSystem(this, PIPE_Down, 1);
 	}
 }
 
@@ -121,7 +122,7 @@ func TwoPumpError()
 
 func Pumping()
 {
-	if (running && drains[0] && sources[0])
+	if (is_running && drains[0] && sources[0])
 	{
 		var mat;
 		for (var i = 0; i < power; i++)
@@ -154,19 +155,19 @@ func Pumping()
 
 func On()
 {
-	running = true;
+	is_running = true;
 	Sound("Gear", false, 50, 0, 1);
 }
 
 func Off()
 {
-	running = false;
+	is_running = false;
 	Sound("Gear", false, 0, 0, -1);
 }
 
 func Status()
 {
-	return running;
+	return is_running;
 }
 
 /* Console control */
@@ -175,7 +176,7 @@ func ConsoleControl(int i)
 {
 	if (i == 1)
 	{
-		if (running)
+		if (is_running)
 		{
 			return "$TurnOff$";
 		}
@@ -197,7 +198,7 @@ func ConsoleControlled(int i)
 /* Control by switch */
 func Access()
 {
-	if (running)
+	if (is_running)
 	{
 		Off();
 	}
@@ -212,12 +213,12 @@ func Access()
 func Serialize(array extra) // TODO: Implement proper saving mechanism
 {
 	_inherited(extra);
-	if (running)
+	if (is_running)
 		extra[GetLength(extra)] = "On()";
-	if (con)
-		extra[GetLength(extra)] = ["LocalN(\"con\")=Object(%d)", con];
-	if (eff)
-		extra[GetLength(extra)] = ["LocalN(\"eff\")=Object(%d)", eff];
+	if (source)
+		extra[GetLength(extra)] = ["LocalN(\"con\")=Object(%d)", source];
+	if (drain)
+		extra[GetLength(extra)] = ["LocalN(\"eff\")=Object(%d)", drain];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

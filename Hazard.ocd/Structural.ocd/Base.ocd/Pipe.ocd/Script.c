@@ -1,7 +1,7 @@
 /*-- Pipe --*/
 
 
-local pipe_left, pipe_right, pipe_up, pipe_down; // connected objects
+local pipe_left, pipe_right, pipe_up, pipe_down; // connect_toed objects
 local valve; // valve
 local drains, drain_index;
 local has_liquid, power; // is in liquid?, amount of liquid output
@@ -25,79 +25,79 @@ func Initialize()
 	ScheduleCall(this, this.LiquidCheck, 4);
 }
 
-// Allow connections between valid pipelines (callbacks) only
+// Allow connect_toions between valid pipelines (callbacks) only
 
-func ExtendPipeLine(int direction_to, int direction_from, int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func ExtendPipeLine(int direction_to, int direction_from, int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	iRepeat = iRepeat ?? 1;
-	pipeId = pipeId ?? PIPL;
-	connect = connect ?? CreatePipe(PIPE_Left, pipeId);
-	iPower = iPower ?? 1;
+	repeat = repeat ?? 1;
+	pipe_id = pipe_id ?? PIPL;
+	connect_to = connect_to ?? CreatePipe(PIPE_Left, pipe_id);
+	power = power ?? 1;
 
-	ConnectTo(connect, PIPE_Left);
-	connect->ConnectTo(this, PIPE_Right);
-	connect->~ChangePower(iPower);
+	ConnectTo(connect_to, PIPE_Left);
+	connect_to->ConnectTo(this, PIPE_Right);
+	connect_to->~ChangePower(power);
 	if (solid)
 	{
-		connect->~Solid();
+		connect_to->~Solid();
 	}
 	if (valve)
 	{
-		connect->~Valve();
+		connect_to->~Valve();
 	}
 	
-	return Max(0, iRepeat - 1);
+	return Max(0, repeat - 1);
 }
 
-func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Left(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	var remaining = ExtendPipeLine(PIPE_Left, PIPE_Right, iRepeat, solid, valve, pipeId, iPower, connect);
+	var remaining = ExtendPipeLine(PIPE_Left, PIPE_Right, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{
-		return connect->~Left(remaining, solid, valve, pipeId, iPower);
+		return connect_to->~Left(remaining, solid, valve, pipe_id, power);
 	}
 	else
 	{
-		return connect;
+		return connect_to;
 	}
 }
 
-func Right(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Right(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	var remaining = ExtendPipeLine(PIPE_Right, PIPE_Left, iRepeat, solid, valve, pipeId, iPower, connect);
+	var remaining = ExtendPipeLine(PIPE_Right, PIPE_Left, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{
-		return connect->~Right(remaining, solid, valve, pipeId, iPower);
+		return connect_to->~Right(remaining, solid, valve, pipe_id, power);
 	}
 	else
 	{
-		return connect;
+		return connect_to;
 	}
 }
 
-func Up(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Up(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	var remaining = ExtendPipeLine(PIPE_Up, PIPE_Down, iRepeat, solid, valve, pipeId, iPower, connect);
+	var remaining = ExtendPipeLine(PIPE_Up, PIPE_Down, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{
-		return connect->~Up(remaining, solid, valve, pipeId, iPower);
+		return connect_to->~Up(remaining, solid, valve, pipe_id, power);
 	}
 	else
 	{
-		return connect;
+		return connect_to;
 	}
 }
 
-func Down(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func Down(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	var remaining = ExtendPipeLine(PIPE_Down, PIPE_Up, iRepeat, solid, valve, pipeId, iPower, connect);
+	var remaining = ExtendPipeLine(PIPE_Down, PIPE_Up, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{
-		return connect->~Down(remaining, solid, valve, pipeId, iPower);
+		return connect_to->~Down(remaining, solid, valve, pipe_id, power);
 	}
 	else
 	{
-		return connect;
+		return connect_to;
 	}
 }
 
@@ -131,29 +131,29 @@ func Consolidate()
 	SetSolidMask(index % 4 * 50, index / 4 * 50, 50, 50);
 }
 
-func ConnectTo(object connect, int dir)
+func ConnectTo(object connect_to, int dir)
 {
 	
 	// allocate local
 	if (dir == PIPE_Left)
 	{
-		pipe_left = connect;
+		pipe_left = connect_to;
 	}
 	else if (dir == PIPE_Right)
 	{
-		pipe_right = connect;
+		pipe_right = connect_to;
 	}
 	else if (dir == PIPE_Up)
 	{
-		pipe_up = connect;
+		pipe_up = connect_to;
 	}
 	else if (dir == PIPE_Down)
 	{
-		pipe_down = connect;
+		pipe_down = connect_to;
 	}
 	else
 	{
-		FatalError(Format("Cannot connect in direction %d", dir));
+		FatalError(Format("Cannot connect_to in direction %d", dir));
 	}
 	
 	UpdateGraphics();
@@ -169,7 +169,7 @@ func UpdateGraphics()
 	SetDir(index / 4);
 }
 
-func CreatePipe(int dir, id pipeId)
+func CreatePipe(int dir, id pipe_id)
 {
 	var x = 0, y = 0;
 	
@@ -193,7 +193,7 @@ func CreatePipe(int dir, id pipeId)
 	x = x * GetCon() / 100;
 	y = y * GetCon() / 100;
 
-	var pipe = CreateObject(pipeId, 50, 50, GetOwner());
+	var pipe = CreateObject(pipe_id, 50, 50, GetOwner());
 	pipe->DoCon(GetCon() - 100);
 	pipe->SetCategory(GetCategory());
 	
