@@ -14,6 +14,8 @@ func Initialize()
 	sources = [];
 	// default power
 	power = 2;
+	
+	AddTimer(this.Pumping, 4);
 }
 
 /* Important for pumps:

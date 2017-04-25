@@ -22,7 +22,8 @@ func Initialize()
 	
 	// default output
 	power = 1;
-	ScheduleCall(this, this.LiquidCheck, 4);
+	
+	AddTimer(this.LiquidCheck, 4);
 }
 
 // Allow connect_toions between valid pipelines (callbacks) only
