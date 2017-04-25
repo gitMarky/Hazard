@@ -3,22 +3,22 @@
 #include PIPL
 
 local connects, eff, con;
-local conflux, temp2;
+local sources, source_index;
 local running;
 
 func Initialize()
 {
 	SetAction("Pump");
-	efflux = [];
-	conflux = [];
+	drains = [];
+	sources = [];
 	// default power
 	power = 2;
 }
 
-/* Wichtig f�r die Pumpen:
+/* Important for pumps:
 
-    Erster Anschluss -> source
-    Zweiter Anschluss -> drain
+   first connection -> source
+   second connection -> drain
 */
 
 func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
@@ -71,14 +71,14 @@ func ConnectTo(object connect, int dir)
 
 func UpdateEfflux()
 {
-	efflux = [];
+	drains = [];
 	
 	if (eff)
 	{
-		if (eff == left)  eff->UpdateSystem(this, PIPE_Right, 2);
-		if (eff == right) eff->UpdateSystem(this, PIPE_Left, 2);
-		if (eff == down)  eff->UpdateSystem(this, PIPE_Up, 2);
-		if (eff == up)    eff->UpdateSystem(this, PIPE_Down, 2);
+		if (eff == pipe_left)  eff->UpdateSystem(this, PIPE_Right, 2);
+		if (eff == pipe_right) eff->UpdateSystem(this, PIPE_Left, 2);
+		if (eff == pipe_down)  eff->UpdateSystem(this, PIPE_Up, 2);
+		if (eff == pipe_up)    eff->UpdateSystem(this, PIPE_Down, 2);
 	}
 	
 	UpdateConflux();
@@ -86,14 +86,14 @@ func UpdateEfflux()
 
 func UpdateConflux()
 {
-	conflux = CreateArray();
+	sources = CreateArray();
 
 	if (con)
 	{
-		if (con == left)  con->UpdateSystem(this, PIPE_Right, 1);
-		if (con == right) con->UpdateSystem(this, PIPE_Left, 1);
-		if (con == down)  con->UpdateSystem(this, PIPE_Up, 1);
-		if (con == up)    con->UpdateSystem(this, PIPE_Down, 1);
+		if (con == pipe_left)  con->UpdateSystem(this, PIPE_Right, 1);
+		if (con == pipe_right) con->UpdateSystem(this, PIPE_Left, 1);
+		if (con == pipe_down)  con->UpdateSystem(this, PIPE_Up, 1);
+		if (con == pipe_up)    con->UpdateSystem(this, PIPE_Down, 1);
 	}
 }
 
@@ -108,7 +108,7 @@ func UpdateSystem(object start, int from, bool pump)
 
 func NewConflux(object next)
 {
-	PushBack(conflux, next);
+	PushBack(sources, next);
 }
 
 
@@ -121,13 +121,13 @@ func TwoPumpError()
 
 func Pumping()
 {
-	if (running && efflux[0] && conflux[0])
+	if (running && drains[0] && sources[0])
 	{
 		var mat;
 		for (var i = 0; i < power; i++)
 		{
-			mat = ExtractLiquid(AbsX(GetX(conflux[temp2])), AbsY(GetY(conflux[temp2])));
-			efflux[temp]->CastLiquid(mat, 35);
+			mat = ExtractLiquid(AbsX(GetX(sources[source_index])), AbsY(GetY(sources[source_index])));
+			drains[drain_index]->CastLiquid(mat, 35);
 		}
 		
 		if (!Random(4))
@@ -136,18 +136,18 @@ func Pumping()
 		}
 		if (!Random(4))
 		{
-			Bubble(AbsX(GetX(conflux[temp2])), AbsY(GetY(conflux[temp2])));
+			Bubble(AbsX(GetX(sources[source_index])), AbsY(GetY(sources[source_index])));
 		}
 		
-		temp++;
-		temp2++;
-		if (efflux[temp] == 0)
+		drain_index++;
+		source_index++;
+		if (drains[drain_index] == 0)
 		{
-			temp = 0;
+			drain_index = 0;
 		}
-		if (conflux[temp2] == 0)
+		if (sources[source_index] == 0)
 		{
-			temp2 = 0;
+			source_index = 0;
 		}
 	}
 }
