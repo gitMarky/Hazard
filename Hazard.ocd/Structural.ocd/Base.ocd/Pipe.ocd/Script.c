@@ -28,7 +28,7 @@ func Initialize()
 
 // Allow connections between valid pipelines (callbacks) only
 
-func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+func ExtendPipeLine(int direction_to, int direction_from, int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
 {
 	iRepeat = iRepeat ?? 1;
 	pipeId = pipeId ?? PIPL;
@@ -47,10 +47,15 @@ func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object con
 		connect->~Valve();
 	}
 	
-	iRepeat -= 1;
-	if (iRepeat > 0)
+	return Max(0, iRepeat - 1);
+}
+
+func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
+{
+	var remaining = ExtendPipeLine(PIPE_Left, PIPE_Right, iRepeat, solid, valve, pipeId, iPower, connect);
+	if (remaining > 0)
 	{
-		return connect->~Left(iRepeat, solid, valve, pipeId, iPower);
+		return connect->~Left(remaining, solid, valve, pipeId, iPower);
 	}
 	else
 	{
@@ -60,77 +65,47 @@ func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object con
 
 func Right(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
 {
-	if (!iRepeat)
-		iRepeat = 1;
-	if (!pipeId)
-		pipeId = PIPL;
-	if (!connect)
-		connect = CreatePipe(PIPE_Right, pipeId);
-	if (!iPower)
-		iPower = 1;
-	ConnectTo(connect, PIPE_Right);
-	connect->ConnectTo(this, PIPE_Left);
-	connect->~ChangePower(iPower);
-	if (solid)
-		connect->~Solid();
-	if (valve)
-		connect->~Valve();
-	
-	if (iRepeat - 1)
-		return connect->~Right(iRepeat - 1, solid, valve, pipeId, iPower);
-	return connect;
+	var remaining = ExtendPipeLine(PIPE_Right, PIPE_Left, iRepeat, solid, valve, pipeId, iPower, connect);
+	if (remaining > 0)
+	{
+		return connect->~Right(remaining, solid, valve, pipeId, iPower);
+	}
+	else
+	{
+		return connect;
+	}
 }
 
 func Up(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
 {
-	if (!iRepeat)
-		iRepeat = 1;
-	if (!pipeId)
-		pipeId = PIPL;
-	if (!connect)
-		connect = CreatePipe(PIPE_Up, pipeId);
-	if (!iPower)
-		iPower = 1;
-	ConnectTo(connect, PIPE_Up);
-	connect->ConnectTo(this, PIPE_Down);
-	connect->~ChangePower(iPower);
-	if (solid)
-		connect->~Solid();
-	if (valve)
-		connect->~Valve();
-	
-	if (iRepeat - 1)
-		return connect->~Up(iRepeat - 1, solid, valve, pipeId, iPower);
-	return connect;
+	var remaining = ExtendPipeLine(PIPE_Up, PIPE_Down, iRepeat, solid, valve, pipeId, iPower, connect);
+	if (remaining > 0)
+	{
+		return connect->~Up(remaining, solid, valve, pipeId, iPower);
+	}
+	else
+	{
+		return connect;
+	}
 }
 
 func Down(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
 {
-	if (!iRepeat)
-		iRepeat = 1;
-	if (!pipeId)
-		pipeId = PIPL;
-	if (!connect)
-		connect = CreatePipe(PIPE_Down, pipeId);
-	if (!iPower)
-		iPower = 1;
-	ConnectTo(connect, PIPE_Down);
-	connect->ConnectTo(this, PIPE_Up);
-	connect->~ChangePower(iPower);
-	if (solid)
-		connect->~Solid();
-	if (valve)
-		connect->~Valve();
-	
-	if (iRepeat - 1)
-		return connect->~Down(iRepeat - 1, solid, valve, pipeId, iPower);
-	return connect;
+	var remaining = ExtendPipeLine(PIPE_Down, PIPE_Up, iRepeat, solid, valve, pipeId, iPower, connect);
+	if (remaining > 0)
+	{
+		return connect->~Down(remaining, solid, valve, pipeId, iPower);
+	}
+	else
+	{
+		return connect;
+	}
 }
 
 func Valve(bool open)
 {
 	valve = CreateObject(VALV, 0, 11, GetOwner());
-	valve.open = open;
+	valve->SetOpen(open);
 	return this;
 }
 
@@ -308,7 +283,7 @@ func GetLiquidAngle()
 	FatalError("Asking liquid angle without connection");
 }
 
-/* �ffentliches */
+/* Public interface */
 
 func UpdateEfflux()
 {

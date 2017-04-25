@@ -11,7 +11,12 @@ func Initialize()
 
 func ToggleValve()
 {
-	open = !open;
+	SetOpen(!Status());
+}
+
+func SetOpen(bool status)
+{
+	open = status;
 	UpdatePipesystem();
 }
 
