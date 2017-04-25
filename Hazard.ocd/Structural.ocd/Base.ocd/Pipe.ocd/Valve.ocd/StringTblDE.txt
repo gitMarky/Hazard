@@ -1,0 +1,3 @@
+Name=Ventil
+Description=Drehen zum Öffnen oder Schließen.
+

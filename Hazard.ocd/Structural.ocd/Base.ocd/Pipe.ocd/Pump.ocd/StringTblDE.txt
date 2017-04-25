@@ -1,0 +1,6 @@
+Name=Pumpe
+Description=Pumpt Flüssigkeiten durch Rohre.
+
+TurnOn=Einschalten
+TurnOff=Ausschalten
+Error=Fehler:|Zwei-Pumpen-System
