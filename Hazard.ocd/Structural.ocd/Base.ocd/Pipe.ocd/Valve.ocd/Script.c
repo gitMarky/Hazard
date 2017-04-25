@@ -9,7 +9,7 @@ func Initialize()
 	SetAction("Exist");
 }
 
-func ControlDig()
+func ToggleValve()
 {
 	open = !open;
 	UpdatePipesystem();
@@ -27,6 +27,37 @@ func Serialize(array extra) // TODO: implement proper saving mechanism
 	if (open)
 		extra[GetLength(extra)] = "ControlDig()";
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// interaction
+
+func IsInteractable(object user){	return true;}
+
+
+// Adapt appearance in the interaction bar.
+public func GetInteractionMetaInfo(object clonk)
+{
+	var desc;
+	if (open)
+	{
+		desc = "$CloseValve$";
+	}
+	else
+	{
+		desc = "$OpenValve$";
+	}
+	return { Description = desc, IconName = nil, IconID = VALV };
+}
+
+// Called on player interaction.
+public func Interact(object user)
+{
+	if (!IsInteractable(user)) return true;
+	ToggleValve();
+	return true;
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

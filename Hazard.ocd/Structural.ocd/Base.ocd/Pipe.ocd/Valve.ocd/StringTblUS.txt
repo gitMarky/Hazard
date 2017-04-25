@@ -1,3 +1,4 @@
 Name=Valve
 Description=Turn to open or close.
-
+OpenValve=Open valve.
+CloseValve=Close valve.
