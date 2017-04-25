@@ -22,7 +22,7 @@ func Status()
 
 /* Serialisierung */
 
-func Serialize(array extra)
+func Serialize(array extra) // TODO: implement proper saving mechanism
 {
 	if (open)
 		extra[GetLength(extra)] = "ControlDig()";

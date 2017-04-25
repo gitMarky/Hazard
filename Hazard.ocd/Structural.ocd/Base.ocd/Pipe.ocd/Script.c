@@ -1,10 +1,10 @@
 /*-- Pipe --*/
 
 
-local left, right, up, down, valve, // connections, valve
-      efflux, temp, // drain, chache
-      noliquid, power, // is in liquid?, amount of liquid output
-      checked; // cache for UpdatePipesystem
+local left, right, up, down, valve; // connections, valve
+local efflux, temp; // drain, chache
+local noliquid, power; // is in liquid?, amount of liquid output
+local checked; // cache for UpdatePipesystem
 
 static const PIPE_Left = 1;
 static const PIPE_Right = 2;
@@ -14,39 +14,48 @@ static const PIPE_Down = 8;
 func Initialize()
 {
 	SetAction("Pipe");
-	SetClrModulation(RGB(180, 180, 180));
-	efflux = CreateArray();
+	DrawAsBackground();
+	efflux = [];
 	
 	if (!GBackLiquid())
+	{
 		noliquid = true;
+	}
 	
-	// Standardst�rke
+	// default output
 	power = 1;
 }
 
-// Beim Verbinden nur g�ltige Rohrobjekten (mit den entsprechenden Callbacks) benutzen
+// Allow connections between valid pipelines (callbacks) only
 
 func Left(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
 {
-	if (!iRepeat)
-		iRepeat = 1;
-	if (!pipeId)
-		pipeId = PIPL;
-	if (!connect)
-		connect = CreatePipe(PIPE_Left, pipeId);
-	if (!iPower)
-		iPower = 1;
+	iRepeat = iRepeat ?? 1;
+	pipeId = pipeId ?? PIPL;
+	connect = connect ?? CreatePipe(PIPE_Left, pipeId);
+	iPower = iPower ?? 1;
+
 	ConnectTo(connect, PIPE_Left);
 	connect->ConnectTo(this, PIPE_Right);
 	connect->~ChangePower(iPower);
 	if (solid)
+	{
 		connect->~Solid();
+	}
 	if (valve)
+	{
 		connect->~Valve();
+	}
 	
-	if (iRepeat - 1)
-		return connect->~Left(iRepeat - 1, solid, valve, pipeId, iPower);
-	return connect;
+	iRepeat -= 1;
+	if (iRepeat > 0)
+	{
+		return connect->~Left(iRepeat, solid, valve, pipeId, iPower);
+	}
+	else
+	{
+		return connect;
+	}
 }
 
 func Right(int iRepeat, bool solid, bool valve, id pipeId, int iPower, object connect)
@@ -125,25 +134,26 @@ func Valve(bool open)
 	return this;
 }
 
-func Solid(bool Desolidate)
+func Solid(bool desolidate)
 {
-	if (Desolidate)
+	if (desolidate)
 	{
-		SetClrModulation(RGB(180, 180, 180));
-		return SetSolidMask();
+		DrawAsBackground();
+		SetSolidMask();
 	}
-	
-	// Zeitverz�gert, um �nderungen mit einzuberechnen
-	ScheduleCall(this, "Consolidate", 1);
-	// Vordergrund
-	SetClrModulation(RGB());
+	else
+	{
+		DrawAsForeground();
+		// Delayed in order to account for possible changes
+		ScheduleCall(this, this.Consolidate, 1);
+	}
 	return this;
 }
 
 func Consolidate()
 {
-	var index = !!left * PIPE_Left | !!right * PIPE_Right | !!up * PIPE_Up | !!down * PIPE_Down;
-	
+	var index = GetPipeIndex();
+
 	SetSolidMask(index % 4 * 50, index / 4 * 50, 50, 50);
 }
 
@@ -152,21 +162,34 @@ func ConnectTo(object connect, int dir)
 	
 	// allocate local
 	if (dir == PIPE_Left)
+	{
 		left = connect;
+	}
 	else if (dir == PIPE_Right)
+	{
 		right = connect;
+	}
 	else if (dir == PIPE_Up)
+	{
 		up = connect;
+	}
 	else if (dir == PIPE_Down)
+	{
 		down = connect;
+	}
+	else
+	{
+		FatalError(Format("Cannot connect in direction %d", dir));
+	}
 	
 	UpdateGraphics();
 }
 
+
 func UpdateGraphics()
 {
 	// update graphic
-	var index = !!left * PIPE_Left | !!right * PIPE_Right | !!up * PIPE_Up | !!down * PIPE_Down;
+	var index = GetPipeIndex();
 	
 	SetPhase(index % 4);
 	SetDir(index / 4);
@@ -195,7 +218,7 @@ func CreatePipe(int dir, id pipeId)
 	
 	x = x * GetCon() / 100;
 	y = y * GetCon() / 100;
-	
+
 	var pipe = CreateObject(pipeId, 50, 50, GetOwner());
 	pipe->DoCon(GetCon() - 100);
 	pipe->SetCategory(GetCategory());
@@ -204,27 +227,28 @@ func CreatePipe(int dir, id pipeId)
 	return pipe;
 }
 
-func ChangePower(int iNewPower)
+func ChangePower(int power)
 {
-	power = iNewPower;
+	this.power = power;
 	return this;
 }
 
-/* Fl�ssigkeit */
+/* Liquids */
 
 func LiquidCheck()
 {
 	if (!GBackLiquid())
 	{
-		if (!noliquid)
-			noliquid = true;
+		noliquid = true;
 		return;
 	}
+
 	if (efflux[0] == 0)
+	{
 		return NewLiquidCheck();
+	}
 	
-	if (!power)
-		return;
+	if (!power) return;
 	
 	var mat;
 	for (var i = 0; i < power; i++)
@@ -234,11 +258,15 @@ func LiquidCheck()
 	}
 	
 	if (!Random(4))
+	{
 		Bubble();
+	}
 	
 	temp++;
 	if (efflux[temp] == 0)
+	{
 		temp = 0;
+	}
 }
 
 func CastLiquid(int iMat, int iStr)
@@ -272,14 +300,12 @@ func NewLiquidCheck()
 
 func GetLiquidAngle()
 {
-	if (left)
-		return 0;
-	if (right)
-		return 180;
-	if (down)
-		return 270;
-	if (up)
-		return 90;
+	if (left)  return 0;
+	if (right) return 180;
+	if (down)  return 270;
+	if (up)    return 90;
+	
+	FatalError("Asking liquid angle without connection");
 }
 
 /* �ffentliches */
@@ -287,25 +313,34 @@ func GetLiquidAngle()
 func UpdateEfflux()
 {
 	if (!GBackLiquid())
+	{
 		return;
+	}
 	
-	efflux = CreateArray();
+	efflux = [];
 	
 	if (left)
+	{
 		left->UpdateSystem(this);
+	}
 	if (right)
+	{
 		right->UpdateSystem(this);
+	}
 	if (down)
+	{
 		down->UpdateSystem(this);
+	}
 	if (up)
+	{
 		up->UpdateSystem(this);
+	}
 }
 
-func UpdateSystem(object start, int From, int pump)
+func UpdateSystem(object start, int from, int pump)
 {
-	//! Wenn in diesem Frame schon einmal �berpr�ft, geht es nicht nochmal !
-	if (checked)
-		return;
+	// check only once per frame
+	if (checked) return;
 	
 	if (valve)
 		if (!(valve->~Status()))
@@ -327,53 +362,77 @@ func UpdateSystem(object start, int From, int pump)
 		start->NewEfflux(this);
 		return;
 	}
-	if (left && From != PIPE_Left)
+	if (left && from != PIPE_Left)
 		left->UpdateSystem(start, PIPE_Right, pump);
-	if (right && From != PIPE_Right)
+	if (right && from != PIPE_Right)
 		right->UpdateSystem(start, PIPE_Left, pump);
-	if (down && From != PIPE_Down)
+	if (down && from != PIPE_Down)
 		down->UpdateSystem(start, PIPE_Up, pump);
 	if (pump || start->GetY() <= GetY())
 	{
-		if (up && From != PIPE_Up)
+		if (up && from != PIPE_Up)
 			up->UpdateSystem(start, PIPE_Down, pump);
 	}
-	
+
 	checked = true;
-	Schedule("LocalN(\"checked\") = false;", 1);
+	ScheduleCall(this, this.SystemUpdateAllow, 1);
 }
 
-func NewEfflux(object new)
+func SystemUpdateAllow()
 {
-	efflux[GetLength(efflux)] = new;
+	checked = false;
+}
+
+func NewEfflux(object next)
+{
+	PushBack(efflux, next);
 }
 
 func IsEnd()
 {
-	if (GetDir() == 0 && Inside(GetPhase(), 1, 2))
-		return 1;
-	if (GetDir() == 1 && GetPhase() == 0)
-		return 1;
-	if (GetDir() == 2 && GetPhase() == 0)
-		return 1;
+	return (GetDir() == 0 && Inside(GetPhase(), 1, 2))
+        || (GetDir() == 1 && GetPhase() == 0)
+        || (GetDir() == 2 && GetPhase() == 0);
 }
 
-/* Globales */
+func DrawAsForeground()
+{
+	SetClrModulation(RGB());
+}
 
-// Durchsucht alle Rohre nach Enden und l�sst sich diese Abflusse suchen, au�erdem regelt es Pumpen
+func DrawAsBackground()
+{
+	SetClrModulation(RGB(180, 180, 180));
+}
+
+func GetPipeIndex()
+{
+	return !!left  * PIPE_Left
+	     | !!right * PIPE_Right
+	     | !!up    * PIPE_Up
+	     | !!down  * PIPE_Down;
+}
+
+/* Global */
+
+// Updates all drains in all pipe ends, and controls pumps
 global func UpdatePipesystem()
 {
 	var pipe, pump;
 	for (pump in FindObjects(Find_ID(PMP2))) 
+	{
 		pump->~UpdateEfflux();
+	}
 	for (pipe in FindObjects(Find_ID(PIPL))) 
+	{
 		if (pipe->~IsEnd())
 			pipe->~UpdateEfflux();
+	}
 }
 
 /* Serialisierung */
 
-func Serialize(array extra)
+func Serialize(array extra) // TODO: implement proper saving mechanism
 {
 	if (left)
 		extra[GetLength(extra)] = ["ConnectTo(Object(%d), PIPE_Left)", left];
