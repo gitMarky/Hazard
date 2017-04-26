@@ -7,7 +7,7 @@ static WAYP_visibleWaypoints;
 
 global func CreateWP(int x, int y)
 {
-	var WP = CreateObject(WAYP, AbsX(x), AbsY(y + 8), -1);
+	var WP = CreateObject(WAYP, AbsX(x), AbsY(y), NO_OWNER);
 	return WP;
 }
 
