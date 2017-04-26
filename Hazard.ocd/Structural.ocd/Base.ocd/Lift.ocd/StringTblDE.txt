@@ -1,0 +1,6 @@
+Name=Lift
+Description=Für jedwede Art von Fahrstuhlschacht.
+
+Up=Rauf
+Down=Runter
+Stop=Stopp
