@@ -1,5 +1,4 @@
 
-
 #include Library_LiftPlate
 
 func Definition(id def)
@@ -16,13 +15,6 @@ func UnstuckClonks()
 	for (var passenger in FindObjects(Find_InRect(-25, -2, 50, 20), Find_NoContainer()))
 		if (passenger->Stuck())
 			passenger->SetPosition(passenger->GetX(), GetY());
-}
-
-/* Status */
-
-func Passenger()
-{
-	return FindObject(Find_InRect(-24, -13, 48, 16), Find_OCF(OCF_CrewMember), Find_NoContainer());
 }
 
 

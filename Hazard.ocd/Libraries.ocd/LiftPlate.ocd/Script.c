@@ -405,7 +405,7 @@ func SpeedToX()	// StartCall of SpeedToX
 func UnstuckClonks()
 {
 	// looks for passengers in the SolidMask and moves them to the top of the plate
-	for (var passenger in FindObjects(Find_InRect(-25, -2, 50, 20), Find_NoContainer()))
+	for (var passenger in FindObjects(Rectangle_Unstuck(), Find_NoContainer()))
 		if (passenger->Stuck())
 			passenger->SetPosition(passenger->GetX(), GetY());
 }
@@ -414,7 +414,17 @@ func UnstuckClonks()
 
 func Passenger()
 {
-	return FindObject(Find_InRect(-24, -13, 48, 16), Find_OCF(OCF_CrewMember), Find_NoContainer());
+	return FindObject(Rectangle_Passenger(), Find_OCF(OCF_CrewMember), Find_NoContainer());
+}
+
+func Rectangle_Passenger()
+{
+	return Find_InRect(-24, -13, 48, 16);
+}
+
+func Rectangle_Unstuck()
+{
+	return Find_InRect(-25, -2, 50, 20);
 }
 
 func IsLift(){ return true;}
