@@ -8,6 +8,7 @@ static WAYP_visibleWaypoints;
 global func CreateWP(int x, int y)
 {
 	var WP = CreateObject(WAYP, AbsX(x), AbsY(y), NO_OWNER);
+	WP->SetAction("Vis");
 	return WP;
 }
 
@@ -47,6 +48,7 @@ func RemovePath(int pId)
 
 local Name = "$Name$";
 local Description = "$Description$";
+local Plane = 10000;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
