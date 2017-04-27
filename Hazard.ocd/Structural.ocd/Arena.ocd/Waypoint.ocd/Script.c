@@ -27,11 +27,18 @@ static const WAYP_PathErr = "Path %d does not exist.";
 
 func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool fReconnect)
 {
+	// dummy
 	return 0;
+}
+
+func SetArriveCommand(int pId, int iNo, string command, object pTarget, int iX, int iY, object pTarget2, Data)
+{
+	// dummy
 }
 
 func RemovePath(int pId)
 {
+	// dummy
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

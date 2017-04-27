@@ -3,5 +3,5 @@ Description=Ein Automat, an dem man Waffen kaufen kann.
 
 Weapons=Waffen
 Ammo=Munition
-Equipment=Ausrüstung
-End=Bestätigen
+Equipment=AusrÃ¼stung
+End=BestÃ¤tigen

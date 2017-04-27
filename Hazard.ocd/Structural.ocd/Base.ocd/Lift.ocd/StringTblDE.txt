@@ -1,5 +1,5 @@
 Name=Lift
-Description=Für jedwede Art von Fahrstuhlschacht.
+Description=FÃ¼r jedwede Art von Fahrstuhlschacht.
 
 Up=Rauf
 Down=Runter
