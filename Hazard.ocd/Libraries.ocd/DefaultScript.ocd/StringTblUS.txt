@@ -8,3 +8,6 @@ ScenParGoalDescRandom=Selects one of the available goals randomly.
 
 ScenParGoalNameBombingRun=Bombing Run
 ScenParGoalDescBombingRun=You have to transport the bomb trough the enemies' goal. If you go through the goal yourself you receive two points, when you just shoot the bomb, you get one point.
+
+ScenParGoalNameDeathMatch=Deathmatch
+ScenParGoalDescDeathMatch=Kill your enemies - score a point. Kill yourself - lose a point.

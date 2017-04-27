@@ -89,7 +89,7 @@ private func StartingEquipment(object crew)
 private func SetGoal(int goal)
 {
 	InitializeProperties();
-	
-	Log("Set goal to %d", goal);
+
+	DebugLog("Set goal to %d", goal);
 	Hazard.Scenario_Goal = goal;
 }

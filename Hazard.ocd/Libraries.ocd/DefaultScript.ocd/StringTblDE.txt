@@ -8,3 +8,6 @@ ScenParGoalDescRandom=Aus den zur Auswahl stehenden Spielzielen wird für diese 
 
 ScenParGoalNameBombingRun=Bombing Run
 ScenParGoalDescBombingRun=Es gilt die Bombe durch das gegnerische Tor zu befördern. Wenn man durch das Portal läuft gibt es zwei Punkte. Wenn man die Bombe schießt, nur einen.
+
+ScenParGoalNameDeathMatch=Deathmatch
+ScenParGoalDescDeathMatch=Töte deine Gegner - erhalte einen Punkt. Töte dich selbst - verliere einen Punkt.
