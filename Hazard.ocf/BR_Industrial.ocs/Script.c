@@ -175,92 +175,92 @@ func CreateLights()
 
 func CreateWaypoints()
 {
-//	for (var i = 0; i < 2; i++)
-//	{
-//		if (!i)
-//			var dir = 1;
-//		else
-//			dir = -1;
-//		
-//		if (!i)
-//		{
-//			var wp1 = CreateWP(1500 * i + dir * 750, 480);
-//			var wp5 = CreateWP(1500 * i + dir * 750, 60);
-//			var wp16 = CreateWP(1500 * i + dir * 750, 387);
-//			wp1->AddPath(wp16, Path_MoveTo, -1);
-//		}
-//		var wp2 = CreateWP(1500 * i + dir * 725, 517);
-//		var wp3 = CreateWP(1500 * i + dir * 661, 518);
-//		var wp4 = CreateWP(1500 * i + dir * 728, 178);
-//		var wp6 = CreateWP(1500 * i + dir * 66, 318);
-//		var wp7 = CreateWP(1500 * i + dir * 127, 294);
-//		var wp8 = CreateWP(1500 * i + dir * 178, 313);
-//		var wp9 = CreateWP(1500 * i + dir * 572, 175);
-//		var wp10 = CreateWP(1500 * i + dir * 200, 177);
-//		var wp11 = CreateWP(1500 * i + dir * 65, 454);
-//		var wp12 = CreateWP(1500 * i + dir * 62, 525);
-//		var wp13 = CreateWP(1500 * i + dir * 159, 517);
-//		var wp14 = CreateWP(1500 * i + dir * 625, 55);
-//		var wp15 = CreateWP(1500 * i + dir * 510, 398);
-//		var wp17 = CreateWP(1500 * i + dir * 669, 301);
-//		var wp18 = CreateWP(1500 * i + dir * 576, 398);
-//		var wp19 = CreateWP(1500 * i + dir * 661, 387);
-//		var wp20 = CreateWP(1500 * i + dir * 61, 179);
-//		wp2->AddPath(wp3, Path_MoveTo);
-//		wp2->AddPath(wp1, Path_Jump);
-//		wp3->AddPath(wp19, Path_MoveTo);
-//		wp3->AddPath(wp2, Path_MoveTo);
-//		wp4->AddPath(wp4, Path_Jump);
-//		wp4->AddPath(wp14, Path_Jump);
-//		wp4->AddPath(wp9, Path_Backflip, 0, 0, 0, 1);
-//		wp4->AddPath(wp16, Path_MoveTo);
-//		wp5->AddPath(wp14, Path_MoveTo);
-//		wp6->AddPath(wp7, Path_MoveTo);
-//		wp6->AddPath(wp11, Path_MoveTo);
-//		wp6->AddPath(wp20, Path_MoveTo);
-//		wp7->AddPath(wp6, Path_MoveTo);
-//		wp7->AddPath(wp8, Path_MoveTo);
-//		wp7->AddPath(wp15, Path_Jump);
-//		wp8->AddPath(wp9, Path_MoveTo);
-//		wp9->AddPath(wp10, Path_Lift);
-//		wp9->AddPath(wp16, Path_MoveTo);
-//		wp10->AddPath(wp9, Path_Lift);
-//		wp10->AddPath(wp20, Path_MoveTo);
-//		wp11->AddPath(wp6, Path_MoveTo);
-//		wp11->AddPath(wp12, Path_MoveTo);
-//		wp11->AddPath(wp15, Path_MoveTo);
-//		wp12->AddPath(wp11, Path_MoveTo);
-//		wp12->AddPath(wp13, Path_MoveTo);
-//		wp13->AddPath(wp14, Path_MoveTo);
-//		wp14->AddPath(wp15, Path_MoveTo);
-//		wp14->AddPath(wp16, Path_MoveTo);
-//		wp14->AddPath(wp5, Path_MoveTo);
-//		wp14->AddPath(wp4, Path_MoveTo);
-//		wp15->AddPath(wp15, Path_MoveTo);
-//		wp15->AddPath(wp15, Path_MoveTo);
-//		wp15->AddPath(wp18, Path_MoveTo);
-//		wp15->AddPath(wp11, Path_MoveTo);
-//		wp16->AddPath(wp17, Path_Jump);
-//		wp16->AddPath(wp19, Path_MoveTo);
-//		wp17->AddPath(wp9, Path_MoveTo);
-//		wp18->AddPath(wp19, Path_Jump);
-//		wp18->AddPath(wp15, Path_MoveTo);
-//		wp19->AddPath(wp16, Path_MoveTo);
-//		wp19->AddPath(wp18, Path_Jump);
-//		wp19->AddPath(wp3, Path_MoveTo);
-//		wp20->AddPath(wp10, Path_MoveTo);
-//		wp20->AddPath(wp6, Path_MoveTo);
-//		if (!i)
-//		{
-//			var spec1 = wp2;
-//			var spec2 = wp4;
-//		}
-//		else
-//		{
-//			wp2->AddPath(spec1, Path_MoveTo, 0, 0, 0, 1);
-//			wp4->AddPath(spec2, Path_MoveTo, 0, 0, 0, 1);
-//		}
-//	}
+	for (var i = 0; i < 2; i++)
+	{
+		if (!i)
+			var dir = 1;
+		else
+			dir = -1;
+		
+		if (!i)
+		{
+			var wp1 = CreateWP(1500 * i + dir * 750, 480);
+			var wp5 = CreateWP(1500 * i + dir * 750, 60);
+			var wp16 = CreateWP(1500 * i + dir * 750, 387);
+			wp1->AddPath(wp16, Path_MoveTo, -1);
+		}
+		var wp2 = CreateWP(1500 * i + dir * 725, 517);
+		var wp3 = CreateWP(1500 * i + dir * 661, 518);
+		var wp4 = CreateWP(1500 * i + dir * 728, 178);
+		var wp6 = CreateWP(1500 * i + dir * 66, 318);
+		var wp7 = CreateWP(1500 * i + dir * 127, 294);
+		var wp8 = CreateWP(1500 * i + dir * 178, 313);
+		var wp9 = CreateWP(1500 * i + dir * 572, 175);
+		var wp10 = CreateWP(1500 * i + dir * 200, 177);
+		var wp11 = CreateWP(1500 * i + dir * 65, 454);
+		var wp12 = CreateWP(1500 * i + dir * 62, 525);
+		var wp13 = CreateWP(1500 * i + dir * 159, 517);
+		var wp14 = CreateWP(1500 * i + dir * 625, 55);
+		var wp15 = CreateWP(1500 * i + dir * 510, 398);
+		var wp17 = CreateWP(1500 * i + dir * 669, 301);
+		var wp18 = CreateWP(1500 * i + dir * 576, 398);
+		var wp19 = CreateWP(1500 * i + dir * 661, 387);
+		var wp20 = CreateWP(1500 * i + dir * 61, 179);
+		wp2->AddPath(wp3, Path_MoveTo);
+		wp2->AddPath(wp1, Path_Jump);
+		wp3->AddPath(wp19, Path_MoveTo);
+		wp3->AddPath(wp2, Path_MoveTo);
+		wp4->AddPath(wp4, Path_Jump);
+		wp4->AddPath(wp14, Path_Jump);
+		wp4->AddPath(wp9, Path_Backflip, 0, 0, 0, 1);
+		wp4->AddPath(wp16, Path_MoveTo);
+		wp5->AddPath(wp14, Path_MoveTo);
+		wp6->AddPath(wp7, Path_MoveTo);
+		wp6->AddPath(wp11, Path_MoveTo);
+		wp6->AddPath(wp20, Path_MoveTo);
+		wp7->AddPath(wp6, Path_MoveTo);
+		wp7->AddPath(wp8, Path_MoveTo);
+		wp7->AddPath(wp15, Path_Jump);
+		wp8->AddPath(wp9, Path_MoveTo);
+		wp9->AddPath(wp10, Path_Lift);
+		wp9->AddPath(wp16, Path_MoveTo);
+		wp10->AddPath(wp9, Path_Lift);
+		wp10->AddPath(wp20, Path_MoveTo);
+		wp11->AddPath(wp6, Path_MoveTo);
+		wp11->AddPath(wp12, Path_MoveTo);
+		wp11->AddPath(wp15, Path_MoveTo);
+		wp12->AddPath(wp11, Path_MoveTo);
+		wp12->AddPath(wp13, Path_MoveTo);
+		wp13->AddPath(wp14, Path_MoveTo);
+		wp14->AddPath(wp15, Path_MoveTo);
+		wp14->AddPath(wp16, Path_MoveTo);
+		wp14->AddPath(wp5, Path_MoveTo);
+		wp14->AddPath(wp4, Path_MoveTo);
+		wp15->AddPath(wp15, Path_MoveTo);
+		wp15->AddPath(wp15, Path_MoveTo);
+		wp15->AddPath(wp18, Path_MoveTo);
+		wp15->AddPath(wp11, Path_MoveTo);
+		wp16->AddPath(wp17, Path_Jump);
+		wp16->AddPath(wp19, Path_MoveTo);
+		wp17->AddPath(wp9, Path_MoveTo);
+		wp18->AddPath(wp19, Path_Jump);
+		wp18->AddPath(wp15, Path_MoveTo);
+		wp19->AddPath(wp16, Path_MoveTo);
+		wp19->AddPath(wp18, Path_Jump);
+		wp19->AddPath(wp3, Path_MoveTo);
+		wp20->AddPath(wp10, Path_MoveTo);
+		wp20->AddPath(wp6, Path_MoveTo);
+		if (!i)
+		{
+			var spec1 = wp2;
+			var spec2 = wp4;
+		}
+		else
+		{
+			wp2->AddPath(spec1, Path_MoveTo, 0, 0, 0, 1);
+			wp4->AddPath(spec2, Path_MoveTo, 0, 0, 0, 1);
+		}
+	}
 }
 
 func RelaunchLocations()
