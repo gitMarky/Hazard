@@ -6,6 +6,8 @@ static aTeleporters;
 
 func Initialize()
 {
+	SetGoal(SCENPAR_HAZARD_GOAL);
+
 	_inherited(...);
 
 	aTeleporters = [];

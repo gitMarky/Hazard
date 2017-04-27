@@ -4,23 +4,23 @@ DM - Baldoon v1.0b
 Vielen Dank an:
 -----------------
 
-- DarkEagle für den Betatest
+- DarkEagle fÃ¼r den Betatest
 
 - Clonkonaut
 und
-- Newton für Verbesserungsvorschläge und Tipps
+- Newton fÃ¼r VerbesserungsvorschlÃ¤ge und Tipps
 
 -----------------
 
-Die vorliegende Version des Szenarios wurde mit/für Clonk Rage 4.96.4 [236] entwickelt und getestet.
+Die vorliegende Version des Szenarios wurde mit/fÃ¼r Clonk Rage 4.96.4 [236] entwickelt und getestet.
 
-Ebenfalls getestet für:
+Ebenfalls getestet fÃ¼r:
 
 	- CR 4.96.5 [237]
 
 -----------------
 
-Es handelt sich um einen Wettbewerbsbeitrag für den "HazardArena2007" - Gestaltungswettbewerb.
+Es handelt sich um einen Wettbewerbsbeitrag fÃ¼r den "HazardArena2007" - Gestaltungswettbewerb.
 
 -----------------
 
