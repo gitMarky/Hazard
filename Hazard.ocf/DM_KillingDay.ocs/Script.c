@@ -2,6 +2,8 @@
 
 func Initialize()
 {
+	SetGoal(SCENPAR_HAZARD_GOAL);
+
 	_inherited(...);
 
 	CreateLights();

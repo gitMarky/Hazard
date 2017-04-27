@@ -1,4 +1,4 @@
-/*-- Geschützsteuerung --*/
+/*-- Geschuetzsteuerung --*/
 
 
 local on;
