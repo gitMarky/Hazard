@@ -77,16 +77,16 @@ func CreateDeco()
 
 func CreateLadders()
 {
-	CreateObjectAbove(LADR, 123, 740, NO_OWNER)->LadderHeight(620, 740);
-	CreateObjectAbove(LADR, 136, 470, NO_OWNER)->LadderHeight(285, 470);
-	CreateObjectAbove(LADR, 526, 630, NO_OWNER)->LadderHeight(495, 630);
-	CreateObjectAbove(LADR, 541, 387, NO_OWNER)->LadderHeight(305, 385);
-	CreateObjectAbove(LADR, 584, 491, NO_OWNER)->LadderHeight(370, 490);
-	CreateObjectAbove(LADR, 692, 471, NO_OWNER)->LadderHeight(390, 470);
-	CreateObjectAbove(LADR, 701, 631, NO_OWNER)->LadderHeight(490, 630);
-	CreateObjectAbove(LADR, 916, 430, NO_OWNER)->LadderHeight(260, 430);
-	CreateObjectAbove(LADR, 956, 745, NO_OWNER)->LadderHeight(585, 745);
-	CreateObjectAbove(LADR, 1157, 610, NO_OWNER)->LadderHeight(415, 610);
+	CreateObject(LADR, 123, 740, NO_OWNER)->LadderHeight(620, 740);
+	CreateObject(LADR, 136, 470, NO_OWNER)->LadderHeight(285, 470);
+	CreateObject(LADR, 526, 630, NO_OWNER)->LadderHeight(495, 630);
+	CreateObject(LADR, 541, 387, NO_OWNER)->LadderHeight(305, 385);
+	CreateObject(LADR, 584, 491, NO_OWNER)->LadderHeight(370, 490);
+	CreateObject(LADR, 692, 471, NO_OWNER)->LadderHeight(390, 470);
+	CreateObject(LADR, 701, 631, NO_OWNER)->LadderHeight(490, 630);
+	CreateObject(LADR, 916, 430, NO_OWNER)->LadderHeight(260, 430);
+	CreateObject(LADR, 956, 745, NO_OWNER)->LadderHeight(585, 745);
+	CreateObject(LADR, 1157, 610, NO_OWNER)->LadderHeight(415, 610);
 }
 
 func CreateSpawnPoints()	
