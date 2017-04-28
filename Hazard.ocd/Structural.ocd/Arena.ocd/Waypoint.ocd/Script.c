@@ -26,18 +26,30 @@ static const Jetpack_Right = 4;
 
 static const WAYP_PathErr = "Path %d does not exist.";
 
+local path_targets;
+
+func Initialize()
+{
+	path_targets = [];
+}
+
+
 func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool fReconnect)
 {
-	// dummy
+	// save info
+
+	var path_data = {};
+	path_data.target = target;
+	path_data.dir = dir;
+	path_data.jetpdelay = jetpdelay;
+	path_data.jetpflag = jetpflag;
 	
-	if (dir > 0)
-	{
-		DebugLine->Connect(this, target, RGB(0, 255, 0), dir * 4);
-	}
-	else
-	{
-		DebugLine->Connect(target, this, RGB(255, 255, 0), dir * 4);
-	}
+	var path_id = GetLength(path_targets);
+	PushBack(path_targets, path_data);
+
+	// dummy
+
+	DebugPath->Create(this, target, flag, jetpdelay, path_id, dir);
 	
 	if (fReconnect)
 	{
@@ -56,6 +68,32 @@ func RemovePath(int pId)
 {
 	// dummy
 }
+
+func GetPathTarget(int index)
+{
+	return path_targets[index].target;
+}
+
+public func GetPathDir(int index)
+{
+	return path_targets[index].dir;
+}
+
+public func GetPathFlag(int index)
+{
+	return path_targets[index].flag;
+}
+
+public func GetPathJetpack(int index)
+{
+	return path_targets[index].jetpdelay;
+}
+
+public func GetPathJetpackFlag(int index)
+{
+	return path_targets[index].jetpflag;
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
