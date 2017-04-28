@@ -29,6 +29,21 @@ static const WAYP_PathErr = "Path %d does not exist.";
 func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool fReconnect)
 {
 	// dummy
+	
+	if (dir > 0)
+	{
+		DebugLine->Connect(this, target, RGB(0, 255, 0), dir * 4);
+	}
+	else
+	{
+		DebugLine->Connect(target, this, RGB(255, 255, 0), dir * 4);
+	}
+	
+	if (fReconnect)
+	{
+		target->AddPath(this, flag, dir * (-1), jetpdelay, jetpflag, false);
+	}
+	
 	return 0;
 }
 
@@ -72,3 +87,5 @@ Vis = {
 },
 
 };
+
+local Visibility = VIS_Editor;
