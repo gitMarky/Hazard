@@ -128,19 +128,19 @@ func CreateDeco()
 	CreateObject(RADR, 160, 75, NO_OWNER);
 	
 	//Labor
-//	CreateObjectAbove(CONS, 1820, 920, NO_OWNER);
-//	CreateObjectAbove(LTBL, 1780, 940, NO_OWNER);
+	CreateObjectAbove(Console, 1820, 920, NO_OWNER);
+	CreateObjectAbove(LTBL, 1780, 940, NO_OWNER);
 	CreateObject(GADG, 1780, 913, NO_OWNER);
 	CreateObject(GADG, 1790, 913, NO_OWNER);
 	CreateObject(MONI, 1770, 915, NO_OWNER);
-//	CreateObjectAbove(OPTB, 1880, 920, NO_OWNER);
+	CreateObjectAbove(OPTB, 1880, 920, NO_OWNER);
 	CreateObject(LBPC, 1700, 915, NO_OWNER);
 	CreateObject(FRAM, 1760, 902, NO_OWNER);
 	CreateObject(FRAM, 1850, 902, NO_OWNER);
 	CreateObject(FRAM, 1805, 902, NO_OWNER);
 	CreateObject(GSBO, 1860, 609, NO_OWNER);
 	CreateObject(GSBO, 1880, 609, NO_OWNER);
-//	CreateObjectAbove(GLST, 1380, 950, NO_OWNER);
+	CreateObjectAbove(GLST, 1380, 950, NO_OWNER);
 	CreateObjectAbove(VENT, 1800, 900, NO_OWNER)->SetCon(30);
 	
 	//Office
@@ -190,17 +190,17 @@ func CreateDeco()
 	CreateObject(WoodenBridge, 776, 565, NO_OWNER);
 	CreateObject(WoodenBridge, 848, 565, NO_OWNER);
 	CreateObject(WoodenBridge, 920, 565, NO_OWNER);
-//	CreateObjectAbove(LADR, 592, 390, NO_OWNER)->Set(11);
-//	CreateObjectAbove(LADR, 1976, 260, NO_OWNER)->Set(11);
-//	CreateObjectAbove(LADR, 1636, 950, NO_OWNER)->Set(18);
-//	CreateObjectAbove(LADR, 1471, 400, NO_OWNER)->Set(15);
-//	CreateObjectAbove(LADR, 1481, 250, NO_OWNER)->Set(20);
-//	CreateObjectAbove(LADR, 1001, 410, NO_OWNER)->Set(11);
-//	CreateObjectAbove(LADR, 1021, 550, NO_OWNER)->Set(18);
-//	CreateObjectAbove(LADR, 1195, 740, NO_OWNER)->Set(29);
-//	CreateObjectAbove(LADR,  490, 560, NO_OWNER)->Set(11);
-//	CreateObjectAbove(LADR,  290, 440, NO_OWNER)->Set(13);
-//	CreateObjectAbove(LADR,  575, 660, NO_OWNER)->Set(13);
+	CreateObject(LADR,  592, 390, NO_OWNER)->LadderHeight(295, 390);
+	CreateObject(LADR, 1976, 260, NO_OWNER)->LadderHeight(165, 260);
+	CreateObject(LADR, 1636, 950, NO_OWNER)->LadderHeight(795, 950);
+	CreateObject(LADR, 1471, 400, NO_OWNER)->LadderHeight(270, 400);
+	CreateObject(LADR, 1481, 250, NO_OWNER)->LadderHeight( 90, 250);
+	CreateObject(LADR, 1001, 410, NO_OWNER)->LadderHeight(315, 410);
+	CreateObject(LADR, 1021, 550, NO_OWNER)->LadderHeight(400, 550);
+	CreateObject(LADR, 1195, 740, NO_OWNER)->LadderHeight(500, 740);
+	CreateObject(LADR,  490, 560, NO_OWNER)->LadderHeight(460, 560);
+	CreateObject(LADR,  290, 440, NO_OWNER)->LadderHeight(330, 440);
+	CreateObject(LADR,  575, 660, NO_OWNER)->LadderHeight(550, 660);
 	CreateObject(TOIC, 340, 465, NO_OWNER);
 	CreateObject(TOIC, 320, 465, NO_OWNER);
 	CreateObject(TOIC, 300, 465, NO_OWNER);
