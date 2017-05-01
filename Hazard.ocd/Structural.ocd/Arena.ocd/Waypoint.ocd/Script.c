@@ -33,8 +33,11 @@ func Initialize()
 	path_targets = [];
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// public interface
 
-func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool fReconnect)
+public func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool reconnect)
 {
 	// save info
 
@@ -43,7 +46,7 @@ func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool
 	path_data.dir = dir;
 	path_data.jetpdelay = jetpdelay;
 	path_data.jetpflag = jetpflag;
-	
+
 	var path_id = GetLength(path_targets);
 	PushBack(path_targets, path_data);
 
@@ -51,7 +54,7 @@ func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool
 
 	DebugPath->Create(this, target, flag, jetpdelay, path_id, dir);
 	
-	if (fReconnect)
+	if (reconnect)
 	{
 		target->AddPath(this, flag, dir * (-1), jetpdelay, jetpflag, false);
 	}
@@ -59,15 +62,12 @@ func AddPath(object target, int flag, int dir, int jetpdelay, int jetpflag, bool
 	return 0;
 }
 
-func SetArriveCommand(int pId, int iNo, string command, object pTarget, int iX, int iY, object pTarget2, Data)
-{
-	// dummy
-}
-
 func RemovePath(int index)
 {
 	RemoveArrayIndex(path_targets, index);
 }
+
+// Getters
 
 public func GetPathTarget(int index)
 {
@@ -93,6 +93,14 @@ public func GetPathJetpackFlag(int index)
 {
 	return path_targets[index].jetpflag;
 }
+
+public func GetArriveCommand(int index, int command)
+{
+	return path_targets[index].arrive_command[command];
+}
+
+
+// Setters
 
 public func SetPathTarget(int index, object target)
 {
@@ -134,11 +142,22 @@ public func SetPathJetpackFlag(int index, int flag)
 		
 		if (Inside(angle, 180, 310)) flag = Jetpack_Left;
 		if (Inside(angle, 311, 360)) flag = Jetpack_UpLeft;
-		if (Inside(angle, 0, 49))    flag = Jetpack_UpRight;
-		if (Inside(angle, 50, 179))  flag = Jetpack_Right;
+		if (Inside(angle,   0,  49)) flag = Jetpack_UpRight;
+		if (Inside(angle,  50, 179)) flag = Jetpack_Right;
 	}
 
 	path_targets[index].jetpflag = flag;
+	return this;
+}
+
+public func SetArriveCommand(int index, int number, proplist command)
+{
+	if (!path_targets[index].arrive_command)
+	{
+		path_targets[index].arrive_command = [];
+	}
+
+	path_targets[index].arrive_command[number] = command;
 	return this;
 }
 
@@ -149,10 +168,6 @@ public func SetPathJetpackFlag(int index, int flag)
 local Name = "$Name$";
 local Description = "$Description$";
 local Plane = 10000;
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// actions
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
