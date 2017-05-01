@@ -175,18 +175,26 @@ func CreateLights()
 
 func CreateWaypoints()
 {
+	var spec1, spec2;
+	var wp1, wp5, wp16;
+
 	for (var i = 0; i < 2; i++)
 	{
-		if (!i)
-			var dir = 1;
-		else
-			dir = -1;
-		
-		if (!i)
+		var dir;
+		if (i == 0)
 		{
-			var wp1 = CreateWP(1500 * i + dir * 750, 480);
-			var wp5 = CreateWP(1500 * i + dir * 750, 60);
-			var wp16 = CreateWP(1500 * i + dir * 750, 387);
+			dir = 1;
+		}
+		else
+		{
+			dir = -1;
+		}
+		
+		if (i == 0)
+		{
+			wp1 = CreateWP(1500 * i + dir * 750, 480);
+			wp5 = CreateWP(1500 * i + dir * 750, 60);
+			wp16 = CreateWP(1500 * i + dir * 750, 387);
 			wp1->AddPath(wp16, Path_MoveTo, -1);
 		}
 		var wp2 = CreateWP(1500 * i + dir * 725, 517);
@@ -212,7 +220,7 @@ func CreateWaypoints()
 		wp3->AddPath(wp2, Path_MoveTo);
 		wp4->AddPath(wp4, Path_Jump);
 		wp4->AddPath(wp14, Path_Jump);
-		wp4->AddPath(wp9, Path_Backflip, 0, 0, 0, 1);
+		wp4->AddPath(wp9, Path_Backflip, 0, 0, 0, true);
 		wp4->AddPath(wp16, Path_MoveTo);
 		wp5->AddPath(wp14, Path_MoveTo);
 		wp6->AddPath(wp7, Path_MoveTo);
@@ -250,15 +258,15 @@ func CreateWaypoints()
 		wp19->AddPath(wp3, Path_MoveTo);
 		wp20->AddPath(wp10, Path_MoveTo);
 		wp20->AddPath(wp6, Path_MoveTo);
-		if (!i)
+		if (i == 0)
 		{
-			var spec1 = wp2;
-			var spec2 = wp4;
+			spec1 = wp2;
+			spec2 = wp4;
 		}
 		else
 		{
-			wp2->AddPath(spec1, Path_MoveTo, 0, 0, 0, 1);
-			wp4->AddPath(spec2, Path_MoveTo, 0, 0, 0, 1);
+			wp2->AddPath(spec1, Path_MoveTo, 0, 0, 0, true);
+			wp4->AddPath(spec2, Path_MoveTo, 0, 0, 0, true);
 		}
 	}
 }
