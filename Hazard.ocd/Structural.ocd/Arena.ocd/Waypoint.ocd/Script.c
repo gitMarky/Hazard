@@ -64,12 +64,12 @@ func SetArriveCommand(int pId, int iNo, string command, object pTarget, int iX, 
 	// dummy
 }
 
-func RemovePath(int pId)
+func RemovePath(int index)
 {
-	// dummy
+	RemoveArrayIndex(path_targets, index);
 }
 
-func GetPathTarget(int index)
+public func GetPathTarget(int index)
 {
 	return path_targets[index].target;
 }
@@ -94,6 +94,53 @@ public func GetPathJetpackFlag(int index)
 	return path_targets[index].jetpflag;
 }
 
+public func SetPathTarget(int index, object target)
+{
+	path_targets[index].target = target;
+	return this;
+}
+
+public func SetPathDir(int index, int dir)
+{
+	if (!dir)
+	{
+		var target = GetPathTarget(index);
+		if (!target) return;
+		var diff = target->GetX() - GetX();
+		dir = diff / Abs(diff);
+	}
+
+	path_targets[index].dir = dir;
+	return this;
+}
+
+public func SetPathFlag(int index, int flag)
+{
+	path_targets[index].flag = flag;
+	return this;
+}
+
+public func SetPathJetpack(int index, int delay)
+{
+	path_targets[index].jetpdelay = delay;
+	return this;
+}
+
+public func SetPathJetpackFlag(int index, int flag)
+{
+	if (!flag && GetPathJetpack(index))
+	{
+		var angle = Angle(GetX(), GetY(), GetPathTarget(index)->GetX(), GetPathTarget(index)->GetY());
+		
+		if (Inside(angle, 180, 310)) flag = Jetpack_Left;
+		if (Inside(angle, 311, 360)) flag = Jetpack_UpLeft;
+		if (Inside(angle, 0, 49))    flag = Jetpack_UpRight;
+		if (Inside(angle, 50, 179))  flag = Jetpack_Right;
+	}
+
+	path_targets[index].jetpflag = flag;
+	return this;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
