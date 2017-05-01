@@ -287,9 +287,9 @@ func CreateWaypoints()
 	wp11->AddPath(wp9, Path_Jump, 1);
 	wp12->AddPath(wp21, Path_MoveTo, 1);
 	wp12->AddPath(wp8, Path_MoveTo, -1);
-	wp12->SetArriveCommand(1, 0, "Grab", switchright);
-	wp12->SetArriveCommand(1, 1, "Call", switchright, 0, 0, nil, "ControlThrow");
-	wp12->SetArriveCommand(1, 2, "Ungrab");
+	wp12->SetArriveCommand(1, 0, {Prototype = Command, command = "Grab", target = switchright});
+	wp12->SetArriveCommand(1, 1, {Prototype = Command, command = "Call", target = switchright, data = "ControlThrow"});
+	wp12->SetArriveCommand(1, 2, {Prototype = Command, command = "Ungrab"});
 	wp12->AddPath(wp6, Path_MoveTo, 1);
 	wp13->AddPath(wp21, Path_MoveTo, -1);
 	wp13->AddPath(wp15, Path_MoveTo, -1);
@@ -351,9 +351,9 @@ func CreateWaypoints()
 	wp36->AddPath(wp34, Path_Jump, -1);
 	wp37->AddPath(wp46, Path_MoveTo, -1);
 	wp37->AddPath(wp33, Path_MoveTo, 1);
-	wp37->SetArriveCommand(1, 0, "Grab", switchleft);
-	wp37->SetArriveCommand(1, 1, "Call", switchleft, 0, 0, nil, "ControlThrow");
-	wp37->SetArriveCommand(1, 2, "Ungrab");
+	wp37->SetArriveCommand(1, 0, {Prototype = Command, command = "Grab", target = switchleft});
+	wp37->SetArriveCommand(1, 1, {Prototype = Command, command = "Call", target = switchleft, data = "ControlThrow"});
+	wp37->SetArriveCommand(1, 2, {Prototype = Command, command = "Ungrab"});
 	wp37->AddPath(wp31, Path_MoveTo, -1);
 	wp38->AddPath(wp46, Path_MoveTo, 1);
 	wp38->AddPath(wp40, Path_MoveTo, 1);
