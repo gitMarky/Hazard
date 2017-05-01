@@ -639,7 +639,7 @@ func CreateWaypoints()
 	wp65->AddPath(wp64, Path_MoveTo, 1);
 	wp66->AddPath(wp65, Path_MoveTo, 1);
 	wp67->AddPath(wp76, Path_MoveTo, 1);
-	wp67->SetArriveCommand(0, 0, "Enter", aTeleporters[0], 0, 0);
+	wp67->SetArriveCommand(0, 0, {Prototype = Command, command = "Enter", target = aTeleporters[0]});
 	wp68->AddPath(wp38, Path_MoveTo, -1);
 	wp69->AddPath(wp10, Path_MoveTo, 1);
 	wp70->AddPath(wp48, Path_Jump, -1);
@@ -656,7 +656,7 @@ func CreateWaypoints()
 	wp75->AddPath(wp71, Path_Jump, 1);
 	wp75->AddPath(wp76, Path_MoveTo, -1);
 	wp76->AddPath(wp67, Path_MoveTo, -1);
-	wp76->SetArriveCommand(0, 0, "Enter", aTeleporters[1], 0, 0);
+	wp76->SetArriveCommand(0, 0,  {Prototype = Command, command = "Enter", target = aTeleporters[1]});
 	wp76->AddPath(wp75, Path_MoveTo, 1);
 	wp76->AddPath(wp77, Path_MoveTo, -1);
 	wp77->AddPath(wp63, Path_MoveTo, -1);
