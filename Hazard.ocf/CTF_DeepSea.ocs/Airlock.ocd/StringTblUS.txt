@@ -1,0 +1,3 @@
+Name=Airlock
+Description=Will open and close automatically.
+

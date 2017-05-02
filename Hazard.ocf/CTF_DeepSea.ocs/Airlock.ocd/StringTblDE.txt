@@ -1,0 +1,3 @@
+Name=Luftschleuse
+Description=Für den Unterwassereinsatz. Öffnet und schließt automatisch.
+
