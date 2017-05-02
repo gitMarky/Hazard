@@ -11,3 +11,19 @@ ScenParGoalDescBombingRun=You have to transport the bomb trough the enemies' goa
 
 ScenParGoalNameDeathMatch=Deathmatch
 ScenParGoalDescDeathMatch=Kill your enemies - score a point. Kill yourself - lose a point.
+
+ScenParGoalNameCaptureTheFlag=Capture the Flag
+ScenParGoalDescCaptureTheFlag=Capture enemy flags and bring them to your base. They can only be returned if your own flag is at its base.
+
+ScenParScoreName=Win Score
+ScenParScoreDesc=Determines how many points you or your team have to score in order to win the round.
+ScenParScoreName3Points=3 Points
+ScenParScoreDesc3Points=You need to score 3 points to win the round.
+ScenParScoreName5Points=5 Points
+ScenParScoreDesc5Points=You need to score 5 points to win the round.
+ScenParScoreName10Points=10 Points
+ScenParScoreDesc10Points=You need to score 10 points to win the round.
+ScenParScoreName15Points=15 Points
+ScenParScoreDesc15Points=You need to score 15 points to win the round.
+ScenParScoreName20Points=20 Points
+ScenParScoreDesc20Points=You need to score 20 points to win the round.
