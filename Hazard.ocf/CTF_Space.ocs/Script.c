@@ -75,49 +75,56 @@ func CreateDeco()
 
 func CreateSpawnPoints()
 {
-	CopySpawnPoint(PGWP, 100, 350);
-	CopySpawnPoint(STAP, 110, 350);
-	CopySpawnPoint(PGWP, 1400, 350);
-	CopySpawnPoint(STAP, 1390, 350);
-	CopySpawnPoint(KLAS, 150, 500);
-	CopySpawnPoint(KLAS, 1350, 500);
-	CopySpawnPoint(ENAP, 160, 500);
-	CopySpawnPoint(ENAP, 1340, 500);
-	CopySpawnPoint(STAP, 1390, 350);
-	CopySpawnPoint(JTPK, 750, 350);
-	CopySpawnPoint(GSAP, 735, 350);
-	CopySpawnPoint(GSAP, 765, 350);
-	CopySpawnPoint(MIAP, 670, 90);
-	CopySpawnPoint(MIAP, 830, 90);
-	CopySpawnPoint(BZWP, 750, 20);
-	CopySpawnPoint(GLWP, 90, 110);
-	CopySpawnPoint(GLWP, 1410, 110);
-	CopySpawnPoint(GRAP, 110, 110);
-	CopySpawnPoint(GRAP, 1390, 110);
-	CopySpawnPoint(GRAP, 660, 270);
-	CopySpawnPoint(GRAP, 840, 430);
-	CopySpawnPoint(STAP, 660, 430);
-	CopySpawnPoint(STAP, 840, 270);
-	CopySpawnPoint(KRFL, 480, 550);
-	CopySpawnPoint(KRFL, 1020, 550);
-	CopySpawnPoint(GGWP, 460, 710);
-	CopySpawnPoint(GGWP, 1040, 710);
-	CopySpawnPoint(ENAP, 620, 710);
-	CopySpawnPoint(ENAP, 880, 710);
-	CopySpawnPoint(HARM, 90, 720);
-	CopySpawnPoint(HARM, 1410, 720);
-	CopySpawnPoint(ENWP, 460, 210);
-	CopySpawnPoint(ENWP, 1040, 210);
-	CopySpawnPoint(ENAP, 500, 210);
-	CopySpawnPoint(ENAP, 1000, 210);
-	CopySpawnPoint(MINE, 750, 530);
+	// configure spawn points
+	var config = GetSpawnPointTemplates();
+
+	// place spawn points
+	CopySpawnPoint(config.weapon_pumpgun, 100, 350);
+	CopySpawnPoint(config.ammo_standard, 110, 350);
+	CopySpawnPoint(config.weapon_pumpgun, 1400, 350);
+	CopySpawnPoint(config.ammo_standard, 1390, 350);
+	CopySpawnPoint(config.upgrade_laser, 150, 500);
+	CopySpawnPoint(config.upgrade_laser, 1350, 500);
+	CopySpawnPoint(config.ammo_energy, 160, 500);
+	CopySpawnPoint(config.ammo_energy, 1340, 500);
+	CopySpawnPoint(config.ammo_standard, 1390, 350);
+	CopySpawnPoint(config.item_jetpack, 750, 350);
+	CopySpawnPoint(config.ammo_gasoline, 735, 350);
+	CopySpawnPoint(config.ammo_gasoline, 765, 350);
+	CopySpawnPoint(config.ammo_missile, 670, 90);
+	CopySpawnPoint(config.ammo_missile, 830, 90);
+	CopySpawnPoint(config.weapon_bazooka, 750, 20);
+	CopySpawnPoint(config.weapon_grenade, 90, 110);
+	CopySpawnPoint(config.weapon_grenade, 1410, 110);
+	CopySpawnPoint(config.ammo_grenade, 110, 110);
+	CopySpawnPoint(config.ammo_grenade, 1390, 110);
+	CopySpawnPoint(config.ammo_grenade, 660, 270);
+	CopySpawnPoint(config.ammo_grenade, 840, 430);
+	CopySpawnPoint(config.ammo_standard, 660, 430);
+	CopySpawnPoint(config.ammo_standard, 840, 270);
+	CopySpawnPoint(config.upgrade_rifle, 480, 550);
+	CopySpawnPoint(config.upgrade_rifle, 1020, 550);
+	CopySpawnPoint(config.weapon_motegun, 460, 710);
+	CopySpawnPoint(config.weapon_motegun, 1040, 710);
+	CopySpawnPoint(config.ammo_energy, 620, 710);
+	CopySpawnPoint(config.ammo_energy, 880, 710);
+	CopySpawnPoint(config.item_armor, 90, 720);
+	CopySpawnPoint(config.item_armor, 1410, 720);
+	CopySpawnPoint(config.weapon_energy, 460, 210);
+	CopySpawnPoint(config.weapon_energy, 1040, 210);
+	CopySpawnPoint(config.ammo_energy, 500, 210);
+	CopySpawnPoint(config.ammo_energy, 1000, 210);
+	CopySpawnPoint(config.weapon_mine, 750, 530);
+	
+	// remove template spawn points
+	RemoveSpawnPointTemplates(config);
 }
 
 func CreateLadders()
 {
 	// Struktur
-	CreateObjectAbove(LADR, 190, 500, NO_OWNER)->Set(11);
-	CreateObjectAbove(LADR, 1310, 500, NO_OWNER)->Set(11);
+	// TODO CreateObjectAbove(LADR, 190, 500, NO_OWNER)->Set(11);
+	// TODO CreateObjectAbove(LADR, 1310, 500, NO_OWNER)->Set(11);
 }
 
 /* Regelwaehler */
@@ -131,13 +138,13 @@ func CreateLadders()
 //	{
 //		// und begrenzte Waren...
 //		wp->RemoveWare();
-//		wp->AddWare(PIWP); // Pistole
-//		wp->AddWare(ENWP); // Energiegewehr
-//		wp->AddWare(GLWP); // Granatenwerfer
-//		wp->AddWare(GGWP); // Partikelkanone
-//		wp->AddWare(KLAS); // Laser
+//		wp->AddWare(weapon_pistol); // Pistole
+//		wp->AddWare(weapon_energy); // Energiegewehr
+//		wp->AddWare(weapon_grenade); // Granatenwerfer
+//		wp->AddWare(weapon_motegun); // Partikelkanone
+//		wp->AddWare(upgrade_laser); // Laser
 //		wp->AddWare(FLSH); // Taschenlampe
-//		wp->AddWare(JTPK); // Jetpack
+//		wp->AddWare(item_jetpack); // Jetpack
 //		wp->AddWare(HSHD); // Schild
 //		wp->AddWare(DRSU); // Drone
 //		wp->AddWare(LMIN); // Lasermine
@@ -146,12 +153,13 @@ func CreateLadders()
 //	}
 //}
 
-func RelaunchPosition(int iTeam)
+func RelaunchLocations()
 {
-	if (iTeam == 1)
-		return [80, 350];
-	if (iTeam == 2)
-		return [1420, 350];
+	return 
+	[
+		{x =   80, y = 350, team = 1},
+		{x = 1420, y = 350, team = 2},
+	];
 }
 
 func CreateWaypoints()
