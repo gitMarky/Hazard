@@ -5,15 +5,12 @@ func Initialize()
 	SetGoal(SCENPAR_HAZARD_GOAL);
 
 	_inherited(...);
-	
-	SetSkyParallax(0, 150, 20);
-
-	CreateDeco();
-	
-	CreateSpawnPoints();
-	CreateWaypoints();
 }
 
+func CreateBackground()
+{
+	SetSkyParallax(0, 150, 20);
+}
 
 func CreateDeco()
 {
