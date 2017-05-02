@@ -1,0 +1,3 @@
+Name=Sonne
+Description=Eine handelsübliche Sonne.
+
