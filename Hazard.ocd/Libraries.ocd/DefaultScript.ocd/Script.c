@@ -188,6 +188,9 @@ public func GetSpawnPointTemplates()
 		item_medipack = CreateSpawnPoint(0, 0)->SpawnItem(MEDI),
 		item_airstrike = CreateSpawnPoint(0, 0)->SpawnItem(AIRS),
 		item_armor = CreateSpawnPoint(0, 0)->SpawnItem(HARM),
+		item_novodekan = CreateSpawnPoint(0, 0)->SpawnItem(NVDN),
+		item_drone = CreateSpawnPoint(0, 0)->SpawnItem(DRSU),
+	    item_shield = CreateSpawnPoint(0, 0)->SpawnItem(HSHD),
 	};
 }
 
