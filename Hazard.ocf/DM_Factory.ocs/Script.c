@@ -91,91 +91,44 @@ func CreateJumpPads()
 func CreateSpawnPoints()
 {
 	// configure spawn points
-	var ammo_standard = CreateSpawnPoint(0, 0)->SpawnItem(STAP);
-	var ammo_grenade = CreateSpawnPoint(0, 0)->SpawnItem(GRAP);
-	var ammo_gasoline = CreateSpawnPoint(0, 0)->SpawnItem(GSAP);
-	var ammo_energy = CreateSpawnPoint(0, 0)->SpawnItem(ENAP);
-	var ammo_missile = CreateSpawnPoint(0, 0)->SpawnItem(MIAP);
-	
-	var upgrade_laser = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_Laser);
-	var upgrade_slime = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_Slime);
-	var upgrade_rifle = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_WeaponPart);
-	
-	var weapon_pumpgun = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Pumpgun);
-	var weapon_minigun = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Minigun);
-	var weapon_grenade = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_GrenadeLauncher);
-	var weapon_flame = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_FlameThrower);
-	var weapon_bazooka = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Bazooka);
-	var weapon_energy = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_EnergyRifle);
-	var weapon_motegun= CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Motegun);
-	var weapon_mine = CreateSpawnPoint(0, 0)->SpawnItem(MINE);
-	
-	var item_jetpack = CreateSpawnPoint(0, 0)->SpawnItem(Gear_Jetpack);
-	var item_medipack = CreateSpawnPoint(0, 0)->SpawnItem(MEDI);
-	var item_novodekan = CreateSpawnPoint(0, 0)->SpawnItem(NVDN);
-	var item_armor = CreateSpawnPoint(0, 0)->SpawnItem(HARM);
-	var item_drone = CreateSpawnPoint(0, 0)->SpawnItem(DRSU);
+	var config = GetSpawnPointTemplates();
 
 	// place spawn points
-	
-	CopySpawnPoint(weapon_pumpgun, 240, 730);
-	CopySpawnPoint(ammo_standard, 220, 730);
-	CopySpawnPoint(ammo_grenade, 510, 730);
-	CopySpawnPoint(weapon_grenade, 710, 630);
-	CopySpawnPoint(ammo_grenade, 730, 630);
-	CopySpawnPoint(upgrade_slime, 940, 700);
-	CopySpawnPoint(weapon_bazooka, 940, 430);
-	CopySpawnPoint(ammo_missile, 960, 430);
-	CopySpawnPoint(weapon_grenade, 200, 170);
-	CopySpawnPoint(ammo_grenade, 220, 170);
-	CopySpawnPoint(upgrade_laser, 970, 270);
-	CopySpawnPoint(item_drone, 950, 340);
-	CopySpawnPoint(weapon_energy, 600, 430);
-	CopySpawnPoint(ammo_energy, 620, 430);
-	CopySpawnPoint(weapon_mine, 160, 420);
-	CopySpawnPoint(weapon_motegun, 200, 250);
-	CopySpawnPoint(ammo_energy, 180, 250);
-	CopySpawnPoint(upgrade_laser, 490, 110);
-	CopySpawnPoint(item_medipack, 680, 170);
-	CopySpawnPoint(weapon_minigun, 930, 170);
-	CopySpawnPoint(ammo_standard, 910, 170);
-	CopySpawnPoint(item_armor, 710, 745);
-	CopySpawnPoint(item_jetpack, 150, 580);
-	CopySpawnPoint(ammo_gasoline, 170, 580);
-	CopySpawnPoint(upgrade_rifle, 140, 510);
-	CopySpawnPoint(ammo_energy, 230, 340);
-	CopySpawnPoint(ammo_grenade, 670, 290);
-	CopySpawnPoint(ammo_standard, 610, 170);
+	CopySpawnPoint(config.weapon_pumpgun, 240, 730);
+	CopySpawnPoint(config.ammo_standard, 220, 730);
+	CopySpawnPoint(config.ammo_grenade, 510, 730);
+	CopySpawnPoint(config.weapon_grenade, 710, 630);
+	CopySpawnPoint(config.ammo_grenade, 730, 630);
+	CopySpawnPoint(config.upgrade_slime, 940, 700);
+	CopySpawnPoint(config.weapon_bazooka, 940, 430);
+	CopySpawnPoint(config.ammo_missile, 960, 430);
+	CopySpawnPoint(config.weapon_grenade, 200, 170);
+	CopySpawnPoint(config.ammo_grenade, 220, 170);
+	CopySpawnPoint(config.upgrade_laser, 970, 270);
+	CopySpawnPoint(config.item_drone, 950, 340);
+	CopySpawnPoint(config.weapon_energy, 600, 430);
+	CopySpawnPoint(config.ammo_energy, 620, 430);
+	CopySpawnPoint(config.weapon_mine, 160, 420);
+	CopySpawnPoint(config.weapon_motegun, 200, 250);
+	CopySpawnPoint(config.ammo_energy, 180, 250);
+	CopySpawnPoint(config.upgrade_laser, 490, 110);
+	CopySpawnPoint(config.item_medipack, 680, 170);
+	CopySpawnPoint(config.weapon_minigun, 930, 170);
+	CopySpawnPoint(config.ammo_standard, 910, 170);
+	CopySpawnPoint(config.item_armor, 710, 745);
+	CopySpawnPoint(config.item_jetpack, 150, 580);
+	CopySpawnPoint(config.ammo_gasoline, 170, 580);
+	CopySpawnPoint(config.upgrade_rifle, 140, 510);
+	CopySpawnPoint(config.ammo_energy, 230, 340);
+	CopySpawnPoint(config.ammo_grenade, 670, 290);
+	CopySpawnPoint(config.ammo_standard, 610, 170);
 // TODO
 //	PlaceBonusSpawnpoint([AEXB], 330, 40, 2000);
 //	PlaceBonusSpawnpoint([AMPB], 700, 40, 2000);
 //	PlaceBonusSpawnpoint([BSKB, HSTB, HELB, RPFB, INVB], 70, 510);
 	
 	// remove template spawn points
-	ammo_standard->RemoveObject();
-	ammo_grenade->RemoveObject();
-	ammo_gasoline->RemoveObject();
-	ammo_energy->RemoveObject();
-	ammo_missile->RemoveObject();
-	
-	upgrade_laser->RemoveObject();
-	upgrade_slime->RemoveObject();
-	upgrade_rifle->RemoveObject();
-
-	weapon_pumpgun->RemoveObject();
-	weapon_minigun->RemoveObject();
-	weapon_grenade->RemoveObject();
-	weapon_flame->RemoveObject();
-	weapon_bazooka->RemoveObject();
-	weapon_energy->RemoveObject();
-	weapon_motegun->RemoveObject();
-	weapon_mine->RemoveObject();
-	
-	item_medipack->RemoveObject();
-	item_jetpack->RemoveObject();
-	item_armor->RemoveObject();
-	item_novodekan->RemoveObject();
-	item_drone->RemoveObject();
+	RemoveSpawnPointTemplates(config);
 }
 
 
@@ -183,14 +136,14 @@ func RelaunchLocations()
 {
 	return 
 	[
-		{x =  50, y = 720, team = -1},
-		{x = 610, y = 690, team = -1},
-		{x = 820, y = 610, team = -1},
-		{x = 260, y = 570, team = -1},
-		{x = 480, y = 500, team = -1},
-		{x = 970, y = 330, team = -1},
-		{x = 850, y = 160, team = -1},
-		{x = 390, y = 140, team = -1}
+		{x =  50, y = 720, team = NO_OWNER},
+		{x = 610, y = 690, team = NO_OWNER},
+		{x = 820, y = 610, team = NO_OWNER},
+		{x = 260, y = 570, team = NO_OWNER},
+		{x = 480, y = 500, team = NO_OWNER},
+		{x = 970, y = 330, team = NO_OWNER},
+		{x = 850, y = 160, team = NO_OWNER},
+		{x = 390, y = 140, team = NO_OWNER}
 	];
 }
 
