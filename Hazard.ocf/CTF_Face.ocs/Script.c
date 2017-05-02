@@ -92,7 +92,7 @@ func CreateSpawnPoints()
 	CopySpawnPoint(config.upgrade_rifle, 1340, 50);
 	CopySpawnPoint(config.weapon_mine, 1140, 400);
 	
-	CopySpawnPoint(config.MEZL, 750, 417);
+	CopySpawnPoint(config.weapon_chainsaw, 750, 417);
 	CopySpawnPoint(config.ammo_gasoline, 750, 447);
 	
 	//TODO PlaceVehicleSpawnpoint(TANK, 105, 550);
@@ -146,12 +146,17 @@ func RelaunchLocations()
 
 func CreateWaypoints()
 {
+	var spec1, spec2, dir;
 	for (var i = 0; i < 2; i++)
 	{
 		if (!i)
-			var dir = 1;
+		{
+			dir = +1;
+		}
 		else
+		{
 			dir = -1;
+		}
 		
 		var wp1 = CreateWP(1500 * i + dir * 344, 489);
 		var wp2 = CreateWP(1500 * i + dir * 735, 248);
@@ -225,13 +230,13 @@ func CreateWaypoints()
 		
 		if (!i)
 		{
-			var spec1 = wp20;
-			var spec2 = wp2;
+			spec1 = wp20;
+			spec2 = wp2;
 		}
 		else
 		{
 			wp20->AddPath(spec1, Path_Jump, -1);
-			spec1->AddPath(wp20, Path_Jump, 1);
+			spec1->AddPath(wp20, Path_Jump, +1);
 			wp2->AddPath(spec2);
 			spec2->AddPath(wp2);
 		}
