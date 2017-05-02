@@ -1,3 +1,11 @@
+/**
+	Default script
+	Basic script for scenarios.
+	
+	@author OC-Hazard-Team
+	@version 1.0
+*/
+
 #include Library_ScenarioScript_PlayerRespawn
 
 static const SCENPAR_HAZARD_GOAL_Random = -1;
@@ -14,20 +22,30 @@ local Description = "Basic script for scenarios.";
 static Hazard;
 
 /**
-	Default script
-	Basic script for scenarios.
-	
-	@author OC-Hazard-Team
-	@version 1.0
-*/
+ * Default script.
+ *
+ * In the actual scenario script, call {@code {@link Library_DefaultScript#SetGoal}; _inherited(...);},
+ * then add any of your own code.
+ */
 func Initialize()
 {
 	_inherited(...);
 	
+	// Basic properties
+	
 	InitializeProperties();
+	
+	// Create necessary objects
 
 	CreateObject(Environment_RoundManager);
 	CreateObject(Environment_Configuration);
+	
+	// Create scenario specific stuff
+	
+	CreateBackground();
+	CreateDeco();
+	CreateSpawnPoints();
+	CreateWaypoints();
 }
 
 
@@ -50,6 +68,10 @@ private func InitializeProperties()
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Callbacks from configuration menu object.
+
 /**
  * Callback from configuration menu object.
  */
@@ -65,6 +87,10 @@ private func OnConfigurationEnd()
 		SpawnPlayer(GetPlayerByIndex(i));
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Callbacks from the round manager.
 
 
 /**
@@ -92,4 +118,36 @@ private func SetGoal(int goal)
 
 	DebugLog("Set goal to %d", goal);
 	Hazard.Scenario_Goal = goal;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Overloadable functions
+
+/**
+ * Use this function to create background objects, adjust sky parameters, etc.
+ */
+public func CreateBackground()
+{
+}
+
+/**
+ * Use this function to create deco objects.
+ */
+public func CreateDeco()
+{
+}
+
+/**
+ * Use this function to create spawn points.
+ */
+public func CreateSpawnPoints()
+{
+}
+
+/**
+ * Use this function to create waypoints for the AI.
+ */
+public func CreateWaypoints()
+{
 }

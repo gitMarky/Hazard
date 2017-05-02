@@ -11,3 +11,6 @@ ScenParGoalDescBombingRun=Es gilt die Bombe durch das gegnerische Tor zu beförd
 
 ScenParGoalNameDeathMatch=Deathmatch
 ScenParGoalDescDeathMatch=Töte deine Gegner - erhalte einen Punkt. Töte dich selbst - verliere einen Punkt.
+
+ScenParGoalNameCaptureTheFlag=Capture the Flag
+ScenParGoalDescCaptureTheFlag=Erobere feindliche Flaggen und bringe diese in deine Basis. Du kannst nur punkten, wenn sich deine eigeneFlagge in deiner Basis befindet.

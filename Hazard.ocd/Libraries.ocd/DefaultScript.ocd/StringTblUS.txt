@@ -11,3 +11,6 @@ ScenParGoalDescBombingRun=You have to transport the bomb trough the enemies' goa
 
 ScenParGoalNameDeathMatch=Deathmatch
 ScenParGoalDescDeathMatch=Kill your enemies - score a point. Kill yourself - lose a point.
+
+ScenParGoalNameCaptureTheFlag=Capture the Flag
+ScenParGoalDescCaptureTheFlag=Capture enemy flags and bring them to your base. They can only be returned if your own flag is at its base.
