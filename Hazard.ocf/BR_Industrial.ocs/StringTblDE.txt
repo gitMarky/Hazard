@@ -11,3 +11,22 @@ ScenParGoalDescRandom=Aus den zur Auswahl stehenden Spielzielen wird für diese 
 
 ScenParGoalNameBombingRun=Bombing Run
 ScenParGoalDescBombingRun=Es gilt die Bombe durch das gegnerische Tor zu befördern. Wenn man durch das Portal läuft gibt es zwei Punkte. Wenn man die Bombe schießt, nur einen.
+
+ScenParGoalNameDeathMatch=Deathmatch
+ScenParGoalDescDeathMatch=Töte deine Gegner - erhalte einen Punkt. Töte dich selbst - verliere einen Punkt.
+
+ScenParGoalNameCaptureTheFlag=Capture the Flag
+ScenParGoalDescCaptureTheFlag=Erobere feindliche Flaggen und bringe diese in deine Basis. Du kannst nur punkten, wenn sich deine eigeneFlagge in deiner Basis befindet.
+
+ScenParScoreName=Punktelimit
+ScenParScoreDesc=Legt fest wie viele Punkt Du oder dein Team erzielen muss, um die Runde zu gewinnen.
+ScenParScoreName3Points=3 Punkte
+ScenParScoreDesc3Points=Du musst 3 Punkte erzielen, um die Runde zu gewinnen.
+ScenParScoreName5Points=5 Punkte
+ScenParScoreDesc5Points=Du musst 5 Punkte erzielen, um die Runde zu gewinnen.
+ScenParScoreName10Points=10 Punkte
+ScenParScoreDesc10Points=Du musst 10 Punkte erzielen, um die Runde zu gewinnen.
+ScenParScoreName15Points=15 Punkte
+ScenParScoreDesc15Points=Du musst 15 Punkte erzielen, um die Runde zu gewinnen.
+ScenParScoreName20Points=20 Punkte
+ScenParScoreDesc20Points=Du musst 20 Punkte erzielen, um die Runde zu gewinnen.
