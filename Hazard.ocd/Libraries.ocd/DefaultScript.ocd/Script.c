@@ -151,3 +151,56 @@ public func CreateSpawnPoints()
 public func CreateWaypoints()
 {
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Helpers for spawn points
+
+/**
+ * Gets a proplist with the usual spawn points. 
+ * 
+ * This is more convenient than copy & pasting the script each time.
+ */
+public func GetSpawnPointTemplates()
+{
+	return {
+		ammo_standard = CreateSpawnPoint(0, 0)->SpawnItem(STAP),
+		ammo_grenade = CreateSpawnPoint(0, 0)->SpawnItem(GRAP),
+		ammo_gasoline = CreateSpawnPoint(0, 0)->SpawnItem(GSAP),
+		ammo_energy = CreateSpawnPoint(0, 0)->SpawnItem(ENAP),
+		ammo_missile = CreateSpawnPoint(0, 0)->SpawnItem(MIAP),
+		
+		upgrade_laser = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_Laser),
+		upgrade_slime = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_Slime),
+		upgrade_rifle = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_WeaponPart),
+		
+		weapon_pumpgun = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Pumpgun),
+		weapon_grenade = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_GrenadeLauncher),
+		weapon_flame = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_FlameThrower),
+		weapon_bazooka = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Bazooka),
+		weapon_energy = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_EnergyRifle),
+		weapon_motegun= CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Motegun),
+		weapon_mine = CreateSpawnPoint(0, 0)->SpawnItem(MINE),
+		weapon_minigun = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Minigun),
+		weapon_chainsaw = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Chainsaw),
+		
+		item_jetpack = CreateSpawnPoint(0, 0)->SpawnItem(Gear_Jetpack),
+		item_medipack = CreateSpawnPoint(0, 0)->SpawnItem(MEDI),
+		item_airstrike = CreateSpawnPoint(0, 0)->SpawnItem(AIRS),
+		item_armor = CreateSpawnPoint(0, 0)->SpawnItem(HARM),
+	};
+}
+
+/**
+ * Removes all spawn point templates in a given proplist.
+ */
+public func RemoveSpawnPointTemplates(proplist templates)
+{
+	for (var property in GetProperties(templates))
+	{
+		if (templates[property] != nil)
+		{
+			templates[property]->RemoveObject();
+		}
+	}
+}
