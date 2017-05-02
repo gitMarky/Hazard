@@ -6,12 +6,12 @@ func Initialize()
 
     _inherited(...);
     
-	SetSkyParallax(0, 12, 12, 0, 0, 0, 0);
-
-	CreateDeco();	
-	CreateSpawnPoints();
 	CreateLights();
-	CreateWaypoints();
+}
+
+func CreateBackground()
+{
+	SetSkyParallax(0, 12, 12, 0, 0, 0, 0);
 }
 
 func CreateDeco()
