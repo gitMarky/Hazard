@@ -22,11 +22,13 @@ func CreateDeco()
 	CreateObjectAbove(_REF, 590, 581, NO_OWNER);
 	
 	// deco
+	/* TODO
 	CreateObjectAbove(SHEL, 378, 700, NO_OWNER);
 	CreateObjectAbove(SHEL, 1850, 521, NO_OWNER);
 	CreateObjectAbove(SHEL, 1770, 430, NO_OWNER);
 	CreateObjectAbove(IDOL, 671, 474, NO_OWNER)->SetR(-45);
 	CreateObjectAbove(SUBB, 439, 1171, NO_OWNER)->SetR(45);
+	*/
 	CreateObjectAbove(PLNT, 135, 309, NO_OWNER);
 	CreateObjectAbove(CCP2, 436, 922, NO_OWNER);
 	CreateObjectAbove(CCP1, 401, 920, NO_OWNER);
@@ -40,8 +42,8 @@ func CreateDeco()
 	CreateObjectAbove(OTBL, 1874, 929, NO_OWNER);
 	CreateObjectAbove(TELE, 2338, 701, NO_OWNER)->Deactivate();
 	var pCrane = CreateObjectAbove(CRN1, 1850, 599, NO_OWNER);
-	pCrane->Set(15);
-	CreateObjectAbove(CONS, 1957, 642, NO_OWNER)->Set(pCrane);
+	pCrane->SetCraneLength(15);
+	CreateObjectAbove(Console, 1957, 642, NO_OWNER)->Set(pCrane);
 	CreateObjectAbove(GADG, 2151, 1237, NO_OWNER);
 	CreateObjectAbove(MONI, 2132, 1225, NO_OWNER);
 	CreateObjectAbove(MPPJ, 30, 970, NO_OWNER);
@@ -102,7 +104,7 @@ func CreateDeco()
 	CreateObjectAbove(DEB1, 1975, 706, NO_OWNER)->SetR(-13);
 	CreateObjectAbove(DEB1, 1948, 712, NO_OWNER)->SetR(-13);
 	
-		CreateObjectAbove(CRN1, 2181, 730, NO_OWNER)->Set(18);
+	CreateObjectAbove(CRN1, 2181, 730, NO_OWNER)->SetCraneLength(18);
 	CreateObjectAbove(LBDR, 305, 490, NO_OWNER);
 	CreateObjectAbove(LBDR, 574, 110, NO_OWNER);
 	CreateObjectAbove(SBBA, 314, 138, NO_OWNER);
@@ -168,7 +170,7 @@ func CreateDeco()
 	CreateObjectAbove(PSTR, 72, 91, NO_OWNER);
 	CreateObjectAbove(FENC, 439, 976, NO_OWNER);
 	CreateObjectAbove(FENC, 379, 976, NO_OWNER);
-	CreateObjectAbove(STRP, 236, 457, NO_OWNER)->Set(100, RGB(0, 200, 0));
+	CreateObjectAbove(STRP, 236, 457, NO_OWNER)->SetWidth(100)->SetColor(RGB(0, 200, 0));
 	CreateObjectAbove(FENC, 319, 976, NO_OWNER);
 	CreateObjectAbove(FENC, 259, 976, NO_OWNER);
 	CreateObjectAbove(ESGN, 299, 437, NO_OWNER);
@@ -220,8 +222,8 @@ func CreateDeco()
 	pPipe->Left()->Up()->Right(2)->Up();
 	CreateObjectAbove(WSHB, 2450, 1241, NO_OWNER);
 	CreateObjectAbove(VENT, 2427, 1101, NO_OWNER)->SetCon(45);
-	CreateObjectAbove(STRP, 2188, 1213, NO_OWNER)->Set(80);
-	CreateObjectAbove(STRP, 2161, 1229, NO_OWNER)->Set(140);
+	CreateObjectAbove(STRP, 2188, 1213, NO_OWNER)->SetWidth(80);
+	CreateObjectAbove(STRP, 2161, 1229, NO_OWNER)->SetWidth(140);
 	CreateObjectAbove(CLGH, 2144, 1161, NO_OWNER);
 	CreateObjectAbove(GAT2, 876, 766, NO_OWNER);
 	CreateObjectAbove(GAT2, 1127, 845, NO_OWNER);
@@ -234,6 +236,7 @@ func CreateDeco()
 	CreateObjectAbove(FENC, 823, 631, NO_OWNER);
 	CreateObjectAbove(FENC, 760, 631, NO_OWNER);
 	CreateObjectAbove(VENT, 2186, 854, NO_OWNER)->SetCon(30);
+/* TODO
 	CreateObjectAbove(HNG2, 2495, 821, NO_OWNER);
 	CreateObjectAbove(STLC, 0, 0, NO_OWNER);
 	CreateObjectAbove(DPIP, 0, 0, NO_OWNER);
@@ -244,10 +247,12 @@ func CreateDeco()
 	CreateObjectAbove(SWD2, 1610, 530, NO_OWNER);
 	CreateObjectAbove(SWD1, 740, 470, NO_OWNER);
 	CreateObjectAbove(SWD2, 10, 720, NO_OWNER);
+*/
 }
 
 func CreateLadders()
 {
+/* TODO
 	CreateObjectAbove(LADR, 315, 1181, NO_OWNER)->Set(23);
 	CreateObjectAbove(LADR, 476, 1025, NO_OWNER)->Set(14);
 	CreateObjectAbove(LADR, 375, 958, NO_OWNER)->Set(14);
@@ -280,50 +285,55 @@ func CreateLadders()
 	CreateObjectAbove(LADR, 1108, 821, NO_OWNER)->Set(14);
 	CreateObjectAbove(LADR, 1167, 749, NO_OWNER)->Set(20);
 	CreateObjectAbove(LADR, 1229, 762, NO_OWNER)->Set(9);
+*/
 }
 
 func CreateSpawnPoints()
 {
-	CopySpawnPoint(ENWP, 100, 170);
-	CopySpawnPoint(ENAP, 80, 170);
-	CopySpawnPoint(PGWP, 280, 380);
-	CopySpawnPoint(STAP, 300, 380);
-	CopySpawnPoint(KRFL, 770, 190);
-	CopySpawnPoint(AIRT, 1070, 660);
-	CopySpawnPoint(GLWP, 1200, 680);
-	CopySpawnPoint(GRAP, 1180, 680);
-	CopySpawnPoint(HARM, 1170, 1200);
-	CopySpawnPoint(ENWP, 200, 740);
-	CopySpawnPoint(ENAP, 220, 740);
-	CopySpawnPoint(PGWP, 590, 1010);
-	CopySpawnPoint(STAP, 610, 1010);
-	CopySpawnPoint(KSLM, 290, 1170);
-	CopySpawnPoint(ENWP, 2170, 1230);
-	CopySpawnPoint(ENAP, 2150, 1230);
-	CopySpawnPoint(PGWP, 2070, 880);
-	CopySpawnPoint(STAP, 2090, 880);
-	CopySpawnPoint(KLAS, 1900, 800);
-	CopySpawnPoint(ENWP, 2170, 410);
-	CopySpawnPoint(ENAP, 2150, 410);
-	CopySpawnPoint(PGWP, 1610, 600);
-	CopySpawnPoint(DRSU, 1980, 640);
-	CopySpawnPoint(MEDI, 1090, 350);
-	CopySpawnPoint(MINE, 660, 550);
-	CopySpawnPoint(MINE, 1430, 840);
-	CopySpawnPoint(GRAP, 760, 680);
-	CopySpawnPoint(GRAP, 1540, 270);
-	CopySpawnPoint(ENAP, 1100, 20);
-	CopySpawnPoint(STAP, 990, 930);
-	CopySpawnPoint(MIWP, 160, 590);
-	CopySpawnPoint(STAP, 180, 590);
-	CopySpawnPoint(GGWP, 410, 1190);
-	CopySpawnPoint(ENAP, 430, 1190);
-	CopySpawnPoint(BZWP, 1780, 1260);
-	CopySpawnPoint(MIAP, 1800, 1260);
-	CopySpawnPoint(GGWP, 1580, 640);
-	CopySpawnPoint(ENAP, 1560, 640);
-	PlaceBonusSpawnpoint([AMPB, BSKB, HELB, INVB, KAMB, RPFB], 740, 530);
-	
+	// configure spawn points
+	var config = GetSpawnPointTemplates();
+
+	// place spawn points
+	CopySpawnPoint(config.weapon_energy, 100, 170);
+	CopySpawnPoint(config.ammo_energy, 80, 170);
+	CopySpawnPoint(config.weapon_pumpgun, 280, 380);
+	CopySpawnPoint(config.ammo_standard, 300, 380);
+	CopySpawnPoint(config.upgrade_rifle, 770, 190);
+	CopySpawnPoint(config.AIRT, 1070, 660);
+	CopySpawnPoint(config.weapon_grenade, 1200, 680);
+	CopySpawnPoint(config.ammo_grenade, 1180, 680);
+	CopySpawnPoint(config.item_armor, 1170, 1200);
+	CopySpawnPoint(config.weapon_energy, 200, 740);
+	CopySpawnPoint(config.ammo_energy, 220, 740);
+	CopySpawnPoint(config.weapon_pumpgun, 590, 1010);
+	CopySpawnPoint(config.ammo_standard, 610, 1010);
+	CopySpawnPoint(config.KSLM, 290, 1170);
+	CopySpawnPoint(config.weapon_energy, 2170, 1230);
+	CopySpawnPoint(config.ammo_energy, 2150, 1230);
+	CopySpawnPoint(config.weapon_pumpgun, 2070, 880);
+	CopySpawnPoint(config.ammo_standard, 2090, 880);
+	CopySpawnPoint(config.upgrade_laser, 1900, 800);
+	CopySpawnPoint(config.weapon_energy, 2170, 410);
+	CopySpawnPoint(config.ammo_energy, 2150, 410);
+	CopySpawnPoint(config.weapon_pumpgun, 1610, 600);
+	CopySpawnPoint(config.DRSU, 1980, 640);
+	CopySpawnPoint(config.item_medipack, 1090, 350);
+	CopySpawnPoint(config.weapon_mine, 660, 550);
+	CopySpawnPoint(config.weapon_mine, 1430, 840);
+	CopySpawnPoint(config.ammo_grenade, 760, 680);
+	CopySpawnPoint(config.ammo_grenade, 1540, 270);
+	CopySpawnPoint(config.ammo_energy, 1100, 20);
+	CopySpawnPoint(config.ammo_standard, 990, 930);
+	CopySpawnPoint(config.weapon_minigun, 160, 590);
+	CopySpawnPoint(config.ammo_standard, 180, 590);
+	CopySpawnPoint(config.weapon_motegun, 410, 1190);
+	CopySpawnPoint(config.ammo_energy, 430, 1190);
+	CopySpawnPoint(config.weapon_bazooka, 1780, 1260);
+	CopySpawnPoint(config.ammo_missile, 1800, 1260);
+	CopySpawnPoint(config.weapon_motegun, 1580, 640);
+	CopySpawnPoint(config.ammo_energy, 1560, 640);
+	// TODO PlaceBonusSpawnpoint([AMPB, BSKB, HELB, INVB, KAMB, RPFB], 740, 530);
+	/* TODO
 	aHivePos =
 	[
 		[[550, 940], [120, 910], [330, 880]],
@@ -332,6 +342,9 @@ func CreateSpawnPoints()
 		[[300, 333], [280, 100]],
 		[[1100, 800], [850, 600], [1000, 600]]
 	];
+	*/
+	// remove template spawn points
+	RemoveSpawnPointTemplates(config);
 }
 
 
@@ -339,33 +352,33 @@ func CreateSpawnPoints()
 //{
 //	// und begrenzte Waren...
 //	wp->RemoveWare();
-//	wp->AddWare(PIWP, -1); // Pistole
-//	wp->AddWare(ENWP, -1); // Energiegewehr
-//	wp->AddWare(PGWP, -1); // Pumpgun
-//	wp->AddWare(GGWP, -1); // Partikelkanone
-//	wp->AddWare(BZWP, -1); // Bazooka
-//	wp->AddWare(MIWP, -1); // Minigun
-//	wp->AddWare(KRFL, -1); // Waffenteile
+//	wp->AddWare(weapon_pistol, -1); // Pistole
+//	wp->AddWare(weapon_energy, -1); // Energiegewehr
+//	wp->AddWare(weapon_pumpgun, -1); // Pumpgun
+//	wp->AddWare(weapon_motegun, -1); // Partikelkanone
+//	wp->AddWare(weapon_bazooka, -1); // Bazooka
+//	wp->AddWare(weapon_minigun, -1); // Minigun
+//	wp->AddWare(upgrade_rifle, -1); // Waffenteile
 //	wp->AddWare(KSLM, -1); // Schleim
 //	wp->AddWare(FLSH, -1); // Taschenlampe
 //	wp->AddWare(AIRT, -1); // Luft!
-//	wp->AddWare(HARM, -1); // R�stung
+//	wp->AddWare(item_armor, -1); // R�stung
 //	wp->AddWare(DRSU, -1); // Drone
-//	wp->AddWare(MEDI, -1); // Medipack
+//	wp->AddWare(item_medipack, -1); // Medipack
 //	//wp->SortWare();
 //}
 
 
 /* Relaunch */
 
-func RelaunchPosition(int iTeam)
+func RelaunchLocations()
 {
-	if (iTeam == 1)
-		return [30, 80];
-	if (iTeam == 2)
-		return [2400, 1220];
-	if (iTeam == 3)
-		return [120, 720];
-	if (iTeam == 4)
-		return [2280, 400];
+	return 
+	[
+		{x =   30, y =   80, team = 1},
+		{x = 2400, y = 1220, team = 2},
+		{x =  120, y =  720, team = 3},
+		{x = 2280, y =  400, team = 4},
+	];
 }
+
