@@ -8,12 +8,7 @@ func Initialize()
 
 	_inherited(...);
 
-	CreateBackground();
-	CreateDeco();
 	CreateLadders();
-	
-	CreateSpawnPoints();
-	CreateWaypoints();
 }
 
 func CreateBackground()
