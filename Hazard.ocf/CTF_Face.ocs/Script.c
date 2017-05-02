@@ -38,6 +38,7 @@ func CreateDeco()
 	CreateObjectAbove(ENGT, 1306, 385, NO_OWNER)->SetCon(50);
 	CreateObjectAbove(ENGT, 194, 385, NO_OWNER)->SetCon(50);
 	// Warps
+	/* TODO
 	CreateObjectAbove(AWRP, 260, 450, NO_OWNER)->Set(210, 250);
 	CreateObjectAbove(AWRP, 170, 120, NO_OWNER)->Set(210, 250);
 	CreateObjectAbove(AWRP, 170, 280, NO_OWNER)->Set(200, 490);
@@ -49,49 +50,56 @@ func CreateDeco()
 	CreateObjectAbove(AWRP, 1330, 280, NO_OWNER)->Set(1300, 490);
 	CreateObjectAbove(AWRP, 1330, 220, NO_OWNER)->Set(1270, 90);
 	CreateObjectAbove(AWRP, 1390, 480, NO_OWNER)->Set(1270, 90);
+	*/
 }
 
 
 func CreateSpawnPoints()
 {
-	// Spawnpunkte
-	CopySpawnPoint(GLWP, 280, 610);
-	CopySpawnPoint(GRAP, 300, 610);
-	CopySpawnPoint(ENWP, 240, 490);
-	CopySpawnPoint(ENAP, 260, 490);
-	CopySpawnPoint(STAP, 220, 340);
-	CopySpawnPoint(PGWP, 240, 340);
-	CopySpawnPoint(STAP, 260, 340);
-	CopySpawnPoint(BZWP, 300, 250);
-	CopySpawnPoint(MIAP, 280, 250);
-	CopySpawnPoint(GGWP, 300, 80);
-	CopySpawnPoint(ENAP, 280, 80);
-	CopySpawnPoint(MEDI, 110, 50);
-	CopySpawnPoint(KRFL, 160, 50);
-	CopySpawnPoint(MINE, 360, 400);
+	// configure spawn points
+	var config = GetSpawnPointTemplates();
+
+	// place spawn points
+	CopySpawnPoint(config.weapon_grenade, 280, 610);
+	CopySpawnPoint(config.ammo_grenade, 300, 610);
+	CopySpawnPoint(config.weapon_energy, 240, 490);
+	CopySpawnPoint(config.ammo_energy, 260, 490);
+	CopySpawnPoint(config.ammo_standard, 220, 340);
+	CopySpawnPoint(config.weapon_pumpgun, 240, 340);
+	CopySpawnPoint(config.ammo_standard, 260, 340);
+	CopySpawnPoint(config.weapon_bazooka, 300, 250);
+	CopySpawnPoint(config.ammo_missile, 280, 250);
+	CopySpawnPoint(config.weapon_motegun, 300, 80);
+	CopySpawnPoint(config.ammo_energy, 280, 80);
+	CopySpawnPoint(config.item_medipack, 110, 50);
+	CopySpawnPoint(config.upgrade_rifle, 160, 50);
+	CopySpawnPoint(config.weapon_mine, 360, 400);
 	
-	CopySpawnPoint(KLAS, 750, 250);
+	CopySpawnPoint(config.upgrade_laser, 750, 250);
 	
-	CopySpawnPoint(GLWP, 1220, 610);
-	CopySpawnPoint(GRAP, 1200, 610);
-	CopySpawnPoint(ENWP, 1260, 490);
-	CopySpawnPoint(ENAP, 1240, 490);
-	CopySpawnPoint(STAP, 1280, 340);
-	CopySpawnPoint(PGWP, 1260, 340);
-	CopySpawnPoint(STAP, 1240, 340);
-	CopySpawnPoint(BZWP, 1200, 250);
-	CopySpawnPoint(MIAP, 1220, 250);
-	CopySpawnPoint(GGWP, 1200, 80);
-	CopySpawnPoint(ENAP, 1220, 80);
-	CopySpawnPoint(MEDI, 1390, 50);
-	CopySpawnPoint(KRFL, 1340, 50);
-	CopySpawnPoint(MINE, 1140, 400);
+	CopySpawnPoint(config.weapon_grenade, 1220, 610);
+	CopySpawnPoint(config.ammo_grenade, 1200, 610);
+	CopySpawnPoint(config.weapon_energy, 1260, 490);
+	CopySpawnPoint(config.ammo_energy, 1240, 490);
+	CopySpawnPoint(config.ammo_standard, 1280, 340);
+	CopySpawnPoint(config.weapon_pumpgun, 1260, 340);
+	CopySpawnPoint(config.ammo_standard, 1240, 340);
+	CopySpawnPoint(config.weapon_bazooka, 1200, 250);
+	CopySpawnPoint(config.ammo_missile, 1220, 250);
+	CopySpawnPoint(config.weapon_motegun, 1200, 80);
+	CopySpawnPoint(config.ammo_energy, 1220, 80);
+	CopySpawnPoint(config.item_medipack, 1390, 50);
+	CopySpawnPoint(config.upgrade_rifle, 1340, 50);
+	CopySpawnPoint(config.weapon_mine, 1140, 400);
 	
-	CopySpawnPoint(MEZL, 750, 417);
-	CopySpawnPoint(GSAP, 750, 447);
+	CopySpawnPoint(config.MEZL, 750, 417);
+	CopySpawnPoint(config.ammo_gasoline, 750, 447);
 	
-	//PlaceVehicleSpawnpoint(TANK, 105, 550);
-	//PlaceVehicleSpawnpoint(TANK, 1395, 550);
+	//TODO PlaceVehicleSpawnpoint(TANK, 105, 550);
+	//TODO PlaceVehicleSpawnpoint(TANK, 1395, 550);
+	
+	// remove template spawn points
+	RemoveSpawnPointTemplates(config);
 }
 
 /* Regelwaehler */
@@ -107,15 +115,15 @@ func CreateSpawnPoints()
 //    // und begrenzte Waren...
 //    wp->RemoveWare();
 //    wp->AddWare(PIWP);  // Pistole
-//    wp->AddWare(PGWP);  // Pumpgun
-//    wp->AddWare(GLWP);  // Granatenwerfer
-//    wp->AddWare(MIWP);  // Minigun
-//    wp->AddWare(GGWP);  // Partikelkanone
-//    wp->AddWare(BZWP);  // Bazooka
-//    wp->AddWare(KLAS);  // Laser
-//    wp->AddWare(KRFL);  // Waffenteile
+//    wp->AddWare(weapon_pumpgun);  // Pumpgun
+//    wp->AddWare(weapon_grenade);  // Granatenwerfer
+//    wp->AddWare(weapon_minigun);  // Minigun
+//    wp->AddWare(weapon_motegun);  // Partikelkanone
+//    wp->AddWare(weapon_bazooka);  // Bazooka
+//    wp->AddWare(upgrade_laser);  // Laser
+//    wp->AddWare(upgrade_rifle);  // Waffenteile
 //    wp->AddWare(FLSH);  // Taschenlampe
-//    wp->AddWare(MINE);  // Lasermine
+//    wp->AddWare(weapon_mine);  // Lasermine
 //    //wp->SortWare();
 //  }
 //}
@@ -125,14 +133,14 @@ func RelaunchLocations()
 {
 	return 
 	[
-		{x: 30, y: 480, team: 1},
-		{x: 30, y: 25, team: 1},
-		{x: 30, y: 25, team: 1},
-		{x: 30, y: 25, team: 1},
-		{x: 1470, y: 480, team: 2},
-		{x: 1470, y: 25, team: 2},
-		{x: 1470, y: 25, team: 2},
-		{x: 1470, y: 25, team: 2}
+		{x =   30, y = 480, team = 1},
+		{x =   30, y =  25, team = 1},
+		{x =   30, y =  25, team = 1},
+		{x =   30, y =  25, team = 1},
+		{x = 1470, y = 480, team = 2},
+		{x = 1470, y =  25, team = 2},
+		{x = 1470, y =  25, team = 2},
+		{x = 1470, y =  25, team = 2}
 	];
 }
 
@@ -163,14 +171,12 @@ func CreateWaypoints()
 		var wp16 = CreateWP(1500 * i + dir * 302, 339);
 		var wp17 = CreateWP(1500 * i + dir * 186, 339);
 		var wp18 = CreateWP(1500 * i + dir * 180, 490);
-		//  var wp19 = CreateWP(1500*i+dir*792,447);
 		var wp20 = CreateWP(1500 * i + dir * 707, 447);
 		var wp21 = CreateWP(1500 * i + dir * 516, 529);
 		var wp22 = CreateWP(1500 * i + dir * 290, 609);
 		var wp23 = CreateWP(1500 * i + dir * 31, 489);
 		
 		wp1->AddPath(wp18);
-		//  wp1 -> AddPath(wp18, Path_Backflip);
 		wp1->AddPath(wp16, Path_Jump);
 		wp1->AddPath(wp21);
 		wp2->AddPath(wp21);
@@ -208,7 +214,6 @@ func CreateWaypoints()
 		wp18->AddPath(wp13);
 		wp18->AddPath(wp17, Path_Jump);
 		wp18->AddPath(wp1);
-		//  wp18 -> AddPath(wp1, Path_Backflip);
 		wp20->AddPath(wp21);
 		wp21->AddPath(wp22);
 		wp21->AddPath(wp1);
