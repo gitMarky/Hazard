@@ -7,10 +7,7 @@ func Initialize()
 	_inherited(...);
 
 	CreateLights();
-	CreateDeco();
 	CreateLadders();
-	CreateSpawnPoints();
-	CreateWaypoints();
 }
 
 func CreateLights()
