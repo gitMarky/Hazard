@@ -6,20 +6,19 @@ static aTeleporters;
 
 func Initialize()
 {
+	aTeleporters = [];
 	SetGoal(SCENPAR_HAZARD_GOAL);
 
 	_inherited(...);
-
-	aTeleporters = [];
-	
-	SetSkyParallax(0, 15);
 	
 	CreateLights();
-	CreateDeco();
 	CreateTrees();
 	CreateArena();	
-	CreateSpawnPoints();
-	CreateWaypoints();
+}
+
+func CreateBackground()
+{
+	SetSkyParallax(0, 15);
 }
 
 func CreateLights()
