@@ -299,7 +299,7 @@ func CreateSpawnPoints()
 	CopySpawnPoint(config.weapon_pumpgun, 280, 380);
 	CopySpawnPoint(config.ammo_standard, 300, 380);
 	CopySpawnPoint(config.upgrade_rifle, 770, 190);
-	CopySpawnPoint(config.AIRT, 1070, 660);
+	//TODO CopySpawnPoint(config.AIRT, 1070, 660);
 	CopySpawnPoint(config.weapon_grenade, 1200, 680);
 	CopySpawnPoint(config.ammo_grenade, 1180, 680);
 	CopySpawnPoint(config.item_armor, 1170, 1200);
@@ -307,7 +307,7 @@ func CreateSpawnPoints()
 	CopySpawnPoint(config.ammo_energy, 220, 740);
 	CopySpawnPoint(config.weapon_pumpgun, 590, 1010);
 	CopySpawnPoint(config.ammo_standard, 610, 1010);
-	CopySpawnPoint(config.KSLM, 290, 1170);
+	CopySpawnPoint(config.upgrade_slime, 290, 1170);
 	CopySpawnPoint(config.weapon_energy, 2170, 1230);
 	CopySpawnPoint(config.ammo_energy, 2150, 1230);
 	CopySpawnPoint(config.weapon_pumpgun, 2070, 880);
@@ -316,7 +316,7 @@ func CreateSpawnPoints()
 	CopySpawnPoint(config.weapon_energy, 2170, 410);
 	CopySpawnPoint(config.ammo_energy, 2150, 410);
 	CopySpawnPoint(config.weapon_pumpgun, 1610, 600);
-	CopySpawnPoint(config.DRSU, 1980, 640);
+	CopySpawnPoint(config.item_drone, 1980, 640);
 	CopySpawnPoint(config.item_medipack, 1090, 350);
 	CopySpawnPoint(config.weapon_mine, 660, 550);
 	CopySpawnPoint(config.weapon_mine, 1430, 840);

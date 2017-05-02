@@ -1,18 +1,25 @@
-/*-- Auffüller --*/
+/*-- Refiller --*/
 
 
-protected func Initialize()
+func Initialize()
 {
-  ScheduleCall(this(), "Check", 35);
+	ScheduleCall(this, this.Check, 35);
 }
 
-protected func Check()
+func Check()
 {
-  if(InLiquid()) return(ScheduleCall(this(), "Check", 35));
-
-  for(var i=0 ; i < 10 ; i++)
-    InsertMaterial(Material("Water"));
-  ScheduleCall(this(), "Check", 2);
+	if (InLiquid())
+	{
+		return ScheduleCall(this, this.Check, 35);
+	}
+	else
+	{
+		for (var i = 0; i < 10; i++)
+		{
+			InsertMaterial(Material("Water"));
+		}
+		ScheduleCall(this, this.Check, 2);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

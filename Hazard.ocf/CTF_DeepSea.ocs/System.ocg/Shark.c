@@ -1,6 +1,6 @@
-#strict
 #appendto SHRK
 
-public func IsBulletTarget() {
-  return(1);
+func IsBulletTarget()
+{
+	return 1;
 }
