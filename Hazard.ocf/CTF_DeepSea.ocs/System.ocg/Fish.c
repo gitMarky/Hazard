@@ -1,7 +1,3 @@
-#appendto FISH
-#appendto DFSH
+#appendto Fish
 
-func RejectEntrance()
-{
-	return 1;
-}
+local Collectible = false;

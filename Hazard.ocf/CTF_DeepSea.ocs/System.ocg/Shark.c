@@ -1,6 +1,6 @@
-#appendto SHRK
+#appendto Shark
 
-func IsBulletTarget()
+func IsProjectileTarget()
 {
-	return 1;
+	return true;
 }

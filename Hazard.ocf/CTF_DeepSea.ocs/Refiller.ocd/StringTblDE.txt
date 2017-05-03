@@ -1,3 +1,3 @@
-Name=Auffüller
-Description=Gratis Refills für alle.
+Name=AuffÃ¼ller
+Description=Gratis Refills fÃ¼r alle.
 

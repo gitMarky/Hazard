@@ -14,6 +14,10 @@ func CreateBackground()
 
 func CreateDeco()
 {
+	// swimmy stuff
+	Fish->Place(10);
+	Shark->Place(2);
+
 	// filler
 	CreateObjectAbove(_REF, 1110, 1, NO_OWNER);
 	CreateObjectAbove(_REF, 1445, 65, NO_OWNER);
@@ -378,7 +382,7 @@ func RelaunchLocations()
 		{x =   30, y =   80, team = 1},
 		{x = 2400, y = 1220, team = 2},
 		{x =  120, y =  720, team = 3},
-		{x = 2280, y =  400, team = 4},
+		{x = 2280, y =  400, team = 4}
 	];
 }
 

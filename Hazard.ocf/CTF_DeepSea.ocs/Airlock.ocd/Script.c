@@ -102,7 +102,7 @@ func SoundClose()
 func Check4Clonk(int iD)    // sucht nach nicht verfeindeten Clonks die gerne rein oder raus moechten
 {
 	for (var pClonk in FindObjects(Find_InRect(iD * 30 - 20, -20, 40, 40), Find_OCF(OCF_CrewMember), Find_NoContainer()))
-		if (!Hostile(GetOwner(pClonk), GetOwner()))
+		if (!Hostile(pClonk->GetOwner(), GetOwner()))
 			return true;
 	// niemand da
 	return false;
