@@ -30,11 +30,6 @@ func Initialize()
 
 func ExtendPipeLine(int direction_to, int direction_from, int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
-	repeat = repeat ?? 1;
-	pipe_id = pipe_id ?? PIPL;
-	connect_to = connect_to ?? CreatePipe(PIPE_Left, pipe_id);
-	power = power ?? 1;
-
 	ConnectTo(connect_to, PIPE_Left);
 	connect_to->ConnectTo(this, PIPE_Right);
 	connect_to->~ChangePower(power);
@@ -52,6 +47,11 @@ func ExtendPipeLine(int direction_to, int direction_from, int repeat, bool solid
 
 func Left(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
+	repeat = repeat ?? 1;
+	pipe_id = pipe_id ?? PIPL;
+	connect_to = connect_to ?? CreatePipe(PIPE_Left, pipe_id);
+	power = power ?? 1;
+	
 	var remaining = ExtendPipeLine(PIPE_Left, PIPE_Right, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{
@@ -65,6 +65,11 @@ func Left(int repeat, bool solid, bool valve, id pipe_id, int power, object conn
 
 func Right(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
+	repeat = repeat ?? 1;
+	pipe_id = pipe_id ?? PIPL;
+	connect_to = connect_to ?? CreatePipe(PIPE_Left, pipe_id);
+	power = power ?? 1;
+	
 	var remaining = ExtendPipeLine(PIPE_Right, PIPE_Left, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{
@@ -78,6 +83,11 @@ func Right(int repeat, bool solid, bool valve, id pipe_id, int power, object con
 
 func Up(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
+	repeat = repeat ?? 1;
+	pipe_id = pipe_id ?? PIPL;
+	connect_to = connect_to ?? CreatePipe(PIPE_Left, pipe_id);
+	power = power ?? 1;
+	
 	var remaining = ExtendPipeLine(PIPE_Up, PIPE_Down, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{
@@ -91,6 +101,11 @@ func Up(int repeat, bool solid, bool valve, id pipe_id, int power, object connec
 
 func Down(int repeat, bool solid, bool valve, id pipe_id, int power, object connect_to)
 {
+	repeat = repeat ?? 1;
+	pipe_id = pipe_id ?? PIPL;
+	connect_to = connect_to ?? CreatePipe(PIPE_Left, pipe_id);
+	power = power ?? 1;
+	
 	var remaining = ExtendPipeLine(PIPE_Down, PIPE_Up, repeat, solid, valve, pipe_id, power, connect_to);
 	if (remaining > 0)
 	{

@@ -17,7 +17,7 @@ global func RemoveFrame()
 
 	var frame = FindObject(Find_ID(FRME), Find_AtPoint());
 	if (frame)
-		RemoveObject(frame);
+		frame->RemoveObject();
 }
  
 
@@ -31,6 +31,11 @@ func Initialize()
  
 func Set(object target)
 {
+	if (target == nil)
+	{
+		FatalError("This function needs a target other than nil!");
+	}
+
 	// *1000/(51-2-3) => Normalized to 1000 and relation: target <-> screen without frame
 	var divisor = 61;
 	var full_size = 1000;
