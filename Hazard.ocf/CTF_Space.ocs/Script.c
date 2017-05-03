@@ -11,16 +11,18 @@ func Initialize()
 
 func CreateBackground()
 {
-	// Hier kommt die Sonne!
+	// sun
 	var s2 = CreateObjectAbove(SUN_, LandscapeWidth() / 3, LandscapeHeight() / 2, NO_OWNER);
 	var s1 = CreateObjectAbove(SUN_, LandscapeWidth() / 3, LandscapeHeight() / 2, NO_OWNER);
 	
-	s1->SetClrModulation(RGBa(255, 100, 0, 0));
+	s1->SetClrModulation(RGBa(255, 100, 0, 255));
 	s2->SetObjectBlitMode(1);
-	s2->SetClrModulation(RGBa(255, 255, 0, 0));
+	s2->SetClrModulation(RGBa(255, 255, 0, 255));
 	s2->SetRotationSpeed(12);
 	s2->SetGrowPos(13000);
 	
+	// sky
+	SetSky("Stars");
 	SetSkyParallax(30, 30);
 }
 
@@ -158,7 +160,7 @@ func RelaunchLocations()
 	return 
 	[
 		{x =   80, y = 350, team = 1},
-		{x = 1420, y = 350, team = 2},
+		{x = 1420, y = 350, team = 2}
 	];
 }
 
