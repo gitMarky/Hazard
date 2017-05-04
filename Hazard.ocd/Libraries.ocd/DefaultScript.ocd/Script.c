@@ -63,6 +63,7 @@ private func InitializeProperties()
 			Generator = {PowerSupply = false},
 			Radar = {FakeRadar = true},
 			Scenario_Goal = SCENPAR_HAZARD_GOAL_Random,
+			Scenario_WinScore = 1,
 		};
 	}
 }
@@ -78,7 +79,14 @@ private func InitializeProperties()
 private func OnConfigurationEnd()
 {
 	_inherited(...);
-
+	
+	// set win score for the goal
+	for (var goal in FindObjects(Find_Func("IsGoal")))
+	{
+		DebugLog("Set win score for goal %v to %d", goal, GetWinScore());
+		goal->~SetWinScore(GetWinScore());
+	}
+	
 	// the players have been released from their containers by
 	// the round countdown. Put them in relaunch containers
 	// at the starting position
@@ -91,7 +99,6 @@ private func OnConfigurationEnd()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Callbacks from the round manager.
-
 
 /**
  Callback from the round manager.
@@ -112,12 +119,29 @@ private func StartingEquipment(object crew)
 	//nobody gets anything
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Interface for the scenario
+
 private func SetGoal(int goal)
 {
 	InitializeProperties();
 
 	DebugLog("Set goal to %d", goal);
 	Hazard.Scenario_Goal = goal;
+}
+
+private func SetWinScore(int score)
+{
+	InitializeProperties();
+
+	DebugLog("Set win score to %d", score);
+	Hazard.Scenario_WinScore = score;
+}
+
+private func GetWinScore()
+{
+	return Hazard.Scenario_WinScore;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
