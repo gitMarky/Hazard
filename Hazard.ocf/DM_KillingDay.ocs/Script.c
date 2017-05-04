@@ -1,4 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Killing Day
+
 #include Library_DefaultScript
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Default initialization
 
 func Initialize()
 {
@@ -9,6 +17,10 @@ func Initialize()
 	CreateLights();
 	CreateLadders();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Deco
 
 func CreateLights()
 {
@@ -86,6 +98,10 @@ func CreateLadders()
 	CreateObject(LADR, 1157, 610, NO_OWNER)->LadderHeight(415, 610);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Equipment
+
 func CreateSpawnPoints()	
 {
 	// configure spawn points
@@ -122,6 +138,35 @@ func CreateSpawnPoints()
 	// remove template spawn points
 	RemoveSpawnPointTemplates(config);
 }
+
+// TODO
+//public func ChooserFinished()
+//{
+//  Arena_ChooserFinished();
+//
+//  var wp = FindObject(WPCH);
+//  if(wp)
+//  {
+//    // und begrenzte Waren...
+//    wp->RemoveWare();
+//    wp->AddWare(PIWP);  // Pistole
+//    wp->AddWare(PGWP);  // Pumpgun
+//    wp->AddWare(FTWP);  // Flammenwerfer
+//    wp->AddWare(MIWP);  // Minigun
+//    wp->AddWare(MEZL);  // Mezl
+//    wp->AddWare(KLAS);  // Laser
+//    wp->AddWare(KRFL);  // Waffenteile
+//
+//    wp->AddWare(FLSH);  // Taschenlampe
+//    wp->AddWare(HARM);  // R�stung
+//    wp->AddWare(MINE);  // Mine
+//    //wp->SortWare();
+//  }
+//}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// AI
 
 func CreateWaypoints()
 {
@@ -348,30 +393,9 @@ func CreateWaypoints()
 	wp55->AddPath(wp31, Path_Jump, -1);
 }
 
-// TODO
-//public func ChooserFinished()
-//{
-//  Arena_ChooserFinished();
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//  var wp = FindObject(WPCH);
-//  if(wp)
-//  {
-//    // und begrenzte Waren...
-//    wp->RemoveWare();
-//    wp->AddWare(PIWP);  // Pistole
-//    wp->AddWare(PGWP);  // Pumpgun
-//    wp->AddWare(FTWP);  // Flammenwerfer
-//    wp->AddWare(MIWP);  // Minigun
-//    wp->AddWare(MEZL);  // Mezl
-//    wp->AddWare(KLAS);  // Laser
-//    wp->AddWare(KRFL);  // Waffenteile
-//
-//    wp->AddWare(FLSH);  // Taschenlampe
-//    wp->AddWare(HARM);  // R�stung
-//    wp->AddWare(MINE);  // Mine
-//    //wp->SortWare();
-//  }
-//}
+// Relaunches
 
 func RelaunchLocations()
 {
