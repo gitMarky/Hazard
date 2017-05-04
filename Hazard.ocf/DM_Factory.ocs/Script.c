@@ -1,4 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Factory
+
 #include Library_DefaultScript
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Default initialization
 
 func Initialize()
 {
@@ -10,6 +18,10 @@ func Initialize()
 	CreateLadders();
 	CreateJumpPads();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Deco
 
 func CreateBackground()
 {
@@ -88,6 +100,10 @@ func CreateJumpPads()
 	CreateObject(JMPD, 494, 427, NO_OWNER)->Set( 80, +15).Visibility = invisible;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Equipment
+
 func CreateSpawnPoints()
 {
 	// configure spawn points
@@ -132,22 +148,35 @@ func CreateSpawnPoints()
 }
 
 
-func RelaunchLocations()
-{
-	return 
-	[
-		{x =  50, y = 720, team = NO_OWNER},
-		{x = 610, y = 690, team = NO_OWNER},
-		{x = 820, y = 610, team = NO_OWNER},
-		{x = 260, y = 570, team = NO_OWNER},
-		{x = 480, y = 500, team = NO_OWNER},
-		{x = 970, y = 330, team = NO_OWNER},
-		{x = 850, y = 160, team = NO_OWNER},
-		{x = 390, y = 140, team = NO_OWNER}
-	];
-}
+/* Regelwaehler */
 
-/* KI */
+// TODO
+//func ChooserFinished()
+//{
+//	var wp = FindObject(WPCH);
+//	if (wp)
+//	{
+//		// und begrenzte Waren...
+//		wp->RemoveWare();
+//		wp->AddWare(PIWP); // Pistole
+//		wp->AddWare(GLWP); // Granatenwerfer
+//		wp->AddWare(MIWP); // Minigun
+//		wp->AddWare(BZWP); // Bazooka
+//		wp->AddWare(KLAS); // Laser
+//		wp->AddWare(KRFL); // Waffenteile
+//		wp->AddWare(FLSH); // Taschenlampe
+//		wp->AddWare(JTPK); // Jetpack
+//		wp->AddWare(HARM); // R�stung
+//		wp->AddWare(HSHD); // Schild
+//		wp->AddWare(DRSU); // Drone
+//		wp->AddWare(MINE); // Mine
+//		//wp->SortWare();
+//	}
+//}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// AI
 
 func CreateWaypoints()
 {
@@ -311,29 +340,21 @@ func CreateWaypoints()
 	wp50->AddPath(wp5, Path_Jump, -1);
 }
 
-/* Regelwaehler */
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Relaunches
 
-// TODO
-//func ChooserFinished()
-//{
-//	var wp = FindObject(WPCH);
-//	if (wp)
-//	{
-//		// und begrenzte Waren...
-//		wp->RemoveWare();
-//		wp->AddWare(PIWP); // Pistole
-//		wp->AddWare(GLWP); // Granatenwerfer
-//		wp->AddWare(MIWP); // Minigun
-//		wp->AddWare(BZWP); // Bazooka
-//		wp->AddWare(KLAS); // Laser
-//		wp->AddWare(KRFL); // Waffenteile
-//		wp->AddWare(FLSH); // Taschenlampe
-//		wp->AddWare(JTPK); // Jetpack
-//		wp->AddWare(HARM); // R�stung
-//		wp->AddWare(HSHD); // Schild
-//		wp->AddWare(DRSU); // Drone
-//		wp->AddWare(MINE); // Mine
-//		//wp->SortWare();
-//	}
-//}
-
+func RelaunchLocations()
+{
+	return 
+	[
+		{x =  50, y = 720, team = NO_OWNER},
+		{x = 610, y = 690, team = NO_OWNER},
+		{x = 820, y = 610, team = NO_OWNER},
+		{x = 260, y = 570, team = NO_OWNER},
+		{x = 480, y = 500, team = NO_OWNER},
+		{x = 970, y = 330, team = NO_OWNER},
+		{x = 850, y = 160, team = NO_OWNER},
+		{x = 390, y = 140, team = NO_OWNER}
+	];
+}
