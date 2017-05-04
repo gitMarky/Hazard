@@ -1,4 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Industrial
+
 #include Library_DefaultScript
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Default initialization
 
 func Initialize()
 {
@@ -8,6 +16,10 @@ func Initialize()
     
 	CreateLights();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Deco
 
 func CreateBackground()
 {
@@ -63,6 +75,27 @@ func CreateDeco()
 	CreateObject(ENGT, 105, 376, NO_OWNER);
 }
 
+func CreateLights()
+{
+	CreateObject(BLGH, 576, 105, NO_OWNER)->TurnOn();
+	CreateObject(BLGH, 926, 105, NO_OWNER)->TurnOn();
+	CreateObject(BLGH, 1300, 375, NO_OWNER)->TurnOn();
+	CreateObject(BLGH, 201, 375, NO_OWNER)->TurnOn();
+	CreateObject(FLGH, 136, 390, NO_OWNER)->SetRotation(-10)->GetLight()->TurnOn();
+	CreateObject(FLGH, 1364, 390, NO_OWNER)->SetRotation(+10)->GetLight()->TurnOn();
+	CreateObject(FLGH, 893, 174, NO_OWNER)->SetRotation(-90)->GetLight()->TurnOn();
+	CreateObject(FLGH, 609, 174, NO_OWNER)->SetRotation(+90)->GetLight()->TurnOn();
+	CreateObject(CLGH, 749, 420, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 674, 338, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 823, 338, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 65, 141, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1435, 141, NO_OWNER)->TurnOn();
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Equipment
+
 func CreateSpawnPoints()
 {
 	// configure spawn points
@@ -115,24 +148,9 @@ func CreateSpawnPoints()
 	RemoveSpawnPointTemplates(config);
 }
 
-
-func CreateLights()
-{
-	CreateObject(BLGH, 576, 105, NO_OWNER)->TurnOn();
-	CreateObject(BLGH, 926, 105, NO_OWNER)->TurnOn();
-	CreateObject(BLGH, 1300, 375, NO_OWNER)->TurnOn();
-	CreateObject(BLGH, 201, 375, NO_OWNER)->TurnOn();
-	CreateObject(FLGH, 136, 390, NO_OWNER)->SetRotation(-10)->GetLight()->TurnOn();
-	CreateObject(FLGH, 1364, 390, NO_OWNER)->SetRotation(+10)->GetLight()->TurnOn();
-	CreateObject(FLGH, 893, 174, NO_OWNER)->SetRotation(-90)->GetLight()->TurnOn();
-	CreateObject(FLGH, 609, 174, NO_OWNER)->SetRotation(+90)->GetLight()->TurnOn();
-	CreateObject(CLGH, 749, 420, NO_OWNER)->TurnOn();
-	CreateObject(CLGH, 674, 338, NO_OWNER)->TurnOn();
-	CreateObject(CLGH, 823, 338, NO_OWNER)->TurnOn();
-	CreateObject(CLGH, 65, 141, NO_OWNER)->TurnOn();
-	CreateObject(CLGH, 1435, 141, NO_OWNER)->TurnOn();
-}
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// AI
 
 func CreateWaypoints()
 {
@@ -231,6 +249,10 @@ func CreateWaypoints()
 		}
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Relaunches
 
 func RelaunchLocations()
 {
