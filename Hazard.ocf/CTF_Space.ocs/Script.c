@@ -1,4 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Space
+
 #include Library_DefaultScript
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Default initialization
 
 func Initialize()
 {
@@ -8,6 +16,10 @@ func Initialize()
 	
 	CreateLadders();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Deco
 
 func CreateBackground()
 {
@@ -25,7 +37,6 @@ func CreateBackground()
 	SetSky("Stars");
 	SetSkyParallax(30, 30);
 }
-
 
 func CreateDeco()
 {
@@ -74,6 +85,16 @@ func CreateDeco()
 	CreateObjectAbove(VENT, 1380, 700, NO_OWNER)->DoCon(-70);
 }
 
+func CreateLadders()
+{
+	// Struktur
+	// TODO CreateObjectAbove(LADR, 190, 500, NO_OWNER)->Set(11);
+	// TODO CreateObjectAbove(LADR, 1310, 500, NO_OWNER)->Set(11);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Equipment
 
 func CreateSpawnPoints()
 {
@@ -122,13 +143,6 @@ func CreateSpawnPoints()
 	RemoveSpawnPointTemplates(config);
 }
 
-func CreateLadders()
-{
-	// Struktur
-	// TODO CreateObjectAbove(LADR, 190, 500, NO_OWNER)->Set(11);
-	// TODO CreateObjectAbove(LADR, 1310, 500, NO_OWNER)->Set(11);
-}
-
 /* Regelwaehler */
 
 //func ChooserFinished()
@@ -155,14 +169,9 @@ func CreateLadders()
 //	}
 //}
 
-func RelaunchLocations()
-{
-	return 
-	[
-		{x =   80, y = 350, team = 1},
-		{x = 1420, y = 350, team = 2}
-	];
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// AI
 
 func CreateWaypoints()
 {
@@ -307,4 +316,17 @@ func CreateWaypoints()
 			wp26->AddPath(spec4, Path_Backflip, -1);
 		}
 	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Relaunches
+
+func RelaunchLocations()
+{
+	return 
+	[
+		{x =   80, y = 350, team = 1},
+		{x = 1420, y = 350, team = 2}
+	];
 }
