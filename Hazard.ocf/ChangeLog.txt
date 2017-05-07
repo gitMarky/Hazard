@@ -1,5 +1,6 @@
 ﻿Version 0.2.0
 ------------------------------------------------------------------------------------------------
++ added scneario DM_Baldoon
 + added scenario DM_KillingDay
 + added scenario DM_Factory
 * changed scenario setup: goals and score are selected by parameter now

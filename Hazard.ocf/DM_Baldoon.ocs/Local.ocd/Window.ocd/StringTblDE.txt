@@ -1,0 +1,3 @@
+Name=Fenster
+Description=Zum Durchschauen.
+
