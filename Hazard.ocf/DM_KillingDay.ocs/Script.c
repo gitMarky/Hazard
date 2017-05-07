@@ -38,8 +38,8 @@ func CreateLights()
 func CreateDeco()
 {
 	CreateObject(CON1, 601, 56, NO_OWNER);
-	CreateObjectAbove(ENGT, 287, 285, NO_OWNER)->SetCon(50);
-	CreateObjectAbove(CCP2, 924, 632, NO_OWNER);
+	CreateObject(ENGT, 287, 273, NO_OWNER)->SetCon(50);
+	CreateObject(CCP2, 924, 617, NO_OWNER);
 	CreateObject(GSTA, 1033, 410, NO_OWNER);
 	CreateObject(GSTA,  997, 410, NO_OWNER);
 	CreateObject(LCKR, 319, 385, NO_OWNER);
@@ -49,7 +49,7 @@ func CreateDeco()
 	CreateObject(GSBO, 212, 389, NO_OWNER);
 	CreateObject(GSBO, 223, 389, NO_OWNER);
 	CreateObject(CRN1, 522, 90, NO_OWNER)->SetCraneLength(5);
-	CreateObjectAbove(CCP1, 253, 180, NO_OWNER);
+	CreateObject(CCP1, 253, 169, NO_OWNER);
 	CreateObject(CRAT, 401, 385, NO_OWNER);
 	CreateObject(CRAT, 478, 385, NO_OWNER);
 	CreateObject(TABB, 1085, 125, NO_OWNER);
@@ -61,12 +61,12 @@ func CreateDeco()
 	CreateObject(SLDR, 1075, 155, NO_OWNER);
 	CreateObject(SLDR, 175, 205, NO_OWNER);
 	CreateObject(SLDR, 215, 205, NO_OWNER);
-	CreateObjectAbove(STDR, 232, 300, NO_OWNER);
-	CreateObjectAbove(LBDR, 843, 581, NO_OWNER);
-	CreateObjectAbove(LBDR, 242, 631, NO_OWNER);
-	CreateObjectAbove(LBDR, 414, 630, NO_OWNER);
-	CreateObjectAbove(LFTP, 1105, 291, NO_OWNER)->SetAutoLimits();
-	CreateObjectAbove(LFTP, 35, 190, NO_OWNER)->SetAutoLimits();
+	CreateObject(STDR, 232, 286, NO_OWNER);
+	CreateObject(LBDR, 843, 566, NO_OWNER);
+	CreateObject(LBDR, 242, 616, NO_OWNER);
+	CreateObject(LBDR, 414, 615, NO_OWNER);
+	CreateObject(LFTP, 1105, 277, NO_OWNER)->SetAutoLimits();
+	CreateObject(LFTP, 35, 176, NO_OWNER)->SetAutoLimits();
 	CreateObject(RAI3, 759, 183, NO_OWNER);
 	CreateObject(HSGN, 1005, 255, NO_OWNER)->SetCon(50);
 	CreateObject(AWRP, 271, 280, NO_OWNER)->SetDestination(1091, 94);
@@ -74,13 +74,13 @@ func CreateDeco()
 	CreateObject(FIEX, 422, 299, NO_OWNER);
 	CreateObject(VENT, 1002, 326, NO_OWNER)->SetCon(25);
 	CreateObject(GAT2, 199, 705, NO_OWNER);
-	CreateObjectAbove(LCOM, 385, 615, NO_OWNER);
-	CreateObjectAbove(LCOM, 385, 629, NO_OWNER);
+	CreateObject(LCOM, 385, 608, NO_OWNER);
+	CreateObject(LCOM, 385, 622, NO_OWNER);
 	CreateObject(RAI1, 129, 144, NO_OWNER)->SetRailLength(2);
 	CreateObject(VENT, 280, 6, NO_OWNER)->SetCon(25);
 	CreateObject(RAI1, 169, 174, NO_OWNER)->SetRailLength(3);
 	CreateObject(WSHB, 871, 115, NO_OWNER);
-	CreateObjectAbove(Console, 490, 60, NO_OWNER)->Set(CreateObject(_GNC, 1, 1, NO_OWNER));
+	CreateObject(Console, 490, 48, NO_OWNER)->Set(CreateObject(_GNC, 1, 1, NO_OWNER));
 	CreateObject(SEGU, 430, 108, NO_OWNER)->Arm(MGSA);
 	CreateObject(SEGU, 630, 108, NO_OWNER)->Arm(MGSA);
 }
