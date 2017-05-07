@@ -47,7 +47,7 @@ public func DoCleanup(int round)
 	for (var bomb in FindObjects(Find_ID(BombingRun_Bomb)))
 		bomb->ForceRemove();
 
-	RemoveAll(FindObjects(Find_ID(BombingRun_BombGate)));
+	RemoveAll(Find_ID(BombingRun_BombGate));
 }
 
 /* Global functions */
