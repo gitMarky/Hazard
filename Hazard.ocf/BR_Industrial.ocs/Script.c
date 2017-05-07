@@ -11,6 +11,7 @@
 func Initialize()
 {
 	SetGoal(SCENPAR_HAZARD_GOAL);
+	SetWinScore(SCENPAR_HAZARD_SCORE);
 
     _inherited(...);
     
@@ -31,18 +32,18 @@ func CreateDeco()
 	CreateObject(AWRP, 750, 491, NO_OWNER)->SetDestination(747, 373);
 	CreateObject(AWRP, 160, 521, NO_OWNER)->SetDestination(613, 51);
 	CreateObject(AWRP, 1340, 521, NO_OWNER)->SetDestination(884, 52);
-	CreateObjectAbove(SEGU, 748, 108, NO_OWNER)->Arm(RGSA);
+	CreateObject(SEGU, 748, 108, NO_OWNER)->Arm(RGSA);
 
-	CreateObjectAbove(LADR, 965, 108, NO_OWNER)->LadderHeight(60, 108);
-	CreateObjectAbove(LADR, 539, 108, NO_OWNER)->LadderHeight(60, 108);
-	CreateObjectAbove(LADR, 699, 230, NO_OWNER)->LadderHeight(180, 230);
-	CreateObjectAbove(LADR, 802, 230, NO_OWNER)->LadderHeight(180, 230);
-	CreateObjectAbove(LADR, 808, 144, NO_OWNER)->LadderHeight(54, 144);
-	CreateObjectAbove(LADR, 696, 144, NO_OWNER)->LadderHeight(54, 144);
-	CreateObjectAbove(LADR,1467, 537, NO_OWNER)->LadderHeight(140, 537);
-	CreateObjectAbove(LADR,  37, 537, NO_OWNER)->LadderHeight(140, 537);
-	CreateObjectAbove(LADR, 864, 550, NO_OWNER)->LadderHeight(390, 550);
-	CreateObjectAbove(LADR, 638, 550, NO_OWNER)->LadderHeight(390, 550);
+	CreateObject(LADR, 965, 108, NO_OWNER)->LadderHeight(60, 108);
+	CreateObject(LADR, 539, 108, NO_OWNER)->LadderHeight(60, 108);
+	CreateObject(LADR, 699, 230, NO_OWNER)->LadderHeight(180, 230);
+	CreateObject(LADR, 802, 230, NO_OWNER)->LadderHeight(180, 230);
+	CreateObject(LADR, 808, 144, NO_OWNER)->LadderHeight(54, 144);
+	CreateObject(LADR, 696, 144, NO_OWNER)->LadderHeight(54, 144);
+	CreateObject(LADR,1467, 537, NO_OWNER)->LadderHeight(140, 537);
+	CreateObject(LADR,  37, 537, NO_OWNER)->LadderHeight(140, 537);
+	CreateObject(LADR, 864, 550, NO_OWNER)->LadderHeight(390, 550);
+	CreateObject(LADR, 638, 550, NO_OWNER)->LadderHeight(390, 550);
 
 	CreateObject(GSTA, 749, 171, NO_OWNER);
 	CreateObject(GSBO, 704, 389, NO_OWNER);
