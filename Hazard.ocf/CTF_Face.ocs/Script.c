@@ -11,6 +11,7 @@
 func Initialize()
 {
 	SetGoal(SCENPAR_HAZARD_GOAL);
+	SetWinScore(SCENPAR_HAZARD_SCORE);
 
 	_inherited(...);
 }
