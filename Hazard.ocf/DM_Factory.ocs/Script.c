@@ -45,13 +45,13 @@ func CreateDeco()
 	CreateObject(GSTA, 228, 570, NO_OWNER);
 	CreateObject(GSTA, 178, 570, NO_OWNER);
 
-	CreateObjectAbove(LBGH, 250, 610, NO_OWNER)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 730, 660, NO_OWNER)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 520, 460, NO_OWNER)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 680, 320, NO_OWNER)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 450, 200, NO_OWNER)->SetCableLength(150)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 730,  60, NO_OWNER)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 350,  60, NO_OWNER)->GetLight()->TurnOn();
+	CreateObject(LBGH, 250, 610, NO_OWNER)->GetLight()->TurnOn();
+	CreateObject(LBGH, 730, 660, NO_OWNER)->GetLight()->TurnOn();
+	CreateObject(LBGH, 520, 460, NO_OWNER)->GetLight()->TurnOn();
+	CreateObject(LBGH, 680, 320, NO_OWNER)->GetLight()->TurnOn();
+	CreateObject(LBGH, 450, 200, NO_OWNER)->SetCableLength(150)->GetLight()->TurnOn();
+	CreateObject(LBGH, 730,  60, NO_OWNER)->GetLight()->TurnOn();
+	CreateObject(LBGH, 350,  60, NO_OWNER)->GetLight()->TurnOn();
 
 	CreateObject(FENC, 150, 566, NO_OWNER);
 	CreateObject(FENC, 210, 566, NO_OWNER);
@@ -81,24 +81,23 @@ func CreateLadders()
 
 func CreateJumpPads()
 {
-	var invisible = VIS_None;
-	CreateObject(JMPD, 986, 693, NO_OWNER)->Set( 75, -25)->SetGraphics("Small");
-	CreateObject(JMPD, 490, 727, NO_OWNER)->Set( 80, +25)->SetGraphics("Small");
-	CreateObject(JMPD, 482, 727, NO_OWNER)->Set(100, -25)->SetGraphics("Small");
-	CreateObject(JMPD, 618, 627, NO_OWNER)->Set( 99, +35)->SetGraphics("Small");
-	CreateObject(JMPD, 906, 477, NO_OWNER)->Set( 80, -45, -90)->SetGraphics("Small");
-	CreateObject(JMPD, 886, 627, NO_OWNER)->Set( 80, -15)->SetGraphics("Small");
-	CreateObject(JMPD, 834, 497, NO_OWNER)->Set( 60, +25, 90)->SetGraphics("Small");
-	CreateObject(JMPD, 986, 427, NO_OWNER)->Set(120, -75)->SetGraphics("Small");
-	CreateObject(JMPD, 350, 577, NO_OWNER)->Set(100, +60)->SetGraphics("Small");
-	CreateObject(JMPD, 466, 517, NO_OWNER)->Set( 75, -20, -90)->SetGraphics("Small");
-	CreateObject(JMPD, 386, 437, NO_OWNER)->Set(100, +35)->SetGraphics("Small");
-	CreateObject(JMPD, 124, 337, NO_OWNER)->Set( 70, +15)->SetGraphics("Small");
-	CreateObject(JMPD, 825, 477, NO_OWNER)->Set(110, +10)->SetGraphics("Small");
-	CreateObject(JMPD, 254, 277, NO_OWNER)->Set( 85, +32)->SetGraphics("Small");
-	CreateObject(JMPD, 750, 287, NO_OWNER)->Set( 85, +15)->SetGraphics("Small");
-	CreateObject(JMPD, 726, 427, NO_OWNER)->Set( 80, +45)->SetGraphics("Small");
-	CreateObject(JMPD, 494, 427, NO_OWNER)->Set( 80, +15)->SetGraphics("Small");
+	CreateObject(JMPD, 986, 702, NO_OWNER)->Set( 75, -25, -90)->SetGraphics("Small");
+	CreateObject(JMPD, 490, 736, NO_OWNER)->Set( 80, +25, +10)->SetGraphics("Small");
+	CreateObject(JMPD, 482, 736, NO_OWNER)->Set(100, -25, -10)->SetGraphics("Small");
+	CreateObject(JMPD, 618, 636, NO_OWNER)->Set( 99, +35)->SetGraphics("Small");
+	CreateObject(JMPD, 906, 486, NO_OWNER)->Set( 80, -45, -90)->SetGraphics("Small");
+	CreateObject(JMPD, 886, 636, NO_OWNER)->Set( 80, -15)->SetGraphics("Small");
+	CreateObject(JMPD, 834, 504, NO_OWNER)->Set( 60, +25, 90)->SetGraphics("Small");
+	CreateObject(JMPD, 986, 436, NO_OWNER)->Set(120, -75)->SetGraphics("Small");
+	CreateObject(JMPD, 350, 586, NO_OWNER)->Set(100, +60)->SetGraphics("Small");
+	CreateObject(JMPD, 466, 527, NO_OWNER)->Set( 75, -20, -90)->SetGraphics("Small");
+	CreateObject(JMPD, 386, 446, NO_OWNER)->Set(100, +35)->SetGraphics("Small");
+	CreateObject(JMPD, 124, 346, NO_OWNER)->Set( 70, +15)->SetGraphics("Small");
+	CreateObject(JMPD, 825, 496, NO_OWNER)->Set(110, +10)->SetGraphics("Small");
+	CreateObject(JMPD, 254, 286, NO_OWNER)->Set( 82, +32)->SetGraphics("Small");
+	CreateObject(JMPD, 750, 296, NO_OWNER)->Set( 85, +15)->SetGraphics("Small");
+	CreateObject(JMPD, 726, 436, NO_OWNER)->Set( 80, +38)->SetGraphics("Small");
+	CreateObject(JMPD, 494, 436, NO_OWNER)->Set( 82, +15)->SetGraphics("Small");
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
