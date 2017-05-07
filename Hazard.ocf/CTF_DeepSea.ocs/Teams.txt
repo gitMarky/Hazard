@@ -1,6 +1,8 @@
 [Teams]
 Active=1
 AllowTeamSwitch=0
+TeamColors=1
+MaxScriptPlayers=16
 
 	[Team]
 	id=1
