@@ -9,7 +9,7 @@ protected func GetDefaultRules()
 	return [];
 }
 
-protected func GetAvailableGoals()
+protected func GetAvailableGoalsRandom()
 {
 	return [Goal_DeathMatchEx];
 }
