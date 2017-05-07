@@ -1,0 +1,10 @@
+[DefCore]
+id=PIPL
+Version=8,0
+Category=C4D_StaticBack
+Width=50
+Height=50
+Offset=-25,-25
+Picture=0,0,50,50
+StretchGrowth=1
+IncompleteActivity=1

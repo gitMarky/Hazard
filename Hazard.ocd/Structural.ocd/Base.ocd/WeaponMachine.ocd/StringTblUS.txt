@@ -1,0 +1,7 @@
+Name=Weapons Automat
+Description=A vending machine where you can buy weapons.
+
+Weapons=Weapons
+Ammo=Ammo
+Equipment=Equipment
+End=Finish

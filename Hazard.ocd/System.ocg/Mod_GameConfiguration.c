@@ -51,8 +51,8 @@ private func GetAvailableGoals()
 {
 	if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_Random) return this->~GetAvailableGoalsRandom();
     if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_BombingRun) return [Goal_BombingRun];
-    //if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_CaptureTheFlag) return [];
-    //if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_DeathMatch) return [];
+    if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_CaptureTheFlag) return [Goal_CaptureTheFlagEx];
+    if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_DeathMatch) return [Goal_DeathMatchEx];
     //if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_LastManStanding) return [];
     //if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_Domination) return [];
     //if (Hazard.Scenario_Goal == SCENPAR_HAZARD_GOAL_AlienHunt) return [];

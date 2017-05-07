@@ -1,0 +1,4 @@
+Name=Ventil
+Description=Drehen zum Öffnen oder Schließen.
+OpenValve=Ventil öffnen.
+CloseValve=Ventil schließen.

@@ -1,6 +1,6 @@
 [DefCore]
 id=Weapon_Bazooka
-Version=7,0
+Version=8,0
 Category=C4D_Object
 Width=21
 Height=9

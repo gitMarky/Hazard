@@ -1,0 +1,15 @@
+/*-- Weapon vending machine --*/
+
+#include Library_Vendor
+
+func Initialize()
+{
+	MakeVendor(true);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// properties
+
+local Name = "$Name$";
+local Description = "$Description$";

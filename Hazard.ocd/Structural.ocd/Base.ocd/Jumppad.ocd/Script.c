@@ -12,6 +12,8 @@ func Set(int strength, int angle_top, int angle_base)
 	top->SetR(angle_top);
 	top->SetStrength(strength);
 	top.Plane = this.Plane - 1;
+	
+	return this;
 }
 
 

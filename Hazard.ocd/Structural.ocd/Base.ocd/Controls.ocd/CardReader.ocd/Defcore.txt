@@ -1,0 +1,10 @@
+[DefCore]
+id=LKEY
+Version=8,0
+Category=C4D_Structure
+Width=15
+Height=13
+Offset=-7,-6
+Picture=0,13,64,64
+Vertices=1
+VertexY=12

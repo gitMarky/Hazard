@@ -1,0 +1,6 @@
+Name=Lift
+Description=Standard transportation for persons.
+
+Up=Up
+Down=Down
+Stop=Stop

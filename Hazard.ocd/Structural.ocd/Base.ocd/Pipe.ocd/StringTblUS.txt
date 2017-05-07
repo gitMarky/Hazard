@@ -1,0 +1,3 @@
+Name=Pipe
+Description=A big pipeline.
+

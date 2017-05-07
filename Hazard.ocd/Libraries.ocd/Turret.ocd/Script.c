@@ -8,6 +8,7 @@ func TurretSearchDistance(){	return 250;}
 
 func GetWeapon(){	return lib_turret.weapon;}
 func AimAngle(){	return lib_turret.aim_angle;}
+func TargetAngle(){	return lib_turret.target_angle;}
 func GetTarget(){	return lib_turret.target;}
 
 func GetWeaponX(){ return GetX();}

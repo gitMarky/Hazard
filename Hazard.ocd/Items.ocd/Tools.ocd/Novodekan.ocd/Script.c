@@ -15,7 +15,6 @@ local NovodekanHeal = new Effect
 //			if (GetPhysical("Walk", 2, pTarget) <= GetPhysical("Walk", 1, 0, GetID(pTarget)) * 5 / 10)
 				return;
 		}
-		Log("*HealStart*");
 		
 		this.healing_effect = healing_effect;
 		
@@ -43,7 +42,6 @@ local NovodekanHeal = new Effect
 	
 	Stop = func (int reason, int temp)
 	{
-		Log("Heal stop");
 		// TODO:
 		//SetPhysical("Walk", GetPhysical("Walk", 0, target) + EffectVar(2, target, no), 2, target);
 		//SetPhysical("Jump", GetPhysical("Jump", 0, target) + EffectVar(3, target, no), 2, target);

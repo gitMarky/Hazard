@@ -124,7 +124,7 @@ func ControlUse(object user, int x, int y)
 
 func Activate(object user)
 {
-	//if (!(user->~CanUse(GetID())))
+	// TODO if (!(user->~CanUse(GetID())))
 	//	return true;
 	
 	// only one drone per clonk
@@ -188,14 +188,14 @@ func StartFxGuard()
 {
 	Exit();
 	
-	Log("Start FxGuard");
+	DebugLog("Start FxGuard");
 	
 	// look for ammo in the weapon, otherwise reload.
 	var ammoid = lib_turret.weapon->GetFiremode().ammo_id;
 	var ammoload = lib_turret.weapon->GetFiremode().ammo_load;
 
 	if (lib_turret.weapon->~GetAmmo(ammoid) < ammoload)
-		lib_turret.weapon->Reload();
+		lib_turret.weapon->StartReload(this, 0, 0, true);
 
 	if (guarded_clonk)
 	{
@@ -365,8 +365,8 @@ func AcquireTarget()
 
 func TurnOff()
 {
-	if (GetEffect("Guard", this))
-		RemoveEffect("Guard", this);
+	if (GetEffect("IntGuard", this))
+		RemoveEffect("IntGuard", this);
 }
 
 func GetAmmoSource(id ammo)
@@ -394,19 +394,24 @@ func EMPShock()
 	return true;
 }
 
-func RejectEntrance()
+func RejectEntrance(object into)
 {
-	return !!GetEffect("Guard", this);
+	return ReadyToFire();
 }
 
 func ReadyToFire()
 {
-	return !!GetEffect("Guard", this);
+	return !!GetEffect("IntGuard", this);
 }
 
 func IsProjectileTarget()
 {
-	return !!GetEffect("Guard", this);
+	return ReadyToFire();
+}
+
+func HasHandAction(sec, just_wear, bool force_landscape_letgo)
+{
+	return ReadyToFire();
 }
 
 func MaxDamage()

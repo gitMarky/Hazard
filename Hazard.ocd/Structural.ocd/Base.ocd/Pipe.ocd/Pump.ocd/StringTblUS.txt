@@ -1,0 +1,6 @@
+Name=Pump
+Description=Pumps liquid through pipes.
+
+TurnOn=Turn on
+TurnOff=Turn off
+Error=Error: Two-Pump-System

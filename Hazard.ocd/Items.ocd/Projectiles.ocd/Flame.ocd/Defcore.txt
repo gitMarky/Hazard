@@ -1,6 +1,6 @@
 [DefCore]
 id=Projectile_Flame
-Version=7,0
+Version=8,0
 Category=C4D_Vehicle
 Width=4
 Height=4
