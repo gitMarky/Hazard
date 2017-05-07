@@ -1,0 +1,46 @@
+[ParameterDef]
+Name=$ScenParGoalName$
+Description=$ScenParGoalDesc$
+ID=HAZARD_GOAL
+Default=3
+
+	[Options]
+		
+		[Option]
+		Name=$ScenParGoalNameDeathMatch$
+		Description=$ScenParGoalDescDeathMatch$
+		Value=3
+
+[ParameterDef]
+Name=$ScenParScoreName$
+Description=$ScenParScoreDesc$
+ID=HAZARD_SCORE
+Default=5
+
+	[Options]
+
+		[Option]
+		Name=$ScenParScoreName3Points$
+		Description=$ScenParScoreDesc3Points$
+		Value=3
+
+		[Option]
+		Name=$ScenParScoreName5Points$
+		Description=$ScenParScoreDesc5Points$
+		Value=5
+
+		[Option]
+		Name=$ScenParScoreName10Points$
+		Description=$ScenParScoreDesc10Points$
+		Value=10
+
+		[Option]
+		Name=$ScenParScoreName15Points$
+		Description=$ScenParScoreDesc15Points$
+		Value=15
+
+		[Option]
+		Name=$ScenParScoreName20Points$
+		Description=$ScenParScoreDesc20Points$
+		Value=20
+		
