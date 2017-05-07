@@ -13,6 +13,7 @@ static switchright, switchleft;
 func Initialize()
 {
 	SetGoal(SCENPAR_HAZARD_GOAL);
+	SetWinScore(SCENPAR_HAZARD_SCORE);
 
 	_inherited(...);
 
@@ -26,8 +27,8 @@ func Initialize()
 func CreateBackground()
 {
 	SetSkyParallax(0, 45, 24, 0, 0, 0, 0);
-	CreateObjectAbove(_DCK, 220, 360, NO_OWNER);
-	CreateObjectAbove(_DCK, 727, 360, NO_OWNER);
+	CreateObject(_DCK, 220, 196, NO_OWNER);
+	CreateObject(_DCK, 727, 196, NO_OWNER);
 }
 
 func CreateLadders()
