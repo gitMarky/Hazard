@@ -11,6 +11,7 @@
 func Initialize()
 {
 	SetGoal(SCENPAR_HAZARD_GOAL);
+	SetWinScore(SCENPAR_HAZARD_SCORE);
 
 	_inherited(...);
 	
@@ -81,23 +82,23 @@ func CreateLadders()
 func CreateJumpPads()
 {
 	var invisible = VIS_None;
-	CreateObject(JMPD, 986, 693, NO_OWNER)->Set( 75, -25).Visibility = invisible;
-	CreateObject(JMPD, 490, 727, NO_OWNER)->Set( 80, +25).Visibility = invisible;
-	CreateObject(JMPD, 482, 727, NO_OWNER)->Set(100, -25).Visibility = invisible;
-	CreateObject(JMPD, 618, 627, NO_OWNER)->Set( 99, +35).Visibility = invisible;
-	CreateObject(JMPD, 906, 477, NO_OWNER)->Set( 80, -45, -90).Visibility = invisible;
-	CreateObject(JMPD, 886, 627, NO_OWNER)->Set( 80, -15).Visibility = invisible;
-	CreateObject(JMPD, 834, 497, NO_OWNER)->Set( 60, +25, 90).Visibility = invisible;
-	CreateObject(JMPD, 986, 427, NO_OWNER)->Set(120, -75).Visibility = invisible;
-	CreateObject(JMPD, 350, 577, NO_OWNER)->Set(100, +60).Visibility = invisible;
-	CreateObject(JMPD, 466, 517, NO_OWNER)->Set( 75, -20, -90).Visibility = invisible;
-	CreateObject(JMPD, 386, 437, NO_OWNER)->Set(100, +35).Visibility = invisible;
-	CreateObject(JMPD, 124, 337, NO_OWNER)->Set( 70, +15).Visibility = invisible;
-	CreateObject(JMPD, 825, 477, NO_OWNER)->Set(110, +10).Visibility = invisible;
-	CreateObject(JMPD, 254, 277, NO_OWNER)->Set( 85, +32).Visibility = invisible;
-	CreateObject(JMPD, 750, 287, NO_OWNER)->Set( 85, +15).Visibility = invisible;
-	CreateObject(JMPD, 726, 427, NO_OWNER)->Set( 80, +45).Visibility = invisible;
-	CreateObject(JMPD, 494, 427, NO_OWNER)->Set( 80, +15).Visibility = invisible;
+	CreateObject(JMPD, 986, 693, NO_OWNER)->Set( 75, -25)->SetGraphics("Small");
+	CreateObject(JMPD, 490, 727, NO_OWNER)->Set( 80, +25)->SetGraphics("Small");
+	CreateObject(JMPD, 482, 727, NO_OWNER)->Set(100, -25)->SetGraphics("Small");
+	CreateObject(JMPD, 618, 627, NO_OWNER)->Set( 99, +35)->SetGraphics("Small");
+	CreateObject(JMPD, 906, 477, NO_OWNER)->Set( 80, -45, -90)->SetGraphics("Small");
+	CreateObject(JMPD, 886, 627, NO_OWNER)->Set( 80, -15)->SetGraphics("Small");
+	CreateObject(JMPD, 834, 497, NO_OWNER)->Set( 60, +25, 90)->SetGraphics("Small");
+	CreateObject(JMPD, 986, 427, NO_OWNER)->Set(120, -75)->SetGraphics("Small");
+	CreateObject(JMPD, 350, 577, NO_OWNER)->Set(100, +60)->SetGraphics("Small");
+	CreateObject(JMPD, 466, 517, NO_OWNER)->Set( 75, -20, -90)->SetGraphics("Small");
+	CreateObject(JMPD, 386, 437, NO_OWNER)->Set(100, +35)->SetGraphics("Small");
+	CreateObject(JMPD, 124, 337, NO_OWNER)->Set( 70, +15)->SetGraphics("Small");
+	CreateObject(JMPD, 825, 477, NO_OWNER)->Set(110, +10)->SetGraphics("Small");
+	CreateObject(JMPD, 254, 277, NO_OWNER)->Set( 85, +32)->SetGraphics("Small");
+	CreateObject(JMPD, 750, 287, NO_OWNER)->Set( 85, +15)->SetGraphics("Small");
+	CreateObject(JMPD, 726, 427, NO_OWNER)->Set( 80, +45)->SetGraphics("Small");
+	CreateObject(JMPD, 494, 427, NO_OWNER)->Set( 80, +15)->SetGraphics("Small");
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
