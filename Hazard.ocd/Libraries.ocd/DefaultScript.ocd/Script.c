@@ -231,3 +231,13 @@ public func RemoveSpawnPointTemplates(proplist templates)
 		}
 	}
 }
+
+/**
+ Create a custom warning for old script.
+ */
+public func CreateObjectAbove(id type, int x, int y, int owner)
+{
+	var created = inherited(type, x, y, owner, ...);
+	DebugLog("[WARNING] Replace CreateObjectAbove(%i, %d, %d, %d) with CreateObject(%i, %d, %d, %d)", type, x, y, owner, type, x, created->GetY(), owner);
+	return created;
+}
