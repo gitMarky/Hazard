@@ -1,5 +1,5 @@
-﻿Version 0.3.0
+﻿Version 0.2.0
 ------------------------------------------------------------------------------------------------
-! RelaunchContainerEx now respawns the crew at its position, instead of above it
+* changed scenario setup: goals and score are selected by parameter now
 * updated version of all definitions to 8,0
 + added change log file

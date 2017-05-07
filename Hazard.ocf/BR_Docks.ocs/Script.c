@@ -1,26 +1,34 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Docks
+
 #include Library_DefaultScript
 
 static switchright, switchleft;
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Default initialization
+
 func Initialize()
 {
 	SetGoal(SCENPAR_HAZARD_GOAL);
+	SetWinScore(SCENPAR_HAZARD_SCORE);
 
 	_inherited(...);
 
-	CreateBackground();
-	CreateDeco();
 	CreateLadders();
-	
-	CreateSpawnPoints();
-	CreateWaypoints();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Deco
 
 func CreateBackground()
 {
 	SetSkyParallax(0, 45, 24, 0, 0, 0, 0);
-	CreateObjectAbove(_DCK, 220, 360, NO_OWNER);
-	CreateObjectAbove(_DCK, 727, 360, NO_OWNER);
+	CreateObject(_DCK, 220, 196, NO_OWNER);
+	CreateObject(_DCK, 727, 196, NO_OWNER);
 }
 
 func CreateLadders()
@@ -121,284 +129,255 @@ func CreateDeco()
 		lift->SetYTop(245);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Equipment
+
 func CreateSpawnPoints()
 {
 	// configure spawn points
-	var ammo_standard = CreateSpawnPoint(0, 0)->SpawnItem(STAP);
-	var ammo_grenade = CreateSpawnPoint(0, 0)->SpawnItem(GRAP);
-	var ammo_gasoline = CreateSpawnPoint(0, 0)->SpawnItem(GSAP);
-	var ammo_energy = CreateSpawnPoint(0, 0)->SpawnItem(ENAP);
-	var ammo_missile = CreateSpawnPoint(0, 0)->SpawnItem(MIAP);
-	
-	var upgrade_laser = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_Laser);
-	var upgrade_slime = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_Slime);
-	var upgrade_rifle = CreateSpawnPoint(0, 0)->SpawnItem(Upgrade_WeaponPart);
-	
-	var weapon_pumpgun = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Pumpgun);
-	var weapon_minigun = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Minigun);
-	var weapon_grenade = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_GrenadeLauncher);
-	var weapon_flame = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_FlameThrower);
-	var weapon_bazooka = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Bazooka);
-	var weapon_energy = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_EnergyRifle);
-	var weapon_particle = CreateSpawnPoint(0, 0)->SpawnItem(Weapon_Motegun);
-	var weapon_mine = CreateSpawnPoint(0, 0)->SpawnItem(MINE);
-
-	var item_novodekan = CreateSpawnPoint(0, 0)->SpawnItem(NVDN);
-	var item_armor = CreateSpawnPoint(0, 0)->SpawnItem(HARM);
+	var config = GetSpawnPointTemplates();
 
 	// place spawn points
-	CopySpawnPoint(weapon_energy, 220, 110);
-	CopySpawnPoint(ammo_energy, 250, 110);
-	CopySpawnPoint(upgrade_rifle, 60, 100);
-	CopySpawnPoint(item_novodekan, 160, 230);
-	CopySpawnPoint(weapon_mine, 50, 430);
-	CopySpawnPoint(ammo_standard, 670, 370);
-	CopySpawnPoint(weapon_grenade, 685, 190);
-	CopySpawnPoint(ammo_grenade, 700, 190);
-	CopySpawnPoint(weapon_flame, 620, 670);
-	CopySpawnPoint(ammo_gasoline, 640, 670);
-	CopySpawnPoint(ammo_missile, 730, 480);
-	CopySpawnPoint(ammo_energy, 720, 30);
+	CopySpawnPoint(config.weapon_energy, 220, 110);
+	CopySpawnPoint(config.ammo_energy, 250, 110);
+	CopySpawnPoint(config.upgrade_rifle, 60, 100);
+	CopySpawnPoint(config.item_novodekan, 160, 230);
+	CopySpawnPoint(config.weapon_mine, 50, 430);
+	CopySpawnPoint(config.ammo_standard, 670, 370);
+	CopySpawnPoint(config.weapon_grenade, 685, 190);
+	CopySpawnPoint(config.ammo_grenade, 700, 190);
+	CopySpawnPoint(config.weapon_flame, 620, 670);
+	CopySpawnPoint(config.ammo_gasoline, 640, 670);
+	CopySpawnPoint(config.ammo_missile, 730, 480);
+	CopySpawnPoint(config.ammo_energy, 720, 30);
 	
-	CopySpawnPoint(weapon_particle, 750, 30);
-	CopySpawnPoint(upgrade_laser, 750, 170);
-	CopySpawnPoint(weapon_pumpgun, 750, 370);
-	CopySpawnPoint(weapon_bazooka, 750, 480);
-	CopySpawnPoint(item_armor, 750, 640);
+	CopySpawnPoint(config.weapon_motegun, 750, 30);
+	CopySpawnPoint(config.upgrade_laser, 750, 170);
+	CopySpawnPoint(config.weapon_pumpgun, 750, 370);
+	CopySpawnPoint(config.weapon_bazooka, 750, 480);
+	CopySpawnPoint(config.item_armor, 750, 640);
 	
-	CopySpawnPoint(weapon_energy, 1280, 110);
-	CopySpawnPoint(ammo_energy, 1250, 110);
-	CopySpawnPoint(upgrade_rifle, 1440, 100);
-	CopySpawnPoint(item_novodekan, 1340, 230);
-	CopySpawnPoint(weapon_mine, 1450, 430);
-	CopySpawnPoint(ammo_standard, 830, 370);
-	CopySpawnPoint(weapon_grenade, 815, 190);
-	CopySpawnPoint(ammo_grenade, 800, 190);
-	CopySpawnPoint(weapon_flame, 880, 670);
-	CopySpawnPoint(ammo_gasoline, 860, 670);
-	CopySpawnPoint(ammo_missile, 770, 480);
-	CopySpawnPoint(ammo_energy, 780, 30);
-
+	CopySpawnPoint(config.weapon_energy, 1280, 110);
+	CopySpawnPoint(config.ammo_energy, 1250, 110);
+	CopySpawnPoint(config.upgrade_rifle, 1440, 100);
+	CopySpawnPoint(config.item_novodekan, 1340, 230);
+	CopySpawnPoint(config.weapon_mine, 1450, 430);
+	CopySpawnPoint(config.ammo_standard, 830, 370);
+	CopySpawnPoint(config.weapon_grenade, 815, 190);
+	CopySpawnPoint(config.ammo_grenade, 800, 190);
+	CopySpawnPoint(config.weapon_flame, 880, 670);
+	CopySpawnPoint(config.ammo_gasoline, 860, 670);
+	CopySpawnPoint(config.ammo_missile, 770, 480);
+	CopySpawnPoint(config.ammo_energy, 780, 30);
+	
 	// remove template spawn points
-	ammo_standard->RemoveObject();
-	ammo_grenade->RemoveObject();
-	ammo_gasoline->RemoveObject();
-	ammo_energy->RemoveObject();
-	ammo_missile->RemoveObject();
-
-	upgrade_laser->RemoveObject();
-	upgrade_slime->RemoveObject();
-	upgrade_rifle->RemoveObject();
-	
-	weapon_pumpgun->RemoveObject();
-	weapon_minigun->RemoveObject();
-	weapon_grenade->RemoveObject();
-	weapon_flame->RemoveObject();
-	weapon_bazooka->RemoveObject();
-	weapon_energy->RemoveObject();
-	weapon_particle->RemoveObject();
-	weapon_mine->RemoveObject();
-	
-	item_armor->RemoveObject();
-	item_novodekan->RemoveObject();
+	RemoveSpawnPointTemplates(config);
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// AI
 
 func CreateWaypoints()
 {
-//	var wp1 = CreateWP(750, 208);
-//	var wp2 = CreateWP(750, 71);
-//	var wp3 = CreateWP(750, 290);
-//	var wp4 = CreateWP(1360, 110);
-//	var wp5 = CreateWP(1138, 208);
-//	var wp6 = CreateWP(1061, 239);
-//	var wp7 = CreateWP(1480, 197);
-//	var wp8 = CreateWP(878, 270);
-//	var wp9 = CreateWP(881, 126);
-//	var wp10 = CreateWP(798, 369);
-//	var wp11 = CreateWP(893, 198);
-//	var wp12 = CreateWP(1005, 241);
-//	var wp13 = CreateWP(1377, 348);
-//	var wp14 = CreateWP(805, 624);
-//	var wp15 = CreateWP(1348, 228);
-//	var wp16 = CreateWP(1197, 208);
-//	var wp17 = CreateWP(996, 499);
-//	var wp18 = CreateWP(1098, 490);
-//	var wp19 = CreateWP(1157, 602);
-//	var wp20 = CreateWP(999, 298);
-//	var wp21 = CreateWP(1102, 368);
-//	var wp22 = CreateWP(1041, 605);
-//	var wp23 = CreateWP(771, 478);
-//	var wp24 = CreateWP(848, 498);
-//	var wp25 = CreateWP(977, 499);
-//	var wp26 = CreateWP(875, 498);
-//	var wp27 = CreateWP(1236, 476);
-//	var wp28 = CreateWP(1252, 110);
-//	var wp29 = CreateWP(140, 110);
-//	var wp30 = CreateWP(362, 208);
-//	var wp31 = CreateWP(439, 239);
-//	var wp32 = CreateWP(20, 199);
-//	var wp33 = CreateWP(622, 270);
-//	var wp34 = CreateWP(619, 126);
-//	var wp35 = CreateWP(702, 369);
-//	var wp36 = CreateWP(607, 198);
-//	var wp37 = CreateWP(495, 241);
-//	var wp38 = CreateWP(123, 348);
-//	var wp39 = CreateWP(695, 622);
-//	var wp40 = CreateWP(152, 228);
-//	var wp41 = CreateWP(303, 208);
-//	var wp42 = CreateWP(504, 499);
-//	var wp43 = CreateWP(402, 490);
-//	var wp44 = CreateWP(338, 607);
-//	var wp45 = CreateWP(503, 297);
-//	var wp46 = CreateWP(398, 368);
-//	var wp47 = CreateWP(458, 600);
-//	var wp48 = CreateWP(729, 478);
-//	var wp49 = CreateWP(652, 498);
-//	var wp50 = CreateWP(523, 499);
-//	var wp51 = CreateWP(625, 498);
-//	var wp52 = CreateWP(264, 476);
-//	var wp53 = CreateWP(253, 110);
-//	wp1->AddPath(wp8, Path_MoveTo, 1);
-//	wp1->AddPath(wp33, Path_MoveTo, -1);
-//	wp2->AddPath(wp9, Path_MoveTo, 1);
-//	wp2->AddPath(wp34, Path_MoveTo, -1);
-//	wp3->AddPath(wp10, Path_MoveTo, 1);
-//	wp3->AddPath(wp8, Path_MoveTo, 1);
-//	wp3->AddPath(wp35, Path_MoveTo, -1);
-//	wp3->AddPath(wp33, Path_MoveTo, -1);
-//	wp4->AddPath(wp15, Path_MoveTo, 1);
-//	wp4->AddPath(wp28, Path_Jump, -1);
-//	wp5->AddPath(wp6, Path_Jump, -1);
-//	wp5->AddPath(wp16, Path_MoveTo, 1);
-//	wp6->AddPath(wp12, Path_MoveTo, -1);
-//	wp6->AddPath(wp5, Path_Backflip, 1);
-//	wp7->AddPath(wp15, Path_MoveTo, -1);
-//	wp8->AddPath(wp20, Path_MoveTo, 1);
-//	wp8->AddPath(wp3, Path_MoveTo, -1);
-//	wp8->AddPath(wp11, Path_Jump, -1);
-//	wp8->AddPath(wp1, Path_MoveTo, -1);
-//	wp9->AddPath(wp11, Path_MoveTo, 1);
-//	wp9->AddPath(wp19, Path_Jump, 1);
-//	wp9->AddPath(wp2, Path_MoveTo, -1);
-//	wp10->AddPath(wp21, Path_MoveTo, 1);
-//	wp10->AddPath(wp3, Path_MoveTo, -1);
-//	wp10->AddPath(wp35, Path_MoveTo, -1);
-//	wp11->AddPath(wp8, Path_MoveTo, -1);
-//	wp11->AddPath(wp9, Path_Jump, 1);
-//	wp12->AddPath(wp21, Path_MoveTo, 1);
-//	wp12->AddPath(wp8, Path_MoveTo, -1);
-//	wp12->SetArriveCommand(1, 0, "Grab", switchright);
-//	wp12->SetArriveCommand(1, 1, "Call", switchright, 0, 0, 0, "ControlThrow");
-//	wp12->SetArriveCommand(1, 2, "Ungrab");
-//	wp12->AddPath(wp6, Path_MoveTo, 1);
-//	wp13->AddPath(wp21, Path_MoveTo, -1);
-//	wp13->AddPath(wp15, Path_MoveTo, -1);
-//	wp14->AddPath(wp22, Path_MoveTo, 1);
-//	wp14->AddPath(wp1, Path_Jump, -1);
-//	wp14->AddPath(wp39, Path_MoveTo, -1);
-//	wp15->AddPath(wp13, Path_MoveTo, 1);
-//	wp15->AddPath(wp7, Path_MoveTo, 1);
-//	wp16->AddPath(wp15, Path_Backflip, 1);
-//	wp16->AddPath(wp5, Path_MoveTo, -1);
-//	wp17->AddPath(wp18, Path_Backflip, 1);
-//	wp17->AddPath(wp25, Path_MoveTo, -1);
-//	wp18->AddPath(wp17, Path_Backflip, -1);
-//	wp18->AddPath(wp27, Path_MoveTo, 1);
-//	wp18->AddPath(wp19, Path_MoveTo, 1);
-//	wp19->AddPath(wp27, Path_Jump, 1);
-//	wp19->AddPath(wp22, Path_MoveTo, -1);
-//	wp20->AddPath(wp21, Path_MoveTo, 1);
-//	wp20->AddPath(wp8, Path_MoveTo, -1);
-//	wp21->AddPath(wp27, Path_MoveTo, 1);
-//	wp21->AddPath(wp13, Path_MoveTo, 1);
-//	wp21->AddPath(wp20, Path_MoveTo, -1);
-//	wp21->AddPath(wp12, Path_Jump, -1);
-//	wp21->AddPath(wp10, Path_MoveTo, -1);
-//	wp21->AddPath(wp6, Path_Jump, -1);
-//	wp22->AddPath(wp19, Path_MoveTo, 1);
-//	wp22->AddPath(wp14, Path_MoveTo, -1);
-//	wp23->AddPath(wp24, Path_Jump, 1);
-//	wp23->AddPath(wp48, Path_MoveTo, -1);
-//	wp24->AddPath(wp26, Path_MoveTo, 1);
-//	wp24->AddPath(wp23, Path_Jump, -1);
-//	wp25->AddPath(wp26, Path_Backflip, -1);
-//	wp25->AddPath(wp17, Path_MoveTo, 1);
-//	wp26->AddPath(wp25, Path_Backflip, 1);
-//	wp26->AddPath(wp24, Path_MoveTo, -1);
-//	wp27->AddPath(wp18, Path_MoveTo, -1);
-//	wp27->AddPath(wp19, Path_MoveTo, -1);
-//	wp27->AddPath(wp21, Path_Jump, -1);
-//	wp28->AddPath(wp4, Path_Jump, 1);
-//	wp28->AddPath(wp16, Path_MoveTo, -1);
-//	wp29->AddPath(wp40, Path_MoveTo, -1);
-//	wp29->AddPath(wp53, Path_Jump, 1);
-//	wp30->AddPath(wp31, Path_Jump, 1);
-//	wp30->AddPath(wp41, Path_MoveTo, -1);
-//	wp31->AddPath(wp37, Path_MoveTo, 1);
-//	wp31->AddPath(wp30, Path_Backflip, -1);
-//	wp32->AddPath(wp40, Path_MoveTo, 1);
-//	wp33->AddPath(wp45, Path_MoveTo, -1);
-//	wp33->AddPath(wp3, Path_MoveTo, 1);
-//	wp33->AddPath(wp36, Path_Jump, 1);
-//	wp33->AddPath(wp1, Path_MoveTo, 1);
-//	wp34->AddPath(wp36, Path_MoveTo, -1);
-//	wp34->AddPath(wp44, Path_Jump, -1);
-//	wp34->AddPath(wp2, Path_MoveTo, 1);
-//	wp35->AddPath(wp46, Path_MoveTo, -1);
-//	wp35->AddPath(wp3, Path_MoveTo, 1);
-//	wp35->AddPath(wp10, Path_MoveTo, 1);
-//	wp36->AddPath(wp33, Path_MoveTo, 1);
-//	wp36->AddPath(wp34, Path_Jump, -1);
-//	wp37->AddPath(wp46, Path_MoveTo, -1);
-//	wp37->AddPath(wp33, Path_MoveTo, 1);
-//	wp37->SetArriveCommand(1, 0, "Grab", switchleft);
-//	wp37->SetArriveCommand(1, 1, "Call", switchleft, 0, 0, 0, "ControlThrow");
-//	wp37->SetArriveCommand(1, 2, "Ungrab");
-//	wp37->AddPath(wp31, Path_MoveTo, -1);
-//	wp38->AddPath(wp46, Path_MoveTo, 1);
-//	wp38->AddPath(wp40, Path_MoveTo, 1);
-//	wp39->AddPath(wp1, Path_Jump, 1);
-//	wp39->AddPath(wp14, Path_MoveTo, 1);
-//	wp39->AddPath(wp47, Path_MoveTo, -1);
-//	wp40->AddPath(wp38, Path_MoveTo, -1);
-//	wp40->AddPath(wp32, Path_MoveTo, -1);
-//	wp41->AddPath(wp40, Path_Backflip, -1);
-//	wp41->AddPath(wp30, Path_MoveTo, 1);
-//	wp42->AddPath(wp43, Path_Backflip, -1);
-//	wp42->AddPath(wp50, Path_MoveTo, 1);
-//	wp43->AddPath(wp42, Path_Backflip, 1);
-//	wp43->AddPath(wp52, Path_MoveTo, -1);
-//	wp43->AddPath(wp44, Path_MoveTo, -1);
-//	wp44->AddPath(wp52, Path_Jump, -1);
-//	wp44->AddPath(wp47, Path_MoveTo, 1);
-//	wp45->AddPath(wp46, Path_MoveTo, -1);
-//	wp45->AddPath(wp33, Path_MoveTo, 1);
-//	wp46->AddPath(wp52, Path_MoveTo, -1);
-//	wp46->AddPath(wp38, Path_MoveTo, -1);
-//	wp46->AddPath(wp45, Path_MoveTo, 1);
-//	wp46->AddPath(wp37, Path_Jump, 1);
-//	wp46->AddPath(wp35, Path_MoveTo, 1);
-//	wp46->AddPath(wp31, Path_Jump, 1);
-//	wp47->AddPath(wp44, Path_MoveTo, -1);
-//	wp47->AddPath(wp39, Path_MoveTo, 1);
-//	wp48->AddPath(wp49, Path_Jump, -1);
-//	wp48->AddPath(wp23, Path_MoveTo, 1);
-//	wp49->AddPath(wp51, Path_MoveTo, -1);
-//	wp49->AddPath(wp48, Path_Jump, 1);
-//	wp50->AddPath(wp51, Path_Backflip, 1);
-//	wp50->AddPath(wp42, Path_MoveTo, -1);
-//	wp51->AddPath(wp50, Path_Backflip, -1);
-//	wp51->AddPath(wp49, Path_MoveTo, 1);
-//	wp52->AddPath(wp43, Path_MoveTo, 1);
-//	wp52->AddPath(wp44, Path_MoveTo, 1);
-//	wp52->AddPath(wp46, Path_Jump, 1);
-//	wp53->AddPath(wp29, Path_Jump, -1);
-//	wp53->AddPath(wp41, Path_MoveTo, 1);
+	var wp1 = CreateWP(750, 208);
+	var wp2 = CreateWP(750, 71);
+	var wp3 = CreateWP(750, 290);
+	var wp4 = CreateWP(1360, 110);
+	var wp5 = CreateWP(1138, 208);
+	var wp6 = CreateWP(1061, 239);
+	var wp7 = CreateWP(1480, 197);
+	var wp8 = CreateWP(878, 270);
+	var wp9 = CreateWP(881, 126);
+	var wp10 = CreateWP(798, 369);
+	var wp11 = CreateWP(893, 198);
+	var wp12 = CreateWP(1005, 241);
+	var wp13 = CreateWP(1377, 348);
+	var wp14 = CreateWP(805, 624);
+	var wp15 = CreateWP(1348, 228);
+	var wp16 = CreateWP(1197, 208);
+	var wp17 = CreateWP(996, 499);
+	var wp18 = CreateWP(1098, 490);
+	var wp19 = CreateWP(1157, 602);
+	var wp20 = CreateWP(999, 298);
+	var wp21 = CreateWP(1102, 368);
+	var wp22 = CreateWP(1041, 605);
+	var wp23 = CreateWP(771, 478);
+	var wp24 = CreateWP(848, 498);
+	var wp25 = CreateWP(977, 499);
+	var wp26 = CreateWP(875, 498);
+	var wp27 = CreateWP(1236, 476);
+	var wp28 = CreateWP(1252, 110);
+	var wp29 = CreateWP(140, 110);
+	var wp30 = CreateWP(362, 208);
+	var wp31 = CreateWP(439, 239);
+	var wp32 = CreateWP(20, 199);
+	var wp33 = CreateWP(622, 270);
+	var wp34 = CreateWP(619, 126);
+	var wp35 = CreateWP(702, 369);
+	var wp36 = CreateWP(607, 198);
+	var wp37 = CreateWP(495, 241);
+	var wp38 = CreateWP(123, 348);
+	var wp39 = CreateWP(695, 622);
+	var wp40 = CreateWP(152, 228);
+	var wp41 = CreateWP(303, 208);
+	var wp42 = CreateWP(504, 499);
+	var wp43 = CreateWP(402, 490);
+	var wp44 = CreateWP(338, 607);
+	var wp45 = CreateWP(503, 297);
+	var wp46 = CreateWP(398, 368);
+	var wp47 = CreateWP(458, 600);
+	var wp48 = CreateWP(729, 478);
+	var wp49 = CreateWP(652, 498);
+	var wp50 = CreateWP(523, 499);
+	var wp51 = CreateWP(625, 498);
+	var wp52 = CreateWP(264, 476);
+	var wp53 = CreateWP(253, 110);
+	wp1->AddPath(wp8, Path_MoveTo, 1);
+	wp1->AddPath(wp33, Path_MoveTo, -1);
+	wp2->AddPath(wp9, Path_MoveTo, 1);
+	wp2->AddPath(wp34, Path_MoveTo, -1);
+	wp3->AddPath(wp10, Path_MoveTo, 1);
+	wp3->AddPath(wp8, Path_MoveTo, 1);
+	wp3->AddPath(wp35, Path_MoveTo, -1);
+	wp3->AddPath(wp33, Path_MoveTo, -1);
+	wp4->AddPath(wp15, Path_MoveTo, 1);
+	wp4->AddPath(wp28, Path_Jump, -1);
+	wp5->AddPath(wp6, Path_Jump, -1);
+	wp5->AddPath(wp16, Path_MoveTo, 1);
+	wp6->AddPath(wp12, Path_MoveTo, -1);
+	wp6->AddPath(wp5, Path_Backflip, 1);
+	wp7->AddPath(wp15, Path_MoveTo, -1);
+	wp8->AddPath(wp20, Path_MoveTo, 1);
+	wp8->AddPath(wp3, Path_MoveTo, -1);
+	wp8->AddPath(wp11, Path_Jump, -1);
+	wp8->AddPath(wp1, Path_MoveTo, -1);
+	wp9->AddPath(wp11, Path_MoveTo, 1);
+	wp9->AddPath(wp19, Path_Jump, 1);
+	wp9->AddPath(wp2, Path_MoveTo, -1);
+	wp10->AddPath(wp21, Path_MoveTo, 1);
+	wp10->AddPath(wp3, Path_MoveTo, -1);
+	wp10->AddPath(wp35, Path_MoveTo, -1);
+	wp11->AddPath(wp8, Path_MoveTo, -1);
+	wp11->AddPath(wp9, Path_Jump, 1);
+	wp12->AddPath(wp21, Path_MoveTo, 1);
+	wp12->AddPath(wp8, Path_MoveTo, -1);
+	wp12->SetArriveCommand(1, 0, {Prototype = Command, command = "Grab", target = switchright});
+	wp12->SetArriveCommand(1, 1, {Prototype = Command, command = "Call", target = switchright, data = "ControlThrow"});
+	wp12->SetArriveCommand(1, 2, {Prototype = Command, command = "Ungrab"});
+	wp12->AddPath(wp6, Path_MoveTo, 1);
+	wp13->AddPath(wp21, Path_MoveTo, -1);
+	wp13->AddPath(wp15, Path_MoveTo, -1);
+	wp14->AddPath(wp22, Path_MoveTo, 1);
+	wp14->AddPath(wp1, Path_Jump, -1);
+	wp14->AddPath(wp39, Path_MoveTo, -1);
+	wp15->AddPath(wp13, Path_MoveTo, 1);
+	wp15->AddPath(wp7, Path_MoveTo, 1);
+	wp16->AddPath(wp15, Path_Backflip, 1);
+	wp16->AddPath(wp5, Path_MoveTo, -1);
+	wp17->AddPath(wp18, Path_Backflip, 1);
+	wp17->AddPath(wp25, Path_MoveTo, -1);
+	wp18->AddPath(wp17, Path_Backflip, -1);
+	wp18->AddPath(wp27, Path_MoveTo, 1);
+	wp18->AddPath(wp19, Path_MoveTo, 1);
+	wp19->AddPath(wp27, Path_Jump, 1);
+	wp19->AddPath(wp22, Path_MoveTo, -1);
+	wp20->AddPath(wp21, Path_MoveTo, 1);
+	wp20->AddPath(wp8, Path_MoveTo, -1);
+	wp21->AddPath(wp27, Path_MoveTo, 1);
+	wp21->AddPath(wp13, Path_MoveTo, 1);
+	wp21->AddPath(wp20, Path_MoveTo, -1);
+	wp21->AddPath(wp12, Path_Jump, -1);
+	wp21->AddPath(wp10, Path_MoveTo, -1);
+	wp21->AddPath(wp6, Path_Jump, -1);
+	wp22->AddPath(wp19, Path_MoveTo, 1);
+	wp22->AddPath(wp14, Path_MoveTo, -1);
+	wp23->AddPath(wp24, Path_Jump, 1);
+	wp23->AddPath(wp48, Path_MoveTo, -1);
+	wp24->AddPath(wp26, Path_MoveTo, 1);
+	wp24->AddPath(wp23, Path_Jump, -1);
+	wp25->AddPath(wp26, Path_Backflip, -1);
+	wp25->AddPath(wp17, Path_MoveTo, 1);
+	wp26->AddPath(wp25, Path_Backflip, 1);
+	wp26->AddPath(wp24, Path_MoveTo, -1);
+	wp27->AddPath(wp18, Path_MoveTo, -1);
+	wp27->AddPath(wp19, Path_MoveTo, -1);
+	wp27->AddPath(wp21, Path_Jump, -1);
+	wp28->AddPath(wp4, Path_Jump, 1);
+	wp28->AddPath(wp16, Path_MoveTo, -1);
+	wp29->AddPath(wp40, Path_MoveTo, -1);
+	wp29->AddPath(wp53, Path_Jump, 1);
+	wp30->AddPath(wp31, Path_Jump, 1);
+	wp30->AddPath(wp41, Path_MoveTo, -1);
+	wp31->AddPath(wp37, Path_MoveTo, 1);
+	wp31->AddPath(wp30, Path_Backflip, -1);
+	wp32->AddPath(wp40, Path_MoveTo, 1);
+	wp33->AddPath(wp45, Path_MoveTo, -1);
+	wp33->AddPath(wp3, Path_MoveTo, 1);
+	wp33->AddPath(wp36, Path_Jump, 1);
+	wp33->AddPath(wp1, Path_MoveTo, 1);
+	wp34->AddPath(wp36, Path_MoveTo, -1);
+	wp34->AddPath(wp44, Path_Jump, -1);
+	wp34->AddPath(wp2, Path_MoveTo, 1);
+	wp35->AddPath(wp46, Path_MoveTo, -1);
+	wp35->AddPath(wp3, Path_MoveTo, 1);
+	wp35->AddPath(wp10, Path_MoveTo, 1);
+	wp36->AddPath(wp33, Path_MoveTo, 1);
+	wp36->AddPath(wp34, Path_Jump, -1);
+	wp37->AddPath(wp46, Path_MoveTo, -1);
+	wp37->AddPath(wp33, Path_MoveTo, 1);
+	wp37->SetArriveCommand(1, 0, {Prototype = Command, command = "Grab", target = switchleft});
+	wp37->SetArriveCommand(1, 1, {Prototype = Command, command = "Call", target = switchleft, data = "ControlThrow"});
+	wp37->SetArriveCommand(1, 2, {Prototype = Command, command = "Ungrab"});
+	wp37->AddPath(wp31, Path_MoveTo, -1);
+	wp38->AddPath(wp46, Path_MoveTo, 1);
+	wp38->AddPath(wp40, Path_MoveTo, 1);
+	wp39->AddPath(wp1, Path_Jump, 1);
+	wp39->AddPath(wp14, Path_MoveTo, 1);
+	wp39->AddPath(wp47, Path_MoveTo, -1);
+	wp40->AddPath(wp38, Path_MoveTo, -1);
+	wp40->AddPath(wp32, Path_MoveTo, -1);
+	wp41->AddPath(wp40, Path_Backflip, -1);
+	wp41->AddPath(wp30, Path_MoveTo, 1);
+	wp42->AddPath(wp43, Path_Backflip, -1);
+	wp42->AddPath(wp50, Path_MoveTo, 1);
+	wp43->AddPath(wp42, Path_Backflip, 1);
+	wp43->AddPath(wp52, Path_MoveTo, -1);
+	wp43->AddPath(wp44, Path_MoveTo, -1);
+	wp44->AddPath(wp52, Path_Jump, -1);
+	wp44->AddPath(wp47, Path_MoveTo, 1);
+	wp45->AddPath(wp46, Path_MoveTo, -1);
+	wp45->AddPath(wp33, Path_MoveTo, 1);
+	wp46->AddPath(wp52, Path_MoveTo, -1);
+	wp46->AddPath(wp38, Path_MoveTo, -1);
+	wp46->AddPath(wp45, Path_MoveTo, 1);
+	wp46->AddPath(wp37, Path_Jump, 1);
+	wp46->AddPath(wp35, Path_MoveTo, 1);
+	wp46->AddPath(wp31, Path_Jump, 1);
+	wp47->AddPath(wp44, Path_MoveTo, -1);
+	wp47->AddPath(wp39, Path_MoveTo, 1);
+	wp48->AddPath(wp49, Path_Jump, -1);
+	wp48->AddPath(wp23, Path_MoveTo, 1);
+	wp49->AddPath(wp51, Path_MoveTo, -1);
+	wp49->AddPath(wp48, Path_Jump, 1);
+	wp50->AddPath(wp51, Path_Backflip, 1);
+	wp50->AddPath(wp42, Path_MoveTo, -1);
+	wp51->AddPath(wp50, Path_Backflip, -1);
+	wp51->AddPath(wp49, Path_MoveTo, 1);
+	wp52->AddPath(wp43, Path_MoveTo, 1);
+	wp52->AddPath(wp44, Path_MoveTo, 1);
+	wp52->AddPath(wp46, Path_Jump, 1);
+	wp53->AddPath(wp29, Path_Jump, -1);
+	wp53->AddPath(wp41, Path_MoveTo, 1);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Relaunches
 
 func RelaunchLocations()
 {
-	return [{x = 110, y = 100, team = 1},
+	return [{x =  110, y = 100, team = 1},
 	    	{x = 1390, y = 100, team = 2}];
 }
