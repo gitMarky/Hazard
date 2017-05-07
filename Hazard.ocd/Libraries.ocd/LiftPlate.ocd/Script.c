@@ -81,7 +81,7 @@ public func ControlStop(object clonk, int control)
 
 func CommandComDir(int comdir)
 {
-	Log("Called control update");
+	DebugLog("Lift plate: Called control update");
 
 	// remove horizontal Comdir component
 	if (!Horizontal())
