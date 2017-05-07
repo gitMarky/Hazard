@@ -16,6 +16,7 @@ func Initialize()
 {
 	aTeleporters = [];
 	SetGoal(SCENPAR_HAZARD_GOAL);
+	SetWinScore(SCENPAR_HAZARD_SCORE);
 
 	_inherited(...);
 	
@@ -82,9 +83,10 @@ func CreateLights()
 
 func CreateDeco()
 {
-	CreateObject(Piranha, 20, 810, NO_OWNER); // TODO: Replace with shark
-	CreateObject(Piranha, 120, 830, NO_OWNER); // TODO: Replace with shark
+	CreateObject(Shark, 20, 810, NO_OWNER);
+	CreateObject(Shark, 120, 830, NO_OWNER);
 	CreateObject(EnvPack_Guidepost2, 1380, 380, NO_OWNER);
+// TODO: Add vines
 //	CreateObjectAbove(VINE, 60, 440, NO_OWNER)->SetCon(110);
 //	CreateObjectAbove(VINE, 115, 110, NO_OWNER)->SetCon(120);
 //	CreateObjectAbove(VINE, 118, 165, NO_OWNER)->SetCon(87);
@@ -129,7 +131,7 @@ func CreateDeco()
 	CreateObject(_FAK,  760, 540, NO_OWNER);
 	CreateObject(_FAK,  930, 540, NO_OWNER);
 	
-//	CreateObjectAbove(_RAN, 10, 0, NO_OWNER);
+// TODO	CreateObjectAbove(_RAN, 10, 0, NO_OWNER);
 	CreateObject(Baldoon_Ambience, 165, 550, NO_OWNER);
 	CreateObject(Baldoon_Source, 648, 780, NO_OWNER);
 
@@ -193,7 +195,7 @@ func CreateDeco()
 	CreateObject(PLNT, 1700, 607, NO_OWNER);
 	CreateObject(LFTP, 1625, 500, NO_OWNER)->SetLimits(395, 745);
 	CreateObject(LFTP, 165, 500, NO_OWNER)->SetLimits(155, 545);
-	;
+
 	var liftp = CreateObject(LFTP, 870, 805, NO_OWNER);
 	liftp->DisableVertical();
 	liftp->ContactLeft();
@@ -287,8 +289,8 @@ func CreateTrees()
 func CreateArena()
 {
 	// artillery
-//	CreateObjectAbove(_ART,  480, 220, NO_OWNER);
-//	CreateObjectAbove(_ART, 1795, 190, NO_OWNER);
+// TODO	CreateObjectAbove(_ART,  480, 220, NO_OWNER);
+// TODO	CreateObjectAbove(_ART, 1795, 190, NO_OWNER);
 	
 	// jump pads
 	CreateObject(JMPD, 1420,  86)->Set(100, +45);
@@ -362,8 +364,8 @@ func CreateSpawnPoints()
 	CopySpawnPoint(config.item_medipack, 1000, 538);
 	CopySpawnPoint(config.item_armor, 1010, 318);
 	CopySpawnPoint(config.item_airstrike, 1130, 498);
-//	PlaceBonusSpawnpoint([AEXB, BSKB, HELB, KAMB], 1510, 798, 2000);
-//	PlaceBonusSpawnpoint([AMPB, HSTB, INVB, RPFB], 250, 658, 2000);
+// TODO	PlaceBonusSpawnpoint([AEXB, BSKB, HELB, KAMB], 1510, 798, 2000);
+// TODO	PlaceBonusSpawnpoint([AMPB, HSTB, INVB, RPFB], 250, 658, 2000);
 
 	// more stuff if there are 6 or more players
 	if (GetPlayerCount() > 5)
@@ -641,7 +643,7 @@ func CreateWaypoints()
 /* TODO: Regelwaehler */
 
 //func ChooserFinished()
-//{
+//{ TODO
 //	Arena_ChooserFinished();
 //	
 //	if (FindObject(WPCH))
