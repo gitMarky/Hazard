@@ -1,6 +1,7 @@
 ﻿Version 0.2.0
 ------------------------------------------------------------------------------------------------
-+ add scenario DM_Factory
++ added scenario DM_KillingDay
++ added scenario DM_Factory
 * changed scenario setup: goals and score are selected by parameter now
 * updated version of all definitions to 8,0
 + added change log file

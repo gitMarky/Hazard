@@ -1,0 +1,3 @@
+Name=Gun control
+TurnOn=Turn on guns
+TurnOff=Turn off guns
