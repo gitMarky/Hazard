@@ -8,6 +8,14 @@ func Initialize()
 {
 	Sound("Rain", true, nil, nil, 1);	
 	CreateEffect(Raining, 1, 1);
+	
+	Cloud->Place(10);
+	Cloud->SetPrecipitation("Water", 1000);
+	Cloud->SetInsertMaterial(false);
+	for (var cloud in FindObjects(Find_ID(Cloud)))
+	{
+		cloud.Visibility = VIS_None;
+	}
 }
 
 local Raining = new Effect

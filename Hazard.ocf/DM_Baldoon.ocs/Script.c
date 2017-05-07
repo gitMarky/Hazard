@@ -36,49 +36,49 @@ func CreateBackground()
 
 func CreateLights()
 {
-	CreateObjectAbove(CLGH, 265, 455, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 585, 405, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 625, 405, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 235, 315, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 565, 495, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 685, 535, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 255, 615, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 305, 615, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 625, 925, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 675, 925, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 725, 925, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 445, 465, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 635, 335, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 635, 265, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1015, 355, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1575, 365, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1785, 315, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1465, 115, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1725, 585, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1725, 655, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1915, 565, NO_OWNER)->TurnOn();
-	CreateObjectAbove(CLGH, 1545, 685, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LBGH, 250, 480, NO_OWNER)->SetCableLength(40)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 350, 480, NO_OWNER)->SetCableLength(40)->GetLight()->TurnOn();
-	CreateObjectAbove(LBGH, 1580, 250, NO_OWNER)->GetLight()->TurnOn();
-	CreateObjectAbove(LLGH, 1670, 930, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1890, 930, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1615, 390, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1635, 390, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1615, 450, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1635, 450, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1615, 510, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1635, 510, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1615, 570, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1635, 570, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1615, 630, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1635, 630, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1615, 690, NO_OWNER)->TurnOn();
-	CreateObjectAbove(LLGH, 1635, 690, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 265, 451, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 585, 401, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 625, 401, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 235, 311, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 565, 491, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 685, 531, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 255, 611, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 305, 611, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 625, 921, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 675, 921, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 725, 921, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 445, 461, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 635, 331, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 635, 261, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1015, 351, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1575, 361, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1785, 311, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1465, 111, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1725, 581, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1725, 651, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1915, 561, NO_OWNER)->TurnOn();
+	CreateObject(CLGH, 1545, 681, NO_OWNER)->TurnOn();
+	CreateObject(LBGH, 250, 480, NO_OWNER)->SetCableLength(40)->GetLight()->TurnOn();
+	CreateObject(LBGH, 350, 480, NO_OWNER)->SetCableLength(40)->GetLight()->TurnOn();
+	CreateObject(LBGH, 1580, 250, NO_OWNER)->GetLight()->TurnOn();
+	CreateObject(LLGH, 1670, 922, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1890, 922, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1615, 382, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1635, 382, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1615, 442, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1635, 442, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1615, 502, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1635, 502, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1615, 562, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1635, 562, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1615, 622, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1635, 622, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1615, 682, NO_OWNER)->TurnOn();
+	CreateObject(LLGH, 1635, 682, NO_OWNER)->TurnOn();
 	
-	light1 = CreateObjectAbove(ALGH, 1390, 900, NO_OWNER);
-	light2 = CreateObjectAbove(ALGH, 1450, 900, NO_OWNER);
-	light3 = CreateObjectAbove(ALGH, 1510, 900, NO_OWNER);
+	light1 = CreateObject(ALGH, 1390, 895, NO_OWNER);
+	light2 = CreateObject(ALGH, 1450, 895, NO_OWNER);
+	light3 = CreateObject(ALGH, 1510, 895, NO_OWNER);
 }
 
 func CreateDeco()
@@ -131,40 +131,39 @@ func CreateDeco()
 	CreateObject(_FAK,  760, 540, NO_OWNER);
 	CreateObject(_FAK,  930, 540, NO_OWNER);
 	
-// TODO	CreateObjectAbove(_RAN, 10, 0, NO_OWNER);
 	CreateObject(Baldoon_Ambience, 165, 550, NO_OWNER);
 	CreateObject(Baldoon_Source, 648, 780, NO_OWNER);
 
-	vent1 = CreateObjectAbove(GAT2, 1420, 920, NO_OWNER);
-	vent2 = CreateObjectAbove(GAT2, 1480, 920, NO_OWNER);
+	vent1 = CreateObject(GAT2, 1420, 910, NO_OWNER);
+	vent2 = CreateObject(GAT2, 1480, 910, NO_OWNER);
 	
 	CreateObject(RADR, 160, 75, NO_OWNER);
 	
 	//Labor
-	CreateObjectAbove(Console, 1820, 920, NO_OWNER);
-	CreateObjectAbove(LTBL, 1780, 940, NO_OWNER);
+	CreateObject(Console, 1820, 908, NO_OWNER);
+	CreateObject(LTBL, 1780, 931, NO_OWNER);
 	CreateObject(GADG, 1780, 913, NO_OWNER);
 	CreateObject(GADG, 1790, 913, NO_OWNER);
 	CreateObject(MONI, 1770, 915, NO_OWNER);
-	CreateObjectAbove(OPTB, 1880, 920, NO_OWNER);
+	CreateObject(OPTB, 1880, 902, NO_OWNER);
 	CreateObject(LBPC, 1700, 915, NO_OWNER);
 	CreateObject(FRAM, 1760, 902, NO_OWNER);
 	CreateObject(FRAM, 1850, 902, NO_OWNER);
 	CreateObject(FRAM, 1805, 902, NO_OWNER);
 	CreateObject(GSBO, 1860, 609, NO_OWNER);
 	CreateObject(GSBO, 1880, 609, NO_OWNER);
-	CreateObjectAbove(GLST, 1380, 950, NO_OWNER);
-	CreateObjectAbove(VENT, 1800, 900, NO_OWNER)->SetCon(30);
+	CreateObject(GLST, 1380, 929, NO_OWNER);
+	CreateObject(VENT, 1800, 836, NO_OWNER)->SetCon(30);
 	
 	//Office
-	CreateObjectAbove(OTBL, 1575, 330, NO_OWNER);
-	CreateObjectAbove(OCHR, 1550, 330, NO_OWNER);
-	CreateObjectAbove(OCHR, 1600, 330, NO_OWNER);
-	CreateObjectAbove(OTBL, 1695, 380, NO_OWNER);
-	CreateObjectAbove(OCHR, 1670, 380, NO_OWNER);
-	CreateObjectAbove(OCHR, 1720, 380, NO_OWNER);
-	CreateObjectAbove(CCP2, 1510, 230, NO_OWNER);
-	CreateObjectAbove(DEB1, 1750, 190, NO_OWNER);
+	CreateObject(OTBL, 1575, 325, NO_OWNER);
+	CreateObject(OCHR, 1550, 323, NO_OWNER);
+	CreateObject(OCHR, 1600, 323, NO_OWNER);
+	CreateObject(OTBL, 1695, 375, NO_OWNER);
+	CreateObject(OCHR, 1670, 373, NO_OWNER);
+	CreateObject(OCHR, 1720, 373, NO_OWNER);
+	CreateObject(CCP2, 1510, 215, NO_OWNER);
+	CreateObject(DEB1, 1750, 177, NO_OWNER);
 	
 	//Base
 	CreateObject(GSTA, 415, 540, NO_OWNER);
