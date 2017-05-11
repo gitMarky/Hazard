@@ -10,6 +10,7 @@
 
 local MaxWeaponsCount = 3; // this many weapons can be collected
 local MaxEquipmentCount = 2; // this many equipment items can be collected
+local MaxEnergy = 150000; // 150 HP
 
 public func GetAmmoSource(id ammo)
 {
