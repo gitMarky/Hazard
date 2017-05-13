@@ -117,7 +117,7 @@ func ReadyToFly(object user)
 
 func FxThrustStart(object user, proplist fx)
 {
-	Sound("Weapon::FlameThrower::Flamer", nil, nil, nil, +1);
+	user->Sound("Weapon::FlameThrower::Flamer", nil, nil, nil, +1);
 }
 
 func FxThrustTimer(object user, proplist fx, int timer)
