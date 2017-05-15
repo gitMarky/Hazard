@@ -57,6 +57,19 @@ func IsUserReadyToUse(object user)
 							   false); // must not grab landscape
 }
 
+func IsWeaponReadyToUse(object user)
+{
+	var other_weapons = FindObjects(Find_Container(user), Find_Exclude(this), Find_Func("IsHazardWeapon"));
+	
+	var can_use = _inherited(user, ...);
+
+	for (var weapon in other_weapons)
+	{
+		can_use = can_use && weapon->~IsReadyToFire();
+	}
+
+	return can_use;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
