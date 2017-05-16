@@ -45,14 +45,14 @@ func CreateDeco()
 	CreateObjectAbove(SCR3, 1020, 555, NO_OWNER)->SetClrModulation(RGB(255, 255, 0));
 	CreateObjectAbove(SCR3, 480, 555, NO_OWNER)->SetClrModulation(RGB(128, 0, 128));
 	// Jumppads
-	CreateObjectAbove(JMPD, 67, 730, NO_OWNER)->Set(67, 5);
-	CreateObjectAbove(JMPD, 1433, 730, NO_OWNER)->Set(67, -5);
-	CreateObjectAbove(JMPD, 250, 370, NO_OWNER)->Set(58, 25);
-	CreateObjectAbove(JMPD, 1250, 370, NO_OWNER)->Set(58, -25);
-	CreateObjectAbove(JMPD, 460, 180, NO_OWNER)->Set(65, -45);
-	CreateObjectAbove(JMPD, 1040, 180, NO_OWNER)->Set(65, 45);
-	CreateObjectAbove(JMPD, 510, 390, NO_OWNER)->Set(58, 25, 90);
-	CreateObjectAbove(JMPD, 990, 390, NO_OWNER)->Set(58, -25, -90);
+	CreateObjectAbove(Arena_JumpPad, 67, 730, NO_OWNER)->SetStrength(67)->SetPadR(5);
+	CreateObjectAbove(Arena_JumpPad, 1433, 730, NO_OWNER)->SetStrength(67)->SetPadR(-5);
+	CreateObjectAbove(Arena_JumpPad, 250, 370, NO_OWNER)->SetStrength(58)->SetPadR(25);
+	CreateObjectAbove(Arena_JumpPad, 1250, 370, NO_OWNER)->SetStrength(58)->SetPadR(-25);
+	CreateObjectAbove(Arena_JumpPad, 460, 180, NO_OWNER)->SetStrength(65)->SetPadR(-45);
+	CreateObjectAbove(Arena_JumpPad, 1040, 180, NO_OWNER)->SetStrength(65)->SetPadR(45);
+	CreateObjectAbove(Arena_JumpPad, 510, 390, NO_OWNER)->SetStrength(58)->SetPadR(25)->SetBaseR(90);
+	CreateObjectAbove(Arena_JumpPad, 990, 390, NO_OWNER)->SetStrength(58)->SetPadR(-25)->SetBaseR(-90);
 	
 	// Alarm-lights
 	
