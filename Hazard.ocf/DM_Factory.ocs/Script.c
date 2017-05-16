@@ -81,23 +81,23 @@ func CreateLadders()
 
 func CreateJumpPads()
 {
-	CreateObject(JMPD, 986, 702, NO_OWNER)->Set( 75, -25, -90)->SetGraphics("Small");
-	CreateObject(JMPD, 490, 736, NO_OWNER)->Set( 80, +25, +10)->SetGraphics("Small");
-	CreateObject(JMPD, 482, 736, NO_OWNER)->Set(100, -25, -10)->SetGraphics("Small");
-	CreateObject(JMPD, 618, 636, NO_OWNER)->Set( 99, +35)->SetGraphics("Small");
-	CreateObject(JMPD, 906, 486, NO_OWNER)->Set( 80, -45, -90)->SetGraphics("Small");
-	CreateObject(JMPD, 886, 636, NO_OWNER)->Set( 80, -15)->SetGraphics("Small");
-	CreateObject(JMPD, 834, 504, NO_OWNER)->Set( 60, +25, 90)->SetGraphics("Small");
-	CreateObject(JMPD, 986, 436, NO_OWNER)->Set(120, -75)->SetGraphics("Small");
-	CreateObject(JMPD, 350, 586, NO_OWNER)->Set(100, +60)->SetGraphics("Small");
-	CreateObject(JMPD, 466, 527, NO_OWNER)->Set( 75, -20, -90)->SetGraphics("Small");
-	CreateObject(JMPD, 386, 446, NO_OWNER)->Set(100, +35)->SetGraphics("Small");
-	CreateObject(JMPD, 124, 346, NO_OWNER)->Set( 70, +15)->SetGraphics("Small");
-	CreateObject(JMPD, 825, 496, NO_OWNER)->Set(110, +10)->SetGraphics("Small");
-	CreateObject(JMPD, 254, 286, NO_OWNER)->Set( 82, +32)->SetGraphics("Small");
-	CreateObject(JMPD, 750, 296, NO_OWNER)->Set( 85, +15)->SetGraphics("Small");
-	CreateObject(JMPD, 726, 436, NO_OWNER)->Set( 80, +38)->SetGraphics("Small");
-	CreateObject(JMPD, 494, 436, NO_OWNER)->Set( 82, +15)->SetGraphics("Small");
+	CreateObject(Arena_JumpPad, 986, 702, NO_OWNER)->SetStrength( 75)->SetPadR(-25)->SetBaseR(-90)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 490, 736, NO_OWNER)->SetStrength( 80)->SetPadR(+25)->SetBaseR(+10)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 482, 736, NO_OWNER)->SetStrength(100)->SetPadR(-25)->SetBaseR(-10)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 618, 636, NO_OWNER)->SetStrength( 99)->SetPadR(+35)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 906, 486, NO_OWNER)->SetStrength( 80)->SetPadR(-45)->SetBaseR(-90)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 886, 636, NO_OWNER)->SetStrength( 80)->SetPadR(-15)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 834, 504, NO_OWNER)->SetStrength( 60)->SetPadR(+25)->SetBaseR(90)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 986, 436, NO_OWNER)->SetStrength(120)->SetPadR(-75)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 350, 586, NO_OWNER)->SetStrength(100)->SetPadR(+60)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 466, 527, NO_OWNER)->SetStrength( 75)->SetPadR(-20)->SetBaseR(-90)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 386, 446, NO_OWNER)->SetStrength(100)->SetPadR(+35)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 124, 346, NO_OWNER)->SetStrength( 70)->SetPadR(+15)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 825, 496, NO_OWNER)->SetStrength(110)->SetPadR(+10)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 254, 286, NO_OWNER)->SetStrength( 82)->SetPadR(+32)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 750, 296, NO_OWNER)->SetStrength( 85)->SetPadR(+15)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 726, 436, NO_OWNER)->SetStrength( 80)->SetPadR(+38)->SetBaseGraphics("BaseSmall");
+	CreateObject(Arena_JumpPad, 494, 436, NO_OWNER)->SetStrength( 82)->SetPadR(+15)->SetBaseGraphics("BaseSmall");
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
