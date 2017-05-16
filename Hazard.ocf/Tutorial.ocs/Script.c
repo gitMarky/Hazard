@@ -212,7 +212,7 @@ func CreateOutdoorArea()
 	CreateObjectAbove(FENC, 782, 600, NO_OWNER);
 	CreateObjectAbove(FENC, 1120, 600, NO_OWNER);
 		
-	CreateObject(JMPD, 1107, 586, NO_OWNER)->Set(70, -5);
+	CreateObject(Arena_JumpPad, 1107, 586, NO_OWNER)->SetStrength(70)->SetPadR(-5);
 	CreateObject(SBBA, 1407, 592, NO_OWNER);
 	
 	CreateObject(Tree_Coniferous2, 1775, 420, NO_OWNER)->SetR(3);
@@ -244,9 +244,9 @@ func CreateCaveStuff()
 {
 	CreateObjectAbove(Weapon_GrenadeLauncher, 1600, 970, NO_OWNER);
 
-	CreateObject(JMPD, 1511, 925, NO_OWNER)->Set(50, 250, 180);
-	CreateObject(JMPD, 1510, 967, NO_OWNER)->Set(50, -70, 0);
-	CreateObject(JMPD, 1490, 967, NO_OWNER)->Set(30, -45, 0);
+	CreateObject(Arena_JumpPad, 1511, 925, NO_OWNER)->SetStrength(50)->SetPadR(250)->SetBaseR(180);
+	CreateObject(Arena_JumpPad, 1510, 967, NO_OWNER)->SetStrength(50)->SetPadR(-70);
+	CreateObject(Arena_JumpPad, 1490, 967, NO_OWNER)->SetStrength(30)->SetPadR(-45);
 
 	CreateObject(FLGH, 1470, 962, NO_OWNER)->SetRotation(-45)->GetLight()->TurnOn();
 	CreateObject(FLGH, 1550, 962, NO_OWNER)->SetRotation(35)->GetLight()->TurnOn();
