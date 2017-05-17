@@ -207,6 +207,22 @@ public func RemoveAmmo()
 	}
 }
 
+/**
+ Update the HUD whenever ammo changes.
+ */
+public func SetAmmo(id ammo, int new_value)
+{
+	var info = _inherited(ammo, new_value);
+	
+	if (GetAmmoReloadContainer() && GetAmmoReloadContainer()->~GetHUDController())
+	{
+		GetAmmoReloadContainer()->~GetHUDController()->~OnHazardWeaponAmmoChange(this);
+	}
+
+	return info;
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Cooldown

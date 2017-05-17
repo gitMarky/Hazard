@@ -82,6 +82,13 @@ public func OnCrewSelection(object clonk, bool unselect)
 	return _inherited(clonk, unselect, ...);
 }
 
+public func OnHazardAmmoChange(object clonk)
+{
+	ScheduleUpdateHazardAmmo();
+
+	return _inherited(clonk);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // GUI definition
@@ -171,7 +178,7 @@ private func AmmoCounterGridLayout(int max_counters)
 	                    + 2 * GUI_Controller_CrewBar_BarMargin
 	                        + GUI_Controller_CrewBar_BarSize;
 	                        
-	var grid_margin_left = 5;
+	var grid_margin_left = 5 + 30; // the additional margin is added until the old hud can be removed
 
 	var icon_size = 12;
 	return
@@ -220,18 +227,39 @@ private func UpdateHazardAmmo()
 	{
 		for (var counter_info in gui_hazard_ammo.counters)
 		{
-			var amount = cursor->GetAmmo(counter_info.Type);
-		
-			// Compose the update!
-			var update =
-			{
-				Symbol = counter_info.Type,
-				Count = {Text = Format("%d", amount)},
-			};
-		
-			GuiUpdate(update, gui_hazard_ammo.id, counter_info.ID, this);
+			UpdateHazardAmmoCounter(cursor, counter_info);
 		}
 	}
+}
+
+private func UpdateHazardAmmoCounter(object cursor, proplist counter_info)
+{
+	var amount = cursor->GetAmmo(counter_info.Type);
+
+	var color;
+	if (amount > 0)
+	{
+		color = "eeeeee";
+	}
+	else
+	{
+		color = "777777";
+	}
+
+//	if (weapon ammo is ammo type)
+//	{
+//		color = "ffff00";
+//		if (!amount) color = "ff0000";
+//	}
+
+	// Compose the update!
+	var update =
+	{
+		Symbol = counter_info.Type,
+		Count = {Text = Format("<c %s>%d</c>", color, amount)},
+	};
+
+	GuiUpdate(update, gui_hazard_ammo.id, counter_info.ID, this);
 }
 
 
