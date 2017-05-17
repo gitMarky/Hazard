@@ -33,49 +33,49 @@ private func Destruction()
 
 public func OnCrewRecruitment(object clonk, int plr)
 {
-	UpdateHazardItem();
+	ScheduleUpdateHazardItem();
 
 	return _inherited(clonk, plr, ...);
 }
 
 public func OnCrewDeRecruitment(object clonk, int plr)
 {
-	UpdateHazardItem();
+	ScheduleUpdateHazardItem();
 
 	return _inherited(clonk, plr, ...);
 }
 
 public func OnCrewDeath(object clonk, int killer)
 {
-	UpdateHazardItem();
+	ScheduleUpdateHazardItem();
 
 	return _inherited(clonk, killer, ...);
 }
 
 public func OnCrewDestruction(object clonk)
 {
-	UpdateHazardItem();
+	ScheduleUpdateHazardItem();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewDisabled(object clonk)
 {
-	UpdateHazardItem();
+	ScheduleUpdateHazardItem();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewEnabled(object clonk)
 {
-	UpdateHazardItem();
+	ScheduleUpdateHazardItem();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewSelection(object clonk, bool unselect)
 {
-	UpdateHazardItem();
+	ScheduleUpdateHazardItem();
 
 	return _inherited(clonk, unselect, ...);
 }
@@ -92,6 +92,20 @@ private func AssembleHazardItem()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Drawing / display
+
+private func ScheduleUpdateHazardItem()
+{
+	if (!GetEffect("UpdateHazardItem", this))
+		AddEffect("UpdateHazardItem", this, 1, 1, this);
+}
+
+
+private func FxUpdateHazardItemTimer()
+{
+	ScheduleUpdateHazardItem();
+	return FX_Execute_Kill;
+}
+
 
 // Update everything
 private func UpdateHazardItem()

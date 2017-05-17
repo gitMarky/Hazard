@@ -33,49 +33,49 @@ private func Destruction()
 
 public func OnCrewRecruitment(object clonk, int plr)
 {
-	UpdateHazardWeapon();
+	ScheduleUpdateHazardWeapon();
 
 	return _inherited(clonk, plr, ...);
 }
 
 public func OnCrewDeRecruitment(object clonk, int plr)
 {
-	UpdateHazardWeapon();
+	ScheduleUpdateHazardWeapon();
 
 	return _inherited(clonk, plr, ...);
 }
 
 public func OnCrewDeath(object clonk, int killer)
 {
-	UpdateHazardWeapon();
+	ScheduleUpdateHazardWeapon();
 
 	return _inherited(clonk, killer, ...);
 }
 
 public func OnCrewDestruction(object clonk)
 {
-	UpdateHazardWeapon();
+	ScheduleUpdateHazardWeapon();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewDisabled(object clonk)
 {
-	UpdateHazardWeapon();
+	ScheduleUpdateHazardWeapon();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewEnabled(object clonk)
 {
-	UpdateHazardWeapon();
+	ScheduleUpdateHazardWeapon();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewSelection(object clonk, bool unselect)
 {
-	UpdateHazardWeapon();
+	ScheduleUpdateHazardWeapon();
 
 	return _inherited(clonk, unselect, ...);
 }
@@ -92,6 +92,20 @@ private func AssembleHazardWeapon()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Drawing / display
+
+private func ScheduleUpdateHazardWeapon()
+{
+	if (!GetEffect("UpdateHazardWeapon", this))
+		AddEffect("UpdateHazardWeapon", this, 1, 1, this);
+}
+
+
+private func FxUpdateHazardWeaponTimer()
+{
+	UpdateHazardWeapon();
+	return FX_Execute_Kill;
+}
+
 
 // Update everything
 private func UpdateHazardWeapon()
