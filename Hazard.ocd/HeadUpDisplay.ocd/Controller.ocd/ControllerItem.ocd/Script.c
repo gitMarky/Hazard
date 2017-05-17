@@ -4,7 +4,7 @@
 	@author Marky
 */
 
-local gui_hazard_ammo;
+local gui_hazard_item;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -12,17 +12,17 @@ local gui_hazard_ammo;
 
 private func Construction()
 {
-	gui_hazard_ammo = {};
-	gui_hazard_ammo.menu = AssembleHazardAmmo();
-	gui_hazard_ammo.id = GuiOpen(gui_hazard_ammo.menu);
+	gui_hazard_item = {};
+	gui_hazard_item.menu = AssembleHazardItem();
+	gui_hazard_item.id = GuiOpen(gui_hazard_item.menu);
 
 	return _inherited(...);
 }
 
 private func Destruction()
 {
-	GuiClose(gui_hazard_ammo.id);
-	gui_hazard_ammo.id = nil;
+	GuiClose(gui_hazard_item.id);
+	gui_hazard_item.id = nil;
 
 	_inherited(...);
 }
@@ -33,49 +33,49 @@ private func Destruction()
 
 public func OnCrewRecruitment(object clonk, int plr)
 {
-	UpdateHazardAmmo();
+	UpdateHazardItem();
 
 	return _inherited(clonk, plr, ...);
 }
 
 public func OnCrewDeRecruitment(object clonk, int plr)
 {
-	UpdateHazardAmmo();
+	UpdateHazardItem();
 
 	return _inherited(clonk, plr, ...);
 }
 
 public func OnCrewDeath(object clonk, int killer)
 {
-	UpdateHazardAmmo();
+	UpdateHazardItem();
 
 	return _inherited(clonk, killer, ...);
 }
 
 public func OnCrewDestruction(object clonk)
 {
-	UpdateHazardAmmo();
+	UpdateHazardItem();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewDisabled(object clonk)
 {
-	UpdateHazardAmmo();
+	UpdateHazardItem();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewEnabled(object clonk)
 {
-	UpdateHazardAmmo();
+	UpdateHazardItem();
 
 	return _inherited(clonk, ...);
 }
 
 public func OnCrewSelection(object clonk, bool unselect)
 {
-	UpdateHazardAmmo();
+	UpdateHazardItem();
 
 	return _inherited(clonk, unselect, ...);
 }
@@ -84,7 +84,7 @@ public func OnCrewSelection(object clonk, bool unselect)
 //
 // GUI definition
 
-private func AssembleHazardAmmo()
+private func AssembleHazardItem()
 {
 	return {}; // empty menu for now
 }
@@ -94,7 +94,7 @@ private func AssembleHazardAmmo()
 // Drawing / display
 
 // Update everything
-private func UpdateHazardAmmo()
+private func UpdateHazardItem()
 {
 	var cursor = GetCursor(GetOwner());
 }
