@@ -5,5 +5,6 @@
 #include GUI_Controller_CrewBar
 #include GUI_Controller_Goal
 #include GUI_Controller_Wealth
+#include GUI_Controller_HazardAmmo
 // Include the basic functionality of the HUD
 #include Library_HUDController

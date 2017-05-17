@@ -15,7 +15,9 @@ private func Construction()
 	gui_hazard_ammo = {};
 	gui_hazard_ammo.menu = AssembleHazardAmmo();
 	gui_hazard_ammo.id = GuiOpen(gui_hazard_ammo.menu);
-
+	
+	CreateHazardAmmoCounters();
+	
 	return _inherited(...);
 }
 
@@ -86,7 +88,100 @@ public func OnCrewSelection(object clonk, bool unselect)
 
 private func AssembleHazardAmmo()
 {
-	return {}; // empty menu for now
+	var menu = {
+		Target = this,
+		Player = NO_OWNER, // will be shown once a gui update occurs
+		Style = GUI_Multiple | GUI_NoCrop | GUI_IgnoreMouse,
+	};
+	
+	return menu;
+}
+
+
+private func CreateHazardAmmoCounters()
+{
+	gui_hazard_ammo.counters = [];
+	
+	var ammo_types = [];
+	var ammo_type;
+
+	// get all ammo
+	for (var i = 0; ammo_type = GetDefinition(i, C4D_StaticBack); ++i)
+	{
+		if (ammo_type->~IsAmmo())
+		{
+			PushBack(ammo_types, ammo_type);
+		}
+	}
+	
+	// need to remove some inventory buttons?
+	for (var type in ammo_types)
+	{
+		CreateHazardAmmoCounter(GetLength(ammo_types), type);
+	}
+}
+
+
+private func CreateHazardAmmoCounter(int max_counters, id ammo_type)
+{
+	var counter_number = GetLength(gui_hazard_ammo.counters);
+	var counter_info =
+	{
+		ID = counter_number + 1,
+		Type = ammo_type,
+	};
+	PushBack(gui_hazard_ammo.counters, counter_info);
+
+	var counter = AssembleHazardAmmoCounter(max_counters, counter_number, counter_info);
+
+	GuiUpdate({_new_icon = counter}, gui_hazard_ammo.id);
+}
+
+
+private func AssembleHazardAmmoCounter(int max_counters, int counter_number, proplist counter_info)
+{
+	// The gui already exists, only update it with a new submenu
+	var pos = GuiCalculateGridElementPosition(AmmoCounterGridLayout(max_counters), counter_number, 0);
+
+	var counter = 
+	{
+		Target = this,
+		Style = GUI_NoCrop,
+		ID = counter_info.ID,
+		Symbol = counter_info.Type,
+	};
+	
+	return AddProperties(counter, pos);
+}
+
+
+private func AmmoCounterGridLayout(int max_counters)
+{
+	var grid_margin_top = 2 * GUI_Controller_CrewBar_CursorMargin
+	                        + GUI_Controller_CrewBar_CursorSize
+	                    + 2 * GUI_Controller_CrewBar_BarMargin
+	                        + GUI_Controller_CrewBar_BarSize;
+	                        
+	var grid_margin_left = 5;
+
+	var icon_size = 12;
+	return
+	{
+		Grid = {
+			Prototype = GUI_BoxLayout,
+			Margin = {Left = grid_margin_left, Top = grid_margin_top},
+			Align = { X = GUI_AlignLeft,  Y = GUI_AlignTop,},
+			Rows = max_counters,
+			Columns = 1,
+			Dimension = Global.ToEmString,
+		},
+		Cell = {
+			Prototype = GUI_BoxLayout,
+			Width = icon_size,
+			Height = icon_size,
+			Dimension = Global.ToEmString,
+		}
+	};
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +195,7 @@ private func ScheduleUpdateHazardAmmo()
 }
 
 
-private func FxUpdateHazardItemTimer()
+private func FxUpdateHazardAmmoTimer()
 {
 	UpdateHazardAmmo();
 	return FX_Execute_Kill;
@@ -111,4 +206,45 @@ private func FxUpdateHazardItemTimer()
 private func UpdateHazardAmmo()
 {
 	var cursor = GetCursor(GetOwner());
+	
+	if (ShowHazardAmmo(cursor, gui_hazard_ammo))
+	{
+		for (var slot_info in gui_hazard_ammo.counters)
+		{
+			// Compose the update!
+			var update =
+			{
+				Symbol = slot_info.Type,
+			};
+		
+			GuiUpdate(update, gui_hazard_ammo.id, slot_info.ID, this);
+		}
+	}
+}
+
+
+private func ShowHazardAmmo(object cursor, proplist settings)
+{
+	if (cursor && cursor->GetCrewEnabled())
+	{
+		// Make sure inventory is visible
+		if (settings.menu.Player != GetOwner())
+		{
+			settings.menu.Player = GetOwner();
+			GuiUpdate(settings.menu, settings.id);
+		}
+		
+		return true;
+	}
+	else
+	{
+		// Make sure inventory is invisible
+		if (settings.menu.Player != NO_OWNER)
+		{
+			settings.menu.Player = NO_OWNER;
+			GuiUpdate(settings.menu, settings.id);
+		}
+
+		return false;
+	}
 }

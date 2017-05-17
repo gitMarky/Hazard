@@ -3,5 +3,5 @@
 // Overload the hud controller
 public func GetGUIControllerID()
 {
-	return GUI_Controller;
+	return GUI_Controller_Hazard;
 }
