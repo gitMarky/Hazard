@@ -129,6 +129,7 @@ private func CreateHazardAmmoCounter(int max_counters, id ammo_type)
 	{
 		ID = counter_number + 1,
 		Type = ammo_type,
+		Amount = 0,
 	};
 	PushBack(gui_hazard_ammo.counters, counter_info);
 
@@ -149,6 +150,14 @@ private func AssembleHazardAmmoCounter(int max_counters, int counter_number, pro
 		Style = GUI_NoCrop,
 		ID = counter_info.ID,
 		Symbol = counter_info.Type,
+		Style = GUI_NoCrop,
+		Count = {
+			Target = this,
+			Right = ToEmString(20),
+			Bottom = ToEmString(12),
+			Text = "",
+			Style = GUI_TextRight | GUI_TextVCenter,
+		},
 	};
 	
 	return AddProperties(counter, pos);
@@ -209,15 +218,18 @@ private func UpdateHazardAmmo()
 	
 	if (ShowHazardAmmo(cursor, gui_hazard_ammo))
 	{
-		for (var slot_info in gui_hazard_ammo.counters)
+		for (var counter_info in gui_hazard_ammo.counters)
 		{
+			var amount = cursor->GetAmmo(counter_info.Type);
+		
 			// Compose the update!
 			var update =
 			{
-				Symbol = slot_info.Type,
+				Symbol = counter_info.Type,
+				Count = {Text = Format("%d", amount)},
 			};
 		
-			GuiUpdate(update, gui_hazard_ammo.id, slot_info.ID, this);
+			GuiUpdate(update, gui_hazard_ammo.id, counter_info.ID, this);
 		}
 	}
 }
