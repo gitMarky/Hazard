@@ -128,7 +128,7 @@ func SetHazardArmorSkin()
 
 public func UpdateHazardHUD()
 {
-    var weapon = this->GetHandItem(0);
+    var weapon = GetCurrentItem();
 
     var hud = this->GetHazardHUD();
     if (hud)
@@ -136,6 +136,12 @@ public func UpdateHazardHUD()
     	hud->~Update(weapon, this, this);
     	ScheduleCall(this, this.UpdateHazardHUD, 1);
     }
+}
+
+
+public func GetCurrentItem()
+{
+	return this->GetHandItem(0);
 }
 
 

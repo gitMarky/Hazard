@@ -225,32 +225,34 @@ private func UpdateHazardAmmo()
 	
 	if (ShowHazardAmmo(cursor, gui_hazard_ammo))
 	{
+    	var weapon = cursor->~GetCurrentItem();
+
 		for (var counter_info in gui_hazard_ammo.counters)
 		{
-			UpdateHazardAmmoCounter(cursor, counter_info);
+			UpdateHazardAmmoCounter(cursor, weapon, counter_info);
 		}
 	}
 }
 
-private func UpdateHazardAmmoCounter(object cursor, proplist counter_info)
+private func UpdateHazardAmmoCounter(object cursor, object weapon, proplist counter_info)
 {
 	var amount = cursor->GetAmmo(counter_info.Type);
 
 	var color;
-	if (amount > 0)
+	if (weapon && weapon->~IsHazardWeapon() && weapon->GetFiremode().ammo_id == counter_info.Type)
 	{
-		color = "eeeeee";
+		if (amount > 0)
+			color = "ffff00";
+		else
+			color = "ff0000";
 	}
 	else
 	{
-		color = "777777";
+		if (amount > 0)
+			color = "eeeeee";
+		else
+			color = "777777";
 	}
-
-//	if (weapon ammo is ammo type)
-//	{
-//		color = "ffff00";
-//		if (!amount) color = "ff0000";
-//	}
 
 	// Compose the update!
 	var update =
