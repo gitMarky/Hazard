@@ -80,13 +80,34 @@ public func OnCrewSelection(object clonk, bool unselect)
 	return _inherited(clonk, unselect, ...);
 }
 
+public func OnSlotObjectChanged(int slot)
+{
+	ScheduleUpdateHazardWeapon();
+
+	return _inherited(slot, ...);
+}
+
+public func OnHazardWeaponAmmoChange(object clonk)
+{
+	ScheduleUpdateHazardWeapon();
+
+	return _inherited(clonk);
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // GUI definition
 
 private func AssembleHazardWeapon()
 {
-	return {}; // empty menu for now
+	var menu = {
+		Target = this,
+		Player = NO_OWNER, // will be shown once a gui update occurs
+		Style = GUI_Multiple | GUI_NoCrop | GUI_IgnoreMouse,
+	};
+	
+	return menu;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,4 +132,8 @@ private func FxUpdateHazardWeaponTimer()
 private func UpdateHazardWeapon()
 {
 	var cursor = GetCursor(GetOwner());
+
+	if (GuiShowForCrew(cursor, gui_hazard_weapon))
+	{
+	}
 }

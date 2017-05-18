@@ -80,13 +80,27 @@ public func OnCrewSelection(object clonk, bool unselect)
 	return _inherited(clonk, unselect, ...);
 }
 
+public func OnSlotObjectChanged(int slot)
+{
+	ScheduleUpdateHazardItem();
+
+	return _inherited(slot, ...);
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // GUI definition
 
 private func AssembleHazardItem()
 {
-	return {}; // empty menu for now
+	var menu = {
+		Target = this,
+		Player = NO_OWNER, // will be shown once a gui update occurs
+		Style = GUI_Multiple | GUI_NoCrop | GUI_IgnoreMouse,
+	};
+	
+	return menu;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,7 +116,7 @@ private func ScheduleUpdateHazardItem()
 
 private func FxUpdateHazardItemTimer()
 {
-	ScheduleUpdateHazardItem();
+	UpdateHazardItem();
 	return FX_Execute_Kill;
 }
 
@@ -111,4 +125,8 @@ private func FxUpdateHazardItemTimer()
 private func UpdateHazardItem()
 {
 	var cursor = GetCursor(GetOwner());
+	
+	if (GuiShowForCrew(cursor, gui_hazard_item))
+	{
+	}
 }
