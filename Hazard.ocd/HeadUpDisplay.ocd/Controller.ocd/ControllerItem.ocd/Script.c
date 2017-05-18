@@ -126,7 +126,7 @@ private func UpdateHazardItem()
 {
 	var cursor = GetCursor(GetOwner());
 	
-	if (GuiShowForCrew(cursor, gui_hazard_item))
+	if (GuiShowForCrew(gui_hazard_item, GetOwner(), cursor))
 	{
 	}
 }

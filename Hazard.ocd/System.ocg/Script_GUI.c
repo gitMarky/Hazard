@@ -7,13 +7,13 @@
  *           - Menu: a GUI definition (you usually open it with GUIOpen)
  *           - ID: the GUI ID (return value of GUIOpen) 
  */
-global func GuiShowForCrew(object crew, proplist gui)
+global func GuiShowForCrew(proplist gui, int player, object crew)
 {
 	AssertObjectContext();
 
 	if (crew && crew->GetCrewEnabled())
 	{
-		GuiShowMenu(gui, GetOwner());		
+		GuiShowMenu(gui, player);
 		return true;
 	}
 	else

@@ -230,7 +230,7 @@ private func UpdateHazardAmmo()
 {
 	var cursor = GetCursor(GetOwner());
 	
-	if (GuiShowForCrew(cursor, gui_hazard_ammo))
+	if (GuiShowForCrew(gui_hazard_ammo, GetOwner(), cursor))
 	{
     	var weapon = cursor->~GetCurrentItem();
 

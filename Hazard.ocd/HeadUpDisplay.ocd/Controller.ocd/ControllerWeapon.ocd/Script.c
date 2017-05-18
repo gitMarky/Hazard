@@ -133,7 +133,7 @@ private func UpdateHazardWeapon()
 {
 	var cursor = GetCursor(GetOwner());
 
-	if (GuiShowForCrew(cursor, gui_hazard_weapon))
+	if (GuiShowForCrew(gui_hazard_weapon, GetOwner(), cursor))
 	{
 	}
 }
