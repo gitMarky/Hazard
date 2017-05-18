@@ -94,10 +94,20 @@ public func OnSlotObjectChanged(int slot)
 
 private func AssembleHazardItem()
 {
+	var margin = ToEmString(5);
+	var margin_bottom = ToEmString(-5);
+	var width = ToPercentString(400);
+	var height = ToPercentString(-200);
+	var bottom = ToPercentString(1000);
+
 	var menu = {
 		Target = this,
 		Player = NO_OWNER, // will be shown once a gui update occurs
-		Style = GUI_Multiple | GUI_NoCrop | GUI_IgnoreMouse,
+		Style = GUI_Multiple | GUI_IgnoreMouse | GUI_TextBottom | GUI_TextHCenter,
+		Symbol = nil,
+		Text = "",
+		Left = Format("%s", margin), Right = Format("%s%s", margin, width),
+		Top = Format("%s%s%s", bottom, margin_bottom, height), Bottom = Format("%s%s", bottom, margin_bottom),
 	};
 	
 	return menu;
@@ -128,5 +138,25 @@ private func UpdateHazardItem()
 	
 	if (GuiShowForCrew(gui_hazard_item, GetOwner(), cursor))
 	{
+		var item = cursor->GetCurrentItem();
+
+		if (item && !item->~IsHazardWeapon())
+		{
+			var text = Format("@<c ffff00>%s</c>|%s", item->GetName(), item.Description ?? "");
+			var symbol = item;
+			
+			// Compose the update!
+			var update =
+			{
+				Symbol = symbol,
+				Text = text,
+			};
+		
+			GuiUpdate(update, gui_hazard_item.ID, nil, this);
+		}
+		else
+		{
+			GuiHideMenu(gui_hazard_item);
+		}
 	}
 }

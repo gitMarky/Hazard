@@ -135,5 +135,15 @@ private func UpdateHazardWeapon()
 
 	if (GuiShowForCrew(gui_hazard_weapon, GetOwner(), cursor))
 	{
+		var weapon = cursor->GetCurrentItem();
+
+		if (weapon && weapon->~IsHazardWeapon())
+		{
+			// do nothing for now
+		}
+		else
+		{
+			GuiHideMenu(gui_hazard_weapon);
+		}
 	}
 }
