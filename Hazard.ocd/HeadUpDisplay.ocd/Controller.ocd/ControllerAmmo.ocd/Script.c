@@ -82,6 +82,13 @@ public func OnCrewSelection(object clonk, bool unselect)
 	return _inherited(clonk, unselect, ...);
 }
 
+public func OnSlotObjectChanged(int slot)
+{
+	ScheduleUpdateHazardAmmo();
+
+	return _inherited(slot, ...);
+}
+
 public func OnHazardAmmoChange(object clonk)
 {
 	ScheduleUpdateHazardAmmo();
