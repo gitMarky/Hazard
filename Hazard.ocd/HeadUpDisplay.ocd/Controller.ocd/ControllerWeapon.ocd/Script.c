@@ -13,16 +13,16 @@ local gui_hazard_weapon;
 private func Construction()
 {
 	gui_hazard_weapon = {};
-	gui_hazard_weapon.menu = AssembleHazardWeapon();
-	gui_hazard_weapon.id = GuiOpen(gui_hazard_weapon.menu);
+	gui_hazard_weapon.Menu = AssembleHazardWeapon();
+	gui_hazard_weapon.ID = GuiOpen(gui_hazard_weapon.Menu);
 
 	return _inherited(...);
 }
 
 private func Destruction()
 {
-	GuiClose(gui_hazard_weapon.id);
-	gui_hazard_weapon.id = nil;
+	GuiClose(gui_hazard_weapon.ID);
+	gui_hazard_weapon.ID = nil;
 
 	_inherited(...);
 }

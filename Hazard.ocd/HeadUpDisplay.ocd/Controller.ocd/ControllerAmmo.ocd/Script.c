@@ -13,8 +13,8 @@ local gui_hazard_ammo;
 private func Construction()
 {
 	gui_hazard_ammo = {};
-	gui_hazard_ammo.menu = AssembleHazardAmmo();
-	gui_hazard_ammo.id = GuiOpen(gui_hazard_ammo.menu);
+	gui_hazard_ammo.Menu = AssembleHazardAmmo();
+	gui_hazard_ammo.ID = GuiOpen(gui_hazard_ammo.Menu);
 	
 	CreateHazardAmmoCounters();
 	
@@ -23,8 +23,8 @@ private func Construction()
 
 private func Destruction()
 {
-	GuiClose(gui_hazard_ammo.id);
-	gui_hazard_ammo.id = nil;
+	GuiClose(gui_hazard_ammo.ID);
+	gui_hazard_ammo.ID = nil;
 
 	_inherited(...);
 }
@@ -149,7 +149,7 @@ private func CreateHazardAmmoCounter(int max_counters, id ammo_type)
 
 	var counter = AssembleHazardAmmoCounter(max_counters, counter_number, counter_info);
 
-	GuiUpdate({_new_icon = counter}, gui_hazard_ammo.id);
+	GuiUpdate({_new_icon = counter}, gui_hazard_ammo.ID);
 }
 
 
@@ -230,7 +230,7 @@ private func UpdateHazardAmmo()
 {
 	var cursor = GetCursor(GetOwner());
 	
-	if (ShowHazardAmmo(cursor, gui_hazard_ammo))
+	if (GuiShowForCrew(cursor, gui_hazard_ammo))
 	{
     	var weapon = cursor->~GetCurrentItem();
 
@@ -240,6 +240,7 @@ private func UpdateHazardAmmo()
 		}
 	}
 }
+
 
 private func UpdateHazardAmmoCounter(object cursor, object weapon, proplist counter_info)
 {
@@ -268,32 +269,5 @@ private func UpdateHazardAmmoCounter(object cursor, object weapon, proplist coun
 		Count = {Text = Format("<c %s>%d</c>", color, amount)},
 	};
 
-	GuiUpdate(update, gui_hazard_ammo.id, counter_info.ID, this);
-}
-
-
-private func ShowHazardAmmo(object cursor, proplist settings)
-{
-	if (cursor && cursor->GetCrewEnabled())
-	{
-		// Make sure inventory is visible
-		if (settings.menu.Player != GetOwner())
-		{
-			settings.menu.Player = GetOwner();
-			GuiUpdate(settings.menu, settings.id);
-		}
-		
-		return true;
-	}
-	else
-	{
-		// Make sure inventory is invisible
-		if (settings.menu.Player != NO_OWNER)
-		{
-			settings.menu.Player = NO_OWNER;
-			GuiUpdate(settings.menu, settings.id);
-		}
-
-		return false;
-	}
+	GuiUpdate(update, gui_hazard_ammo.ID, counter_info.ID, this);
 }
