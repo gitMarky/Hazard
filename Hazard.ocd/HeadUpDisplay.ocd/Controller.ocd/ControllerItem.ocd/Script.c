@@ -103,11 +103,23 @@ private func AssembleHazardItem()
 	var menu = {
 		Target = this,
 		Player = NO_OWNER, // will be shown once a gui update occurs
-		Style = GUI_Multiple | GUI_IgnoreMouse | GUI_TextBottom | GUI_TextHCenter,
-		Symbol = nil,
-		Text = "",
+		Style = GUI_Multiple | GUI_IgnoreMouse,
 		Left = Format("%s", margin), Right = Format("%s%s", margin, width),
 		Top = Format("%s%s%s", bottom, margin_bottom, height), Bottom = Format("%s%s", bottom, margin_bottom),
+		BackgroundColor = RGBa(0, 200, 255, 90),
+		icon = {
+			Priority = 10,
+			Right = ToPercentString(300),
+			Top = ToPercentString(100),
+			Bottom = ToPercentString(900),
+			Symbol = nil,
+		},
+		desc = {
+			Priority = 20, 
+			Left = ToPercentString(200),
+			Top = ToPercentString(100),
+			Bottom = ToPercentString(900),
+		},
 	};
 	
 	return menu;
@@ -142,14 +154,14 @@ private func UpdateHazardItem()
 
 		if (item && !item->~IsHazardWeapon())
 		{
-			var text = Format("@<c ffff00>%s</c>|%s", item->GetName(), item.Description ?? "");
+			var text = Format("<c ffff00>%s</c>|%s", item->GetName(), item.Description ?? "");
 			var symbol = item;
 			
 			// Compose the update!
 			var update =
 			{
-				Symbol = symbol,
-				Text = text,
+				icon = {Symbol = symbol,},
+				desc = {Text = text,},
 			};
 		
 			GuiUpdate(update, gui_hazard_item.ID, nil, this);
