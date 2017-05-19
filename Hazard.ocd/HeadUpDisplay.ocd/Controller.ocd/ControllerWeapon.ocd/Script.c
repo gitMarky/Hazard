@@ -106,15 +106,15 @@ private func AssembleHazardWeapon()
 	var menu = {
 		Target = this,
 		Player = NO_OWNER, // will be shown once a gui update occurs
-		Style = GUI_Multiple | GUI_IgnoreMouse,
+		Style = GUI_Multiple | GUI_IgnoreMouse | GUI_NoCrop,
 		BackgroundColor = RGBa(0, 255, 200, 90),
 		
 		bar = { // sub-window that contains the ammo-bar
 			Priority = 10,
-			Left = ToPercentString(100),
-			Right =  ToPercentString(600),
-			Top = ToPercentString(800),
-			Bottom = ToPercentString(900),
+			Left = ToPercentString(150),
+			Right =  ToPercentString(650),
+			Top = ToPercentString(750),
+			Bottom = ToPercentString(850),
 			BackgroundColor = RGBa(150, 150, 150, 150),
 			
 			full = {
@@ -133,10 +133,10 @@ private func AssembleHazardWeapon()
 		
 		mode = {
 			Priority = 11,
-			Left = ToPercentString(100),
-			Right = ToPercentString(600),
-			Top = Format("%s%s", ToPercentString(800), ToEmString(-12)),
-			Bottom = ToPercentString(800),
+			Left = ToPercentString(150),
+			Right = ToPercentString(650),
+			Top = Format("%s%s", ToPercentString(750), ToEmString(-15)),
+			Bottom = ToPercentString(750),
 			Style = GUI_TextHCenter | GUI_TextVCenter,
 		},
 		
@@ -144,17 +144,17 @@ private func AssembleHazardWeapon()
 			Priority = 12,
 			Left = Format("%s%s", ToPercentString(600), ToEmString(10)),
 			Right = Format("%s%s", ToPercentString(600), ToEmString(10)),
-			Top = ToPercentString(750),
-			Bottom = ToPercentString(900),
+			Top = ToPercentString(700),
+			Bottom = ToPercentString(850),
 			Style = GUI_NoCrop | GUI_TextVCenter,
 		},
 		
 		icon = {
 			Priority = 20,
-			Left = Format("%s%s", ToPercentString(100), ToEmString(-20)),
-			Right =  ToPercentString(100),
-			Top = Format("%s%s", ToPercentString(850), ToEmString(-10)),
-			Bottom = Format("%s%s", ToPercentString(850), ToEmString(+10)),
+			Left = Format("%s%s", ToPercentString(150), ToEmString(-20)),
+			Right =  ToPercentString(150),
+			Top = Format("%s%s", ToPercentString(800), ToEmString(-10)),
+			Bottom = Format("%s%s", ToPercentString(800), ToEmString(+10)),
 		},
 	};
 	
