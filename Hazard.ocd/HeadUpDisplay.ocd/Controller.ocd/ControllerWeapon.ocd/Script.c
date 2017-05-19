@@ -101,13 +101,15 @@ public func OnHazardWeaponAmmoChange(object clonk)
 
 private func AssembleHazardWeapon()
 {
+
 	var menu = {
 		Target = this,
 		Player = NO_OWNER, // will be shown once a gui update occurs
-		Style = GUI_Multiple | GUI_NoCrop | GUI_IgnoreMouse,
+		Style = GUI_Multiple | GUI_IgnoreMouse,
+		BackgroundColor = RGBa(0, 255, 200, 90),
 	};
 	
-	return menu;
+	return AddProperties(menu, this->GuiPositionHazardInfoField());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
