@@ -1,3 +1,4 @@
+
 /**
 	Shows information about the current weapon.
 
@@ -107,6 +108,54 @@ private func AssembleHazardWeapon()
 		Player = NO_OWNER, // will be shown once a gui update occurs
 		Style = GUI_Multiple | GUI_IgnoreMouse,
 		BackgroundColor = RGBa(0, 255, 200, 90),
+		
+		bar = { // sub-window that contains the ammo-bar
+			Priority = 10,
+			Left = ToPercentString(100),
+			Right =  ToPercentString(600),
+			Top = ToPercentString(800),
+			Bottom = ToPercentString(900),
+			BackgroundColor = RGBa(150, 150, 150, 150),
+			
+			full = {
+				Priority = 11,
+			},
+			ammo = {
+				Priority = 12,
+			},
+			recharge = {
+				Priority = 13,
+			},
+			reload = {
+				Priority = 14,
+			},
+		},
+		
+		mode = {
+			Priority = 11,
+			Left = ToPercentString(100),
+			Right = ToPercentString(600),
+			Top = Format("%s%s", ToPercentString(800), ToEmString(-12)),
+			Bottom = ToPercentString(800),
+			Style = GUI_TextHCenter | GUI_TextVCenter,
+		},
+		
+		count = {
+			Priority = 12,
+			Left = Format("%s%s", ToPercentString(600), ToEmString(10)),
+			Right = Format("%s%s", ToPercentString(600), ToEmString(10)),
+			Top = ToPercentString(750),
+			Bottom = ToPercentString(900),
+			Style = GUI_NoCrop | GUI_TextVCenter,
+		},
+		
+		icon = {
+			Priority = 20,
+			Left = Format("%s%s", ToPercentString(100), ToEmString(-20)),
+			Right =  ToPercentString(100),
+			Top = Format("%s%s", ToPercentString(850), ToEmString(-10)),
+			Bottom = Format("%s%s", ToPercentString(850), ToEmString(+10)),
+		},
 	};
 	
 	return AddProperties(menu, this->GuiPositionHazardInfoField());
@@ -142,10 +191,104 @@ private func UpdateHazardWeapon()
 		if (weapon && weapon->~IsHazardWeapon())
 		{
 			// do nothing for now
+			UpdateHazardWeaponDisplay(cursor, weapon);
 		}
 		else
 		{
 			GuiHideMenu(gui_hazard_weapon);
 		}
 	}
+}
+
+
+private func UpdateHazardWeaponDisplay(object cursor, object weapon)
+{
+	var ammoid = weapon->GetFiremode().ammo_id;
+	var ammoload = weapon->GetFiremode().ammo_load;
+	var modusname = weapon->GetFiremode().name;
+	var ammocount = weapon->GetAmmo(ammoid);
+
+	var infinite = (weapon->GetAmmoSource(ammoid) == AMMO_Source_Infinite);
+/*		
+		var ammodiff = 0;
+		if (current_weapon == weapon && current_ammo_id == ammoid)
+		{
+			ammodiff = ammocount - current_ammo_count;
+		}
+		
+		// set status information
+		if (weapon->IsRecovering())
+		{
+			progress_recovery = BoundBy(weapon->GetRecoveryProgress(), 0, 100);
+		}
+		else
+		{
+			progress_recovery = 0;
+		}
+
+		if (weapon->IsReloading())
+		{
+			progress_reload = BoundBy(weapon->GetReloadProgress(), 0, 100);
+		}
+		else
+		{
+			if (infinite)
+			{
+				progress_reload = 100;
+			}
+			else
+			{
+				progress_reload = BoundBy(ammocount * 100 / ammoload, 0, 100);
+			}
+		}
+		
+		// draw the stuff
+
+		//SetCurrentWeapon(weapon);
+
+		current_ammo_count = ammocount;
+		if (ammodiff) AddEffect("AmmoUpdateNotification", icon_status, 300, 1, this, nil, ammodiff, 750);
+*/	
+
+
+		// message for displayed ammo amount
+		var color;
+		if (ammocount || infinite)
+		{
+			color = "ffff00";
+		}
+		else
+		{
+			color = "ff0000";
+		}
+
+
+		var count;
+		if (infinite)
+		{
+			//->Message("");
+			//icon_status->SetGraphics("Inf", Icon_Number, HUD_Layer_AmmoAmount, GFXOV_MODE_Base);
+			//icon_status->SetObjDrawTransform(400, 0, 132 * 1000, 0, 400, -1000, HUD_Layer_AmmoAmount);
+		}
+		else
+		{
+			count = Format("<c %s>%d/%d</c>", color, ammocount, ammoload);
+		}
+/*	
+		// ammo bar
+		if (!SetGraphics(Format("Row%i", ammoid), GetID(), HUD_Layer_AmmoBase, GFXOV_MODE_Base))
+		{
+			SetGraphics("Row", GetID(), HUD_Layer_AmmoBase, GFXOV_MODE_Base);
+		}
+*/
+
+		// Compose the update!
+		var update =
+		{
+			mode = {Text = modusname},
+			count = {Text = count},
+			icon = {Symbol = ammoid},
+		};
+	
+		GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
 }
