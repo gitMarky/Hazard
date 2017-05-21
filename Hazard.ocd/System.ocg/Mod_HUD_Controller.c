@@ -9,11 +9,12 @@ public func GetGUIControllerID()
 
 private func GuiPositionHazardInfoField()
 {
+	var offset_old_hud = -200;
 	var margin = ToEmString(5);
 	var margin_bottom = ToEmString(-5);
 	var width = ToPercentString(400);
 	var height = ToPercentString(-200);
-	var bottom = ToPercentString(1000);
+	var bottom = ToPercentString(1000 + offset_old_hud);
 
 	return {
 		Left = Format("%s", margin), Right = Format("%s%s", margin, width),

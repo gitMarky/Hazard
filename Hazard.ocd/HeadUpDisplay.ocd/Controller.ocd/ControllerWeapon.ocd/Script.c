@@ -115,19 +115,18 @@ private func AssembleHazardWeapon()
 			Right =  ToPercentString(650),
 			Top = ToPercentString(750),
 			Bottom = ToPercentString(850),
-			BackgroundColor = RGBa(150, 150, 150, 150),
 			
 			full = {
 				Priority = 11,
+				BackgroundColor = RGBa(150, 150, 150, 150),
 			},
 			ammo = {
 				Priority = 12,
+				BackgroundColor = RGBa(255, 255, 0, 150),
 			},
 			recharge = {
 				Priority = 13,
-			},
-			reload = {
-				Priority = 14,
+				BackgroundColor = RGBa(230, 0, 0, 200),
 			},
 		},
 		
@@ -171,12 +170,26 @@ private func ScheduleUpdateHazardWeapon()
 		AddEffect("UpdateHazardWeapon", this, 1, 1, this);
 }
 
-
 private func FxUpdateHazardWeaponTimer()
 {
 	UpdateHazardWeapon();
 	return FX_Execute_Kill;
 }
+
+
+private func ScheduleUpdateHazardWeaponBar(object cursor, object weapon)
+{
+	var fx = GetEffect("UpdateHazardWeaponBar", this) ?? AddEffect("UpdateHazardWeaponBar", this, 1, 1, this); 
+	fx.cursor = cursor;
+	fx.weapon = weapon;
+}
+
+
+private func CancelUpdateHazardWeaponBar()
+{
+	RemoveEffect("UpdateHazardWeaponBar", this); 
+}
+
 
 
 // Update everything
@@ -192,10 +205,12 @@ private func UpdateHazardWeapon()
 		{
 			// do nothing for now
 			UpdateHazardWeaponDisplay(cursor, weapon);
+			ScheduleUpdateHazardWeaponBar(cursor, weapon);
 		}
 		else
 		{
 			GuiHideMenu(gui_hazard_weapon);
+			CancelUpdateHazardWeaponBar();
 		}
 	}
 }
@@ -209,6 +224,8 @@ private func UpdateHazardWeaponDisplay(object cursor, object weapon)
 	var ammocount = weapon->GetAmmo(ammoid);
 
 	var infinite = (weapon->GetAmmoSource(ammoid) == AMMO_Source_Infinite);
+
+
 /*		
 		var ammodiff = 0;
 		if (current_weapon == weapon && current_ammo_id == ammoid)
@@ -226,25 +243,8 @@ private func UpdateHazardWeaponDisplay(object cursor, object weapon)
 			progress_recovery = 0;
 		}
 
-		if (weapon->IsReloading())
-		{
-			progress_reload = BoundBy(weapon->GetReloadProgress(), 0, 100);
-		}
-		else
-		{
-			if (infinite)
-			{
-				progress_reload = 100;
-			}
-			else
-			{
-				progress_reload = BoundBy(ammocount * 100 / ammoload, 0, 100);
-			}
-		}
 		
 		// draw the stuff
-
-		//SetCurrentWeapon(weapon);
 
 		current_ammo_count = ammocount;
 		if (ammodiff) AddEffect("AmmoUpdateNotification", icon_status, 300, 1, this, nil, ammodiff, 750);
@@ -281,11 +281,86 @@ private func UpdateHazardWeaponDisplay(object cursor, object weapon)
 			mode = {Text = modusname},
 			bar = {
 				full = {Symbol = Hazard_HUD},
-				ammo = {Symbol = Hazard_HUD, GraphicsName = Format("Row%i", ammoid), Right = ToPercentString(BoundBy(ammocount * 1000 / ammoload, 0, 1000))},
+				ammo = {Symbol = Hazard_HUD, GraphicsName = Format("Row%i", ammoid)},
 			},
 			count = {Text = count},
 			icon = {Symbol = ammoid},
 		};
 	
 		GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
+}
+
+
+private func FxUpdateHazardWeaponBarTimer(object target, proplist fx, int timer)
+{
+	if (fx.weapon)
+	{
+		var ammoid = fx.weapon->GetFiremode().ammo_id;
+		var ammoload = fx.weapon->GetFiremode().ammo_load;
+		var ammocount = fx.weapon->GetAmmo(ammoid);
+		var infinite = (fx.weapon->GetAmmoSource(ammoid) == AMMO_Source_Infinite);
+
+		// reload
+		var progress_reload;
+		if (fx.weapon->~IsReloading())
+		{
+			progress_reload = 10 * fx.weapon->GetReloadProgress();
+		}
+		else
+		{
+			if (infinite)
+				progress_reload = 1000;
+			else
+				progress_reload = ammocount * 1000 / ammoload;
+		}
+		DrawHazardWeaponAmmoBar(progress_reload);
+		
+		// recovery
+		var progress_recovery;
+		if (fx.weapon->~IsRecovering())
+		{
+			progress_recovery = BoundBy(fx.weapon->GetRecoveryProgress(), 0, 100) * 10;
+		}
+		else
+		{
+			progress_recovery = 1000;
+		}
+		DrawHazardWeaponRecoveryBar(progress_recovery);
+
+		return FX_OK;
+	}
+	else
+	{
+		return FX_Execute_Kill;
+	}
+}
+
+
+private func DrawHazardWeaponAmmoBar(int progress)
+{
+	// Compose the update!
+	var update =
+	{
+		bar = {
+			ammo = { Right = ToPercentString(BoundBy(progress, 0, 1000))},
+		},
+	};
+
+	GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
+}
+
+
+private func DrawHazardWeaponRecoveryBar(int progress)
+{
+	// Compose the update!
+	var width = 20;
+	var update =
+	{
+
+		bar = {
+			recharge = { Left = ToPercentString(BoundBy(progress - width, 0, 1000)),  Right = ToPercentString(BoundBy(progress, 0, 1000))},
+		},
+	};
+
+	GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
 }
