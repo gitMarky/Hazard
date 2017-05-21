@@ -274,18 +274,15 @@ private func UpdateHazardWeaponDisplay(object cursor, object weapon)
 		{
 			count = Format("<c %s>%d/%d</c>", color, ammocount, ammoload);
 		}
-/*	
-		// ammo bar
-		if (!SetGraphics(Format("Row%i", ammoid), GetID(), HUD_Layer_AmmoBase, GFXOV_MODE_Base))
-		{
-			SetGraphics("Row", GetID(), HUD_Layer_AmmoBase, GFXOV_MODE_Base);
-		}
-*/
 
 		// Compose the update!
 		var update =
 		{
 			mode = {Text = modusname},
+			bar = {
+				full = {Symbol = Hazard_HUD},
+				ammo = {Symbol = Hazard_HUD, GraphicsName = Format("Row%i", ammoid), Right = ToPercentString(BoundBy(ammocount * 1000 / ammoload, 0, 1000))},
+			},
 			count = {Text = count},
 			icon = {Symbol = ammoid},
 		};
