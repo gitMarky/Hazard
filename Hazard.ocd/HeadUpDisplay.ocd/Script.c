@@ -1,12 +1,9 @@
 local Name = "HUD";
 
-local 	ammo_icons,			// array of Hazard_HUD2-objects that show the crew member's ammo.
-	    icon_status,		// Hazard_HUD2 helper object that shows the ammo count for weapons.
+local 	icon_status,		// Hazard_HUD2 helper object that shows the ammo count for weapons.
 		icon_info;       	// Hazard_HUD2 helper object that shows the description of items that are not weapons.
 
-local 	ammo_types,			// all definitions that are ammo
-		ammo_values,        // fill levels of all ammo types of the crew member
-      	progress_reload,	// progress of reloading (0 - 100)
+local 	progress_reload,	// progress of reloading (0 - 100)
       	progress_recovery,	// progress of recovery (0 - 100)
 		current_weapon,	    // current weapon
 		current_ammo_id,    // current ammo ID
@@ -47,9 +44,6 @@ global func GetHazardHUD(id theID)
 
 func Initialize()
 {
-	ammo_types = [];
-	ammo_values = [];
-	
 	// Main Hud (Ammo progress bar)
 	var yoffset = -55;
 	SetPosition(105, yoffset);
@@ -70,9 +64,6 @@ func Initialize()
 	// Item Hud
 	icon_info = CreateObject(Hazard_HUD2, 0, 0, GetOwner());
 	icon_info->SetPosition(140, yoffset + 30);
-	
-	// Ammobag
-	InitAmmoDisplayHUD();
 }
 
 func Destruction()
@@ -82,44 +73,6 @@ func Destruction()
 
 	if (icon_info)
 		icon_info->RemoveObject();
-
-	for (var obj in ammo_icons)
-	{
-		if (obj)
-			obj->RemoveObject();
-	}
-}
-
-func InitAmmoDisplayHUD()
-{
-	// remove ammobag display
-	var def = 0;
-	ammo_types = [];
-	ammo_values = [];
-	var arrI = 0;
-
-	// get all ammo
-	for (var i = 0; def = GetDefinition(i, C4D_StaticBack); ++i)
-	{
-		if (def->~IsAmmo())
-		{
-			ammo_types[arrI] = def;
-			ammo_values[arrI] = 0;
-			arrI++;
-		}
-	}
-	ammo_icons = [];
-	
-	// place all ammo objects
-	for (var i = 0; i < GetLength(ammo_types); ++i)
-	{
-		// ...now
-		ammo_icons[i] = CreateObject(Hazard_HUD2, 0, 0, GetOwner());
-		ammo_icons[i]->SetPosition(50, 200 + i * 32);
-		ammo_icons[i]->SetGraphics(nil, ammo_types[i], 1, GFXOV_MODE_IngamePicture);
-		ammo_icons[i]->SetObjDrawTransform(750, 0, 0, 0, 750, 0, 0, 1);
-		ammo_icons[i].visibility = VIS_None;
-	}
 }
 
 /* Timer */
@@ -143,10 +96,10 @@ func Update(object weapon, object ammobag, object who)
 	{
 		if (GetCursor(who->GetOwner()) == who)
 		{
+			var clonk = GetCursor();
+			current_crew = clonk;
+		
 			UpdateWeapon(weapon);
-			
-			if (ammobag)
-				UpdateAmmoDisplay(ammobag, weapon);
 		}
 	}
 }
@@ -173,7 +126,7 @@ func UpdateWeapon(object weapon)
 		}
 		else
 		{
-			icon_info.Visibility = VIS_Owner;
+			icon_info.Visibility = VIS_None;
 			CustomMessage
 			(
 				Format("@<c ffff00>%s</c>|%s", weapon->GetName(), weapon.Description),
@@ -342,65 +295,8 @@ func UpdateRecoveryProgress()
 
 // update current ammo display
 func UpdateAmmoDisplay(object ammobag, object weapon)
-{
-	var ammoid = nil;
-	if (weapon && weapon->~IsHazardWeapon())
-		ammoid = weapon->GetFiremode().ammo_id;
-	
-	var clonk = GetCursor();
+{	
 
-	for (var i = 0; i < GetLength(ammo_icons); ++i)
-	{
-		var icon = ammo_icons[i];
-		
-		// invisible if there is no ammo
-		if (!ammobag)
-		{
-			icon.Visibility = VIS_None;
-			icon->Message("");
-			continue;
-		}
-
-		// show ammo
-		icon.Visibility = VIS_Owner;
-		
-		var amount = 0;
-		if (ammobag)
-			amount = ammobag->GetAmmo(ammo_types[i]);
-	
-		var infinite = (ammobag->GetAmmoSource(ammo_types[i]) == AMMO_Source_Infinite);
-
-		var ammodiff = 0;
-		if (clonk == current_crew)
-		{
-			ammodiff = amount - ammo_values[i];
-		}
-		ammo_values[i] = amount;
-		if (ammodiff) AddEffect("AmmoUpdateNotification", icon, 300, 1, this, nil, ammodiff, 750);
-		
-		var color = "eeeeee";
-		if (!amount) color = "777777";
-		if (ammo_types[i] == ammoid)
-		{
-			color = "ffff00";
-			if (!amount) color = "ff0000";
-		}
-		
-		var overlay_infinity = 2;
-		if (infinite)
-		{
-			icon->SetGraphics("Inf", Icon_Number, overlay_infinity, GFXOV_MODE_Base);
-			icon->SetObjDrawTransform(375, 0, 28000, 0, 375, 0, overlay_infinity);
-			icon->SetClrModulation(0xffeeeeee, overlay_infinity);
-		}
-		else
-		{
-			icon->CustomMessage(Format("@<c %s>%d</c>", color, amount), icon, GetOwner(), 25, 31);
-			icon->SetGraphics(nil, icon->GetID(), overlay_infinity, GFXOV_MODE_Base);
-		}
-	}
-	
-	current_crew = clonk;
 }
 
 

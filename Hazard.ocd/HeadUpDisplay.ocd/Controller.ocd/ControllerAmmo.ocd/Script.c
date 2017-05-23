@@ -204,8 +204,8 @@ private func AmmoCounterGridLayout(int max_counters)
 	                        + GUI_Controller_CrewBar_CursorSize
 	                    + 2 * GUI_Controller_CrewBar_BarMargin
 	                        + GUI_Controller_CrewBar_BarSize;
-	                        
-	var grid_margin_left = 5 + 30; // the additional margin is added until the old hud can be removed
+
+	var grid_margin_left = 5;
 
 	var icon_size = 12;
 	return
