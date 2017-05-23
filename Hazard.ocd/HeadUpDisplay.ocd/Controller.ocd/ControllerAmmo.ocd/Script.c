@@ -270,7 +270,7 @@ private func UpdateHazardAmmoCounter(object cursor, object weapon, proplist coun
 	if (weapon && weapon->~IsHazardWeapon() && weapon->GetFiremode().ammo_id == counter_info.Type)
 	{
 		if (amount > 0)
-			color = "ffff00";
+			color = GUI_COLOR_TEXT;
 		else
 			color = "ff0000";
 	}
