@@ -14,6 +14,7 @@ local gui_hazard_weapon;
 private func Construction()
 {
 	gui_hazard_weapon = {};
+
 	gui_hazard_weapon.Menu = AssembleHazardWeapon();
 	gui_hazard_weapon.ID = GuiOpen(gui_hazard_weapon.Menu);
 
@@ -154,6 +155,7 @@ private func AssembleHazardWeapon()
 			Right =  ToPercentString(150),
 			Top = Format("%s%s", ToPercentString(800), ToEmString(-10)),
 			Bottom = Format("%s%s", ToPercentString(800), ToEmString(+10)),
+			tile = {},
 		},
 	};
 	
@@ -179,8 +181,15 @@ private func FxUpdateHazardWeaponTimer()
 
 private func ScheduleUpdateHazardWeaponBar(object cursor, object weapon)
 {
+	var ammoid = weapon->GetFiremode().ammo_id;
+	var ammocount = weapon->GetAmmo(ammoid);
+
 	var fx = GetEffect("UpdateHazardWeaponBar", this) ?? AddEffect("UpdateHazardWeaponBar", this, 1, 1, this); 
 	fx.cursor = cursor;
+	if (fx.weapon != weapon)
+	{
+		fx.ammocount = ammocount;
+	}
 	fx.weapon = weapon;
 }
 
@@ -225,69 +234,43 @@ private func UpdateHazardWeaponDisplay(object cursor, object weapon)
 
 	var infinite = (weapon->GetAmmoSource(ammoid) == AMMO_Source_Infinite);
 
-
-/*		
-		var ammodiff = 0;
-		if (current_weapon == weapon && current_ammo_id == ammoid)
-		{
-			ammodiff = ammocount - current_ammo_count;
-		}
-		
-		// set status information
-		if (weapon->IsRecovering())
-		{
-			progress_recovery = BoundBy(weapon->GetRecoveryProgress(), 0, 100);
-		}
-		else
-		{
-			progress_recovery = 0;
-		}
-
-		
-		// draw the stuff
-
-		current_ammo_count = ammocount;
-		if (ammodiff) AddEffect("AmmoUpdateNotification", icon_status, 300, 1, this, nil, ammodiff, 750);
-*/	
+	// message for displayed ammo amount
+	var color;
+	if (ammocount || infinite)
+	{
+		color = "ffff00";
+	}
+	else
+	{
+		color = "ff0000";
+	}
 
 
-		// message for displayed ammo amount
-		var color;
-		if (ammocount || infinite)
-		{
-			color = "ffff00";
-		}
-		else
-		{
-			color = "ff0000";
-		}
-
-
-		var count;
-		if (infinite)
-		{
-			//->Message("");
-			//icon_status->SetGraphics("Inf", Icon_Number, HUD_Layer_AmmoAmount, GFXOV_MODE_Base);
-			//icon_status->SetObjDrawTransform(400, 0, 132 * 1000, 0, 400, -1000, HUD_Layer_AmmoAmount);
-		}
-		else
-		{
-			count = Format("<c %s>%d/%d</c>", color, ammocount, ammoload);
-		}
-
-		// Compose the update!
-		var update =
-		{
-			mode = {Text = modusname},
-			bar = {
-				full = {Symbol = Hazard_HUD},
-				ammo = {Symbol = Hazard_HUD, GraphicsName = Format("Row%i", ammoid)},
-			},
-			count = {Text = count},
-			icon = {Symbol = ammoid},
-		};
+	var count;
+	if (infinite)
+	{
+		//->Message("");
+		//icon_status->SetGraphics("Inf", Icon_Number, HUD_Layer_AmmoAmount, GFXOV_MODE_Base);
+		//icon_status->SetObjDrawTransform(400, 0, 132 * 1000, 0, 400, -1000, HUD_Layer_AmmoAmount);
+	}
+	else
+	{
+		count = Format("<c %s>%d/%d</c>", color, ammocount, ammoload);
+	}
 	
-		GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
+	// Compose the update!
+	var update =
+	{
+		mode = {Text = modusname},
+		bar = {
+			full = {Symbol = Hazard_HUD},
+			ammo = {Symbol = Hazard_HUD, GraphicsName = Format("Row%i", ammoid)},
+		},
+		count = {Text = count},
+		icon = { tile = {Symbol = ammoid}},
+	};
+
+	GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
 }
 
 
@@ -299,6 +282,14 @@ private func FxUpdateHazardWeaponBarTimer(object target, proplist fx, int timer)
 		var ammoload = fx.weapon->GetFiremode().ammo_load;
 		var ammocount = fx.weapon->GetAmmo(ammoid);
 		var infinite = (fx.weapon->GetAmmoSource(ammoid) == AMMO_Source_Infinite);
+
+		// flash the ammo symbol
+		var ammodiff = ammocount - fx.ammocount;	
+		if (ammodiff)
+		{
+			fx.ammocount = ammocount;
+			AddEffect("AmmoUpdateNotification", this, 300, 1, this, nil, ammodiff, 750);
+		}
 
 		// reload
 		var progress_reload;
@@ -356,11 +347,61 @@ private func DrawHazardWeaponRecoveryBar(int progress)
 	var width = 20;
 	var update =
 	{
-
 		bar = {
 			recharge = { Left = ToPercentString(BoundBy(progress - width, 0, 1000)),  Right = ToPercentString(BoundBy(progress, 0, 1000))},
 		},
 	};
 
 	GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
+}
+
+/* Changed ammo count effect - the ammo icon bounces a little whenever ammo is increased or decreased */
+func FxAmmoUpdateNotificationStart(object target, proplist fx, int temp, int ammodiff, int size)
+{
+	if (temp) return;
+	
+	fx.diff = 3 * size * ammodiff / Abs(ammodiff) / 4 + size / 4;
+	fx.size = size;
+}
+
+
+func FxAmmoUpdateNotificationAdd(object target, proplist fx, string name, int timer, int ammodiff, int size)
+{
+	fx.diff = 3 * size * ammodiff / Abs(ammodiff) / 4 + size / 4;
+}
+
+
+func FxAmmoUpdateNotificationEffect(string name, object target, proplist fx, int newNumber)
+{
+	if (name == "AmmoUpdateNotification")
+		return -2;
+}
+
+
+func FxAmmoUpdateNotificationTimer(object target, proplist fx, int timer)
+{
+	fx.diff = BoundBy(fx.diff, -fx.size, 1000 - fx.size);
+	var size = BoundBy(fx.size + fx.diff, 400, 1000);
+	
+	var layout = {
+		Prototype = GUI_BoxLayout,
+		Align = {X = GUI_AlignCenter, Y = GUI_AlignCenter},
+		Width = size, Height = size,
+	};
+	var pos = GuiCalculateBoxElementPosition(layout);
+	
+	var update =
+	{
+		icon = {tile = pos,},
+	};
+
+	GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
+	
+	if (!fx.diff)
+	{
+		return FX_Execute_Kill;
+	}
+	
+	var sqrtDiff = fx.diff / Abs(fx.diff) * Sqrt(Abs(fx.diff));
+	fx.diff -= sqrtDiff;
 }
