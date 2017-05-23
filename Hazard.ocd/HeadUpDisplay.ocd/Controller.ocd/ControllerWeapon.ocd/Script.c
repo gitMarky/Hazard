@@ -288,7 +288,7 @@ private func FxUpdateHazardWeaponBarTimer(object target, proplist fx, int timer)
 		if (ammodiff)
 		{
 			fx.ammocount = ammocount;
-			AddEffect("AmmoUpdateNotification", this, 300, 1, this, nil, ammodiff, 750);
+			AmmoUpdateNotification(ammodiff, 750);
 		}
 
 		// reload
@@ -355,53 +355,13 @@ private func DrawHazardWeaponRecoveryBar(int progress)
 	GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
 }
 
-/* Changed ammo count effect - the ammo icon bounces a little whenever ammo is increased or decreased */
-func FxAmmoUpdateNotificationStart(object target, proplist fx, int temp, int ammodiff, int size)
+
+private func OnAmmoUpdateNotification(proplist position, proplist info)
 {
-	if (temp) return;
-	
-	fx.diff = 3 * size * ammodiff / Abs(ammodiff) / 4 + size / 4;
-	fx.size = size;
-}
-
-
-func FxAmmoUpdateNotificationAdd(object target, proplist fx, string name, int timer, int ammodiff, int size)
-{
-	fx.diff = 3 * size * ammodiff / Abs(ammodiff) / 4 + size / 4;
-}
-
-
-func FxAmmoUpdateNotificationEffect(string name, object target, proplist fx, int newNumber)
-{
-	if (name == "AmmoUpdateNotification")
-		return -2;
-}
-
-
-func FxAmmoUpdateNotificationTimer(object target, proplist fx, int timer)
-{
-	fx.diff = BoundBy(fx.diff, -fx.size, 1000 - fx.size);
-	var size = BoundBy(fx.size + fx.diff, 400, 1000);
-	
-	var layout = {
-		Prototype = GUI_BoxLayout,
-		Align = {X = GUI_AlignCenter, Y = GUI_AlignCenter},
-		Width = size, Height = size,
-	};
-	var pos = GuiCalculateBoxElementPosition(layout);
-	
 	var update =
 	{
-		icon = {tile = pos,},
+		icon = {tile = position,},
 	};
 
 	GuiUpdate(update, gui_hazard_weapon.ID, nil, this);
-	
-	if (!fx.diff)
-	{
-		return FX_Execute_Kill;
-	}
-	
-	var sqrtDiff = fx.diff / Abs(fx.diff) * Sqrt(Abs(fx.diff));
-	fx.diff -= sqrtDiff;
 }

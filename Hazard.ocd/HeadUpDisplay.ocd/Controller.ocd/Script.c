@@ -6,7 +6,7 @@
 #include GUI_Controller_Goal
 #include GUI_Controller_Wealth
 #include GUI_Controller_HazardAmmo
-#include GUI_Controller_HazardItem
-#include GUI_Controller_HazardWeapon
+//#include GUI_Controller_HazardItem
+//#include GUI_Controller_HazardWeapon
 // Include the basic functionality of the HUD
 #include Library_HUDController

@@ -144,9 +144,17 @@ private func CreateHazardAmmoCounter(int max_counters, id ammo_type)
 		ID = counter_number + 1,
 		Type = ammo_type,
 		Amount = 0,
+		Crew = nil,
+		Dummy = CreateContents(Dummy),
 	};
 	PushBack(gui_hazard_ammo.counters, counter_info);
 
+	// redirect the call back through a dummy, so that we have
+	// a) a separate effect for every ammo symbol
+	// b) access to this gui in the callback
+	counter_info.Dummy.OnAmmoUpdateNotification = this.DelegateUpdateNotification;
+	counter_info.Dummy.Delegate = this;
+	
 	var counter = AssembleHazardAmmoCounter(max_counters, counter_number, counter_info);
 
 	GuiUpdate({_new_icon = counter}, gui_hazard_ammo.ID);
@@ -163,7 +171,6 @@ private func AssembleHazardAmmoCounter(int max_counters, int counter_number, pro
 		Target = this,
 		Style = GUI_NoCrop,
 		ID = counter_info.ID,
-		Symbol = counter_info.Type,
 		Style = GUI_NoCrop,
 		Count = {
 			Target = this,
@@ -172,7 +179,20 @@ private func AssembleHazardAmmoCounter(int max_counters, int counter_number, pro
 			Text = "",
 			Style = GUI_TextRight | GUI_TextVCenter,
 		},
+		Icon = {	
+			Symbol = counter_info.Type,
+			Style = GUI_NoCrop,
+		},
 	};
+	
+	var size = 1000;
+	var layout = {
+		Prototype = GUI_BoxLayout,
+		Align = {X = GUI_AlignCenter, Y = GUI_AlignCenter},
+		Width = size, Height = size,
+	};
+	
+	AddProperties(counter.Icon, GuiCalculateBoxElementPosition(layout));
 	
 	return AddProperties(counter, pos);
 }
@@ -261,13 +281,42 @@ private func UpdateHazardAmmoCounter(object cursor, object weapon, proplist coun
 		else
 			color = "777777";
 	}
+	
+	// Check for symbol update
+	
+	var ammodiff = 0;
+	if (cursor == counter_info.Crew)
+	{
+		ammodiff = amount - counter_info.Amount;
+	}
+	counter_info.Amount = amount;
+	counter_info.Crew = cursor;
+
+	if (ammodiff) AmmoUpdateNotification(ammodiff, 1000, counter_info);
 
 	// Compose the update!
 	var update =
 	{
-		Symbol = counter_info.Type,
 		Count = {Text = Format("<c %s>%d</c>", color, amount)},
 	};
 
 	GuiUpdate(update, gui_hazard_ammo.ID, counter_info.ID, this);
+}
+
+
+private func OnAmmoUpdateNotification(proplist position, proplist counter_info)
+{
+	// Compose the update!
+	var update =
+	{
+		Icon = position,
+	};
+
+	GuiUpdate(update, gui_hazard_ammo.ID, counter_info.ID, this);
+}
+
+
+private func DelegateUpdateNotification(proplist position, proplist counter_info)
+{
+	this.Delegate->~OnUpdateAmmoUpdateNotification(position, counter_info);
 }
