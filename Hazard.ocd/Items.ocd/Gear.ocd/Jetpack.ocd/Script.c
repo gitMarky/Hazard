@@ -27,7 +27,6 @@ func GearEffect(object user)
 {
 	jetpack_user = user;
 	//Places a backpack onto the clonk
-	//jetpack_graphics = jetpack_user->AttachMesh(this, "skeleton_body", "main", Trans_Mul(Trans_Rotate(180, 1, 0, 0), Trans_Scale(700, 600, 700), Trans_Translate(4000, -1000, 0)));
 	jetpack_graphics = jetpack_user->AttachMesh(this, "skeleton_body", "main", Trans_Mul(Trans_Rotate(180, 1, 0, 0), Trans_Scale(800, 600, 800), Trans_Translate(4000, -1000, 0)));
 }
 
