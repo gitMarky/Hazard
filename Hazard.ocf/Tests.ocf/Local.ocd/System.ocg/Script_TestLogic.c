@@ -19,6 +19,9 @@ global func LaunchTest(int nr)
 		test = AddEffect("IntTestControl", nil, 100, 1);
 		test.player = GetPlayerByIndex(0, C4PT_User);
 		test.global_result = true;
+		test.count_total = 0;
+		test.count_failed = 0;
+		test.count_skipped = 0;
 	}
 
 	test.testnr = nr;
@@ -38,6 +41,7 @@ global func SkipTest()
 		// test.launched to false, effect will handle the rest.
 		test.testnr++;
 		test.launched = false;
+		test.count_skipped++;
 	}
 }
 
@@ -66,10 +70,23 @@ global func FxIntTestControlTimer(object target, proplist test)
 		{
 			Log("Test %d not available, the previous test was the last test.", test.testnr);
 			Log("=====================================");
-			Log("All tests have been successfully completed!");
+			Log("All tests have been completed!");
+			Log("* %d tests total", test.count_total);
+			Log("%d tests failed", test.count_failed);
+			Log("%d tests skipped", test.count_skipped);
+			Log("=====================================");
+			if (test.count_skipped == 0 && test.count_failed == 0 && test.count_total > 0)
+			{
+				Log("All tests passed!");
+			}
+			else
+			{
+				Log("At least one test failed or was skipped!");
+			}
 			return FX_Execute_Kill;
 		}
 		test.launched = true;
+		test.count_total++;
 	}
 	
 	// waiting
@@ -85,9 +102,14 @@ global func FxIntTestControlTimer(object target, proplist test)
 		test.launched = false;
 		
 		if (test.current_result)
+		{
 			Log(">> Test %d passed.", test.testnr);
+		}
 		else
+		{
 			Log(">> Test %d failed.", test.testnr);
+			test.count_failed++;
+		}
 		
 		// Update global result
 		test.global_result &= test.current_result;
