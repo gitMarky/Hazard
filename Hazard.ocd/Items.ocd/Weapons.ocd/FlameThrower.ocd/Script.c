@@ -168,6 +168,7 @@ public func OnStartCooldown(object user, proplist firemode)
 {
 		Sound("Weapon::FlameThrower::Flamer", nil, nil, nil, -1);
 		Sound("Weapon::FlameThrower::BioFlamer", nil, nil, nil, -1);
+		_inherited(user, firemode);	
 }
 
 func OnReload()

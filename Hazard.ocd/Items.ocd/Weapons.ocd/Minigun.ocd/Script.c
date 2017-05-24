@@ -151,11 +151,13 @@ public func FireSound(object user, proplist firemode)
 public func OnStartCooldown(object user, proplist firemode)
 {
 	Sound("Weapon::Minigun::MiniGun", nil, nil, nil, -1);
+	_inherited(user, firemode);
 }
 
 public func OnFinishCooldown(object user, proplist firemode)
 {
 	Sound("Weapon::Minigun::MiniTurn", nil, nil, nil, -1);
+	_inherited(user, firemode);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
