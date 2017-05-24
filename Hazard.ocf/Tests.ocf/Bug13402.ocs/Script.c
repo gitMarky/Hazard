@@ -51,6 +51,16 @@ global func Test1_Departure(object container)
 	_inherited(container);
 }
 
+global func Test1_OnStartCooldown(object user, proplist firemode)
+{
+	Log("On start cooldown - weapon has cooldown, should finish the sound");
+	_inherited(user, firemode);
+
+	if (!CurrentTest().Weapon->Contained())
+	{
+		PassTest();
+	}		
+}
 
 global func Test1_OnStart(int player)
 {
@@ -60,6 +70,7 @@ global func Test1_OnStart(int player)
 	CurrentTest().Weapon.GetAmmoSource = Global.GetInfiniteAmmoSource;
 	CurrentTest().Weapon.OnRecovery = Global.Test1_OnRecovery; // Override the recovery function
 	CurrentTest().Weapon.Departure = Global.Test1_Departure;
+	CurrentTest().Weapon.OnStartCooldown = Global.Test1_OnStartCooldown; // Override the cooldown, so that the test passes if the weapon cools down
 
 	return true;
 }
@@ -75,8 +86,7 @@ global func Test1_Execute()
 	{
 		if (CurrentTest().BotDied)
 		{
-			Log("Bot died");
-			return PassTest();
+			return true;
 		}
 		else
 		{
