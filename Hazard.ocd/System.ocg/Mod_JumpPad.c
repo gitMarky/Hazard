@@ -7,7 +7,8 @@ func IsMachine()
 	return true;
 }
 
-func OnBounced(object target)
+
+func OnBounce(object target)
 {
 	target->Sound("Structural::Jumppad");
 }
@@ -18,11 +19,13 @@ func EMPShock()
 	EMPShockEffect(38 * 3);
 }
 
+
 func EMPShockStart()
 {
 	emp_state = is_active;
 	Deactivate();
 }
+
 
 func EMPShockEnd()
 {
