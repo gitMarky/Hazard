@@ -34,9 +34,17 @@ func IsMachine()
 
 func EMPShock()
 {
-	move = 0;
-	SetAction("Falling");
-	EMPShockEffect(EMP_SHOCK_FOREVER);
+	if (EMPShocked())
+	{
+		return false;
+	}
+	else
+	{
+		move = 0;
+		SetAction("Falling");
+		EMPShockEffect(EMP_SHOCK_FOREVER);
+		return true;
+	}
 }
 
 func Initialize()
