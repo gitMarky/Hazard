@@ -18,7 +18,7 @@ func Initialize()
 		LightL = nil,
 		LightR = nil,
 		Limited = false,
-		WaitY = nil,
+		WaitX = nil,
 		WaitY = nil,
 	};
 
@@ -355,7 +355,7 @@ func MoveTo(int x, int y)
 
 	if (Vertical())
 	{
-		liftplate.WaitY = BoundBy(y, liftplate.LowerBound, liftplate.UpperBound - 10);
+		liftplate.WaitY = BoundBy(y, liftplate.UpperBound - 10, liftplate.LowerBound); // lower bound has a higher value of course
 		SetAction("SpeedToY");
 	}
 	else if (Horizontal())
@@ -385,11 +385,14 @@ func CheckVerticalBoundaries()  // PhaseCall of Travel
 
 func SpeedToY()	// StartCall of SpeedToY
 {
-	SetYDir(BoundBy(liftplate.WaitY - GetY(), -50, 50));
 	if (Inside(liftplate.WaitY - GetY(), -1, +1))
 	{
 		SetPosition(GetX(), liftplate.WaitY);
 		Stop();
+	}
+	else
+	{
+		SetYDir(BoundBy(liftplate.WaitY - GetY(), -50, 50));
 	}
 	return true;
 }
@@ -397,8 +400,14 @@ func SpeedToY()	// StartCall of SpeedToY
 func SpeedToX()	// StartCall of SpeedToX
 {
 	SetYDir(0);
-	SetXDir(BoundBy(liftplate.WaitX - GetX(), -50, +50));
-	if (Inside(liftplate.WaitX - GetX(), -1, +1)) Stop();
+	if (Inside(liftplate.WaitX - GetX(), -1, +1))
+	{
+		Stop();
+	}
+	else
+	{
+		SetXDir(BoundBy(liftplate.WaitX - GetX(), -50, +50));
+	}
 	return true;
 }
 
