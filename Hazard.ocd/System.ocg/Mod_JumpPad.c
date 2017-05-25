@@ -16,7 +16,15 @@ func OnBounce(object target)
 
 func EMPShock()
 {
-	EMPShockEffect(38 * 3);
+	if (EMPShocked())
+	{
+		return false;
+	}
+	else
+	{
+		EMPShockEffect(38 * 3);
+		return true;
+	}
 }
 
 

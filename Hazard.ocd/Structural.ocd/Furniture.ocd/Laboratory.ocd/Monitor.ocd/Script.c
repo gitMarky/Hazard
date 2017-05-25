@@ -13,9 +13,17 @@ func On(int iAction)
 
 func Off()
 {
-	RemoveLight();
-	SetGraphics(nil, GetID(), 1);
-	return SetAction("Off");
+	if (GetAction() == "Off")
+	{
+		return false;
+	}
+	else
+	{
+		RemoveLight();
+		SetGraphics(nil, GetID(), 1);
+		SetAction("Off");
+		return true;
+	}
 }
 
 func GetActions(){	return 3;}
@@ -70,7 +78,7 @@ func IsMachine()
 
 func EMPShock()
 {
-	Off();
+	return Off();
 }
 
 /* Serialisierung */

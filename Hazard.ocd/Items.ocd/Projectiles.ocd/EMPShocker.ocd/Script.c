@@ -1,5 +1,7 @@
 ﻿#include Projectile_Bullet
 
+local emp_shock;
+
 func UpdateLight()
 {
 	AddLightAmbience(damage);
@@ -9,8 +11,10 @@ func UpdateLight()
 
 private func OnLaunch()
 {
+	emp_shock = { last_x = GetX(), last_y = GetY(), };
 	SetAction("Travel");
-	UpdateLight();
+	StayOnHit();
+	UpdateLight();	
 }
 
 private func OnLaunched()
@@ -27,7 +31,44 @@ public func Travelling()
 	
 	_inherited(...);
 	
+	if (self) HandleEmpHit();
 	if (self) HandleEmpSize();
+}
+
+func HandleEmpHit()
+{
+	// this should actually be part of the hit check effect
+	var possible_targets = [];
+	
+	// update coordinates
+	var oldx = emp_shock.last_x;
+	var oldy = emp_shock.last_y;
+	var newx = GetX();
+	var newy = GetY();
+	emp_shock.last_x = newx;
+	emp_shock.last_y = newy;
+	
+	// start the search
+	var distance = Distance(oldx, oldy, newx, newy);
+	
+	var steps = Max(1, distance / 5);
+	
+	for (var i = steps; i > 0; --i)
+	{
+		var curx = i * (oldx - newx) / steps;
+		var cury = i * (oldy - newy) / steps;
+		
+		var new_targets = FindObjects(Find_Distance(damage, curx, cury), Find_Func("IsMachine"), Find_NoContainer());
+		
+		possible_targets = Concatenate(possible_targets, new_targets);
+	}
+	
+	RemoveDuplicates(possible_targets);
+	
+	for (var target in possible_targets)
+	{
+		DoDamageObject(target);
+	}
 }
 
 func HandleEmpSize()
@@ -55,37 +96,43 @@ func HandleEmpSize()
 	if(this.damage <= 0) Remove();
 }
 
-//TODO/* Treffer */
-//
-//private func HitObject(object pObject) {
-//  var angle = Angle(GetX(),GetY(),GetX(pObject),GetY(pObject));
-//  var dist = Distance(GetX(),GetY(),GetX(pObject),GetY(pObject));
-//
-//  //Objekte schocken (Objekt auf schockbarkeit prüfen)
-//  if(pObject->~IsMachine())
-//   if(pObject->~EMPShock())
-//    {
-//    var laser = CreateObject(LASR, 0,0, GetOwner());
-//    laser->Set(angle, 10, dist, 20, pObject, pObject);
-//    SetClrModulation(Color(GetActTime()), laser);
-//    Sound("EMPShock");
-//    }
-//
-//  if(GBackSolid())
-//    Remove();
-//}
-//
-//private func Hit() {
-//  Sparks(20,Color(GetActTime()));
-//  for(var i = 0 ; i < 7 ; i++)
-//  {
-//    var laser = CreateObject(LASR, 0,0, GetOwner());
-//    laser->Set(Random(360), 5, RandomX(10,30), 5, laser, laser);
-//    SetClrModulation(Color(GetActTime()), laser);    
-//  }
-//
-//  Remove();
-//}
+
+func DoDamageObject(object target)
+{
+	if (target)
+	{
+		if (target->~IsMachine() && target->~EMPShock())
+		{
+			var laser = CreateObject(LaserEffect, 0, 0, NO_OWNER);
+			laser->Line(GetX(), GetY(), target->GetX(), target->GetY())
+			 ->SetWidth(10)
+			 ->SetLifetime(20)
+			 ->Color(GetClrModulation())
+			 ->Activate(); 
+
+			target->Sound("Weapon::Motegun::EMPShock");
+		}
+	}
+}
+
+func OnHitLandscape()
+{
+	RemoveOnHit(); // tell the library that we can be removed now
+
+	CreateSparksEffect(20, GetClrModulation());
+	for(var i = 0; i < 7 ; ++i)
+	{
+	
+		var laser = CreateObject(LaserEffect, 0, 0, NO_OWNER);
+		
+		laser->SetRotation(Random(360))
+			 ->SetRange(RandomX(10, 30))
+			 ->SetWidth(5)
+			 ->SetLifetime(5)
+			 ->Color(GetClrModulation())
+			 ->Activate(); 
+	}
+}
 
 
 private func ProjectileColor(int time)

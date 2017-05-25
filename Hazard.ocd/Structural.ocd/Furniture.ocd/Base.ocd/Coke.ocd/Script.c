@@ -2,7 +2,7 @@ local broken;
 
 public func EMPShock()
 {
-	Break();
+	return Break();
 }
 
 public func Incineration()
@@ -12,15 +12,21 @@ public func Incineration()
 
 func Break()
 {
-	if(broken) return false;
-	broken = true;
-	// many colourful cans!
-	ScheduleCall(this, this.CastTin, 2, RandomX(7, 14));
-	ScheduleCall(this, this.CastSparks, 3, 15);
-	Sound("Structural::Furniture::CokeCrash");
-	//Sound("FreezerLoop", 0,0,0,0, -1);
-	SetClrModulation(RGB(100, 100, 100));
-	return true;
+	if (broken)
+	{
+		return false;
+	}
+	else
+	{
+		broken = true;
+		// many colourful cans!
+		ScheduleCall(this, this.CastTin, 2, RandomX(7, 14));
+		ScheduleCall(this, this.CastSparks, 3, 15);
+		Sound("Structural::Furniture::CokeCrash");
+		//Sound("FreezerLoop", 0,0,0,0, -1);
+		SetClrModulation(RGB(100, 100, 100));
+		return true;
+	}
 }
 
 func CastTin()
