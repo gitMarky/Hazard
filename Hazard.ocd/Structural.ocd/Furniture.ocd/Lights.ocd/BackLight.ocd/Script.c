@@ -34,8 +34,8 @@ func IsMachine()
 
 func EMPShock()
 {
-	TurnOff();
 	EMPShockEffect(800 + Random(200));
+	return TurnOff();
 }
 
 func EMPShockEnd()

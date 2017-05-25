@@ -389,9 +389,16 @@ func GetAmmoContainer()
 
 func EMPShock()
 {
-	TurnOff();
-	EMPShockEffect(15 * 35);
-	return true;
+	if (EMPShocked())
+	{
+		return false;
+	}
+	else
+	{
+		TurnOff();
+		EMPShockEffect(15 * 35);
+		return true;
+	}
 }
 
 func RejectEntrance(object into)

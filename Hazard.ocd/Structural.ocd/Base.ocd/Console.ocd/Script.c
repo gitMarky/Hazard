@@ -16,7 +16,7 @@ func Construction()
 // Effects
 func FxLightsTimer(object pTarget, proplist pEffect)
 {
-	/*  if(smashed || GetEffect("EMPShock", this()))
+	/*  if(smashed || EMPShocked())
     {
     if(!Random(10)) CastObjects(SPRK, 1, 30, RandomX(-15,15));
     }
@@ -61,7 +61,7 @@ func Grabbed(object user, bool grab)
 		return user->CloseMenu();
 	}
 
-	if (smashed || GetEffect("EMPShock", this))
+	if (smashed || EMPShocked())
 	{
 		Sound("Electric");
 		user->DoDamage(Random(5));
@@ -96,11 +96,15 @@ protected func ExecuteFunc(dummy, int i)
 func EMPShock()
 {
 	//Shockable?
-	if (GetEffect("EMPShock", this) || smashed)
-		return 0;
-	
-	//Yes
-	AddEffect("EMPShock", this, 180, 650, this, GetID());
+	if (EMPShocked() || smashed)
+	{
+		return false;
+	}
+	else
+	{
+		EMPShockEffect(650);
+		return true;
+	}
 }
 
 

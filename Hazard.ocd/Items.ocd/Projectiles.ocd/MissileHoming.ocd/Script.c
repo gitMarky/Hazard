@@ -52,7 +52,7 @@ private func FollowTarget()
     var my_angle = GetR();
 
     var difference = Normalize(target_angle - my_angle, -180);
-    var turn = Abs(difference); // TODO: was Min(Abs(difference), 6);
+    var turn = Min(Abs(difference), 6);
 
     SetR(my_angle + turn * Sign(difference));
 }

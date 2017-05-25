@@ -1,3 +1,4 @@
+ChooseUpgradeable=Choose an item to upgrade!
 NothingUpgradeable=Nothing upgradeable available.
 Upgrade=Upgrade %s
 UpgradeDefault=Upgrade with %s.

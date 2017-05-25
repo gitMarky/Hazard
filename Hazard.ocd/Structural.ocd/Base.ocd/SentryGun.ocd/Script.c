@@ -203,10 +203,17 @@ func Damage()
 
 func EMPShock()
 {
-	EMPShockEffect(20 * 35);
-	
-	StopFiring();
-	return true;
+	if (EMPShocked())
+	{
+		return false;
+	}
+	else
+	{
+		EMPShockEffect(20 * 35);
+		
+		StopFiring();
+		return true;
+	}
 }
 
 /* Console control */ // TODO

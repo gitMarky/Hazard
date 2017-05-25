@@ -57,6 +57,19 @@ func IsUserReadyToUse(object user)
 							   false); // must not grab landscape
 }
 
+func IsWeaponReadyToUse(object user)
+{
+	var other_weapons = FindObjects(Find_Container(user), Find_Exclude(this), Find_Func("IsHazardWeapon"));
+	
+	var can_use = _inherited(user, ...);
+
+	for (var weapon in other_weapons)
+	{
+		can_use = can_use && weapon->~IsReadyToFire();
+	}
+
+	return can_use;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -193,6 +206,22 @@ public func RemoveAmmo()
 		GetAmmoReloadContainer()->DoAmmo(firemode.ammo_id, ammo);
 	}
 }
+
+/**
+ Update the HUD whenever ammo changes.
+ */
+public func SetAmmo(id ammo, int new_value)
+{
+	var info = _inherited(ammo, new_value);
+	
+	if (GetAmmoReloadContainer() && GetAmmoReloadContainer()->~GetHUDController())
+	{
+		GetAmmoReloadContainer()->~GetHUDController()->~OnHazardWeaponAmmoChange(this);
+	}
+
+	return info;
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

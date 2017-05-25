@@ -116,6 +116,7 @@ public func OnStartCooldown(object user, proplist firemode)
 		Sound("Weapon::Chainsaw::chainsaw_stop");
 		WalkNormal(user);
 	}
+	_inherited(user, firemode);	
 }
 
 public func OnSelect()

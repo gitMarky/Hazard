@@ -156,11 +156,11 @@ public func FireSound(object user, proplist firemode)
 {
 	if (firemode == firemode_slime || firemode == firemode_slime2)
 	{
-		Sound("Weapon::FlameThrower::Flamer", nil, nil, nil, 1);
+		Sound("Weapon::FlameThrower::BioFlamer", nil, nil, nil, 1);
 	}
 	else
 	{
-		Sound("Weapon::FlameThrower::BioFlamer", nil, nil, nil, 1);
+		Sound("Weapon::FlameThrower::Flamer", nil, nil, nil, 1);
 	}
 }
 
@@ -168,6 +168,7 @@ public func OnStartCooldown(object user, proplist firemode)
 {
 		Sound("Weapon::FlameThrower::Flamer", nil, nil, nil, -1);
 		Sound("Weapon::FlameThrower::BioFlamer", nil, nil, nil, -1);
+		_inherited(user, firemode);	
 }
 
 func OnReload()

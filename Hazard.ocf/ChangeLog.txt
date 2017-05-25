@@ -1,5 +1,16 @@
 ﻿Version 0.2.0
 ------------------------------------------------------------------------------------------------
++ added GUI for weapon upgrade menu
++ added scenario descriptions
+* moved jump pad to library (arena games)
+! bugfixes:
+  #13386 particle cannon now shocks objects with EMP
+  #13403 liftplate moves in correct direction
+  #13412 ammo can be collected if inventory is full
+  #13413 global weapon cooldown
+  #13399 jetpack makes a sound now
+  #13404 homing missiles turn not as fast
+  #13400 additional HP for Hazard Clonk
 + added scneario DM_Baldoon
 + added scenario DM_KillingDay
 + added scenario DM_Factory

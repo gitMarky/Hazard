@@ -21,6 +21,7 @@ global func EMPShockEffect(int time)
 	else
 	{
 		AddEffect("EMPDamaged", this, 190, 5, nil, nil, time);
+		this->~EMPShockStart();
 	}
 }
 

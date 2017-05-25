@@ -10,6 +10,7 @@
 
 local MaxWeaponsCount = 3; // this many weapons can be collected
 local MaxEquipmentCount = 2; // this many equipment items can be collected
+local MaxEnergy = 150000; // 150 HP
 
 public func GetAmmoSource(id ammo)
 {
@@ -31,9 +32,20 @@ func Initialize()
 
 func RejectCollect(id type, object item)
 {
+	// allow ammo collection to the ammo belt
+	if (item && item->~IsAmmoPacket())
+	{
+		if (item->GetTransferrableAmmo(this))
+		{
+			return false;
+		}
+	}
+	
+	// handle max contents and carry heavy, etc.
 	var rejected = _inherited(type, item, ...);
 	if (rejected) return rejected;
 	
+	// handle item restrictions for specific items
 	if (item)
 	{
 		// always allow at least 1 ammo packet
@@ -127,7 +139,7 @@ func SetHazardArmorSkin()
 
 public func UpdateHazardHUD()
 {
-    var weapon = this->GetHandItem(0);
+    var weapon = GetCurrentItem();
 
     var hud = this->GetHazardHUD();
     if (hud)
@@ -135,6 +147,12 @@ public func UpdateHazardHUD()
     	hud->~Update(weapon, this, this);
     	ScheduleCall(this, this.UpdateHazardHUD, 1);
     }
+}
+
+
+public func GetCurrentItem()
+{
+	return this->GetHandItem(0);
 }
 
 
