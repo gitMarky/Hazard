@@ -1,3 +1,4 @@
-﻿NothingUpgradeable=Nichts aufrüstbares verfügbar.
+﻿ChooseUpgradeable=Objekt aufrüsten.
+NothingUpgradeable=Nichts Aufrüstbares verfügbar.
 Upgrade=%s aufrüsten
 UpgradeDefault=Mit %s aufrüsten.
