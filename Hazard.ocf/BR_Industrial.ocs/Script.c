@@ -53,10 +53,10 @@ func CreateDeco()
 	CreateObject(GSBO, 374, 429, NO_OWNER);
 	CreateObject(GSBO, 365, 429, NO_OWNER);
 
-	CreateObject(JMPD, 1324, 316, NO_OWNER)->Set(100, -40);
-	CreateObject(JMPD, 177, 316, NO_OWNER)->Set(100, 40);
-	CreateObject(JMPD, 831, 306, NO_OWNER)->Set(70, 10);
-	CreateObject(JMPD, 670, 306, NO_OWNER)->Set(70, -10);
+	CreateObject(Arena_JumpPad, 1324, 316, NO_OWNER)->SetStrength(100)->SetPadR(-40);
+	CreateObject(Arena_JumpPad, 177, 316, NO_OWNER)->SetStrength(100)->SetPadR(40);
+	CreateObject(Arena_JumpPad, 831, 306, NO_OWNER)->SetStrength(70)->SetPadR(10);
+	CreateObject(Arena_JumpPad, 670, 306, NO_OWNER)->SetStrength(70)->SetPadR(-10);
 	CreateObject(CON1, 1370, 176, NO_OWNER);
 	CreateObject(CON1, 1045, 407, NO_OWNER);
 	CreateObject(CON1, 130, 176, NO_OWNER);
