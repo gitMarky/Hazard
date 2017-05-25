@@ -32,9 +32,20 @@ func Initialize()
 
 func RejectCollect(id type, object item)
 {
+	// allow ammo collection to the ammo belt
+	if (item && item->~IsAmmoPacket())
+	{
+		if (item->GetTransferrableAmmo(this))
+		{
+			return false;
+		}
+	}
+	
+	// handle max contents and carry heavy, etc.
 	var rejected = _inherited(type, item, ...);
 	if (rejected) return rejected;
 	
+	// handle item restrictions for specific items
 	if (item)
 	{
 		// always allow at least 1 ammo packet
