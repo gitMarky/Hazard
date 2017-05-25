@@ -292,16 +292,16 @@ func CreateArena()
 // TODO	CreateObjectAbove(_ART, 1795, 190, NO_OWNER);
 	
 	// jump pads
-	CreateObject(JMPD, 1420,  86)->Set(100, +45);
-	CreateObject(JMPD,  770, 946)->Set( 82, +35);
-	CreateObject(JMPD,  980, 316)->Set(140, +18);
-	CreateObject(JMPD,  660, 176)->Set(130, -20);
-	CreateObject(JMPD,  300, 136)->Set( 80, +30);
-	CreateObject(JMPD, 1030, 916)->Set( 85, -40);
-	CreateObject(JMPD,  580, 176)->Set(110, +20);
-	CreateObject(JMPD, 1040, 316)->Set(113, -28);
-	CreateObject(JMPD, 1200, 431)->Set( 98, -15);
-	CreateObject(JMPD, 1210, 431)->Set(140, +12);
+	CreateObject(Arena_JumpPad, 1420,  86)->SetStrength(100)->SetPadR(+45);
+	CreateObject(Arena_JumpPad,  770, 946)->SetStrength( 82)->SetPadR(+35);
+	CreateObject(Arena_JumpPad,  980, 316)->SetStrength(140)->SetPadR(+18);
+	CreateObject(Arena_JumpPad,  660, 176)->SetStrength(130)->SetPadR(-20);
+	CreateObject(Arena_JumpPad,  300, 136)->SetStrength( 80)->SetPadR(+30);
+	CreateObject(Arena_JumpPad, 1030, 916)->SetStrength( 85)->SetPadR(-40);
+	CreateObject(Arena_JumpPad,  580, 176)->SetStrength(110)->SetPadR(+20);
+	CreateObject(Arena_JumpPad, 1040, 316)->SetStrength(113)->SetPadR(-28);
+	CreateObject(Arena_JumpPad, 1200, 431)->SetStrength( 98)->SetPadR(-15);
+	CreateObject(Arena_JumpPad, 1210, 431)->SetStrength(140)->SetPadR(+12);
 	
 	// teleports
 	var teletarget1 = CreateObject(TELE, 625, 225, NO_OWNER);
