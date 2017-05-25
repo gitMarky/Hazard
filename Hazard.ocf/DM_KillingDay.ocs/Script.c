@@ -54,7 +54,7 @@ func CreateDeco()
 	CreateObject(CRAT, 478, 385, NO_OWNER);
 	CreateObject(TABB, 1085, 125, NO_OWNER);
 	CreateObject(TABL, 346, 624, NO_OWNER);
-	CreateObject(JMPD, 302, 166, NO_OWNER)->Set(75, 35);
+	CreateObject(Arena_JumpPad, 302, 166, NO_OWNER)->SetStrength(75)->SetPadR(35);
 	CreateObject(SBBA, 797, 253, NO_OWNER);
 	CreateObject(CLVM, 293, 610, NO_OWNER);
 	CreateObject(SPVB, 1117, 110, NO_OWNER);
