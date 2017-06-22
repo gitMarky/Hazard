@@ -13,3 +13,4 @@ VertexFriction=20
 Rotate=1
 Float=100000
 NoStabilize=1
+HideInCreator=true

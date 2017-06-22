@@ -9,3 +9,4 @@ Vertices=1
 VertexFriction=1
 Rotate=1
 Float=100000
+HideInCreator=true

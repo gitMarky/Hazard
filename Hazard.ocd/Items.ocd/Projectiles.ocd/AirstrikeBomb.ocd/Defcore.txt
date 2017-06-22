@@ -12,3 +12,4 @@ Vertices=2
 VertexY=10,-10
 VertexFriction=20,20
 Rotate=1
+HideInCreator=true

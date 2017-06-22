@@ -13,3 +13,4 @@ VertexCNAT=0,5,9,6,10
 VertexFriction=0,20,20,20,20
 BlitMode=1
 Rotate=1
+HideInCreator=true
