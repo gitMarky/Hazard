@@ -229,7 +229,7 @@ public func SetAmmo(id ammo, int new_value)
 
 public func NeedsRecovery(object user, proplist firemode)
 {
-	return NeedsReload(user, firemode);
+	return !NeedsReload(user, firemode); // no recovery necessary when reloading, so that reload can happen instantly
 }
 
 public func OnFinishCooldown(object user, proplist firemode)
