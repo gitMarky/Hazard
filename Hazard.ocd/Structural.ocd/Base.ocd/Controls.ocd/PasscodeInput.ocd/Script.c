@@ -12,9 +12,19 @@ func WrongCodeEffect()
 
 // overloaded
 
-public func OpenDoor(object user)
+public func SetSwitchState(bool state, object by_user)
 {
-	if (target_door) target_door->~Access();
+	if (GetSwitchTarget())
+	{
+		// Invert the state?
+		var actual_state = state != lib_switch.invert_signal;
+		// Forward to the target
+		if (actual_state)
+		{
+			GetSwitchTarget()->~Access();
+		}
+		// was: GetSwitchTarget()->SetInputSignal(by_user, this, actual_state);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
