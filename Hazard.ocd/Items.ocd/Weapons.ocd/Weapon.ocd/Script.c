@@ -1,8 +1,9 @@
-#include Library_Weapon
+#include Library_AmmoManager
+#include Library_Firearm
 #include Library_UpgradeableObject
-#include Plugin_Weapon_FiremodeByInteraction
-#include Plugin_Weapon_FiremodeByToggle
-#include Plugin_Weapon_ReloadFromAmmoSource
+#include Plugin_Firearm_FiremodeByInteraction
+#include Plugin_Firearm_FiremodeByToggle
+#include Plugin_Firearm_ReloadFromAmmoSource
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -41,13 +42,13 @@ local carry_mode = CARRY_Hand;
 
 public func GetCarryMode(object clonk, bool idle, bool nohand)
 {
-	if (idle || nohand || !is_selected)
+	if (idle || nohand)
 	{
 		return CARRY_None;
 	}
 	return carry_mode;
 }
-public func GetCarrySpecial(object user) { if (is_selected) return "pos_hand2"; }
+public func GetCarrySpecial(object user) { return "pos_hand2"; }
 public func GetCarryBone() { return "Grip"; }
 
 func IsUserReadyToUse(object user)
