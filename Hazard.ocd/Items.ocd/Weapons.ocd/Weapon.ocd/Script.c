@@ -53,9 +53,7 @@ public func GetCarryBone() { return "Grip"; }
 
 func IsUserReadyToUse(object user)
 {
-	return user->HasHandAction(false, // needs only one hand
-					           false, // ???
-							   false); // must not grab landscape
+	return user->HasActionProcedure(false); // must not grab landscape
 }
 
 func IsWeaponReadyToUse(object user)
